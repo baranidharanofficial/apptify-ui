@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
+// import MonaSans from 'next/font/local'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+// const monasans = MonaSans({ src: './Mona-Sans.woff2' })
+
+const montserrat = Montserrat({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Apptify',
@@ -16,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={montserrat.className}>{children}</body>
     </html>
   )
 }
