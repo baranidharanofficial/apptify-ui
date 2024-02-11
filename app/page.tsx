@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { FaPlay } from "react-icons/fa";
-import { MdClose, MdMenu } from 'react-icons/md';
+import { MdClose, MdColorLens, MdDesignServices, MdMenu } from 'react-icons/md';
 
 export default function Home() {
   const [sideNav, showSideNav] = useState(false);
@@ -63,7 +63,7 @@ export default function Home() {
         <div className='h-[75vh] max-lg:h-[60vh] max-sm:h-[50vh] flex flex-col items-center justify-start'>
           <p className='text-[24px] max-sm:text-[12px] mt-16 max-sm:mt-10 mb-4 slide'>One-Stop Solution For All Your Business Needs</p>
           <p className='text-[92px] max-xl:text-[72px] max-lg:text-[64px] max-md:text-[52px] max-sm:text-[32px] font-semibold leading-tight slide'>Creating <span className='text-[#513eff] font-bold'>Softwares</span></p>
-          <p className='text-[92px] max-xl:text-[72px] max-lg:text-[64px] max-md:text-[52px] max-sm:text-[32px] font-semibold leading-tight mb-8 slide'>& Digital Excellence</p>
+          <p className='text-[92px] max-xl:text-[72px] max-lg:text-[64px] max-md:text-[52px] max-sm:text-[32px] font-semibold leading-tight mb-8 slide'>Apps & Experiences</p>
           <div className='flex items-center slide'>
             <button className='bg-[#513eff] text-white font-semibold px-14 max-sm:px-10 py-5  max-sm:py-4 duration-300 rounded-full border-2 shadow-lg mr-4 hover:shadow-xl hover:shadow-[#513eff81] hover:bg-white hover:border-[#3e5eff] hover:border-2 hover:text-[#3e5eff]'>Book a call</button>
             <button className='bg-[#513eff] text-white font-semibold p-5 max-sm:p-4 duration-300 rounded-full border-2 hover:shadow-[#513eff7c] hover:shadow-xl'><FaPlay /></button>
@@ -72,14 +72,83 @@ export default function Home() {
       </div>
 
       <div className='w-full h-max bg-[#513eff] flex flex-col items-center relative'>
-        <div className='w-full max-w-[1200px] max-xl:px-[5%] py-[300px] max-md:py-[200px]'>
-          <p className='text-[64px] max-xl:text-[52px]  max-md:text-[40px] max-sm:text-[28px] font-semibold leading-tight text-white'>Turning Your Ideas</p>
-          <p className='text-[64px] max-xl:text-[52px]  max-md:text-[40px] max-sm:text-[28px] font-semibold leading-tight text-white'>Into Cutting-edge</p>
-          <p className='text-[64px] max-xl:text-[52px]  max-md:text-[40px] max-sm:text-[28px] font-semibold leading-tight mb-12 text-white'>Technologies</p>
+        <div className='w-full h-full max-w-[1200px] max-xl:px-[5%] pb-20 pt-[300px] max-md:pt-[200px] flex flex-col items-center'>
+          <p className='text-[64px] max-xl:text-[52px]  max-md:text-[40px] max-sm:text-[28px] font-semibold leading-tight text-white mb-10'>Who We Are</p>
+
+          <div className='h-full flex items-center justify-between max-md:flex-col'>
+            <div className='w-[25%] max-lg:w-[30%] max-md:w-full h-full flex flex-col max-md:flex-row max-md:mb-2 justify-between'>
+              <p className='text-[64px] max-xl:text-[52px]  max-md:text-[40px] max-sm:text-[24px] font-semibold leading-tight text-white'><span className='font-bold text-[74px] max-xl:text-[62px]  max-md:text-[50px] max-sm:text-[32px]'>D</span>esign</p>
+              <p className='text-[64px] max-xl:text-[52px]  max-md:text-[40px] max-sm:text-[24px] font-semibold leading-tight text-white'><span className='font-bold text-[74px] max-xl:text-[62px]  max-md:text-[50px] max-sm:text-[32px]'>D</span>evelop</p>
+              <p className='text-[64px] max-xl:text-[52px]  max-md:text-[40px] max-sm:text-[24px] font-semibold leading-tight text-white'><span className='font-bold text-[74px] max-xl:text-[62px]  max-md:text-[50px] max-sm:text-[32px]'>D</span>eploy</p>
+            </div>
+            <p className='w-[75%] max-lg:w-[70%] max-md:w-full text-white text-[20px] max-xl:text-[18px] max-lg:text-[15px] max-sm:text-[14px] text-justify'>Welcome to Apptify, your premier destination for cutting-edge software products and services.
+              At Apptify, we're dedicated to revolutionizing the digital landscape by providing top-notch solutions tailored to meet your unique needs.
+              Apptify is a dynamic team of seasoned professionals passionate about technology and innovation. With years of collective experience in the software industry,
+              our experts are committed to delivering excellence in every project we undertake. At Apptify, we offer a comprehensive range of software products and services designed
+              to empower businesses of all sizes. Whether you're a startup looking to establish your digital presence or an enterprise seeking advanced solutions, we've got you covered. </p>
+          </div>
+
         </div>
 
-        <img src='https://images.pexels.com/photos/3184302/pexels-photo-3184302.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' className='absolute fadeLate rounded-md top-[-100px] h-[350px] w-[800px] object-cover max-md:h-[250px] max-md:w-[600px] max-sm:w-[80vw]' ></img>
+        <img src='https://images.pexels.com/photos/3184302/pexels-photo-3184302.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' className='absolute fadeLate rounded-md top-[-100px] h-[350px] w-[800px] object-cover max-md:h-[250px] max-md:w-[600px] max-sm:top-[-50px] max-sm:h-[200px] max-sm:w-[90vw]' ></img>
       </div>
+
+
+      <div className='w-full h-max max-w-[1200px] max-xl:px-[5%] py-20 flex flex-col items-center'>
+        <p className='text-[64px] max-xl:text-[52px]  max-md:text-[40px] max-sm:text-[28px] font-semibold leading-tight mb-10'>What We Provide</p>
+
+        <div className='w-full grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1'>
+          <div className='h-max w-full rounded-lg shadow-[#513eff43] shadow-md p-8'>
+            <div className='flex items-center justify-center mb-5'>
+              <MdColorLens className='text-[#513eff] text-[40px] mr-3' />
+              <p className=' text-2xl font-semibold'>UI/UX Design</p>
+            </div>
+            <p className='text-justify'>Elevate your digital presence with captivating and intuitive user interfaces. Our UI/UX design experts combine creativity and functionality
+              to deliver immersive experiences that keep your users engaged and delighted.</p>
+          </div>
+          <div className='h-max w-full rounded-lg shadow-[#513eff43] shadow-md p-8'>
+            <div className='flex items-center justify-center mb-5'>
+              <MdColorLens className='text-[#513eff] text-[40px] mr-3' />
+              <p className=' text-2xl font-semibold'>UI/UX Design</p>
+            </div>
+            <p className='text-justify'>Elevate your digital presence with captivating and intuitive user interfaces. Our UI/UX design experts combine creativity and functionality
+              to deliver immersive experiences that keep your users engaged and delighted.</p>
+          </div>
+          <div className='h-max w-full rounded-lg shadow-[#513eff43] shadow-md p-8'>
+            <div className='flex items-center justify-center mb-5'>
+              <MdColorLens className='text-[#513eff] text-[40px] mr-3' />
+              <p className=' text-2xl font-semibold'>UI/UX Design</p>
+            </div>
+            <p className='text-justify'>Elevate your digital presence with captivating and intuitive user interfaces. Our UI/UX design experts combine creativity and functionality
+              to deliver immersive experiences that keep your users engaged and delighted.</p>
+          </div>
+          <div className='h-max w-full rounded-lg shadow-[#513eff43] shadow-md p-8'>
+            <div className='flex items-center justify-center mb-5'>
+              <MdColorLens className='text-[#513eff] text-[40px] mr-3' />
+              <p className=' text-2xl font-semibold'>UI/UX Design</p>
+            </div>
+            <p className='text-justify'>Elevate your digital presence with captivating and intuitive user interfaces. Our UI/UX design experts combine creativity and functionality
+              to deliver immersive experiences that keep your users engaged and delighted.</p>
+          </div>
+          <div className='h-max w-full rounded-lg shadow-[#513eff43] shadow-md p-8'>
+            <div className='flex items-center justify-center mb-5'>
+              <MdColorLens className='text-[#513eff] text-[40px] mr-3' />
+              <p className=' text-2xl font-semibold'>UI/UX Design</p>
+            </div>
+            <p className='text-justify'>Elevate your digital presence with captivating and intuitive user interfaces. Our UI/UX design experts combine creativity and functionality
+              to deliver immersive experiences that keep your users engaged and delighted.</p>
+          </div>
+          <div className='h-max w-full rounded-lg shadow-[#513eff43] shadow-md p-8'>
+            <div className='flex items-center justify-center mb-5'>
+              <MdColorLens className='text-[#513eff] text-[40px] mr-3' />
+              <p className=' text-2xl font-semibold'>UI/UX Design</p>
+            </div>
+            <p className='text-justify'>Elevate your digital presence with captivating and intuitive user interfaces. Our UI/UX design experts combine creativity and functionality
+              to deliver immersive experiences that keep your users engaged and delighted.</p>
+          </div>
+        </div>
+      </div>
+
     </main>
   )
 }
