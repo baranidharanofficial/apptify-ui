@@ -192,27 +192,27 @@ export default function Home() {
       </div>
 
       <div className='w-full h-max bg-[#f6f6f6] flex flex-col items-center'>
-        <div className='w-full h-full max-w-[1200px] max-xl:px-[5%] py-10 flex items-start justify-between'>
+        <div className='w-full h-full max-w-[1200px] max-xl:px-[5%] py-10 flex items-start justify-between max-md:items-center max-md:flex-col'>
 
-          <div>
+          <div className='flex flex-col items-start max-md:items-center max-md:mb-10'>
             <div className='flex items-center justify-start cursor-pointer mb-4'>
               <img src='logo.png' className=' h-[40px]' />
               <p className='text-[24px] font-semibold ml-2'>Apptify</p>
             </div>
-            <p>One-Stop Solution For All Your Business Needs</p>
+            <p className='text-center'>One-Stop Solution For All Your Business Needs</p>
           </div>
 
 
-          <div className='flex flex-col items-start max-md:hidden'>
+          <div className='flex flex-col items-start max-md:items-center max-md:mb-10'>
             <p className='text-[18px] font-semibold text-slate-900 mb-3'>Quick links</p>
-            <p className='text-[16px] text-slate-900 mr-6 cursor-pointer mb-1'>Home</p>
-            <p className='text-[16px] text-slate-900 mr-6 cursor-pointer mb-1'>About</p>
-            <p className='text-[16px] text-slate-900 mr-6 cursor-pointer mb-1'>Services</p>
-            <p className='text-[16px] text-slate-900 mr-6 cursor-pointer mb-1'>Projects</p>
-            <p className='text-[16px] text-slate-900 mr-6 cursor-pointer mb-1'>Contact</p>
+            <p className='text-[16px] text-slate-900 cursor-pointer mb-1'>Home</p>
+            <p className='text-[16px] text-slate-900 cursor-pointer mb-1'>About</p>
+            <p className='text-[16px] text-slate-900 cursor-pointer mb-1'>Services</p>
+            <p className='text-[16px] text-slate-900 cursor-pointer mb-1'>Projects</p>
+            <p className='text-[16px] text-slate-900 cursor-pointer mb-1'>Contact</p>
           </div>
 
-          <div className='flex flex-col items-center justify-center max-md:hidden'>
+          <div className='flex flex-col items-center justify-center'>
             <p className='text-[18px] font-semibold text-slate-900 mb-3'>Find us on</p>
             <div className='grid grid-cols-3 grid-rows-2 gap-6'>
               <a target="_blank" href="https://www.linkedin.com/in/baranidharanb/"><img src='linkedin.webp' className=' cursor-pointer h-[40px]' /></a>
