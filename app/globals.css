@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+html,
+body {
+    scroll-behavior: smooth !important;
+}
 
 .fade {
     bottom: 0;
@@ -12,7 +17,6 @@
 .fadeLate {
     bottom: 0;
     opacity: 0;
-
     animation: fadeInBottom 1.5s forwards 1.2s;
 }
 
