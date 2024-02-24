@@ -10,6 +10,16 @@ const montserrat = Montserrat({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Apptify',
   description: 'Your Ideas, Our Code',
+  openGraph: {
+    type: "website",
+    url: "https://www.apptify.in/",
+    title: "Apptify",
+    description: "Your Ideas, Our Code",
+    siteName: "Apptify",
+    images: [
+      "https://www.apptify.in/logo.png"
+    ]
+  }
 }
 
 export default function RootLayout({
@@ -18,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html>
       <body className={montserrat.className}>{children}</body>
     </html>
   )

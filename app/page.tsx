@@ -1,6 +1,7 @@
 "use client"
 
 import { sendEmail } from '@/actions/sendEmail';
+import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -15,7 +16,10 @@ export default function Home() {
   const [sideNav, showSideNav] = useState(false);
 
   return (
-    <main className="bg-white flex flex-col items-center">
+    <div className="bg-white flex flex-col items-center">
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </Head>
 
       <div className={sideNav ? "w-[250px] translate-x-[0px] duration-300 z-10 fixed right-0 top-0 h-full bg-[#ffffff] shadow-2xl px-6 flex flex-col justify-between" : "w-[250px] translate-x-[250px] duration-300 z-10 fixed right-0 top-0 h-full bg-[#143F8D] shadow-2xl p-4 flex-col justify-between flex"}>
         <div>
@@ -232,6 +236,6 @@ export default function Home() {
         </div>
       </div>
 
-    </main >
+    </div >
   )
 }
