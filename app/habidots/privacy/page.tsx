@@ -4,7 +4,7 @@ import "./styles.css";
 export default function PolicyPage() {
   return (
     <div className="p-8">
-      <img src="Habidots.png" alt="Habidots" className="h-[100px] mb-3" />
+      <img src="/Habidots.png" alt="Habidots" className="h-[100px] mb-3" />
       <h3>Privacy Policy</h3>
       <h4>Introduction</h4>
       <p>
