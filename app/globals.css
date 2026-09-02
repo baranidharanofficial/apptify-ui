@@ -2,60 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
+:root {
+    --stage: #fbfbfa;
+    --ink: #101114;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --stage: #0b0c0e;
+        --ink: #f4f5f7;
+    }
+}
+
 html,
 body {
-    scroll-behavior: smooth !important;
+    height: 100%;
 }
 
-.fade {
-    bottom: 0;
+body {
+    margin: 0;
+    background: var(--stage);
+    color: var(--ink);
+}
+
+.wordmark-stage {
+    /* Fills the viewport even where the URL bar steals height. */
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 0 6vw;
+}
+
+.wordmark {
+    font-family: var(--font-cal-sans), ui-sans-serif, system-ui, sans-serif;
+    /* Cal Sans ships one weight; asking for a heavier one only invites the
+       browser to synthesise a worse version of it. */
+    font-weight: 400;
+    font-size: clamp(3rem, 13vw, 9.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-align: center;
     opacity: 0;
-    animation: fadeInTop 0.8s forwards;
+    animation: wordmarkIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
-.fadeLate {
-    bottom: 0;
-    opacity: 0;
-    animation: fadeInBottom 1.5s forwards 1.2s;
-}
-
-
-.slide {
-    bottom: 0;
-    opacity: 0;
-    animation: slideUp 1s forwards;
-}
-
-
-@keyframes fadeInTop {
+@keyframes wordmarkIn {
     from {
         opacity: 0;
-        transform: translateY(-20%);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0%);
-    }
-}
-
-@keyframes fadeInBottom {
-    from {
-        opacity: 0;
-        transform: translateY(20%);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0%);
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(50%);
+        transform: translateY(0.18em);
     }
 
     to {
@@ -64,22 +59,9 @@ body {
     }
 }
 
-.slide:nth-child(1) {
-    animation-delay: 0s;
-    /* Delay for first paragraph */
-}
-
-.slide:nth-child(2) {
-    animation-delay: 0.3s;
-    /* Delay for second paragraph */
-}
-
-.slide:nth-child(3) {
-    animation-delay: 0.6s;
-    /* Delay for third paragraph */
-}
-
-.slide:nth-child(4) {
-    animation-delay: 0.9s;
-    /* Delay for third paragraph */
+@media (prefers-reduced-motion: reduce) {
+    .wordmark {
+        animation: none;
+        opacity: 1;
+    }
 }

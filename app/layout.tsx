@@ -1,9 +1,18 @@
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-// import MonaSans from 'next/font/local'
+import localFont from 'next/font/local'
 import './globals.css'
 
-// const monasans = MonaSans({ src: './Mona-Sans.woff2' })
+// Cal Sans (SIL Open Font License 1.1 — see app/fonts/OFL.txt). Exposed as a
+// variable rather than set on the body, so the policy pages under this layout
+// keep Montserrat for their long-form legal text.
+const calSans = localFont({
+  src: './fonts/CalSans-Regular.ttf',
+  weight: '400',
+  style: 'normal',
+  display: 'swap',
+  variable: '--font-cal-sans',
+})
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -28,8 +37,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html>
-      <body className={montserrat.className}>{children}</body>
+    <html lang="en">
+      <body className={`${montserrat.className} ${calSans.variable}`}>
+        {children}
+      </body>
     </html>
   )
 }
