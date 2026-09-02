@@ -60,7 +60,7 @@ body {
     letter-spacing: 0.08em;
     line-height: 1.5;
     color: var(--muted);
-    margin: clamp(0.9rem, 2.2vw, 1.6rem) auto 0;
+    margin: clamp(1.9rem, 4.4vw, 3.1rem) auto 0;
     max-width: 22em;
     opacity: 0;
     /* Lands just after the wordmark has settled. */
