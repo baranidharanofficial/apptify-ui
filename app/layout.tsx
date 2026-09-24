@@ -19,6 +19,10 @@ const montserrat = Montserrat({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Apptify',
   description: 'Your Ideas, Our Code',
+  icons: {
+    icon: '/logo.jpeg',
+    apple: '/logo.jpeg',
+  },
   openGraph: {
     type: "website",
     url: "https://www.apptify.in/",
@@ -26,7 +30,7 @@ export const metadata: Metadata = {
     description: "Your Ideas, Our Code",
     siteName: "Apptify",
     images: [
-      "https://www.apptify.in/logo.png"
+      "https://www.apptify.in/logo.jpeg"
     ]
   }
 }
