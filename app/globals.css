@@ -40,15 +40,10 @@ body {
 .lockup {
     text-align: center;
 
-    /* The wordmark settles first, then the words arrive one beat apart. */
-    --first-word-delay: 0.6s;
-    --word-stagger: 0.16s;
-    /* Once all four have landed, a highlight walks the line and loops back
-       to the start, so "Repeat." actually repeats. Each word holds the
-       highlight for one step; the cycle is four steps long. */
-    --cycle-start: 2.2s;
+    /* Once the list has landed, a highlight walks it one offering at a time
+       and loops back to the start. */
+    --cycle-start: 1.8s;
     --cycle-step: 1.6s;
-    --cycle: calc(var(--cycle-step) * 4);
 }
 
 .wordmark {
@@ -64,66 +59,25 @@ body {
     animation: riseIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
-.tagline {
-    /* Montserrat, inherited from the body. Cal Sans has a single weight, so a
-       second family is what actually creates hierarchy at this size. */
-    font-size: clamp(0.8rem, 2.1vw, 1.05rem);
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    line-height: 1.5;
-    color: var(--muted);
-    margin: clamp(1.9rem, 4.4vw, 3.1rem) auto 0;
-    max-width: 22em;
-}
-
-.tagline-word {
-    /* Inline-block so the rise transform applies; --i is set per word in
-       page.tsx. Only colour changes in the cycle, so nothing reflows. */
-    display: inline-block;
-    opacity: 0;
-    animation:
-        riseIn 1s cubic-bezier(0.16, 1, 0.3, 1)
-            calc(var(--first-word-delay) + var(--i) * var(--word-stagger))
-            forwards,
-        taglineCycle var(--cycle) ease-in-out
-            calc(var(--cycle-start) + var(--i) * var(--cycle-step))
-            infinite;
-}
-
-@keyframes taglineCycle {
-    /* Brighten into the word's step, hold it, then hand off to the next
-       word. The fade overlaps so the highlight seems to travel. */
-    0% {
-        color: var(--muted);
-    }
-
-    8%,
-    22% {
-        color: var(--ink);
-    }
-
-    32%,
-    100% {
-        color: var(--muted);
-    }
-}
-
 .offerings {
-    /* Not just apps: the range of things we ship, set quieter than the
-       tagline so the hierarchy reads wordmark, promise, scope. */
+    /* Not just apps: the range of things we ship. Montserrat, inherited from
+       the body; Cal Sans has a single weight, so a second family is what
+       actually creates hierarchy under the wordmark. */
     list-style: none;
     padding: 0;
-    margin: clamp(1.1rem, 2.6vw, 1.6rem) auto 0;
+    margin: clamp(1.9rem, 4.4vw, 3.1rem) auto 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    font-size: clamp(0.68rem, 1.6vw, 0.8rem);
+    row-gap: 0.4em;
+    font-size: clamp(0.72rem, 1.8vw, 0.9rem);
     font-weight: 500;
     letter-spacing: 0.18em;
+    line-height: 1.5;
     text-transform: uppercase;
-    color: var(--faint);
+    color: var(--muted);
     opacity: 0;
-    animation: riseIn 1s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
+    animation: riseIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }
 
 .offering + .offering::before {
@@ -133,25 +87,27 @@ body {
 }
 
 .offering {
-    /* One offering per full pass of the tagline: it lights up as "Build."
-       does, and the next one takes over when the loop comes round again. */
-    animation: offeringCycle calc(var(--cycle) * 5) ease-in-out
-        calc(var(--cycle-start) + var(--i) * var(--cycle)) infinite;
+    /* Only colour changes, so nothing reflows. --i is set per item in
+       page.tsx; the cycle is one step per offering. */
+    animation: offeringCycle calc(var(--cycle-step) * 5) ease-in-out
+        calc(var(--cycle-start) + var(--i) * var(--cycle-step)) infinite;
 }
 
 @keyframes offeringCycle {
+    /* Brighten into the item's step, hold it, then hand off to the next.
+       The fade overlaps so the highlight seems to travel. */
     0% {
-        color: var(--faint);
+        color: var(--muted);
     }
 
-    2%,
+    6%,
     18% {
         color: var(--ink);
     }
 
-    21%,
+    26%,
     100% {
-        color: var(--faint);
+        color: var(--muted);
     }
 }
 
@@ -170,7 +126,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
 
     .wordmark,
-    .tagline-word,
     .offerings,
     .offering {
         animation: none;
