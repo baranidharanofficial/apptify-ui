@@ -1,13 +1,13 @@
 /* Readio launch page. Scoped under .rd, because a CSS file imported by a
-   route still loads globally in the app router. Flat brand red with the
-   icon's language: white shapes, hard black offset shadows. Stays the same
-   in dark mode; the red is the brand. */
+   route still loads globally in the app router. The icon's palette (its
+   red, the slate headphone band, the cream ear pads) with hard offset
+   shadows. Stays the same in dark mode; the red is the brand. */
 
 .rd {
-    --red: #f00a0a;
-    --red-deep: #c40000;
-    --ink: #111111;
-    --paper: #ffffff;
+    --red: #fc292e;
+    --red-deep: #d0161c;
+    --ink: #17252e;
+    --paper: #fdf3e0;
     --shadow: 6px 6px 0 var(--ink);
 
     position: relative;
@@ -20,31 +20,23 @@
     justify-content: center;
     padding: clamp(2rem, 6vh, 4rem) 16px clamp(5rem, 14vh, 8rem);
     background:
-        radial-gradient(ellipse 70% 55% at 50% 40%, #ff2b1f 0%, transparent 70%),
+        radial-gradient(ellipse 70% 55% at 50% 40%, #ff4a4a 0%, transparent 70%),
         var(--red);
     color: var(--paper);
     font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
 
-    /* Waitlist card, themed through the shared form's custom properties. */
-    --wl-radius: 1.1rem;
-    --wl-field-radius: 0.75rem;
-    --wl-card-bg: var(--paper);
-    --wl-card-border: 3px solid var(--ink);
-    --wl-card-shadow: 8px 8px 0 var(--ink);
-    --wl-text: var(--ink);
-    --wl-muted: #555;
-    --wl-field-border: var(--ink);
-    --wl-placeholder: #8a8a8a;
-    --wl-accent: var(--ink);
-    --wl-accent-hover: #2a2a2a;
-    --wl-accent-text: var(--paper);
-    --wl-focus-ring: rgba(240, 10, 10, 0.25);
-    --wl-button-shadow: 3px 3px 0 var(--red);
-    --wl-button-shadow-pressed: 0 0 0 var(--red);
-    --wl-button-press: translate(3px, 3px);
-    --wl-error: var(--red-deep);
-    --wl-done-bg: var(--red);
-    --wl-done-fg: var(--paper);
+    /* Store buttons, themed through the shared component's custom
+       properties: black, with the icon's hard shadow. */
+    --sb-border: 2.5px solid var(--ink);
+    --sb-bg: var(--ink);
+    --sb-bg-hover: var(--ink);
+    --sb-text: var(--paper);
+    --sb-shadow: 5px 5px 0 var(--paper);
+    --sb-shadow-hover: 7px 7px 0 var(--paper);
+    --sb-shadow-pressed: 0 0 0 var(--paper);
+    --sb-hover-transform: translate(-2px, -2px);
+    --sb-press-transform: translate(5px, 5px);
+    --sb-focus: var(--paper);
 }
 
 .rd-scene {
@@ -83,7 +75,7 @@
 .rd-doc-line {
     height: 0.4rem;
     border-radius: 99px;
-    background: #e3e3e3;
+    background: #eadbbf;
 }
 
 .rd-doc-line-short {
@@ -119,7 +111,7 @@
     flex: 1;
     height: calc(var(--h) * 100%);
     border-radius: 6px 6px 0 0;
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(253, 243, 224, 0.24);
     transform-origin: bottom;
     animation: rdBar 1.6s ease-in-out var(--d) infinite alternate;
 }
@@ -168,7 +160,7 @@
     margin: 0.85rem 0 0;
     font-weight: 600;
     font-size: clamp(1.05rem, 3.4vw, 1.45rem);
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(253, 243, 224, 0.95);
     animation: rdRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
 }
 
@@ -202,7 +194,7 @@
     text-align: center;
     font-size: 0.85rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(253, 243, 224, 0.9);
 }
 
 .rd-footer a {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
-import { WaitlistForm } from "../_components/waitlist-form";
+import { StoreButtons } from "../_components/store-buttons";
 import { HABIT_COLORS, Scene } from "./scene";
 import "./styles.css";
 
@@ -13,7 +13,7 @@ const outfit = Outfit({
 });
 
 const description =
-    "A daily habit tracker: one dot a day, and watch your habits fill in. Get notified on launch day.";
+    "A daily habit tracker: one dot a day, and watch your habits fill in. Available on the App Store and Google Play.";
 
 export const metadata: Metadata = {
     title: "Habidots — Daily Habit Tracker",
@@ -78,10 +78,10 @@ export default function HabidotsPage() {
                     Small dots. Big habits.
                 </p>
 
-                <WaitlistForm
-                    app="habidots"
+                <StoreButtons
                     appName="Habidots"
-                    doneIcon={<Dots />}
+                    appStoreUrl="https://apps.apple.com/app/id6756837518"
+                    playStoreUrl="https://play.google.com/store/apps/details?id=com.glactic.streakit"
                 />
             </div>
 

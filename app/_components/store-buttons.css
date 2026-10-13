@@ -1,0 +1,97 @@
+/* Store buttons. Pages theme them by setting the --sb-* properties on an
+   ancestor; the defaults are the familiar black store badge. */
+
+.sb {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.85rem;
+    margin-top: clamp(1.6rem, 4vh, 2.3rem);
+    animation: sbRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
+}
+
+.sb-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 11.5rem;
+    padding: 0.7rem 1.3rem 0.7rem 1.05rem;
+    border: var(--sb-border, 1px solid #3a3a3a);
+    border-radius: var(--sb-radius, 0.9rem);
+    background: var(--sb-bg, #000);
+    color: var(--sb-text, #fff);
+    text-decoration: none;
+    box-shadow: var(--sb-shadow, none);
+    transition:
+        transform 0.12s,
+        box-shadow 0.12s,
+        background 0.15s;
+}
+
+.sb-button:hover {
+    background: var(--sb-bg-hover, #1c1c1c);
+    transform: var(--sb-hover-transform, translateY(-2px));
+    box-shadow: var(--sb-shadow-hover, var(--sb-shadow, none));
+}
+
+.sb-button:active {
+    transform: var(--sb-press-transform, translateY(0));
+    box-shadow: var(--sb-shadow-pressed, var(--sb-shadow, none));
+}
+
+.sb-button:focus-visible {
+    outline: 3px solid var(--sb-focus, currentColor);
+    outline-offset: 3px;
+}
+
+.sb-icon {
+    flex-shrink: 0;
+    width: 1.9rem;
+    height: 1.9rem;
+}
+
+.sb-icon-play {
+    width: 1.55rem;
+    height: 1.55rem;
+}
+
+.sb-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
+    text-align: left;
+}
+
+.sb-small {
+    font-size: 0.72rem;
+    font-weight: 500;
+    opacity: 0.85;
+}
+
+.sb-big {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+@keyframes sbRise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .sb,
+    .sb-button {
+        animation: none;
+        transition: none;
+    }
+}

@@ -23,22 +23,15 @@
     color: var(--text);
     font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 
-    /* Waitlist card, themed through the shared form's custom properties. */
-    --wl-card-bg: var(--surface);
-    --wl-card-border: 1px solid var(--line);
-    --wl-card-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.8);
-    --wl-text: var(--text);
-    --wl-muted: var(--muted);
-    --wl-field-bg: #0e0e0e;
-    --wl-field-border: #333;
-    --wl-field-text: var(--text);
-    --wl-placeholder: #666;
-    --wl-accent: var(--purple);
-    --wl-accent-hover: #c07dff;
-    --wl-accent-text: #120a1c;
-    --wl-focus-ring: rgba(178, 95, 255, 0.28);
-    --wl-error: #ff8a7a;
-    --wl-done-bg: #1f1f1f;
+    /* Store buttons, themed through the shared component's custom
+       properties. */
+    --sb-border: 1px solid #333;
+    --sb-bg: #1b1b1b;
+    --sb-bg-hover: #242424;
+    --sb-text: var(--text);
+    --sb-shadow: 0 16px 36px -18px rgba(0, 0, 0, 0.9);
+    --sb-shadow-hover: 0 18px 40px -16px rgba(178, 95, 255, 0.35);
+    --sb-focus: var(--purple);
 }
 
 .hd-scene {

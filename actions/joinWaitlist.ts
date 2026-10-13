@@ -14,8 +14,6 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // on the server.
 const AUDIENCE_ENV = {
     "dog-on-walk": "RESEND_DOG_ON_WALK_AUDIENCE_ID",
-    readio: "RESEND_READIO_AUDIENCE_ID",
-    habidots: "RESEND_HABIDOTS_AUDIENCE_ID",
 } as const;
 
 export type WaitlistApp = keyof typeof AUDIENCE_ENV;

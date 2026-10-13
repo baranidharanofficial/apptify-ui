@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
-import { WaitlistForm } from "../_components/waitlist-form";
+import { StoreButtons } from "../_components/store-buttons";
 import { Headphones } from "./icons";
 import { Scene } from "./scene";
 import "./styles.css";
@@ -13,14 +13,14 @@ const bricolage = Bricolage_Grotesque({
 });
 
 const description =
-    "Turn PDFs, websites and more into audiobooks. Get notified on launch day.";
+    "Turn PDFs, websites and more into audiobooks. Available on the App Store and Google Play.";
 
 export const metadata: Metadata = {
     title: "Readio — Turn anything into an audiobook",
     description,
     icons: {
-        icon: "/readio/icon.png",
-        apple: "/readio/icon.png",
+        icon: "/readio/icon.jpg",
+        apple: "/readio/icon.jpg",
     },
     openGraph: {
         type: "website",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         title: "Readio — Turn anything into an audiobook",
         description,
         siteName: "Apptify",
-        images: ["https://www.apptify.in/readio/icon.png"],
+        images: ["https://www.apptify.in/readio/icon.jpg"],
     },
 };
 
@@ -40,8 +40,8 @@ export default function ReadioPage() {
             <div className="rd-content">
                 <img
                     className="rd-icon"
-                    src="/readio/icon.png"
-                    alt="Readio app icon: white headphones shaped like an open book on red"
+                    src="/readio/icon.jpg"
+                    alt="Readio app icon: dark headphones with cream ear pads, shaped like an open book, on red"
                     width={512}
                     height={512}
                 />
@@ -57,10 +57,10 @@ export default function ReadioPage() {
                     <Headphones className="rd-pill-icon" />
                 </p>
 
-                <WaitlistForm
-                    app="readio"
+                <StoreButtons
                     appName="Readio"
-                    doneIcon={<Headphones />}
+                    appStoreUrl="https://apps.apple.com/app/id6755078046"
+                    playStoreUrl="https://play.google.com/store/apps/details?id=tech.glactic.readio"
                 />
             </div>
 
