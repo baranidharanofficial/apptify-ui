@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import { StoreButtons } from "../_components/store-buttons";
+import { AppStats } from "../_components/app-stats";
+import { APP_STATS } from "@/lib/apps";
 import { Headphones } from "./icons";
 import { Scene } from "./scene";
 import "./styles.css";
@@ -62,6 +64,8 @@ export default function ReadioPage() {
                     appStoreUrl="https://apps.apple.com/app/id6755078046"
                     playStoreUrl="https://play.google.com/store/apps/details?id=tech.glactic.readio"
                 />
+
+                <AppStats stats={APP_STATS.readio} long className="rd-stats" />
             </div>
 
             <footer className="rd-footer">

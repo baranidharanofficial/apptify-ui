@@ -1,0 +1,38 @@
+.app-stats {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em 0.5em;
+    font-weight: 600;
+}
+
+.app-stats-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.app-stats-rating svg {
+    width: 1.05em;
+    height: 1.05em;
+    color: #ffc531;
+}
+
+.app-stats-dim {
+    font-weight: 500;
+    opacity: 0.75;
+}
+
+.app-stats-sep {
+    opacity: 0.55;
+}
+
+.app-stats-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}

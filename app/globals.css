@@ -7,9 +7,9 @@
     --ink: #101114;
     --muted: #6b7078;
     --faint: #a4a8ae;
-    --card: #ffffff;
-    --line: #e9e9e6;
-    --live: #1f9d55;
+    --glow: 0.12;
+    --panel: #ffffff;
+    --edge: #e7e7e3;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,9 +18,9 @@
         --ink: #f4f5f7;
         --muted: #8b929c;
         --faint: #565c65;
-        --card: #131418;
-        --line: #23252b;
-        --live: #3ecf7a;
+        --glow: 0.2;
+        --panel: #131418;
+        --edge: #24262c;
     }
 }
 
@@ -38,11 +38,32 @@ body {
 .home {
     /* Fills the viewport even where the URL bar steals height: the lockup
        takes the open space up top, the app shelf sits beneath it. */
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     min-height: 100svh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0 16px;
+}
+
+/* A faint wash of the apps' own colours behind the wordmark. */
+.home::before {
+    content: '';
+    position: absolute;
+    top: -20vh;
+    left: 50%;
+    z-index: -1;
+    width: min(70rem, 140vw);
+    height: 75vh;
+    transform: translateX(-50%);
+    background:
+        radial-gradient(closest-side at 30% 55%, rgba(252, 41, 46, var(--glow)), transparent),
+        radial-gradient(closest-side at 70% 50%, rgba(178, 95, 255, var(--glow)), transparent),
+        radial-gradient(closest-side at 50% 30%, rgba(91, 188, 242, var(--glow)), transparent);
+    filter: blur(40px);
+    pointer-events: none;
 }
 
 .lockup {
@@ -53,11 +74,6 @@ body {
     min-height: 50svh;
     padding: clamp(3rem, 10vh, 6rem) 0 clamp(2rem, 5vh, 3rem);
     text-align: center;
-
-    /* Once the list has landed, a highlight walks it one offering at a time
-       and loops back to the start. */
-    --cycle-start: 1.8s;
-    --cycle-step: 1.6s;
 }
 
 .wordmark {
@@ -100,28 +116,68 @@ body {
     color: var(--faint);
 }
 
-.offering {
-    /* Only colour changes, so nothing reflows. --i is set per item in
-       page.tsx; the cycle is one step per offering. */
-    animation: offeringCycle calc(var(--cycle-step) * var(--count)) ease-in-out
-        calc(var(--cycle-start) + var(--i) * var(--cycle-step)) infinite;
+/* Each offering is a tab for the shelf below. The lit one is in full ink,
+   with a hairline that fills while it waits its turn (home-showcase.tsx
+   sets --dwell to match). Only colour changes, so nothing reflows. */
+.offering button {
+    position: relative;
+    padding: 0.35em 0 0.45em;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+    transition: color 0.4s;
 }
 
-@keyframes offeringCycle {
-    /* Brighten into the item's step, hold it, then hand off to the next.
-       The fade overlaps so the highlight seems to travel. */
-    0% {
-        color: var(--muted);
+.offering button:hover,
+.offering button[aria-selected="true"] {
+    color: var(--ink);
+}
+
+.offering button:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+.offering button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0.18em;
+    bottom: 0;
+    height: 1.5px;
+    border-radius: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+/* Picked by hand, or not cycling: a settled underline. */
+.offering button[aria-selected="true"]::after {
+    transform: scaleX(1);
+    opacity: 0.5;
+}
+
+/* Cycling: the underline fills over the tab's dwell time. */
+.offerings--auto .offering button[aria-selected="true"]::after {
+    animation: tabDwell var(--dwell) linear forwards;
+}
+
+.offerings--held .offering button[aria-selected="true"]::after {
+    animation-play-state: paused;
+}
+
+@keyframes tabDwell {
+    from {
+        transform: scaleX(0);
     }
 
-    7%,
-    22% {
-        color: var(--ink);
-    }
-
-    32%,
-    100% {
-        color: var(--muted);
+    to {
+        transform: scaleX(1);
     }
 }
 
@@ -131,16 +187,18 @@ body {
     }
 }
 
-/* The app shelf */
+/* The app shelf: each card wears its app's own look, so the page reads as
+   a studio of distinct products rather than a list. */
 
 .shelf {
+    position: relative;
     width: 100%;
-    max-width: 64rem;
+    max-width: 66rem;
     padding-bottom: clamp(2.5rem, 7vh, 4.5rem);
 }
 
 .shelf-title {
-    margin: 0 0 1.1rem;
+    margin: 0 0 1.2rem;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.18em;
@@ -156,8 +214,8 @@ body {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    gap: 0.9rem;
+    grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+    gap: 1rem;
 }
 
 .shelf-item {
@@ -166,92 +224,392 @@ body {
         calc(1s + var(--i) * 0.1s) forwards;
 }
 
+/* After the first switch, content swaps in quickly instead of replaying
+   the page-load entrance. */
+.shelf--switched .shelf-title,
+.shelf--switched .shelf-item {
+    animation-duration: 0.6s;
+    animation-delay: calc(var(--i, 0) * 0.06s);
+}
+
+.shelf-item--wide {
+    grid-column: 1 / -1;
+}
+
 .app-card {
     position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.95rem;
+    justify-content: space-between;
+    gap: 2.4rem;
     height: 100%;
-    padding: 1.2rem 1.25rem 1.3rem;
-    border: 1px solid var(--line);
-    border-radius: 1.25rem;
-    background: var(--card);
-    color: inherit;
+    min-height: 17rem;
+    padding: 1.4rem;
+    border-radius: 1.6rem;
+    background: var(--card-bg);
+    color: var(--card-fg);
     text-decoration: none;
+    box-shadow:
+        inset 0 0 0 1px var(--card-edge),
+        0 24px 50px -30px rgba(0, 0, 0, 0.55);
     transition:
-        transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-        border-color 0.2s,
-        box-shadow 0.2s;
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Each card's backdrop motif, behind its content. */
+.app-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .app-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--faint);
-    box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.35);
+    transform: translateY(-5px);
+    box-shadow:
+        inset 0 0 0 1px var(--card-edge),
+        0 34px 60px -28px rgba(0, 0, 0, 0.6);
+}
+
+.app-card:hover::before {
+    transform: scale(1.06);
 }
 
 .app-card:focus-visible {
     outline: 2px solid var(--ink);
-    outline-offset: 3px;
+    outline-offset: 4px;
+}
+
+.app-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 .app-icon {
     flex-shrink: 0;
-    width: 3.6rem;
-    height: 3.6rem;
+    width: 4.5rem;
+    height: 4.5rem;
     border-radius: 23%;
-    /* A hairline so dark and light icons both hold their edge on either
-       background. */
-    box-shadow: 0 0 0 1px var(--line);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.12),
+        0 12px 24px -10px rgba(0, 0, 0, 0.5);
+}
+
+.app-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: var(--chip-bg);
+    color: var(--card-fg);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.app-status::before {
+    content: '';
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: var(--status-dot, currentColor);
+}
+
+.app-status-live {
+    --status-dot: #3ee07f;
+}
+
+.app-card-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 .app-text {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 0.3rem;
     min-width: 0;
 }
 
 .app-name {
     font-family: var(--font-cal-sans), ui-sans-serif, system-ui, sans-serif;
-    font-size: 1.2rem;
-    line-height: 1.2;
+    font-size: 1.65rem;
+    line-height: 1.1;
 }
 
 .app-blurb {
-    font-size: 0.85rem;
-    line-height: 1.35;
-    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--card-muted);
 }
 
-.app-status {
-    position: absolute;
-    top: 1.2rem;
-    right: 1.2rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.2rem 0.55rem;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--muted);
-    white-space: nowrap;
-}
-
-.app-status-live {
-    color: var(--live);
-}
-
-.app-status-live::before {
-    content: '';
-    width: 0.4rem;
-    height: 0.4rem;
+.app-go {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
     border-radius: 50%;
-    background: currentColor;
+    background: var(--chip-bg);
+    color: var(--card-fg);
+    transition:
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.2s;
+}
+
+.app-go svg {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.app-card:hover .app-go {
+    transform: translateX(3px) rotate(-45deg);
+    background: var(--card-fg);
+    color: var(--go-hover-fg);
+}
+
+/* Readio: its red, slate and cream, with an equaliser along the foot. */
+.app-card--readio {
+    --card-bg: #fc292e;
+    --card-fg: #fdf3e0;
+    --card-muted: rgba(253, 243, 224, 0.82);
+    --card-edge: rgba(255, 255, 255, 0.14);
+    --chip-bg: rgba(23, 37, 46, 0.28);
+    --go-hover-fg: #fc292e;
+}
+
+.app-card--readio::before {
+    /* The top layer fades the equaliser up into the card's red, so the
+       bars rise from the foot instead of starting at a hard edge. */
+    background:
+        radial-gradient(ellipse 80% 60% at 75% 0%, rgba(255, 120, 110, 0.55), transparent 70%),
+        linear-gradient(to bottom, #fc292e, rgba(252, 41, 46, 0)) bottom / 100% 55% no-repeat,
+        repeating-linear-gradient(90deg,
+            rgba(253, 243, 224, 0.13) 0 5px,
+            transparent 5px 11px) bottom / 100% 55% no-repeat;
+}
+
+/* Habidots: near-black with a grid of its four colours fading in. */
+.app-card--habidots {
+    --card-bg: #121212;
+    --card-fg: #f3f3f3;
+    --card-muted: #a3a3a3;
+    --card-edge: #262626;
+    --chip-bg: rgba(255, 255, 255, 0.08);
+    --go-hover-fg: #121212;
+}
+
+.app-card--habidots::before {
+    background:
+        radial-gradient(circle, #b25fff 0 4px, transparent 4.5px) 0 0 / 22px 22px,
+        radial-gradient(circle, #61b33f 0 4px, transparent 4.5px) 11px 11px / 22px 22px;
+    opacity: 0.32;
+    -webkit-mask-image: radial-gradient(ellipse 70% 80% at 100% 0%, #000, transparent 70%);
+    mask-image: radial-gradient(ellipse 70% 80% at 100% 0%, #000, transparent 70%);
+}
+
+.app-card--habidots::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(ellipse 60% 50% at 0% 100%, rgba(255, 110, 45, 0.18), transparent 70%);
+}
+
+/* Dog on Walk: a sunny sky over green hills. */
+.app-card--dog {
+    --card-bg: linear-gradient(180deg, #5bbcf2 0%, #bfe5fb 70%);
+    --card-fg: #15203b;
+    --card-muted: #3f5170;
+    --card-edge: rgba(255, 255, 255, 0.35);
+    --chip-bg: rgba(255, 255, 255, 0.6);
+    --go-hover-fg: #fff;
+}
+
+.app-card--dog::before {
+    background:
+        radial-gradient(ellipse 22% 7% at 72% 40%, rgba(255, 255, 255, 0.95) 60%, transparent 62%),
+        radial-gradient(ellipse 13% 5% at 79% 36%, rgba(255, 255, 255, 0.95) 60%, transparent 62%),
+        radial-gradient(ellipse 14% 4.5% at 42% 27%, rgba(255, 255, 255, 0.8) 60%, transparent 62%),
+        radial-gradient(ellipse 120% 22% at 20% 106%, #82c75e 60%, transparent 61%),
+        radial-gradient(ellipse 110% 20% at 95% 110%, #5aa83f 60%, transparent 61%);
+}
+
+/* Card scope, so it outranks the centred default in app-stats.css. */
+.app-card .app-card-stats {
+    justify-content: flex-start;
+    margin-top: 0.55rem;
+    font-size: 0.8rem;
+    color: var(--card-fg);
+}
+
+/* The daily app-ideas agent: a signal scanner, deep teal with radar rings
+   spreading from the corner, as it sweeps the web for user pain. */
+.app-card--agent {
+    --card-bg: linear-gradient(150deg, #04261f 0%, #073b31 55%, #0a4a3d 100%);
+    --card-fg: #e9fff6;
+    --card-muted: #9fd8c3;
+    --card-edge: rgba(92, 242, 178, 0.16);
+    --chip-bg: rgba(92, 242, 178, 0.12);
+    --go-hover-fg: #04261f;
+}
+
+.app-card--agent::before {
+    background:
+        /* Radar rings, centred just off the top-right corner. */
+        repeating-radial-gradient(circle at 100% 0%,
+            transparent 0 34px,
+            rgba(92, 242, 178, 0.14) 34px 35px),
+        radial-gradient(circle at 100% 0%, rgba(92, 242, 178, 0.28), transparent 55%);
+    -webkit-mask-image: radial-gradient(circle at 100% 0%, #000 20%, transparent 75%);
+    mask-image: radial-gradient(circle at 100% 0%, #000 20%, transparent 75%);
+}
+
+.agent-icon {
+    display: grid;
+    place-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 23%;
+    background: linear-gradient(145deg, #7dffc6, #2fd99a);
+    color: #03251d;
+    box-shadow: 0 14px 30px -12px rgba(47, 217, 154, 0.55);
+}
+
+.agent-icon svg {
+    width: 2.3rem;
+    height: 2.3rem;
+}
+
+/* App Assets Studio: the violet and polka dots of the Habidots set it
+   designed. */
+.app-card--skill {
+    --card-bg: linear-gradient(155deg, #7a62ea 0%, #6448d6 100%);
+    --card-fg: #ffffff;
+    --card-muted: rgba(255, 255, 255, 0.82);
+    --card-edge: rgba(255, 255, 255, 0.16);
+    --chip-bg: rgba(20, 10, 60, 0.22);
+    --go-hover-fg: #6448d6;
+}
+
+.app-card--skill::before {
+    background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.13) 0 9px, transparent 9.5px) 0 0 / 34px 34px,
+        radial-gradient(circle, rgba(30, 15, 90, 0.18) 0 9px, transparent 9.5px) 17px 17px / 34px 34px;
+    -webkit-mask-image: linear-gradient(160deg, #000 15%, transparent 70%);
+    mask-image: linear-gradient(160deg, #000 15%, transparent 70%);
+}
+
+.skill-icon {
+    display: grid;
+    place-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 23%;
+    background: #ffffff;
+    color: #6448d6;
+    box-shadow: 0 14px 28px -12px rgba(20, 10, 60, 0.5);
+}
+
+.skill-icon svg {
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+/* A lone card, centred at an app card's width rather than stretched. */
+.shelf-item--solo {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(100%, 21.5rem);
+}
+
+/* Agents, skills and tools: one wide card each while they're in the works,
+   set the same height as the app cards so the shelf doesn't jump. */
+.soon-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.4rem;
+    min-height: 17rem;
+    padding: 1.4rem;
+    border-radius: 1.6rem;
+    background: var(--panel);
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--edge);
+
+    --card-fg: var(--ink);
+    --card-muted: var(--muted);
+    --chip-bg: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+/* Faint dot grid, fading in from the right. */
+.soon-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(circle, var(--faint) 1.2px, transparent 1.6px) 0 0 / 18px 18px;
+    opacity: 0.5;
+    -webkit-mask-image: linear-gradient(to left, #000, transparent 65%);
+    mask-image: linear-gradient(to left, #000, transparent 65%);
+}
+
+.soon-glyph {
+    display: grid;
+    place-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 23%;
+    /* The apps' colours, as in the glow behind the wordmark. */
+    background: linear-gradient(135deg, #fc292e, #b25fff 55%, #5bbcf2);
+    color: #fff;
+    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.45);
+}
+
+.soon-glyph svg {
+    width: 2.1rem;
+    height: 2.1rem;
+}
+
+.soon-card .app-text {
+    max-width: 30rem;
+}
+
+.soon-card .app-name {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.soon-card .app-blurb {
+    font-size: 1rem;
+}
+
+/* The category's glyph again, drawn large and faint on the right. */
+.soon-art {
+    position: absolute;
+    right: -2.5rem;
+    bottom: -3.5rem;
+    z-index: -1;
+    width: clamp(12rem, 30vw, 20rem);
+    height: auto;
+    color: var(--faint);
+    opacity: 0.35;
+    transform: rotate(-8deg);
 }
 
 .home-footer {
@@ -284,7 +642,10 @@ body {
         opacity: 1;
     }
 
-    .app-card {
+    .app-card,
+    .app-card::before,
+    .app-go,
+    .offering button {
         transition: none;
     }
 }
