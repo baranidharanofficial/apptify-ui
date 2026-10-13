@@ -134,7 +134,10 @@ export function HomeShowcase({ ideas }: { ideas: IdeasDigest | null }) {
           ) : current === 'Agents' ? (
             <IdeasAgentCard digest={ideas} />
           ) : current === 'Skills' ? (
-            <AssetsSkillCard />
+            <>
+              <AssetsSkillCard />
+              <ScorecardSkillCard />
+            </>
           ) : (
             <SoonCard name={current} blurb={UPCOMING[current]} />
           )}
@@ -233,7 +236,7 @@ function IdeasAgentCard({ digest }: { digest: IdeasDigest | null }) {
 // it made.
 function AssetsSkillCard() {
   return (
-    <li className="shelf-item shelf-item--solo" style={{ '--i': 0 } as CSSProperties}>
+    <li className="shelf-item" style={{ '--i': 0 } as CSSProperties}>
       <Link href="/app-assets-studio" className="app-card app-card--skill">
         <span className="app-card-top">
           <span className="skill-icon">
@@ -262,6 +265,49 @@ function AssetsSkillCard() {
             </span>
             <span className="app-stats app-card-stats">
               Made the Habidots listing
+            </span>
+          </span>
+          <span className="app-go" aria-hidden="true">
+            <Arrow />
+          </span>
+        </span>
+      </Link>
+    </li>
+  )
+}
+
+// The Idea Scorecard skill, in the amber and score bars of its scorecards.
+function ScorecardSkillCard() {
+  return (
+    <li className="shelf-item" style={{ '--i': 1 } as CSSProperties}>
+      <Link href="/idea-scorecard" className="app-card app-card--scorecard">
+        <span className="app-card-top">
+          <span className="scorecard-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              {/* A clipboard of score bars: an idea, graded. */}
+              <rect x="5" y="4" width="14" height="17" rx="2.5" />
+              <path d="M9 4V3h6v1" />
+              <path d="M8.5 10h7M8.5 13.5h4.5M8.5 17h6" />
+            </svg>
+          </span>
+          <span className="app-status">Claude Code skill</span>
+        </span>
+        <span className="app-card-bottom">
+          <span className="app-text">
+            <span className="app-name">Idea Scorecard</span>
+            <span className="app-blurb">
+              Scores app ideas on evidence, then says build, test or drop
+            </span>
+            <span className="app-stats app-card-stats">
+              Nine criteria · every quote sourced
             </span>
           </span>
           <span className="app-go" aria-hidden="true">

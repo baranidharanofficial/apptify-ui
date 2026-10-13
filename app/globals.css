@@ -529,6 +529,43 @@ body {
     height: 2.2rem;
 }
 
+/* Idea Scorecard: warm ink with amber score bars, like the scorecards it
+   writes. */
+.app-card--scorecard {
+    --card-bg: linear-gradient(155deg, #2a1d06 0%, #3b2908 55%, #4a340b 100%);
+    --card-fg: #fff7e6;
+    --card-muted: #f1d39a;
+    --card-edge: rgba(245, 184, 64, 0.18);
+    --chip-bg: rgba(245, 184, 64, 0.14);
+    --go-hover-fg: #2a1d06;
+}
+
+.app-card--scorecard::before {
+    /* Rows of score bars, fading out toward the bottom left so each row
+       reads shorter than the one above. */
+    background: repeating-linear-gradient(180deg,
+            rgba(245, 184, 64, 0.12) 0 9px,
+            transparent 9px 24px) 0 18px / 100% 100% no-repeat;
+    -webkit-mask-image: linear-gradient(210deg, #000 15%, transparent 60%);
+    mask-image: linear-gradient(210deg, #000 15%, transparent 60%);
+}
+
+.scorecard-icon {
+    display: grid;
+    place-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 23%;
+    background: linear-gradient(145deg, #ffd27a, #f0a826);
+    color: #2a1d06;
+    box-shadow: 0 14px 30px -12px rgba(240, 168, 38, 0.55);
+}
+
+.scorecard-icon svg {
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
 /* A lone card, centred at an app card's width rather than stretched. */
 .shelf-item--solo {
     grid-column: 1 / -1;
