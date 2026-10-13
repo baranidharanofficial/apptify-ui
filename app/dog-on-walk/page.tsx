@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Fredoka } from "next/font/google";
 import { Paw } from "./paw";
 import { Scene } from "./scene";
-import { WaitlistForm } from "./waitlist-form";
+import { WaitlistForm } from "../_components/waitlist-form";
 import "./styles.css";
 
 // Rounded and friendly, close to the app icon's lettering.
@@ -67,7 +67,11 @@ export default function DogOnWalkPage() {
                     <Paw className="dow-pill-paw" />
                 </p>
 
-                <WaitlistForm />
+                <WaitlistForm
+                    app="dog-on-walk"
+                    appName="Dog on Walk"
+                    doneIcon={<Paw />}
+                />
             </div>
 
             <footer className="dow-footer">

@@ -1,0 +1,187 @@
+/* Shared launch-day signup card. Pages theme it by setting the --wl-*
+   properties on an ancestor; the defaults here are a neutral light card. */
+
+.wl-card {
+    --_radius: var(--wl-radius, 1.4rem);
+
+    width: 100%;
+    max-width: 28rem;
+    margin-top: clamp(1.4rem, 3.5vh, 2rem);
+    padding: 1.1rem;
+    border: var(--wl-card-border, 0);
+    border-radius: var(--_radius);
+    background: var(--wl-card-bg, rgba(255, 255, 255, 0.85));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--wl-card-shadow, 0 20px 40px -18px rgba(0, 0, 0, 0.35));
+    color: var(--wl-text, #15203b);
+    animation: wlRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
+}
+
+.wl-label {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.wl-field {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.wl-field input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--wl-field-border, #d9e2ee);
+    border-radius: var(--wl-field-radius, 999px);
+    background: var(--wl-field-bg, #fff);
+    color: var(--wl-field-text, inherit);
+    font: inherit;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: border-color 0.15s;
+}
+
+.wl-field input::placeholder {
+    color: var(--wl-placeholder, #9aa6b8);
+}
+
+.wl-field input:focus {
+    outline: none;
+    border-color: var(--wl-accent, #15203b);
+    box-shadow: 0 0 0 4px var(--wl-focus-ring, rgba(21, 32, 59, 0.15));
+}
+
+.wl-field input[aria-invalid="true"] {
+    border-color: var(--wl-error, #b42318);
+}
+
+.wl-field button {
+    flex-shrink: 0;
+    padding: 0.8rem 1.3rem;
+    border: var(--wl-button-border, 0);
+    border-radius: var(--wl-field-radius, 999px);
+    background: var(--wl-accent, #15203b);
+    color: var(--wl-accent-text, #fff);
+    font: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: var(--wl-button-shadow, none);
+    transition:
+        transform 0.1s,
+        box-shadow 0.1s,
+        background 0.15s;
+}
+
+.wl-field button:hover {
+    background: var(--wl-accent-hover, var(--wl-accent, #15203b));
+}
+
+.wl-field button:active {
+    transform: var(--wl-button-press, translateY(1px));
+    box-shadow: var(--wl-button-shadow-pressed, none);
+}
+
+.wl-field button:focus-visible {
+    outline: 3px solid var(--wl-text, #15203b);
+    outline-offset: 3px;
+}
+
+.wl-field button:disabled,
+.wl-field input:disabled {
+    opacity: 0.7;
+    cursor: progress;
+}
+
+.wl-hint,
+.wl-error {
+    margin: 0.65rem 0 0;
+    padding: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.wl-hint {
+    color: var(--wl-muted, #5a6b85);
+}
+
+.wl-error {
+    color: var(--wl-error, #b42318);
+}
+
+.wl-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.wl-joined {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    text-align: left;
+    animation-duration: 0.6s;
+    animation-delay: 0s;
+}
+
+.wl-joined p {
+    margin: 0;
+    padding: 0;
+    color: var(--wl-muted, #5a6b85);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.wl-joined strong {
+    color: var(--wl-text, #15203b);
+    font-size: 1.1rem;
+}
+
+.wl-joined-icon {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background: var(--wl-done-bg, #eef2f7);
+    color: var(--wl-done-fg, var(--wl-accent, #15203b));
+}
+
+.wl-joined-icon svg {
+    width: 58%;
+    height: 58%;
+}
+
+@keyframes wlRise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 420px) {
+    .wl-field {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .wl-card,
+    .wl-field input,
+    .wl-field button {
+        animation: none;
+        transition: none;
+    }
+}

@@ -1,20 +1,31 @@
 "use client";
 
-import { useState, useTransition, type FormEvent } from "react";
-import { joinWaitlist } from "@/actions/joinWaitlist";
-import { Paw } from "./paw";
+import { useState, useTransition, type FormEvent, type ReactNode } from "react";
+import { joinWaitlist, type WaitlistApp } from "@/actions/joinWaitlist";
+import "./waitlist.css";
 
-export function WaitlistForm() {
+// Shared launch-day signup. Each page themes it through the --wl-* custom
+// properties (see waitlist.css) rather than restyling its parts.
+export function WaitlistForm({
+    app,
+    appName,
+    doneIcon,
+}: {
+    app: WaitlistApp;
+    appName: string;
+    doneIcon: ReactNode;
+}) {
     const [joined, setJoined] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [pending, startTransition] = useTransition();
+    const id = `wl-${app}`;
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         setError(null);
         startTransition(async () => {
-            const result = await joinWaitlist(formData);
+            const result = await joinWaitlist(app, formData);
             if (result.ok) {
                 setJoined(true);
             } else {
@@ -25,25 +36,25 @@ export function WaitlistForm() {
 
     if (joined) {
         return (
-            <div className="dow-joined" role="status">
-                <Paw className="dow-joined-paw" />
+            <div className="wl-card wl-joined" role="status">
+                <span className="wl-joined-icon">{doneIcon}</span>
                 <p>
                     <strong>You&rsquo;re on the list!</strong>
                     <br />
-                    We&rsquo;ll email you the day Dog on Walk launches.
+                    We&rsquo;ll email you the day {appName} launches.
                 </p>
             </div>
         );
     }
 
     return (
-        <form className="dow-form" onSubmit={onSubmit}>
-            <label htmlFor="dow-email" className="dow-label">
+        <form className="wl-card wl-form" onSubmit={onSubmit}>
+            <label htmlFor={`${id}-email`} className="wl-label">
                 Get notified on launch day
             </label>
-            <div className="dow-field">
+            <div className="wl-field">
                 <input
-                    id="dow-email"
+                    id={`${id}-email`}
                     name="email"
                     type="email"
                     autoComplete="email"
@@ -52,7 +63,7 @@ export function WaitlistForm() {
                     required
                     maxLength={320}
                     aria-invalid={error ? true : undefined}
-                    aria-describedby={error ? "dow-error" : "dow-hint"}
+                    aria-describedby={error ? `${id}-error` : `${id}-hint`}
                     disabled={pending}
                 />
                 {/* Honeypot, kept out of sight and out of the tab order. */}
@@ -61,7 +72,7 @@ export function WaitlistForm() {
                     name="company"
                     tabIndex={-1}
                     autoComplete="off"
-                    className="dow-honeypot"
+                    className="wl-honeypot"
                     aria-hidden="true"
                 />
                 <button type="submit" disabled={pending}>
@@ -69,11 +80,11 @@ export function WaitlistForm() {
                 </button>
             </div>
             {error ? (
-                <p id="dow-error" className="dow-error" role="alert">
+                <p id={`${id}-error`} className="wl-error" role="alert">
                     {error}
                 </p>
             ) : (
-                <p id="dow-hint" className="dow-hint">
+                <p id={`${id}-hint`} className="wl-hint">
                     One email when we launch. No spam, ever.
                 </p>
             )}

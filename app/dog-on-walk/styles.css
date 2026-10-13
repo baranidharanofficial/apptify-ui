@@ -158,151 +158,22 @@
     color: var(--brown);
 }
 
-/* Waitlist */
+/* Waitlist card, themed through the shared form's custom properties. */
 
-.dow-form,
-.dow-joined {
-    width: 100%;
-    max-width: 28rem;
-    margin-top: clamp(1.4rem, 3.5vh, 2rem);
-    padding: 1.1rem;
-    border-radius: 1.4rem;
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 20px 40px -18px rgba(21, 32, 59, 0.35);
-    animation: dowRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
-}
-
-.dow-label {
-    display: block;
-    margin-bottom: 0.7rem;
-    font-weight: 600;
-    font-size: 1.05rem;
-}
-
-.dow-field {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.dow-field input {
-    flex: 1;
-    min-width: 0;
-    padding: 0.8rem 1rem;
-    border: 2px solid #d9e2ee;
-    border-radius: 999px;
-    background: var(--white);
-    color: var(--navy);
-    font: inherit;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: border-color 0.15s;
-}
-
-.dow-field input::placeholder {
-    color: #9aa6b8;
-}
-
-.dow-field input:focus {
-    outline: none;
-    border-color: var(--orange);
-    box-shadow: 0 0 0 4px rgba(240, 138, 28, 0.2);
-}
-
-.dow-field input[aria-invalid="true"] {
-    border-color: #d64545;
-}
-
-.dow-field button {
-    flex-shrink: 0;
-    padding: 0.8rem 1.3rem;
-    border: 0;
-    border-radius: 999px;
-    background: var(--orange);
-    color: var(--white);
-    font: inherit;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    box-shadow: 0 4px 0 var(--orange-deep);
-    transition:
-        transform 0.1s,
-        box-shadow 0.1s,
-        background 0.15s;
-}
-
-.dow-field button:hover {
-    background: #f59a33;
-}
-
-.dow-field button:active {
-    transform: translateY(3px);
-    box-shadow: 0 1px 0 var(--orange-deep);
-}
-
-.dow-field button:focus-visible {
-    outline: 3px solid var(--navy);
-    outline-offset: 3px;
-}
-
-.dow-field button:disabled,
-.dow-field input:disabled {
-    opacity: 0.7;
-    cursor: progress;
-}
-
-.dow-hint,
-.dow-error {
-    margin: 0.65rem 0 0;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.dow-hint {
-    color: var(--slate);
-}
-
-.dow-error {
-    color: #b42318;
-}
-
-.dow-honeypot {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-}
-
-.dow-joined {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    text-align: left;
-    animation: dowRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.dow-joined p {
-    margin: 0;
-    color: var(--slate);
-    font-weight: 500;
-    line-height: 1.4;
-}
-
-.dow-joined strong {
-    color: var(--navy);
-    font-size: 1.1rem;
-}
-
-.dow-joined-paw {
-    flex-shrink: 0;
-    width: 2.6rem;
-    height: 2.6rem;
-    padding: 0.55rem;
-    border-radius: 50%;
-    background: var(--cream);
-    color: var(--orange);
+.dow {
+    --wl-card-bg: rgba(255, 255, 255, 0.82);
+    --wl-card-shadow: 0 20px 40px -18px rgba(21, 32, 59, 0.35);
+    --wl-text: var(--navy);
+    --wl-muted: var(--slate);
+    --wl-field-border: #d9e2ee;
+    --wl-accent: var(--orange);
+    --wl-accent-hover: #f59a33;
+    --wl-focus-ring: rgba(240, 138, 28, 0.2);
+    --wl-button-shadow: 0 4px 0 var(--orange-deep);
+    --wl-button-shadow-pressed: 0 1px 0 var(--orange-deep);
+    --wl-button-press: translateY(3px);
+    --wl-done-bg: var(--cream);
+    --wl-done-fg: var(--orange);
 }
 
 .dow-footer {
@@ -331,12 +202,6 @@
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@media (max-width: 420px) {
-    .dow-field {
-        flex-direction: column;
     }
 }
 

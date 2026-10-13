@@ -1,0 +1,261 @@
+/* Readio launch page. Scoped under .rd, because a CSS file imported by a
+   route still loads globally in the app router. Flat brand red with the
+   icon's language: white shapes, hard black offset shadows. Stays the same
+   in dark mode; the red is the brand. */
+
+.rd {
+    --red: #f00a0a;
+    --red-deep: #c40000;
+    --ink: #111111;
+    --paper: #ffffff;
+    --shadow: 6px 6px 0 var(--ink);
+
+    position: relative;
+    isolation: isolate;
+    min-height: 100svh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 6vh, 4rem) 16px clamp(5rem, 14vh, 8rem);
+    background:
+        radial-gradient(ellipse 70% 55% at 50% 40%, #ff2b1f 0%, transparent 70%),
+        var(--red);
+    color: var(--paper);
+    font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+
+    /* Waitlist card, themed through the shared form's custom properties. */
+    --wl-radius: 1.1rem;
+    --wl-field-radius: 0.75rem;
+    --wl-card-bg: var(--paper);
+    --wl-card-border: 3px solid var(--ink);
+    --wl-card-shadow: 8px 8px 0 var(--ink);
+    --wl-text: var(--ink);
+    --wl-muted: #555;
+    --wl-field-border: var(--ink);
+    --wl-placeholder: #8a8a8a;
+    --wl-accent: var(--ink);
+    --wl-accent-hover: #2a2a2a;
+    --wl-accent-text: var(--paper);
+    --wl-focus-ring: rgba(240, 10, 10, 0.25);
+    --wl-button-shadow: 3px 3px 0 var(--red);
+    --wl-button-shadow-pressed: 0 0 0 var(--red);
+    --wl-button-press: translate(3px, 3px);
+    --wl-error: var(--red-deep);
+    --wl-done-bg: var(--red);
+    --wl-done-fg: var(--paper);
+}
+
+.rd-scene {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.rd-doc {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    width: 7.5rem;
+    padding: 0.8rem 0.85rem 0.95rem;
+    border: 2.5px solid var(--ink);
+    border-radius: 0.7rem;
+    background: var(--paper);
+    box-shadow: var(--shadow);
+    color: var(--ink);
+    transform: rotate(var(--r));
+    animation: rdFloat 7s ease-in-out var(--d) infinite;
+}
+
+.rd-doc-wide {
+    width: 9rem;
+}
+
+.rd-doc-label {
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+}
+
+.rd-doc-line {
+    height: 0.4rem;
+    border-radius: 99px;
+    background: #e3e3e3;
+}
+
+.rd-doc-line-short {
+    width: 60%;
+}
+
+@keyframes rdFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(var(--r));
+    }
+
+    50% {
+        transform: translateY(-14px) rotate(calc(var(--r) * -0.4));
+    }
+}
+
+/* The equaliser: the words, now sound. */
+.rd-eq {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: clamp(4rem, 14vh, 8rem);
+    display: flex;
+    align-items: flex-end;
+    gap: 0.35%;
+    padding: 0 0.5%;
+}
+
+.rd-eq span {
+    flex: 1;
+    height: calc(var(--h) * 100%);
+    border-radius: 6px 6px 0 0;
+    background: rgba(255, 255, 255, 0.22);
+    transform-origin: bottom;
+    animation: rdBar 1.6s ease-in-out var(--d) infinite alternate;
+}
+
+@keyframes rdBar {
+    from {
+        transform: scaleY(0.35);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+
+.rd-content {
+    width: 100%;
+    max-width: 34rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.rd-icon {
+    width: clamp(7.5rem, 22vw, 11rem);
+    height: auto;
+    aspect-ratio: 1;
+    border: 3px solid var(--ink);
+    border-radius: 23%;
+    box-shadow: 10px 10px 0 var(--ink);
+    animation: rdRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.rd-title {
+    margin: clamp(1.3rem, 3.5vh, 1.9rem) 0 0;
+    font-weight: 800;
+    font-size: clamp(3rem, 12vw, 5.6rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    /* The icon's offset shadow, in type. */
+    text-shadow: 0.06em 0.06em 0 var(--ink);
+    animation: rdRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.rd-subtitle {
+    margin: 0.85rem 0 0;
+    font-weight: 600;
+    font-size: clamp(1.05rem, 3.4vw, 1.45rem);
+    color: rgba(255, 255, 255, 0.92);
+    animation: rdRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+}
+
+.rd-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: clamp(1rem, 2.6vh, 1.4rem) 0 0;
+    padding: 0.5em 1.15em;
+    border: 2.5px solid var(--ink);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--ink);
+    font-weight: 800;
+    font-size: clamp(0.98rem, 2.8vw, 1.15rem);
+    box-shadow: 4px 4px 0 var(--ink);
+    animation: rdRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
+}
+
+.rd-pill-icon {
+    width: 1.15em;
+    height: 1.15em;
+    color: var(--red);
+}
+
+.rd-footer {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.rd-footer a {
+    color: inherit;
+    font-weight: 800;
+}
+
+@keyframes rdRise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Phones: the cards would sit under the content, so keep just a couple,
+   tucked into the top corners. */
+@media (max-width: 720px) {
+    .rd-doc {
+        width: 5.6rem;
+        padding: 0.6rem 0.65rem 0.7rem;
+        gap: 0.35rem;
+    }
+
+    .rd-doc-label {
+        font-size: 0.75rem;
+    }
+
+    .rd-doc:nth-child(1) {
+        left: -1.2rem !important;
+        top: 4% !important;
+    }
+
+    .rd-doc:nth-child(2) {
+        left: auto !important;
+        right: -1.4rem;
+        top: 7% !important;
+    }
+
+    .rd-doc:nth-child(n + 3) {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .rd *,
+    .rd *::before {
+        animation: none !important;
+        transition: none !important;
+    }
+}
