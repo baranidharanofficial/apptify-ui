@@ -1,0 +1,186 @@
+{
+  "date": "2026-10-13",
+  "summary": "Thin day: Reddit (via RSS) and Hacker News were reachable, but X, Bluesky and Reddit search/JSON were not, so only three ideas reached the 2-verified-source bar. Strongest theme is trust: Etsy shoppers can no longer tell handmade from AI or dropshipped listings, and subscription users want warnings before a trial bills without handing over bank access. Indian home-cooked food remains poorly served by calorie trackers.",
+  "ideas": [
+    {
+      "id": "etsy-handmade-authenticity-checker",
+      "title": "Handmade Check: authenticity signals for Etsy listings",
+      "category": "Browser extension",
+      "oneLiner": "A browser extension that overlays dropship, reseller and AI-image warning signals on Etsy listings and shops.",
+      "problem": "Etsy shoppers who want real handmade goods say they can no longer tell original makers from AI-generated art, resold digital files and dropshippers. They resort to manual reverse image searches and tracking-carrier guesses, and the platform's own labels don't help.",
+      "targetUsers": "Etsy buyers who deliberately pay a premium for handmade, original or small-maker goods (gift buyers, teachers buying printables, art buyers).",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free tier with a few checks per day; Pro at roughly $2–3/month or a one-time unlock for unlimited checks, saved trusted-shop lists and sharing a shop report.",
+      "mvp": [
+        "Content script that adds a trust badge to listing and shop pages",
+        "One-click reverse image search of the listing's photos against the open web, with match counts",
+        "Shop signals: shop age, sales count versus listing count, near-duplicate preview images across shops",
+        "Seller-name pattern flag for templated 'Handpicked by <name>' style shops",
+        "Personal trusted-shops and avoid-shops lists synced via the browser"
+      ],
+      "competitors": [
+        {
+          "name": "Manual reverse image search (Google Lens / TinEye)",
+          "gap": "Works one image at a time, is not built into the browsing flow, and does not surface shop-level patterns or dropship signals."
+        },
+        {
+          "name": "Etsy's own handmade and seller labels",
+          "gap": "Shoppers in the threads say the labels don't tell them whether a design is original or who actually made the item."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Reddit",
+          "title": "How to find REAL artists? (r/Etsy)",
+          "url": "https://www.reddit.com/r/Etsy/comments/1x1q62c/how_to_find_real_artists/",
+          "quote": "Etsy used to be my go-to to find original art but I can’t find anything not manipulated or started with AI. This goes against everything I believe in so I’m here to see if anyone has other resources to find small artists in a one stop shop platform? I hate what ETSY has allowed the site to become.",
+          "date": "2026-10-09"
+        },
+        {
+          "platform": "Reddit",
+          "title": "All ceramic sellers with similar names? Help lol (r/Etsy)",
+          "url": "https://www.reddit.com/r/Etsy/comments/1x45520/all_ceramic_sellers_with_similar_names_help_lol/",
+          "quote": "Is this just a trend for resellers? Or are these bot pages selling other people's art? Is this Etsy algorithm making it say if they actually made it or they thrift it or just designed it?? I'm shopping here so I don't buy some corporate slop, so I just want to make sure I'm not supporting some AI bot or something!",
+          "date": "2026-10-12"
+        },
+        {
+          "platform": "Reddit",
+          "title": "how do you tell if an etsy printable is actually original? (r/Etsy)",
+          "url": "https://www.reddit.com/r/Etsy/comments/1x4egue/how_do_you_tell_if_an_etsy_printable_is_actually/",
+          "quote": "after seeing the same designs across several stores, it's hard to tell who's actually making something and who's just reselling files. the listings marked handmade or teacher-designed cost more, and i'm not against paying for someone's work, but those labels don't tell me much on their own",
+          "date": "2026-10-12"
+        },
+        {
+          "platform": "Reddit",
+          "title": "Question for custom blanket sellers (r/Etsy)",
+          "url": "https://www.reddit.com/r/Etsy/comments/1x3ooym/question_for_custom_blanket_sellers/",
+          "quote": "I'm drowning in AI images and super uncertain about who's a legit seller and who's just drop shipping from China.",
+          "date": "2026-10-12"
+        },
+        {
+          "platform": "Reddit",
+          "title": "Unable to tell if item is being dropshipped or not (r/Etsy)",
+          "url": "https://www.reddit.com/r/Etsy/comments/1wz3r9i/unable_to_tell_if_item_is_being_dropshipped_or_not/",
+          "quote": "I reverse image searched all their products before ordering and found nothing aside from their shop so I assumed I was safe. However, I just checked and it says the package is being shipped by YunExpress.",
+          "date": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "trial-guard-no-bank-login",
+      "title": "Trial Guard: free-trial bill warnings without bank access",
+      "category": "Mobile app",
+      "oneLiner": "A Flutter app that reads forwarded or on-device receipt emails and warns you the day before a free trial converts to a paid plan, with no bank login.",
+      "problem": "Users get caught by trials that auto-convert and by subscriptions that are hard to cancel. Existing trackers ask for full bank or account access, which people refuse, and cancellation flows are designed to wear them down.",
+      "targetUsers": "Privacy-conscious consumers who sign up for many app and SaaS trials, including freelancers and indie makers who test tools.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for up to 5 tracked trials; Pro at about ₹99–149/month or a ₹799–999/year unlock for unlimited trials, family sharing and a cancellation-link library.",
+      "mvp": [
+        "Forward-to-address or share-sheet import of trial and receipt emails",
+        "On-device parsing of service name, trial end date and renewal price",
+        "Local notifications 3 days and 1 day before billing",
+        "Manual add for trials without an email receipt",
+        "Per-service direct cancel-page links and a 'cancelled' checklist"
+      ],
+      "competitors": [
+        {
+          "name": "Subscription trackers (Rocket Money, Bobby, Subby-style apps)",
+          "gap": "The thread's complaint is that apps in this space want full account or bank access; the commenter wants receipt-email-only detection."
+        },
+        {
+          "name": "Virtual cards with spend limits (e.g. privacy.com)",
+          "gap": "A workaround that blocks the charge but doesn't warn you or cancel the account, so the vendor keeps emailing about a declined card."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Reddit",
+          "title": "What's one ridiculously simple piece of software you wish somebody would build? (r/SideProject)",
+          "url": "https://www.reddit.com/r/SideProject/comments/1x4brly/whats_one_ridiculously_simple_piece_of_software/pfir6hf/",
+          "quote": "something that reads my email receipts and warns me the day before a free trial bills, without asking for my bank login. every app that does this wants full account access.",
+          "date": "2026-10-12"
+        },
+        {
+          "platform": "Reddit",
+          "title": "Ghosted by Support after Akiflow's \"Keep It\" cancellation trap. Beware of trial billing. (r/productivity)",
+          "url": "https://www.reddit.com/r/productivity/comments/1x1gubh/ghosted_by_support_after_akiflows_keep_it/",
+          "quote": "I signed up for a discounted trial. The app completely failed to sync right out of the gate. Within 20 minutes, I reached out to cancel and request a refund.",
+          "date": "2026-10-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "NYC's \"Click to Cancel\" rule is now in effect",
+          "url": "https://news.ycombinator.com/item?id=50058535",
+          "quote": "But to cancel the digital version of the local paper, I have to call customer service, that is based out of the east coast, that seems to be open from 9-4 east coast time. And then of course, they try to get me to change my mind, bargain with me, etc.",
+          "date": "2026-10-12"
+        }
+      ]
+    },
+    {
+      "id": "indian-home-food-calorie-log",
+      "title": "Ghar Ka Khana: calorie logging for Indian home-cooked meals",
+      "category": "Mobile app",
+      "oneLiner": "A calorie tracker built around Indian dishes where you adjust the oil and ghee in one tap instead of weighing every ingredient.",
+      "problem": "Indian home cooking has many ingredients and hidden fat, and meals are often cooked by someone else. Western-first trackers make users measure every gram, produce wildly different numbers, and put useful features behind expensive premium plans.",
+      "targetUsers": "Fitness-minded Indians who eat home-cooked, office-canteen or maid-cooked food and track calories or macros.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free manual logging; Pro at about ₹99–199/month or ₹999–1,499/year for photo estimates, weekly reports and export. Undercuts the ₹3,000+/year plans mentioned in the source thread.",
+      "mvp": [
+        "Curated database of common home-style Indian dishes with per-katori portions",
+        "Oil/ghee/sugar slider per dish with a clearly shown uncertainty range",
+        "'Someone else cooked this' mode that logs a conservative estimate plus a buffer",
+        "Weekly average view instead of strict daily pass/fail",
+        "Home-screen widget for two-tap repeat logging of usual meals"
+      ],
+      "competitors": [
+        {
+          "name": "HealthifyMe",
+          "url": "https://www.healthifyme.com",
+          "gap": "Source thread says premium plans cost ₹400–₹800/month or ₹3,000+/year just to scan meals."
+        },
+        {
+          "name": "MyFitnessPal",
+          "url": "https://www.myfitnesspal.com",
+          "gap": "A user says the numbers differed greatly from measuring ingredients themselves, and logging homemade Indian meals gram by gram is exhausting."
+        },
+        {
+          "name": "Newer AI photo calorie apps",
+          "gap": "A commenter says AI is partly filling the gap but a thread reply warns the market is saturated with beginner-built trackers; accuracy on hidden oil is the open problem."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Reddit",
+          "title": "I was wondering what's the most frustrating part of getting fit that nobody has figured out (r/Fitness_India)",
+          "url": "https://www.reddit.com/r/Fitness_India/comments/1x3cs7m/i_was_wondering_whats_the_most_frustrating_part/pf9x8aq/",
+          "quote": "For indian food its quite difficult as there are lot of ingredients used.",
+          "date": "2026-10-11"
+        },
+        {
+          "platform": "Reddit",
+          "title": "I was wondering what's the most frustrating part of getting fit that nobody has figured out (r/Fitness_India)",
+          "url": "https://www.reddit.com/r/Fitness_India/comments/1x3cs7m/i_was_wondering_whats_the_most_frustrating_part/pfd6b8g/",
+          "quote": "it's my maid cooking for me or my office food. Its not easy to know the oil used etc. that's a bit frustating",
+          "date": "2026-10-12"
+        },
+        {
+          "platform": "Reddit",
+          "title": "Frustrated with logging Indian food on expensive fitness apps, so I built an AI Calorie Tracker (r/ShowYourApp)",
+          "url": "https://www.reddit.com/r/ShowYourApp/comments/1wzj4ek/frustrated_with_logging_indian_food_on_expensive/",
+          "quote": "Entering homemade Indian meals (sambars, curries, appam, dosas) by measuring every single gram is exhausting. Their premium plans cost an insane amount (₹400–₹800/month or ₹3,000+/year) just to scan meals.",
+          "date": "2026-10-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Barcodes are about to go extinct",
+          "url": "https://news.ycombinator.com/item?id=49943160",
+          "quote": "Manual inputs by the other users has led me to find multiple foods where the kj value was supplied as the kcal value..",
+          "date": "2026-10-03"
+        }
+      ]
+    }
+  ]
+}
