@@ -1,0 +1,350 @@
+/* Dog on Walk launch page. Everything is scoped under .dow, because a CSS
+   file imported by a route still loads globally in the app router. The
+   scene is a sunny day, so it keeps its own colours in dark mode too. */
+
+.dow {
+    --navy: #15203b;
+    --slate: #5a6b85;
+    --cream: #fff3d6;
+    --brown: #8a4a12;
+    --orange: #f08a1c;
+    --orange-deep: #d9720a;
+    --white: #ffffff;
+
+    position: relative;
+    isolation: isolate;
+    min-height: 100svh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 6vh, 4rem) 16px clamp(4.5rem, 10vh, 6rem);
+    background: #bfe5fb;
+    color: var(--navy);
+    font-family: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
+}
+
+.dow-scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.dow-drift {
+    animation: dowDrift 38s ease-in-out infinite alternate;
+}
+
+.dow-drift-b {
+    animation-duration: 52s;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes dowDrift {
+    from {
+        transform: translateX(-40px);
+    }
+
+    to {
+        transform: translateX(40px);
+    }
+}
+
+.dow-content {
+    width: 100%;
+    max-width: 34rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.dow-icon {
+    width: clamp(8.5rem, 26vw, 13rem);
+    height: auto;
+    aspect-ratio: 1;
+    /* Squircle-ish rounding, matching an app icon on a home screen. */
+    border-radius: 23%;
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.6) inset,
+        0 18px 40px -12px rgba(21, 32, 59, 0.35),
+        0 4px 10px rgba(21, 32, 59, 0.12);
+    animation:
+        dowRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both,
+        dowBob 5s ease-in-out 1s infinite;
+}
+
+@keyframes dowBob {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.dow-title {
+    margin: clamp(1.2rem, 3.5vh, 1.8rem) 0 0;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 10vw, 4.6rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    /* A soft halo so the title holds up over the hills on short screens. */
+    text-shadow: 0 2px 18px rgba(234, 247, 254, 0.9);
+    animation: dowRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.dow-on {
+    white-space: nowrap;
+}
+
+.dow-o {
+    display: inline-grid;
+    place-items: center;
+    width: 0.56em;
+    height: 0.56em;
+    margin: 0 0.02em 0 0.03em;
+    border-radius: 50%;
+    background: var(--navy);
+    vertical-align: 0.09em;
+}
+
+.dow-o-paw {
+    width: 66%;
+    height: 66%;
+    color: var(--orange);
+}
+
+.dow-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.dow-subtitle {
+    margin: 0.5rem 0 0;
+    font-weight: 600;
+    font-size: clamp(1.15rem, 3.6vw, 1.6rem);
+    color: var(--slate);
+    animation: dowRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+}
+
+.dow-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    margin: clamp(1rem, 2.6vh, 1.4rem) 0 0;
+    padding: 0.55em 1.3em;
+    border-radius: 999px;
+    background: var(--cream);
+    color: var(--brown);
+    font-weight: 600;
+    font-size: clamp(0.98rem, 2.8vw, 1.2rem);
+    box-shadow: 0 6px 18px -8px rgba(138, 74, 18, 0.35);
+    animation: dowRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
+}
+
+.dow-pill-paw {
+    width: 1.05em;
+    height: 1.05em;
+    color: var(--brown);
+}
+
+/* Waitlist */
+
+.dow-form,
+.dow-joined {
+    width: 100%;
+    max-width: 28rem;
+    margin-top: clamp(1.4rem, 3.5vh, 2rem);
+    padding: 1.1rem;
+    border-radius: 1.4rem;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px -18px rgba(21, 32, 59, 0.35);
+    animation: dowRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
+}
+
+.dow-label {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.dow-field {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dow-field input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.8rem 1rem;
+    border: 2px solid #d9e2ee;
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--navy);
+    font: inherit;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: border-color 0.15s;
+}
+
+.dow-field input::placeholder {
+    color: #9aa6b8;
+}
+
+.dow-field input:focus {
+    outline: none;
+    border-color: var(--orange);
+    box-shadow: 0 0 0 4px rgba(240, 138, 28, 0.2);
+}
+
+.dow-field input[aria-invalid="true"] {
+    border-color: #d64545;
+}
+
+.dow-field button {
+    flex-shrink: 0;
+    padding: 0.8rem 1.3rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--orange);
+    color: var(--white);
+    font: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--orange-deep);
+    transition:
+        transform 0.1s,
+        box-shadow 0.1s,
+        background 0.15s;
+}
+
+.dow-field button:hover {
+    background: #f59a33;
+}
+
+.dow-field button:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 var(--orange-deep);
+}
+
+.dow-field button:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 3px;
+}
+
+.dow-field button:disabled,
+.dow-field input:disabled {
+    opacity: 0.7;
+    cursor: progress;
+}
+
+.dow-hint,
+.dow-error {
+    margin: 0.65rem 0 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.dow-hint {
+    color: var(--slate);
+}
+
+.dow-error {
+    color: #b42318;
+}
+
+.dow-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.dow-joined {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    text-align: left;
+    animation: dowRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dow-joined p {
+    margin: 0;
+    color: var(--slate);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.dow-joined strong {
+    color: var(--navy);
+    font-size: 1.1rem;
+}
+
+.dow-joined-paw {
+    flex-shrink: 0;
+    width: 2.6rem;
+    height: 2.6rem;
+    padding: 0.55rem;
+    border-radius: 50%;
+    background: var(--cream);
+    color: var(--orange);
+}
+
+.dow-footer {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.dow-footer a {
+    color: inherit;
+    font-weight: 600;
+}
+
+@keyframes dowRise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 420px) {
+    .dow-field {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .dow *,
+    .dow *::before {
+        animation: none !important;
+        transition: none !important;
+    }
+}
