@@ -1,10 +1,7 @@
-import { Fragment } from 'react'
+import { Fragment, type CSSProperties } from 'react'
 
 const TAGLINE = ['Build.', 'Launch.', 'Monetize.', 'Repeat.']
-
-// The wordmark settles first, then the words arrive one beat apart.
-const FIRST_WORD_DELAY = 0.6
-const WORD_STAGGER = 0.16
+const OFFERINGS = ['Apps', 'Agents', 'Skills', 'Tools', '& more']
 
 export default function Home() {
   return (
@@ -19,18 +16,27 @@ export default function Home() {
               {i > 0 && ' '}
               <span
                 className="tagline-word"
-                style={{
-                  animationDelay: `${(
-                    FIRST_WORD_DELAY +
-                    i * WORD_STAGGER
-                  ).toFixed(2)}s`,
-                }}
+                // The word's position drives both its entrance delay and its
+                // turn in the highlight cycle; the timing lives in globals.css.
+                style={{ '--i': i } as CSSProperties}
               >
                 {word}
               </span>
             </Fragment>
           ))}
         </p>
+        <ul className="offerings" aria-label="What we build">
+          {OFFERINGS.map((item, i) => (
+            <li
+              key={item}
+              className="offering"
+              // Each pass of the tagline cycle lights the next offering.
+              style={{ '--i': i } as CSSProperties}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
     </main>
   )

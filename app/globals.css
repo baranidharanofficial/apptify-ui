@@ -6,6 +6,7 @@
     --stage: #fbfbfa;
     --ink: #101114;
     --muted: #6b7078;
+    --faint: #a4a8ae;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +14,7 @@
         --stage: #0b0c0e;
         --ink: #f4f5f7;
         --muted: #8b929c;
+        --faint: #565c65;
     }
 }
 
@@ -37,6 +39,16 @@ body {
 
 .lockup {
     text-align: center;
+
+    /* The wordmark settles first, then the words arrive one beat apart. */
+    --first-word-delay: 0.6s;
+    --word-stagger: 0.16s;
+    /* Once all four have landed, a highlight walks the line and loops back
+       to the start, so "Repeat." actually repeats. Each word holds the
+       highlight for one step; the cycle is four steps long. */
+    --cycle-start: 2.2s;
+    --cycle-step: 1.6s;
+    --cycle: calc(var(--cycle-step) * 4);
 }
 
 .wordmark {
@@ -65,11 +77,82 @@ body {
 }
 
 .tagline-word {
-    /* Inline-block so the rise transform applies; the delay per word is set
-       on the element in page.tsx. */
+    /* Inline-block so the rise transform applies; --i is set per word in
+       page.tsx. Only colour changes in the cycle, so nothing reflows. */
     display: inline-block;
     opacity: 0;
-    animation: riseIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation:
+        riseIn 1s cubic-bezier(0.16, 1, 0.3, 1)
+            calc(var(--first-word-delay) + var(--i) * var(--word-stagger))
+            forwards,
+        taglineCycle var(--cycle) ease-in-out
+            calc(var(--cycle-start) + var(--i) * var(--cycle-step))
+            infinite;
+}
+
+@keyframes taglineCycle {
+    /* Brighten into the word's step, hold it, then hand off to the next
+       word. The fade overlaps so the highlight seems to travel. */
+    0% {
+        color: var(--muted);
+    }
+
+    8%,
+    22% {
+        color: var(--ink);
+    }
+
+    32%,
+    100% {
+        color: var(--muted);
+    }
+}
+
+.offerings {
+    /* Not just apps: the range of things we ship, set quieter than the
+       tagline so the hierarchy reads wordmark, promise, scope. */
+    list-style: none;
+    padding: 0;
+    margin: clamp(1.1rem, 2.6vw, 1.6rem) auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: clamp(0.68rem, 1.6vw, 0.8rem);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--faint);
+    opacity: 0;
+    animation: riseIn 1s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
+}
+
+.offering + .offering::before {
+    content: '·';
+    margin: 0 0.9em;
+    color: var(--faint);
+}
+
+.offering {
+    /* One offering per full pass of the tagline: it lights up as "Build."
+       does, and the next one takes over when the loop comes round again. */
+    animation: offeringCycle calc(var(--cycle) * 5) ease-in-out
+        calc(var(--cycle-start) + var(--i) * var(--cycle)) infinite;
+}
+
+@keyframes offeringCycle {
+    0% {
+        color: var(--faint);
+    }
+
+    2%,
+    18% {
+        color: var(--ink);
+    }
+
+    21%,
+    100% {
+        color: var(--faint);
+    }
 }
 
 @keyframes riseIn {
@@ -87,7 +170,9 @@ body {
 @media (prefers-reduced-motion: reduce) {
 
     .wordmark,
-    .tagline-word {
+    .tagline-word,
+    .offerings,
+    .offering {
         animation: none;
         opacity: 1;
     }
