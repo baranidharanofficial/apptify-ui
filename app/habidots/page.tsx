@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import { StoreButtons } from "../_components/store-buttons";
+import { AppStats } from "../_components/app-stats";
+import { APP_STATS } from "@/lib/apps";
 import { HABIT_COLORS, Scene } from "./scene";
 import "./styles.css";
 
@@ -83,6 +85,8 @@ export default function HabidotsPage() {
                     appStoreUrl="https://apps.apple.com/app/id6756837518"
                     playStoreUrl="https://play.google.com/store/apps/details?id=com.glactic.streakit"
                 />
+
+                <AppStats stats={APP_STATS.habidots} long className="hd-stats" />
             </div>
 
             <footer className="hd-footer">

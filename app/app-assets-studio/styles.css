@@ -1,0 +1,431 @@
+/* App Assets Studio. Scoped under .aas, because a CSS file imported by a
+   route still loads globally in the app router. Built on the site's stage
+   and ink tokens (light and dark), with the Habidots violet as its accent,
+   so the samples carry the colour. */
+
+.aas {
+    --accent: #6f55e0;
+    --accent-soft: rgba(111, 85, 224, 0.14);
+    --radius: 1.4rem;
+
+    min-height: 100svh;
+    overflow-x: hidden;
+    color: var(--ink);
+    line-height: 1.55;
+}
+
+@media (prefers-color-scheme: dark) {
+    .aas {
+        --accent: #a594ff;
+        --accent-soft: rgba(165, 148, 255, 0.14);
+    }
+}
+
+.aas code {
+    padding: 0.1em 0.4em;
+    border-radius: 0.4em;
+    background: var(--accent-soft);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9em;
+    /* Commands and paths read as one token; never break them at a hyphen. */
+    white-space: nowrap;
+}
+
+/* Hero */
+
+.aas-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(4rem, 12vh, 7rem) 16px 0;
+    text-align: center;
+}
+
+.aas-hero::before {
+    content: "";
+    position: absolute;
+    top: -10rem;
+    left: 50%;
+    z-index: -1;
+    width: min(60rem, 140vw);
+    height: 40rem;
+    transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgba(111, 85, 224, 0.28), transparent);
+    filter: blur(30px);
+    pointer-events: none;
+}
+
+.aas-eyebrow {
+    margin: 0;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    animation: aasRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.aas-title {
+    margin: 1.2rem 0 0;
+    font-family: var(--font-cal-sans), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+    font-size: clamp(2.8rem, 9vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    animation: aasRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+.aas-lede {
+    max-width: 34rem;
+    margin: 1.2rem 0 0;
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    color: var(--muted);
+    animation: aasRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+}
+
+.aas-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-top: 1.6rem;
+    animation: aasRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
+}
+
+.aas-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.65rem 1.15rem;
+    border-radius: 0.8rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s;
+}
+
+.aas-github svg {
+    width: 1.15rem;
+    height: 1.15rem;
+}
+
+.aas-github:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+.aas-github:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+}
+
+.aas .aas-command {
+    padding: 0.65rem 1.1rem;
+    border-radius: 0.8rem;
+    background: var(--ink);
+    color: var(--stage);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.aas-feature {
+    width: min(100%, 52rem);
+    height: auto;
+    margin-top: clamp(2.5rem, 6vh, 4rem);
+    border-radius: var(--radius);
+    box-shadow: 0 40px 80px -40px rgba(60, 40, 160, 0.55);
+    animation: aasRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+/* Sections */
+
+.aas-section {
+    max-width: 66rem;
+    margin: 0 auto;
+    padding: clamp(4rem, 10vh, 6rem) 16px 0;
+}
+
+.aas-section-head {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.aas-h2 {
+    margin: 0;
+    font-family: var(--font-cal-sans), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+    line-height: 1.1;
+}
+
+.aas-sub {
+    max-width: 32rem;
+    margin: 0.6rem auto 0;
+    color: var(--muted);
+}
+
+/* Marquee of the Habidots set */
+
+.aas-strip-section {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.aas-strip {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.aas-strip-track {
+    display: flex;
+    width: max-content;
+    animation: aasMarquee 60s linear infinite;
+}
+
+.aas-strip:hover .aas-strip-track {
+    animation-play-state: paused;
+}
+
+.aas-strip-set {
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0 0.5rem;
+    list-style: none;
+}
+
+.aas-strip-set img {
+    display: block;
+    width: auto;
+    height: clamp(22rem, 58vh, 32rem);
+    border-radius: 1.1rem;
+    box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.45);
+}
+
+@keyframes aasMarquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Before and after */
+
+.aas-compare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 4vw, 3rem);
+}
+
+.aas-compare figure {
+    margin: 0;
+    text-align: center;
+}
+
+.aas-compare img {
+    display: block;
+    width: auto;
+    height: clamp(18rem, 50vh, 30rem);
+    border-radius: 1.1rem;
+    box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.45);
+}
+
+.aas-raw {
+    outline: 1px solid var(--edge);
+}
+
+.aas-compare figcaption {
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+}
+
+.aas-compare-arrow {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.aas-compare-arrow svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+/* Concepts */
+
+.aas-concepts {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: 0 30px 60px -36px rgba(0, 0, 0, 0.5);
+}
+
+/* Sizes */
+
+.aas-sizes {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(0.8rem, 2.5vw, 1.6rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.aas-sizes li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.aas-sizes img {
+    display: block;
+    width: auto;
+    height: clamp(11rem, 26vw, 17rem);
+    margin-bottom: 0.6rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 16px 30px -20px rgba(0, 0, 0, 0.45);
+}
+
+.aas-size-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.aas-size-px {
+    font-size: 0.75rem;
+    color: var(--faint);
+}
+
+/* Steps */
+
+.aas-install {
+    max-width: 100%;
+    margin: 0 auto 1.4rem;
+    padding: 0;
+    overflow-x: auto;
+    text-align: center;
+}
+
+.aas .aas-install code {
+    display: inline-block;
+    padding: 0.8rem 1.1rem;
+    border-radius: 0.8rem;
+    background: var(--ink);
+    color: var(--stage);
+    font-size: 0.85rem;
+    white-space: pre;
+}
+
+.aas-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+}
+
+.aas-steps li {
+    position: relative;
+    padding: 1.3rem 1.2rem 1.4rem;
+    border-radius: 1.2rem;
+    background: var(--panel);
+    box-shadow: inset 0 0 0 1px var(--edge);
+    counter-increment: step;
+}
+
+.aas-steps li::before {
+    content: counter(step);
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.9rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.aas-steps h3 {
+    margin: 0;
+    font-family: var(--font-cal-sans), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.aas-steps p {
+    margin: 0.4rem 0 0;
+    padding: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.aas-footer {
+    padding: clamp(4rem, 10vh, 6rem) 16px 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--faint);
+}
+
+.aas-footer a {
+    margin: 0 0.15em;
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+@keyframes aasRise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 560px) {
+    .aas-compare img {
+        height: 15rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .aas *,
+    .aas *::before {
+        animation: none !important;
+    }
+
+    /* No marquee: let people scroll the strip themselves. */
+    .aas-strip {
+        overflow-x: auto;
+    }
+}
