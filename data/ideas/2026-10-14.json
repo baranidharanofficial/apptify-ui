@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-14",
+  "summary": "Very thin day: Reddit, X and Bluesky were all blocked, so only Hacker News comments could be verified, and only two ideas reached the 2-source bar. Themes: people want a user-controlled filter for AI slop, Shorts and unwanted topics across sites, and AI-plan subscribers want clear, always-visible usage-limit information.",
+  "ideas": [
+    {
+      "id": "slop-and-topic-mute-extension",
+      "title": "Mute Anything: one topic and AI-slop filter for HN, YouTube and the web",
+      "category": "Browser extension",
+      "oneLiner": "A browser extension that lets you mute topics (like AI), Shorts and flagged slop on Hacker News, YouTube and other feeds, with shared crowdsourced block lists.",
+      "problem": "Users keep asking for a SponsorBlock-style way to filter out AI slop, AI-topic threads and Shorts. Existing extensions are single-site (HN source filter, YouTube AI-label hiders) and mostly rely on platform self-labels, so unlabeled content slips through.",
+      "targetUsers": "Heavy HN, YouTube and Reddit users, especially developers and creators fatigued by AI content.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free core with local keyword and channel muting; Pro at about $3/month or $25/year for synced rules, shared community block lists and custom site rules.",
+      "mvp": [
+        "Keyword and topic mute rules applied to HN, YouTube and Reddit feeds",
+        "Hide YouTube Shorts and videos from user-flagged channels",
+        "One-click 'mark as slop' button that adds an item to a local block list",
+        "Importable and shareable block lists (JSON or URL)",
+        "Per-site on/off toggle and a counter of items hidden"
+      ],
+      "competitors": [
+        {
+          "name": "AI Content Shield",
+          "url": "https://addons.mozilla.org/addon/ai-content-shield/",
+          "gap": "Focused on blocking AI content and AI Overviews; not a general topic-mute tool with shareable crowdsourced lists across HN, YouTube and other sites."
+        },
+        {
+          "name": "Slopblock",
+          "url": "https://addons.mozilla.org/addon/slopblock/",
+          "gap": "Firefox-only and experimental; YouTube-centred, so it does not cover topic muting on text-heavy sites like HN."
+        },
+        {
+          "name": "HN AI Source Filter",
+          "url": "https://smartvless.duckdns.org/en-US/firefox/addon/hn-ai-source-filter/",
+          "gap": "HN-only, new, and with essentially no users or reviews yet."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Sites in ChatGPT (comment)",
+          "url": "https://news.ycombinator.com/item?id=49936907",
+          "quote": "I wish there was a SponsorBlock type, crowdsourced slop filter for Youtube.",
+          "date": "2026-10-02"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "How much of HN is AI? (comment)",
+          "url": "https://news.ycombinator.com/item?id=49436788",
+          "quote": "I really wish there was a way to filter out discussions about AI on HN.",
+          "date": "2026-08-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Meta reaches $17B settlement over social media harms to children (comment)",
+          "url": "https://news.ycombinator.com/item?id=49449615",
+          "quote": "I wish there was a way to delete shorts from youtube and have only long form videos",
+          "date": "2026-08-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Would it be useful to have a slop button in addition to flag? (comment)",
+          "url": "https://news.ycombinator.com/item?id=48499762",
+          "quote": "because I'm so tired of the AI slop.",
+          "date": "2026-06-12"
+        }
+      ]
+    },
+    {
+      "id": "ai-plan-limits-mobile-tracker",
+      "title": "LimitLens: AI plan usage and reset tracker for your phone",
+      "category": "Mobile app",
+      "oneLiner": "A Flutter app and home-screen widget that shows how much of your Claude, ChatGPT and Gemini plan limits you have left and when they reset.",
+      "problem": "Paying users complain that AI plan usage limits are opaque and keep changing. Existing trackers are almost all free macOS menu-bar utilities, so nobody on Android or iOS can glance at remaining quota.",
+      "targetUsers": "Paying Claude, ChatGPT and Gemini subscribers and indie developers who hit limits mid-work.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for one provider; Pro at about $2–3/month for multiple accounts, widgets and push alerts at custom thresholds.",
+      "mvp": [
+        "Connect one or more provider accounts (official OAuth or API where available)",
+        "Dashboard of used and remaining quota with reset countdown",
+        "Android and iOS home-screen widget",
+        "Push alert at 75% and 90% of the limit",
+        "Simple history chart of usage per week"
+      ],
+      "competitors": [
+        {
+          "name": "AIQuotaBar",
+          "url": "https://alternativeto.net/software/aiquotabar",
+          "gap": "macOS menu bar only and reads browser cookies, which is a privacy concern; nothing for phones."
+        },
+        {
+          "name": "Claude Usage Tracker",
+          "url": "https://www.mdskills.ai/tools/claude-usage-tracker",
+          "gap": "Claude-only desktop app; no ChatGPT or Gemini and no mobile."
+        },
+        {
+          "name": "Mimir",
+          "gap": "Freemium desktop tool covering several providers, but no mobile app or widget was found."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "GPT-6 Sol and Luna (comment)",
+          "url": "https://news.ycombinator.com/item?id=49807535",
+          "quote": "I wish there was more transparency on the plus plans usage limits",
+          "date": "2026-09-22"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Claude Code reduces it's weekly limit by 17% – compared to today (comment)",
+          "url": "https://news.ycombinator.com/item?id=49508463",
+          "quote": "I'm tired of my $200 subscription changing or threatening to change every 2 weeks or less.",
+          "date": "2026-08-31"
+        }
+      ]
+    }
+  ]
+}
