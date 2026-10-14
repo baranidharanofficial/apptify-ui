@@ -1,121 +1,165 @@
 import React from "react";
+import type { Metadata } from "next";
 import "./styles.css";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy · Habidots",
+};
 
 export default function PolicyPage() {
   return (
-    <div className="p-8">
+    <div className="p-8 max-w-3xl">
       <img src="/Habidots.png" alt="Habidots" className="h-[100px] mb-3" />
       <h3>Privacy Policy</h3>
+      <p>Last updated: October 14, 2026</p>
+
       <h4>Introduction</h4>
       <p>
-        Our privacy policy will help you understand what information we collect
-        at Habidots, how Habidots uses it, and what choices you have. Apptify
-        built the Habidots app as a free app. This SERVICE is provided by
-        Habidots at no cost and is intended for use as is. If you choose to use
-        our Service, then you agree to the collection and use of information in
-        relation with this policy. The Personal Information that we collect are
-        used for providing and improving the Service. We will not use or share
-        your information with anyone except as described in this Privacy Policy.
-      </p>
-      <p>
-        The terms used in this Privacy Policy have the same meanings as in our
-        Terms and Conditions, which is accessible in our website, unless
-        otherwise defined in this Privacy Policy.
-      </p>
-      <h4>Information Collection and Use</h4>
-      <p>
-        For a better experience while using our Service, we may require you to
-        provide us with certain personally identifiable information, including
-        but not limited to users' name, email address, gender, location, and
-        pictures. The information that we request will be retained by us and
-        used as described in this privacy policy.
-      </p>
-      <p>
-        The app does use third-party services that may collect information used
-        to identify you.
-      </p>
-      <h4>Cookies</h4>
-      <p>
-        Cookies are files with small amounts of data that are commonly used as
-        anonymous unique identifiers. These are sent to your browser from the
-        website that you visit and are stored on your device’s internal memory.
+        This Privacy Policy explains what information the Habidots app
+        ("Habidots", "we", "us") collects, how it is used, and the choices you
+        have. Habidots is a habit tracker built by Apptify. By using Habidots,
+        you agree to the practices described in this policy.
       </p>
 
+      <h4>No Accounts</h4>
       <p>
-        This Services does not uses these “cookies” explicitly. However, the app
-        may use third party code and libraries that use “cookies” to collection
-        information and to improve their services. You have the option to either
-        accept or refuse these cookies, and know when a cookie is being sent to
-        your device. If you choose to refuse our cookies, you may not be able to
-        use some portions of this Service.
+        Habidots does not require you to sign up or sign in. We do not ask for
+        your name, email address, phone number, or any other contact details to
+        use the app.
       </p>
 
-      <h4>Location Information</h4>
+      <h4>Your Habit Data Stays on Your Device</h4>
       <p>
-        Some of the services may use location information transmitted from
-        users' mobile phones. We only use this information within the scope
-        necessary for the designated service.
+        The habits you create, your check-ins, streaks, notes, reminders, and
+        app settings are stored locally on your device. We do not upload this
+        data to our servers. If you use the Export feature, the backup file is
+        created on your device and you choose where to save or share it. If you
+        delete the app, this local data is deleted with it unless you have
+        exported a backup.
       </p>
 
-      <h4>Device Information</h4>
+      <h4>Analytics and Crash Reports</h4>
       <p>
-        We collect information from your device in some cases. The information
-        will be utilized for the provision of better service and to prevent
-        fraudulent acts. Additionally, such information will not include that
-        which will identify the individual user.
+        To understand how the app is used and to fix problems, Habidots sends
+        anonymous usage events and crash or error reports to PostHog, our
+        analytics provider. This may include the screens you visit, features
+        you use (for example, that a habit was created or a purchase screen was
+        opened), app version, device model, operating system version, language,
+        and a random identifier generated for your installation. These events
+        do not include the names or contents of your habits, and they are not
+        linked to your identity. We do not use this data for advertising and we
+        do not sell it.
       </p>
 
-      <h4>Service Providers</h4>
+      <h4>Purchases and Subscriptions</h4>
       <p>
-        We may employ third-party companies and individuals due to the following
-        reasons:
+        Habidots Pro is offered as an auto-renewing subscription or a one-time
+        purchase. Payments are processed by Apple (App Store) or Google (Google
+        Play); we never receive your payment card details. We use RevenueCat to
+        verify purchases and manage your Pro access. RevenueCat receives an
+        anonymous app user identifier, your purchase and subscription history,
+        and basic device information. To connect purchase events with
+        anonymous analytics, the anonymous PostHog identifier may be shared
+        with RevenueCat.
       </p>
-      <p>To facilitate our Service;</p>
-      <p>To provide the Service on our behalf;</p>
-      <p>To perform Service-related services; or</p>
-      <p>To assist us in analyzing how our Service is used.</p>
       <p>
-        We want to inform users of this Service that these third parties have
-        access to your Personal Information. The reason is to perform the tasks
-        assigned to them on our behalf. However, they are obligated not to
-        disclose or use the information for any other purpose.
+        You can manage or cancel your subscription at any time in your App
+        Store or Google Play account settings. Subscriptions renew
+        automatically unless cancelled at least 24 hours before the end of the
+        current period.
+      </p>
+
+      <h4>App Content</h4>
+      <p>
+        The app downloads general content such as daily messages, news, and
+        version information from Google Firebase. This content is the same for
+        all users; no personal data is sent to us when it is fetched, although
+        Firebase, like any web service, receives standard technical data such
+        as your IP address in order to deliver it.
+      </p>
+
+      <h4>Notifications</h4>
+      <p>
+        Habit reminders are scheduled locally on your device. You can turn them
+        off at any time in the app or in your device settings.
+      </p>
+
+      <h4>Third-Party Services</h4>
+      <p>
+        Habidots uses the following third-party services, each governed by its
+        own privacy policy:
+      </p>
+      <ul className="list-disc pl-6 pb-4">
+        <li>
+          <a className="underline" href="https://posthog.com/privacy">
+            PostHog
+          </a>{" "}
+          (analytics and crash reports)
+        </li>
+        <li>
+          <a className="underline" href="https://www.revenuecat.com/privacy">
+            RevenueCat
+          </a>{" "}
+          (purchase management)
+        </li>
+        <li>
+          <a className="underline" href="https://firebase.google.com/support/privacy">
+            Google Firebase
+          </a>{" "}
+          (app content)
+        </li>
+        <li>
+          <a className="underline" href="https://www.apple.com/legal/privacy/">
+            Apple App Store
+          </a>{" "}
+          and{" "}
+          <a className="underline" href="https://policies.google.com/privacy">
+            Google Play
+          </a>{" "}
+          (payments)
+        </li>
+      </ul>
+
+      <h4>Data Retention and Your Choices</h4>
+      <p>
+        Data on your device stays there until you delete it or uninstall the
+        app. Anonymous analytics data is retained by PostHog only as long as
+        needed to analyse usage and fix issues. Because we do not know who you
+        are, we cannot link analytics data to you directly, but if you would
+        like your installation's data removed, contact us and include the app
+        version and device you use and we will do our best to help.
       </p>
 
       <h4>Security</h4>
       <p>
-        We value your trust in providing us your Personal Information, thus we
-        are striving to use commercially acceptable means of protecting it. But
-        remember that no method of transmission over the internet, or method of
-        electronic storage is 100% secure and reliable, and we cannot guarantee
-        its absolute security.
+        We use reasonable measures to protect the information processed by the
+        app, and data sent to our service providers is transmitted over
+        encrypted connections. No method of transmission or storage is 100%
+        secure, however, and we cannot guarantee absolute security.
       </p>
 
-      <h4>Children’s Privacy</h4>
+      <h4>Children's Privacy</h4>
       <p>
-        This Services do not address anyone under the age of 13. We do not
-        knowingly collect personal identifiable information from children under
-        13. In the case we discover that a child under 13 has provided us with
-        personal information, we immediately delete this from our servers. If
-        you are a parent or guardian and you are aware that your child has
-        provided us with personal information, please contact us so that we will
-        be able to do necessary actions.
+        Habidots is not directed at children under 13, and we do not knowingly
+        collect personal information from children. If you believe a child has
+        provided us with personal information, please contact us and we will
+        delete it.
       </p>
 
-      <h4>Changes to This Privacy Policy</h4>
-
+      <h4>Changes to This Policy</h4>
       <p>
-        We may update our Privacy Policy from time to time. Thus, you are
-        advised to review this page periodically for any changes. We will notify
-        you of any changes by posting the new Privacy Policy on this page. These
-        changes are effective immediately, after they are posted on this page.
+        We may update this Privacy Policy from time to time. Changes will be
+        posted on this page with an updated date, and take effect when posted.
       </p>
+
       <h4>Contact Us</h4>
       <p>
-        If you have any questions or suggestions about our Privacy Policy, do
-        not hesitate to contact us.
+        If you have any questions about this Privacy Policy, contact us at{" "}
+        <a className="underline" href="mailto:baranidharanofficial@gmail.com">
+          baranidharanofficial@gmail.com
+        </a>
+        .
       </p>
-      <p>Contact Information:</p>
-      <p>Email: [baranidharanofficial@email.com]</p>
     </div>
   );
 }
