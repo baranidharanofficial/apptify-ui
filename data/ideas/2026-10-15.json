@@ -1,0 +1,285 @@
+{
+  "date": "2026-10-15",
+  "summary": "Reddit, X and Bluesky were blocked today, so evidence comes only from Hacker News threads (a thin day: 5 ideas, each with 2–4 verified comments). Strongest themes: mobile email apps that can't sync or search a full mailbox, hobby-level tools that avoid CAD overhead, and distrust of quickly abandoned AI-built apps.",
+  "ideas": [
+    {
+      "id": "offline-full-mail-archive-app",
+      "title": "Full-Mailbox Mail App with Real Search",
+      "category": "Mobile app",
+      "oneLiner": "An email client that downloads your entire mailbox and attachments locally and gives it fast full-text search.",
+      "problem": "Phone mail apps only sync a recent window (Gmail iOS about 90 days) and their search is unreliable, so people can't find old or even recent mail. Desktop clients are described as bloated with weak default search.",
+      "targetUsers": "Heavy email users, freelancers and professionals who keep years of invoices, receipts and attachments in Gmail or IMAP.",
+      "painScore": 8,
+      "effort": "1 month+",
+      "monetization": "Free for one account; Rs 199–299/month or a one-time unlock for multiple accounts, unlimited local index and encrypted backup.",
+      "mvp": [
+        "IMAP/Gmail sync of the full mailbox plus attachments with a progress screen",
+        "On-device full-text index with stemming and exact-sender search",
+        "Saved searches that behave like folders",
+        "Attachment browser (PDFs, images) across all mail",
+        "Storage controls to prune or exclude large folders"
+      ],
+      "competitors": [
+        {
+          "name": "Thunderbird (desktop, iOS in development)",
+          "url": "https://www.thunderbird.net",
+          "gap": "Commenters call its default search 'unacceptably bad' and say it does too much."
+        },
+        {
+          "name": "Apple Mail / Gmail iOS",
+          "gap": "Neither downloads the whole mailbox; search misses recent mail while surfacing old mail."
+        },
+        {
+          "name": "Mailspring",
+          "url": "https://getmailspring.com",
+          "gap": "One commenter liked it but it does not work with their Linux window manager; no mobile app."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Thunderbird for iOS (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50080223",
+          "quote": "I wish it could do something what should be seemingly incredible simple task - sync and download ALL the email.  But afaik Mail iOS can’t do it, Gmail ios app can’t do it , and no other mail app I tried seems to be able to, which seems absurd.",
+          "date": "2026-10-13"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Thunderbird for iOS (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50097960",
+          "quote": "Mostly because Mail sucks.     - Search is atrocious     - I can't find emails from this week but it'll dig up stuff from 5 years ago   - no tagging   - no filtering",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Thunderbird for iOS (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50083411",
+          "quote": "Standalone email has really been a frustration when it comes to using Linux. I was happy with Mailspring, but it doesn't really work with my window manager. Thunderbird does way too much and its default search behavior is unacceptably bad.",
+          "date": "2026-10-14"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Thunderbird for iOS (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50098322",
+          "quote": "no way to search based on DMARC authenticated exact email address, which is something basic that email search should really provide",
+          "date": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": "diy-furniture-cutlist-planner",
+      "title": "Metric-First DIY Furniture Planner with Cut Lists",
+      "category": "Web app",
+      "oneLiner": "A no-CAD planner where hobbyists enter dimensions and get parts, a plywood cut layout and a hardware list.",
+      "problem": "Hobbyist woodworkers find CAD overkill and avoid it, rely on pencil and paper plus a cut-list optimizer, and the new parametric tools default to US units and cap shelf counts and wood types.",
+      "targetUsers": "DIY and home-improvement hobbyists, small carpenters and furniture makers, especially outside the US (metric, local plywood sheet sizes).",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free basic planner; Rs 149/month or Rs 999/year for saved projects, PDF/DXF export and sheet-optimization with offcuts.",
+      "mvp": [
+        "Metric default with configurable sheet sizes (e.g. 8x4 ft plywood)",
+        "Parametric templates: bookshelf, wardrobe, wall storage, bench",
+        "Unlimited shelf count and custom material/thickness entry",
+        "Cut-list optimizer with printable layout",
+        "Shopping list of boards and hardware"
+      ],
+      "competitors": [
+        {
+          "name": "ShopSpec",
+          "url": "https://shopspec.io",
+          "gap": "A reviewer reports it needs a metric default, fails above 4 shelves and lacks an 'Other' hardwood option."
+        },
+        {
+          "name": "Cutlist Optimizer",
+          "url": "https://www.cutlistoptimizer.com/",
+          "gap": "Only optimizes cuts; no design or parametric furniture step."
+        },
+        {
+          "name": "Fusion 360 / FreeCAD / OpenSCAD",
+          "gap": "Steep learning curve; commenters say they avoid CAD and prefer paper for most hobby projects."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: CAD for wood working with LLM support?",
+          "url": "https://news.ycombinator.com/item?id=50097453",
+          "quote": "You need a metric default outside of the US. (2) >4 shelves does not work. (3) 'Other' hardwood type not possible.",
+          "date": "2026-10-15",
+          "engagement": "34 points · 13 comments (thread)"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: CAD for wood working with LLM support?",
+          "url": "https://news.ycombinator.com/item?id=50098335",
+          "quote": "I was looking for a tool exactly like this to DIY a bookshelf.",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: CAD for wood working with LLM support?",
+          "url": "https://news.ycombinator.com/item?id=50097871",
+          "quote": "I am a woodworker mostly but do it all on pencil and paper. ... I have gotten just \"ok\" at CAD. I'm not as productive as I should be because I avoid it.",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: CAD for wood working with LLM support?",
+          "url": "https://news.ycombinator.com/item?id=50098076",
+          "quote": "I have found that the CAD based tools to be pretty much beside the point for _most_ wood working projects for hobbyists",
+          "date": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": "indie-app-trust-score",
+      "title": "Maintainer-Health Check for Indie Apps and Repos",
+      "category": "Developer tool",
+      "oneLiner": "Paste a GitHub repo or app link and get a trust score for abandonment risk, commit history, dependencies and data collection.",
+      "problem": "With so many AI-generated apps, users hesitate to install small tools because they expect them to be abandoned after a few weeks, buggy, or insecure, and can't tell which are maintained.",
+      "targetUsers": "Developers and power users evaluating open-source tools; indie makers who want a visible trust badge for their own project.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free lookups; Rs 499/month for indie makers for an embeddable live badge and a public health page; API tier for directories.",
+      "mvp": [
+        "Repo URL input fetching commit cadence, issue response time and release history",
+        "Abandonment-risk and bus-factor indicators",
+        "Dependency and permission summary",
+        "Embeddable README badge",
+        "Compare against similar alternatives"
+      ],
+      "competitors": [
+        {
+          "name": "OpenSSF Scorecard",
+          "url": "https://scorecard.dev",
+          "gap": "Security-practice focused and CLI/enterprise oriented; not aimed at end users judging whether an app will be maintained."
+        },
+        {
+          "name": "Manual repo reading / asking an AI to audit",
+          "gap": "One commenter does this per install; it is slow and unstandardized."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Are you hesitant to install vibe-coded apps?",
+          "url": "https://news.ycombinator.com/item?id=50093577",
+          "quote": "many vibe coded apps* that I've come across have a week's worth of commits and no activity for the past 2-3 weeks. I have trouble imagining somebody who one-shotted an app is going to support that app for any reasonable lifespan.",
+          "date": "2026-10-14",
+          "engagement": "11 points · 11 comments (thread)"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Are you hesitant to install vibe-coded apps?",
+          "url": "https://news.ycombinator.com/item?id=50097295",
+          "quote": "Will it get support? Was there any thought or care when it comes to security? How long before the developer moves on to their next vibe coded project… an hour?",
+          "date": "2026-10-14"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Are you hesitant to install vibe-coded apps?",
+          "url": "https://news.ycombinator.com/item?id=50090872",
+          "quote": "I'm mostly hesitant to install vibe-coded apps because they sadly tend to be shiny but quickly-abandoned slop, with tons of bugs or performance issues.",
+          "date": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "family-wall-display-tablet-app",
+      "title": "Family Wall Display for Old Tablets",
+      "category": "Mobile app",
+      "oneLiner": "Turn a spare tablet into an always-on family calendar and chores board that doesn't lock the device.",
+      "problem": "Families use fridge whiteboards because kiosk mode on an old iPad was clunky and made the device unusable for anything else; smart-home hubs have weak UIs and living-room/kiosk device tooling is called an untapped gap.",
+      "targetUsers": "Families with spare Android tablets, households with elders or kids, small shops wanting a simple info screen.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free single calendar; Rs 99/month or Rs 799/year for multiple calendars, chores, photo frame mode and remote editing from phones.",
+      "mvp": [
+        "Calendar sync (Google, iCal) shown in an always-on layout",
+        "Auto-wake/sleep schedule and a soft kiosk that exits easily",
+        "Shared chores and notes editable from phones",
+        "Photo and weather screensaver",
+        "Landscape and portrait wall layouts"
+      ],
+      "competitors": [
+        {
+          "name": "Skylight / Hearth style smart calendars",
+          "gap": "Dedicated hardware purchase; not aimed at reusing an old tablet."
+        },
+        {
+          "name": "Home Assistant dashboards",
+          "gap": "Powerful but requires technical setup, as one commenter's 'custom HA dashboard' implies."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Apple HomeView (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50076582",
+          "quote": "We're old school and use a dry erase board on the fridge for our calendar, so a centralized device would be nice. We tried using an old iPad, but it was more clunky to turn it on, click on the app each time. We did try kiosk mode, but it was terrible when we needed the device for something else.",
+          "date": "2026-10-13"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Apple HomeView (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50073180",
+          "quote": "I can't believe they haven't redesigned the Home app interface! I've always thought it was pretty terrible UX-wise",
+          "date": "2026-10-13"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What to Build in the AI Era?",
+          "url": "https://news.ycombinator.com/item?id=50049080",
+          "quote": "there is huge untouched ground in headless device management, local orchestration, and edge utility tools for living-room/kiosk hardware.",
+          "date": "2026-10-11",
+          "engagement": "18 points · 18 comments (thread)"
+        }
+      ]
+    },
+    {
+      "id": "pay-per-use-pdf-toolkit",
+      "title": "Pay-As-You-Go PDF Editor for Occasional Users",
+      "category": "Web app",
+      "oneLiner": "A browser PDF editor/signer that is priced per day or per document instead of a yearly Acrobat subscription.",
+      "problem": "Occasional users pay for Acrobat subscriptions for infrequent legal and office paperwork, and people are now cancelling Adobe subscriptions once a lighter alternative covers the few features they use.",
+      "targetUsers": "Freelancers, small-business owners, students and lawyers' clerks who edit, sign or merge PDFs a few times a month.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Rs 49 day pass, Rs 199/month, or credit packs; files processed client-side as a privacy selling point.",
+      "mvp": [
+        "Edit text, sign, fill forms in the browser",
+        "Merge, split, compress, reorder pages",
+        "Client-side processing, no upload",
+        "UPI-based day pass checkout",
+        "Redaction for legal documents"
+      ],
+      "competitors": [
+        {
+          "name": "Adobe Acrobat",
+          "url": "https://www.adobe.com/acrobat.html",
+          "gap": "Subscription pricing for people who need it only occasionally."
+        },
+        {
+          "name": "PdfCraft (ArtCraft Apps)",
+          "gap": "Described as 'imperfect' though good enough for one user; open-source suite, not polished for non-technical users."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "ArtCraft Apps – open-source Adobe compatible suite written in Rust",
+          "url": "https://news.ycombinator.com/item?id=50065902",
+          "quote": "I pay for Adobe Acrobat to work on legal documents (infrequent, but frequent enough that I have to pay), and PdfCraft works well enough for me that I cancelled my subscription.",
+          "date": "2026-10-13"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Attack of the Vibe Coded Photoshop Clones",
+          "url": "https://news.ycombinator.com/item?id=50052879",
+          "quote": "I vibed and fixed all the stuff we use from Adobe. We don't use 8k*8k hasselblad whatnot ... it's good enough to cancel the subscription",
+          "date": "2026-10-12"
+        }
+      ]
+    }
+  ]
+}
