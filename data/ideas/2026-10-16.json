@@ -1,0 +1,231 @@
+{
+  "date": "2026-10-16",
+  "summary": "Today's strongest signal is health-data lock-in: Withings now charges new users $99/year just to sync with Apple Health, and people are still hand-exporting Garmin and MacroFactor data into spreadsheets. Smaller themes are the fear of an Apple ID lockout cutting off banking apps and daily life, and Meetup's decline for hobby groups. Note: Reddit, X, Bluesky and Stack Exchange were blocked from this environment, so all evidence today comes from Hacker News and only well-supported ideas are listed.",
+  "ideas": [
+    {
+      "id": "health-data-sync-hub",
+      "title": "OpenSync: free health-data bridge between scales, watches and Apple Health / Health Connect",
+      "category": "Mobile app",
+      "oneLiner": "A phone app that pulls data from Withings, Garmin and similar devices and writes it into Apple Health or Health Connect, plus a one-tap CSV export, with no subscription.",
+      "problem": "Device makers are paywalling or restricting access to the user's own health data. Withings now requires $99/year for new users to sync with Apple Health, Garmin's developer access and account export are slow, and users resort to weekly manual exports into spreadsheets or typing weights into Health by hand.",
+      "targetUsers": "People with smart scales, blood pressure cuffs, watches and glucose monitors who want all their data in one place (Apple Health, Health Connect, or their own spreadsheet), especially quantified-self and chronic-condition users.",
+      "painScore": 8,
+      "effort": "1 month+",
+      "monetization": "One-time purchase (around ₹799 / $9.99) or a small yearly fee for automatic background sync of multiple vendors; free manual CSV export.",
+      "mvp": [
+        "Connect a Withings account via the user's own login/API token and import weight, body fat and blood pressure",
+        "Write imported readings into Apple Health (Flutter health plugin) and Health Connect on Android",
+        "Import Garmin full-account export files (FIT/CSV) so users do not wait days for the next one",
+        "Weekly one-tap CSV/Sheets export of weight, sleep, nutrition and activity in a single tidy table",
+        "Local-only storage, no account required on our side"
+      ],
+      "competitors": [
+        {
+          "name": "Health Sync (Android)",
+          "gap": "Subscription-based and mostly focused on Fitbit/Garmin to Google Fit/Health Connect. Does not solve the Withings to Apple Health paywall."
+        },
+        {
+          "name": "Syncfit (Fitbit to Apple Health)",
+          "gap": "Focused on Fitbit with its own $9.99/month or $39.99/year tiers, so it does not cover Withings or a cross-vendor spreadsheet export."
+        },
+        {
+          "name": "Apple Health / Withings support workaround",
+          "gap": "Withings' own suggestion is a manual refresh because of iOS limits, and syncing is not automatic, which is the pain users describe."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "New Withings Users Must Pay $99/Year for Apple Health Syncing",
+          "url": "https://news.ycombinator.com/item?id=50111311",
+          "quote": "Saving my data in Apple Health is the primary reason I bought those devices.",
+          "engagement": "176 points · 136 comments (thread)",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "New Withings Users Must Pay $99/Year for Apple Health Syncing",
+          "url": "https://news.ycombinator.com/item?id=50111645",
+          "quote": "But subscribing so that the scale in my bathroom, which syncs to the app in my phone, can sync to another app on that same phone? LOL, hell no.",
+          "engagement": "176 points · 136 comments (thread)",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "New Withings Users Must Pay $99/Year for Apple Health Syncing",
+          "url": "https://news.ycombinator.com/item?id=50110988",
+          "quote": "without the HealthKit path, there’s not much gain to be had over just manually typing the weight measured into the Health app.",
+          "engagement": "176 points · 136 comments (thread)",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Creating a Garmin \"MCP\"",
+          "url": "https://news.ycombinator.com/item?id=50101197",
+          "quote": "I've started exporting my sleep data from Garmin connect. And my expenditure, weight, nutrition, from macrofactor. I add them to a spreadsheet along with other metrics I've been collecting manually for a long time",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Creating a Garmin \"MCP\"",
+          "url": "https://news.ycombinator.com/item?id=50101493",
+          "quote": "The only thing I've seen working, is the full account export, but that takes ~3 days for me from pressing the button until I get the email.",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "New Withings Users Must Pay $99/Year for Apple Health Syncing",
+          "url": "https://news.ycombinator.com/item?id=50111229",
+          "quote": "Nordictrack does this with iFit as well. Can’t sync to Apple Health without a paid account.",
+          "engagement": "176 points · 136 comments (thread)",
+          "date": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": "account-lockout-cold-standby",
+      "title": "Cold Standby: a lockout survival kit for your Apple or Google account",
+      "category": "Mobile app",
+      "oneLiner": "An app that maps which banking, payment, ID and subscription apps depend on your Apple/Google account and keeps an offline, encrypted lifeboat so a lockout does not stop daily life.",
+      "problem": "A locked Apple ID can brick the App Store, which in turn stops banking and payment apps from launching when they force version updates. There is no human escalation path, and recovery can take days or leave devices and accessories permanently tied to the old account.",
+      "targetUsers": "Heavy single-ecosystem Apple or Google users, expats, and anyone whose payments and IDs live on one phone.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free checklist and inventory; paid tier (around ₹299/month or $2.99/month) for encrypted offline export bundle, reminders to re-verify recovery contacts, and family sharing.",
+      "mvp": [
+        "Guided inventory of critical apps (banking, payments, government ID, 2FA) and which account each depends on",
+        "Checklist to set up recovery contacts, legacy contacts and a second device or secondary phone with the critical apps pre-installed",
+        "Encrypted offline export of the inventory plus recovery codes (printable PDF)",
+        "Quarterly reminders to re-test the backup plan",
+        "Short playbook for the first 24 hours of a lockout"
+      ],
+      "competitors": [
+        {
+          "name": "Apple recovery and legacy contacts",
+          "gap": "Only works with other Apple users, and does not cover the dependent app ecosystem (banking apps that force updates) during a lockout."
+        },
+        {
+          "name": "Bitwarden Emergency Access",
+          "gap": "Protects vault access but does not model which services depend on which platform account or how to keep payments working during a lockout."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: My Apple ID is locked for a week, Apple is a single point of failure",
+          "url": "https://news.ycombinator.com/item?id=49976972",
+          "quote": "A locked Apple ID effectively cut off my access to my money and daily transactions.",
+          "engagement": "16 points · 6 comments",
+          "date": "2026-10-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: My Apple ID is locked for a week, Apple is a single point of failure",
+          "url": "https://news.ycombinator.com/item?id=49988556",
+          "quote": "I was able to regain access to my phone and laptop eventually, but my airpods are still \"someone else's\" and my air tags were permanently broken",
+          "date": "2026-10-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Passkeys are a trap",
+          "url": "https://news.ycombinator.com/item?id=50049830",
+          "quote": "Guy used 2 legitimately purchased gift cards that had been tampered and their codes were used by someone else. His account was locked with no recurse.",
+          "date": "2026-10-12"
+        }
+      ]
+    },
+    {
+      "id": "hobby-group-organizer",
+      "title": "TableCrew: a lightweight Meetup replacement for recurring hobby groups",
+      "category": "Web app",
+      "oneLiner": "A simple, cheap scheduling and RSVP page for recurring game nights, run clubs and hobby groups that does not push organizers onto Meetup's fees.",
+      "problem": "Organizers describe Meetup as having declined with every change, but stay because Discord and Facebook feel worse and members are used to it. Recurring hobby groups lose members when scheduling and RSVPs are clumsy.",
+      "targetUsers": "Organizers of recurring local groups such as board games, tabletop RPGs, running, book clubs and language exchanges.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for small groups; flat organizer plan (around ₹499/month or $5/month) for larger groups, reminders and recurring events. No per-member fees.",
+      "mvp": [
+        "Public group page with recurring events and one-tap RSVP (no member account required)",
+        "Email and WhatsApp-share reminders before each session",
+        "Waitlist and venue capacity limits",
+        "Simple 'who's bringing what' list for each session",
+        "Import existing member list from CSV"
+      ],
+      "competitors": [
+        {
+          "name": "Meetup",
+          "url": "https://www.meetup.com",
+          "gap": "Organizer fees keep rising and users call the experience enshittified."
+        },
+        {
+          "name": "Heylo",
+          "gap": "Aimed at clubs and hobby groups, but its pricing and transaction fees mean it is not the free, minimal option organizers want."
+        },
+        {
+          "name": "Mobilizon",
+          "gap": "Free and open source but requires running your own server."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Americans' social activity has steeply declined in the past 30 years",
+          "url": "https://news.ycombinator.com/item?id=50098634",
+          "quote": "Meetup was fine 10+ years ago, but it's my go-to example of enshittification today. It feels like they're actively trying to kill it with every new change to the app / web experience.",
+          "engagement": "561 points · 558 comments (thread)",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Americans' social activity has steeply declined in the past 30 years",
+          "url": "https://news.ycombinator.com/item?id=50112710",
+          "quote": "I still host board game events on Meetup, although I'm hoping to switch to my open source alternative soon. I think the other commercial options such as Discord and Facebook are worse, and people have gotten used to Meetup.",
+          "engagement": "561 points · 558 comments (thread)",
+          "date": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "id": "household-passkey-map",
+      "title": "Passkey Map: see which logins use passkeys, who shares them, and how to recover",
+      "category": "Browser extension",
+      "oneLiner": "A browser extension that tracks which of your accounts use passkeys versus passwords, flags shared-household logins, and keeps recovery notes.",
+      "problem": "Passkeys behave inconsistently across sites: some require both passkey and password, some use separate passkeys per regional domain, and it becomes hard to share a login with a spouse. Users end up confused about what protects which account.",
+      "targetUsers": "Families and small households sharing accounts (accounting tools, shopping, streaming) who are mid-migration to passkeys.",
+      "painScore": 4,
+      "effort": "1–2 weeks",
+      "monetization": "Free for up to 20 accounts; around $2/month for household sharing and recovery notes.",
+      "mvp": [
+        "Detect passkey vs password vs both on login pages and log it locally",
+        "Per-account note: who in the household needs access and how it is shared",
+        "Warn when an account is passkey-only with no recovery method recorded",
+        "Group regional domains (for example Amazon .com/.co.uk/.de) under one entry",
+        "Encrypted local export"
+      ],
+      "competitors": [
+        {
+          "name": "Bitwarden / 1Password",
+          "gap": "Store passkeys and support family sharing, but users still report regional-domain duplicates and password-plus-passkey flows they cannot share, and neither gives a clear per-account map of recovery status. Weakest differentiation of today's ideas."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Passkeys are not a trap",
+          "url": "https://news.ycombinator.com/item?id=50097491",
+          "quote": "Now when I login, I'm required to give both the passkey from my password manager and usually my password, too. It's a usability mess and basically makes it impossible for me to share my login with e.g. my wife when she might need to login to that account.",
+          "engagement": "650 points · 799 comments (thread)",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Passkeys are not a trap",
+          "url": "https://news.ycombinator.com/item?id=50111622",
+          "quote": "Amazon.com, UK, DE, JP, all need different passkeys. Yet my password and TOTP works across them all seamlessly.",
+          "engagement": "650 points · 799 comments (thread)",
+          "date": "2026-10-15"
+        }
+      ]
+    }
+  ]
+}
