@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-17",
+  "summary": "Thin day: Reddit, X and Bluesky were blocked from this environment and search was weak, so only Hacker News yielded verifiable evidence. Two themes had 2+ independent sources: people asking for a standard way to share the prompts behind AI-made work, and hobbyists wanting hackable e-ink dashboards.",
+  "ideas": [
+    {
+      "id": "prompt-receipts",
+      "title": "Prompt Receipts: shareable proof of how AI-made work was built",
+      "category": "Developer tool",
+      "oneLiner": "One-click bundle of the prompts, outputs and token usage behind an AI-assisted project, with a clean public page to link from a repo or post.",
+      "problem": "Readers of AI-assisted projects and write-ups keep asking for the prompts, and authors have no standard way to share them along with results and cost. Prompts end up scattered across chat histories.",
+      "targetUsers": "Developers and writers who publish AI-assisted code or articles and want credibility without a messy transcript dump.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for public receipts; ₹399/month for private receipts, custom domains and team libraries.",
+      "mvp": [
+        "Import a Claude Code, Cursor or ChatGPT export into a normalized format",
+        "Redact secrets and pick which turns to publish",
+        "Shareable page with prompts, outputs and token/cost totals",
+        "Embeddable badge for README files",
+        "Local prompt library with tags and search"
+      ],
+      "competitors": [
+        {
+          "name": "GitHub Gists / pasted transcripts",
+          "gap": "Unstructured; no token usage, redaction or consistent format."
+        },
+        {
+          "name": "Chat-export tools and AI session loggers",
+          "gap": "Aimed at saving history for yourself rather than presenting a curated, shareable record; not verified in depth today."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Comment on a thread about cloning apps with AI",
+          "url": "https://news.ycombinator.com/item?id=50060564",
+          "quote": "I wish there was a more standardized way of sharing these prompts, results and token usage.",
+          "date": "2026-10-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on an AI-written project post",
+          "url": "https://news.ycombinator.com/item?id=50065065",
+          "quote": "You should share the prompt or ask your agent to write a document other people’s agents can use to reimplement the code from scratch and/or customize to their specific needs.",
+          "date": "2026-10-13"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on an AI-assisted write-up",
+          "url": "https://news.ycombinator.com/item?id=50062148",
+          "quote": "Share your prompt or raw article notes even, it will much enjoyable to read than this",
+          "date": "2026-10-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What Prompt Management Tool for macOS do you recommend?",
+          "url": "https://news.ycombinator.com/item?id=50109195",
+          "quote": "Ask HN: What Prompt Management Tool for macOS do you recommend?",
+          "date": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": "eink-dashboard-builder",
+      "title": "Panel: no-code layout builder for DIY e-ink dashboards",
+      "category": "Web app",
+      "oneLiner": "Design a home or desk dashboard in the browser and push it to any e-ink or ESP32 display as an image or JSON feed.",
+      "problem": "Hobbyists want hackable e-ink displays for smart-home status, graphs and photos, but end up wiring an ESP32 and hand-coding every layout, with colour and large panels poorly served.",
+      "targetUsers": "Makers and smart-home tinkerers with ESP32, TRMNL or InkPlate-style displays.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 1 dashboard; ₹199/month for unlimited dashboards, hosted refresh endpoints and premium widgets.",
+      "mvp": [
+        "Drag-and-drop widgets (weather, calendar, graphs, photos)",
+        "Dithering and palette presets for B/W, 4-colour and full-colour panels",
+        "Hosted image endpoint with refresh schedule",
+        "Home Assistant and generic JSON/REST data sources",
+        "Template gallery"
+      ],
+      "competitors": [
+        {
+          "name": "TRMNL",
+          "url": "https://usetrmnl.com",
+          "gap": "Tied to its own hardware; a commenter still wants larger, tinker-friendly panels."
+        },
+        {
+          "name": "Home Assistant dashboards",
+          "gap": "Built for LCD screens, not e-ink constraints; commenters prefer rolling their own ESP32 setups."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Comment on a large e-ink panel thread",
+          "url": "https://news.ycombinator.com/item?id=50109615",
+          "quote": "I wish there was a DIY company targeting hobbiests that sold large poster-size eInk panels with tinkering in mind, like TRMNL or InkPlate.",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on a smart-home thread",
+          "url": "https://news.ycombinator.com/item?id=50072037",
+          "quote": "i would love a dashboard for my smart home, but even as a fanboy of Apple i feel like HomeView doesnt do much, i'll just buy an eink screen, attach a esp32 of sorts and have it the way i want it without additional mics and shit",
+          "date": "2026-10-13"
+        }
+      ]
+    }
+  ]
+}
