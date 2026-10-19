@@ -1,0 +1,198 @@
+{
+  "date": "2026-10-19",
+  "summary": "Reddit, X, Bluesky and most other platforms were blocked from this environment today, so this report rests on Hacker News threads only and has just 3 ideas that cleared the 2-independent-source bar. The strongest themes: people losing trust in domain registrars after the Namecheap seizure thread and the .name rug-pull, volunteer HOA boards with little accountability, and macOS system daemons that pin CPU with no good way to tame them.",
+  "ideas": [
+    {
+      "id": "domain-safety-net",
+      "title": "Domain Safety Net",
+      "category": "SaaS",
+      "oneLiner": "Watches your domains for registrar-side changes (lock status, nameservers, contacts, TLD policy changes) and keeps a ready-to-move backup of your DNS so a bad registrar day never takes you offline.",
+      "problem": "Two HN threads in one week show owners being burned by registrars and registries: Namecheap reportedly seized and disabled one user's domains, support removed 2FA from an account after nothing more than \"a good story and our username\", and .name owners were hit by a policy change on third-level domains. Owners only find out after the damage, and have no exit plan or DNS copy ready.",
+      "targetUsers": "Indie developers, small agencies and small businesses holding 3-100 domains, including many in India who use Namecheap, GoDaddy or Hostinger.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 3 domains; Rs 199-499/month (or about $5/month) for unlimited domains, hourly checks and WhatsApp/Telegram alerts.",
+      "mvp": [
+        "Add domains and poll RDAP/WHOIS for nameserver, transfer-lock (clientTransferProhibited), serverHold and registrar changes, with instant email/Telegram alerts",
+        "Expiry and auto-renew countdown with payment-method reminders",
+        "Daily DNS zone snapshot (A/MX/TXT/CNAME) exportable as a BIND file for one-click re-import elsewhere",
+        "Registrar risk checklist per domain: 2FA type, registrant email still reachable, recovery contact set",
+        "Exit kit page: step-by-step transfer-out guide per registrar with the EPP code request flow"
+      ],
+      "competitors": [
+        {
+          "name": "Domain Locker (open source, self-hosted)",
+          "url": "https://dinao.com/en/conteneur/domain-locker",
+          "gap": "Self-hosted portfolio tracker that watches DNS/WHOIS/SSL changes, but it needs hosting and setup, and it does not keep a restorable DNS backup or give an exit plan."
+        },
+        {
+          "name": "DomainDetails monitoring",
+          "url": "https://domaindetails.com/kb/security-privacy/domain-monitoring-track-changes",
+          "gap": "Documents what to monitor (nameservers, transfer lock, hold status) but is a guide, not a simple hosted product with backup and exit tooling."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Namecheap just seized and disabled all my domains",
+          "url": "https://news.ycombinator.com/item?id=50146243",
+          "quote": "Our CTO left and our account was tied to his phone. Our CEO didn't want to talk to him, so, over chat, I made them remove the phone 2FA. They didn't authenticate me in any way - only gave them a good story and our username.",
+          "engagement": "451 points · 213 comments (thread)",
+          "date": "2026-10-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Namecheap just seized and disabled all my domains",
+          "url": "https://news.ycombinator.com/item?id=50144007",
+          "quote": "I remember years and years ago moving all my domains to Namecheap because they were considered \"the good guys.\" I suppose I'm going to have to start looking around once again to see who are currently the good guys.",
+          "engagement": "451 points · 213 comments (thread)",
+          "date": "2026-10-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Remember to migrate away from .name domain",
+          "url": "https://news.ycombinator.com/item?id=50129424",
+          "quote": "Biggest rug pull in the history of dns",
+          "engagement": "162 points (thread)",
+          "date": "2026-10-17"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Remember to migrate away from .name domain",
+          "url": "https://news.ycombinator.com/item?id=50130306",
+          "quote": "I had a .name domain since its birth. Then proceeded to loose it because of bad luck and bad planning.",
+          "engagement": "162 points (thread)",
+          "date": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "id": "hoa-board-ledger",
+      "title": "HOA Board Ledger",
+      "category": "SaaS",
+      "oneLiner": "A lightweight record-keeping tool for volunteer HOA and condo boards that logs votes, proxies, fines and appointments in a tamper-evident trail residents can read.",
+      "problem": "In a 300-comment HN thread on Florida HOA foreclosures, residents describe boards that are accidental volunteers with no process, boards that self-appoint for 15+ years and use proxy votes to override objections, and boards that quietly sign deals with the builder's relatives. Owners can't verify what was decided or by whom, and volunteers don't know the rules they are supposed to follow.",
+      "targetUsers": "Volunteer board members of small HOAs/condo associations (5-100 units) and the homeowners who want visibility into their decisions. US-first, but the same pattern exists in Indian housing societies and RWAs.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "Per-association subscription of about $15-30/month, paid by the board; free read-only portal for residents.",
+      "mvp": [
+        "Meeting module: agenda, minutes and per-motion vote record, with proxy and quorum counting",
+        "Append-only audit log of decisions, appointments and fines with timestamps",
+        "Resident portal showing minutes, votes, dues and fine history",
+        "Template governing rules (appointments, conflict-of-interest, fine caps and cure periods) with reminders when a step is skipped",
+        "Conflict-of-interest declaration on any contract or vendor vote"
+      ],
+      "competitors": [
+        {
+          "name": "Board Beacon",
+          "url": "https://betalist.com/startups/board-beacon",
+          "gap": "Aimed at volunteer boards with a transparency portal, but it is new and neither enforces the governing-rules process nor flags conflicts or self-dealing."
+        },
+        {
+          "name": "PayHOA",
+          "url": "https://www.payhoa.com/?p=1745",
+          "gap": "Focused on dues and accounting for board burnout; weak on a resident-readable decision trail."
+        },
+        {
+          "name": "Loomio",
+          "url": "https://www.loomio.com/blog/2026/06/18/hoa-governance-software/",
+          "gap": "Strong on decision-making and voting, but not an HOA-specific records and compliance tool."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Florida's HOAs and condo associations are making the housing crisis worse",
+          "url": "https://news.ycombinator.com/item?id=50145635",
+          "quote": "I'm on my HOA board, and not because I want to be, I can tell you that.",
+          "engagement": "165 points · 304 comments (thread)",
+          "date": "2026-10-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Florida's HOAs and condo associations are making the housing crisis worse",
+          "url": "https://news.ycombinator.com/item?id=50147750",
+          "quote": "For my association the board has basically been self appointing each other and their spouses for the last 15+ years.",
+          "engagement": "165 points · 304 comments (thread)",
+          "date": "2026-10-19"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Florida's HOAs and condo associations are making the housing crisis worse",
+          "url": "https://news.ycombinator.com/item?id=50145837",
+          "quote": "My friend is pretty understandably upset at this petty corruption",
+          "engagement": "165 points · 304 comments (thread)",
+          "date": "2026-10-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Florida's HOAs and condo associations are making the housing crisis worse",
+          "url": "https://news.ycombinator.com/item?id=50146442",
+          "quote": "We are a volunteer 3-person Department of Public Works.",
+          "engagement": "165 points · 304 comments (thread)",
+          "date": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "mac-daemon-governor",
+      "title": "Mac Daemon Governor",
+      "category": "Desktop app",
+      "oneLiner": "A menu-bar app that spots macOS system daemons (mediaanalysisd, duetexpertd, WindowServer loops) pinning CPU, and applies per-process schedules, caps or safe restarts.",
+      "problem": "Mac users report Apple's own background processes burning cores while idle, making laptops hot and loud. The existing throttler only helps partly (\"it doesn't allow me to tame everything\"), SIP blocks most manual fixes, and users resort to hand-curating lists of processes they distrust.",
+      "targetUsers": "MacBook owners on Apple Silicon, especially developers and people running home-server Mac minis.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "One-time $15-25 licence with a free tier that only monitors and alerts.",
+      "mvp": [
+        "Live list of top CPU system daemons with plain-English explanation of what each does",
+        "Rules such as \"if mediaanalysisd stays above 100% for 60s, restart it\", using launchd kickstart where permitted",
+        "Quiet-hours and on-battery profiles that pause photo/media analysis",
+        "Crowd-sourced known-offender list with suggested rules per macOS version",
+        "Notification when WindowServer or menu-bar agents enter a runaway loop, with a one-click restart"
+      ],
+      "competitors": [
+        {
+          "name": "App Tamer",
+          "url": "https://stclairsoft.com/AppTamer/faq.html",
+          "gap": "Throttles background apps and has an experimental kill-after-sustained-CPU rule, but its developer says throttling system daemons would disable what they do, so users still complain it can't tame everything."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Apple ML Research: Muse Spark Open with MLX on Mac Studio",
+          "url": "https://news.ycombinator.com/item?id=50122133",
+          "quote": "things like mediaanalysisd, duetexpertd, etc. even the freaking menu bar agent, all regularly pound my computer both when idling and when in use. I recently installed App Tamer which is helping a bit, but it doesn't allow me to tame everything.",
+          "engagement": "365 points (thread)",
+          "date": "2026-10-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Turn off Apple Intelligence on macOS 27 and get its disk space back",
+          "url": "https://news.ycombinator.com/item?id=49960137",
+          "quote": "of the 693 processes running on my macos machine, I hand picked a bunch (60+) that I think are nonsense",
+          "engagement": "775 points (thread)",
+          "date": "2026-10-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Turn off Apple Intelligence on macOS 27 and get its disk space back",
+          "url": "https://news.ycombinator.com/item?id=49960847",
+          "quote": "your super efficient ARM processor suddenly uses 100% CPU for 6 days straight because WindowServer and CoreAudio are having a panic attack due to being unable to find any outputs.",
+          "engagement": "775 points (thread)",
+          "date": "2026-10-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "macOS 15.8.2 Breaks OpenGL",
+          "url": "https://news.ycombinator.com/item?id=50147393",
+          "quote": "enter a continuous redraw loop after a number of hours of uptime which pins CPU at like at least 10-20%.",
+          "engagement": "240 points (thread)",
+          "date": "2026-10-19"
+        }
+      ]
+    }
+  ]
+}
