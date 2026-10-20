@@ -1,0 +1,245 @@
+{
+  "date": "2026-10-20",
+  "summary": "Thin day for evidence: Reddit, X, Bluesky and most other platforms were unreachable from the research environment, so every idea here is backed only by Hacker News threads and comments from the last week. The strongest themes were being stonewalled by companies that hold your money or access, disposable phone numbers for OTP-gated signups, and scraped-and-spammed public job threads.",
+  "ideas": [
+    {
+      "id": "get-a-human-escalation-kit",
+      "title": "Get-a-Human Escalation Kit",
+      "category": "Web app",
+      "oneLiner": "A per-company escalation ladder, evidence timeline and ready-to-send complaint letters for when support ghosts you or freezes your money.",
+      "problem": "People with a frozen balance, a closed account or an expired-warranty download are bounced between departments, ghosted in chat and email, and told 'nothing further is needed' while nothing happens. They don't know the next rung: regulator, ombudsman, executive contact, or the formal complaint wording that forces a response.",
+      "targetUsers": "Freelancers and small-business owners whose payment provider or bank closes an account, plus consumers stuck with warranty, refund or account-lockout disputes. In India, anyone who needs the RBI Ombudsman, National Consumer Helpline or CPGRAMS route.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free template library; one-time ₹199–₹499 per case for the guided case file (timeline, evidence PDF, auto-drafted regulator complaint); optional small-business plan around ₹799/month.",
+      "mvp": [
+        "Pick a company type (payment provider, bank, telecom, e-commerce, hardware warranty) and get its escalation ladder with regulator and ombudsman links for India/US/EU",
+        "Case timeline logger: paste emails and chat transcripts, get a dated evidence summary",
+        "Complaint letter generator citing the timeline, ticket numbers and the contradicting replies",
+        "Follow-up reminders that escalate to the next rung after N days of silence",
+        "Export a single PDF case file to send to the regulator or a chargeback team"
+      ],
+      "competitors": [
+        { "name": "GetHuman", "gap": "Not verified today. Known as a directory of phone shortcuts to reach company support; it does not appear to manage a multi-step escalation with evidence and regulator letters." },
+        { "name": "DoNotPay", "gap": "Not verified today. Positioned as a general consumer-rights bot rather than a case file focused on frozen funds and account closures." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Wise holds my company's $22k for 27 days, then goes silent",
+          "url": "https://news.ycombinator.com/item?id=50088222",
+          "quote": "I'm not fighting the closure, I just want the remaining balances back: about 22k USD (LLC, held by Wise US Inc.) and about 3.4k PLN (sole proprietorship, Wise Europe SA).",
+          "engagement": "3 points",
+          "date": "2026-10-14"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Wise holds my company's $22k for 27 days, then goes silent (comment)",
+          "url": "https://news.ycombinator.com/item?id=50104324",
+          "quote": "This is happening to me also, they closed my account, asked to provide another account to get the remaining balances but providing this option for a bank account make automatically \"an appeal\" aparently.",
+          "date": "2026-10-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Any secrets for reaching a human at large companies?",
+          "url": "https://news.ycombinator.com/item?id=50092215",
+          "quote": "For the past 3 weeks, I've been stuck in the tar pit of bouncing between departments, contact pages with no contact info, being ghosted on chats, being ghosted in email, managers saying they'll call and then not calling",
+          "engagement": "5 points · 7 comments",
+          "date": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "id": "disposable-otp-number",
+      "title": "Disposable Phone Number for OTP Signups",
+      "category": "Mobile app",
+      "oneLiner": "A 'temp mail' for phone numbers: a real, non-VoIP-flagged number you can burn after receiving a verification code.",
+      "problem": "Sites demand a phone number for SMS verification, and people don't want to hand over their real one. Free web 'receive SMS' sites get blocked, and Google Voice numbers are rejected by some sites, so users have no reliable throwaway option.",
+      "targetUsers": "Privacy-conscious users tired of spam calls and data-broker leaks, people signing up for many services, and developers or QA testers who need verification numbers.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Pay-per-number credits (about ₹20–₹60 per 24h number) or a monthly bundle; free tier limited to a few lower-reliability numbers.",
+      "mvp": [
+        "Rent a number for 20 minutes to 7 days, with the SMS inbox shown in the app",
+        "Push notification and copy-to-clipboard for the OTP",
+        "Country selection with a per-site success-rate indicator",
+        "Auto-burn after the code arrives, with a refund if no SMS comes",
+        "Android SMS provider integration (Twilio or a local aggregator) behind a thin backend"
+      ],
+      "competitors": [
+        { "name": "Google Voice", "url": "https://voice.google.com", "gap": "A commenter says some sites reject Google Voice numbers and demand an actual cell number; availability is also mostly limited to the US." },
+        { "name": "Free web SMS-receiver sites", "gap": "Not verified today. These are commonly shared numbers that many services already block." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Is there a temp phone number like temp email?",
+          "url": "https://news.ycombinator.com/item?id=50130923",
+          "quote": "Is there a temp phone number like temp email?",
+          "engagement": "6 points · 3 comments",
+          "date": "2026-10-17"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Is there a temp phone number like temp email? (reply)",
+          "url": "https://news.ycombinator.com/item?id=50130948",
+          "quote": "Alas, no, not really.",
+          "date": "2026-10-17"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Best way to get SMS verification codes without using your own number?",
+          "url": "https://news.ycombinator.com/item?id=50144766",
+          "quote": "Best way to get SMS verification codes without using your own number?",
+          "engagement": "3 points · 4 comments",
+          "date": "2026-10-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Best way to get SMS verification codes without using your own number? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50147591",
+          "quote": "I’ve had sites reject my Google Voice number and require my actual cell phone number.",
+          "date": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "hiring-thread-contact-shield",
+      "title": "Contact Shield for Public Hiring Threads",
+      "category": "Web app",
+      "oneLiner": "Post a throwaway relay address in 'Who wants to be hired' threads; only senders who pass a verified-opportunity check reach your real inbox.",
+      "problem": "Job seekers who post their email in public hiring threads are scraped within days and flooded with job-board pitches, fake recruiters and malware 'coding challenges'. Some then stop posting, even though real offers do come from those threads.",
+      "targetUsers": "Freelancers and job seekers posting on Hacker News, Reddit and similar boards, including Indian developers looking for remote roles.",
+      "painScore": 6,
+      "effort": "Weekend",
+      "monetization": "Free for one alias; ₹149/month for multiple aliases, sender screening rules and auto-replies. Possible light sponsorship from verified recruiters.",
+      "mvp": [
+        "Generate a per-thread alias such as name+hn-oct@domain that forwards to your inbox",
+        "Auto-triage: block mails matching job-board pitch patterns and unknown free-mail 'recruiters'",
+        "Require a short verified-opportunity form (company, role, pay range) before forwarding",
+        "One-click kill switch to burn the alias after the thread ends",
+        "Digest email of what was blocked, so real offers aren't lost"
+      ],
+      "competitors": [
+        { "name": "SimpleLogin / Firefox Relay / Apple Hide My Email", "gap": "Not verified today. These are general email aliases; they forward everything and don't screen for legitimate recruiter offers." },
+        { "name": "Disposable email addresses", "gap": "One commenter says a fresh disposable address stopped the spam, but it also blocked legitimate non-test messages, which leaves no way to receive real offers." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Getting spam after commenting on monthly Who's Hiring posts. Who else?",
+          "url": "https://news.ycombinator.com/item?id=50153608",
+          "quote": "I really wish there were a way to only allow people who have verified opportunities to contact me about their own opportunities.",
+          "engagement": "5 points",
+          "date": "2026-10-19"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Massive amount of spam from \"Who Wants to be hired\"",
+          "url": "https://news.ycombinator.com/item?id=50142714",
+          "quote": "I've previously had some success with these threads, but the last 2-3 times I've posted in them, my inbox has just been flooded with spam.",
+          "engagement": "10 points · 5 comments",
+          "date": "2026-10-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Massive amount of spam from \"Who Wants to be hired\" (comment)",
+          "url": "https://news.ycombinator.com/item?id=50143491",
+          "quote": "I have encountered the same problem myself. I've switched to linking to an image of a new disposable email address. Zero spam since then. (Actually, zero non-test messages total since then, but that's fine too.)",
+          "date": "2026-10-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Massive amount of spam from \"Who Wants to be hired\" (comment)",
+          "url": "https://news.ycombinator.com/item?id=50153032",
+          "quote": "Besides those I have also been getting the fake jobs about a \"confidential search\" they are working on (yes, from gmail), the jobs that ask you to complete a coding challenge (with malware inside)",
+          "date": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "non-dev-markdown-wiki",
+      "title": "Git-Backed Wiki Non-Developers Can Edit",
+      "category": "SaaS",
+      "oneLiner": "A fast team wiki that stores plain markdown in a git repo but gives non-developers a friendly editor.",
+      "problem": "Developers call Confluence bloated and slow with a bad editor, but the common alternative, git plus markdown, locks non-developers out of editing. Teams are stuck choosing between a tool engineers dislike and one the rest of the company can't use.",
+      "targetUsers": "Small engineering teams and agencies that also have PMs, support and ops staff who need to edit internal docs.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "Per-seat SaaS, around ₹250 per editor per month with free read-only viewers; self-host licence for teams that want to keep data in their own repo.",
+      "mvp": [
+        "Connect a GitHub repo and render its markdown folder as a wiki",
+        "WYSIWYG editor that commits to a branch and opens a PR or auto-merges for trusted editors",
+        "Instant full-text search",
+        "Page tree, backlinks and simple permissions per folder",
+        "Import from Confluence export"
+      ],
+      "competitors": [
+        { "name": "Confluence", "url": "https://www.atlassian.com/software/confluence", "gap": "Commenters call it bloated and unwieldy, and one says the editor is execrable." },
+        { "name": "git + markdown docs", "gap": "One commenter notes it limits editing to developers only." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Why do developers hate Confluence?",
+          "url": "https://news.ycombinator.com/item?id=50123564",
+          "quote": "git + markdown is the way, especially in these agentic days plenty of tools to turn that into html if you want confluence is bloated an unweildy",
+          "engagement": "2 points · 7 comments",
+          "date": "2026-10-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Why do developers hate Confluence? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50123835",
+          "quote": "Confluence is slow but pretty simple, standard wiki otherwise. Obviously, if I had a choice, it'd be nothing Atlassian. git+markdown limits editing to developers only.",
+          "date": "2026-10-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Why do developers hate Confluence? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50127570",
+          "quote": "The editor is execrable.",
+          "date": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "id": "app-review-queue-tracker",
+      "title": "App Store Review Queue Tracker",
+      "category": "Developer tool",
+      "oneLiner": "Crowdsourced live iOS App Review wait times, with alerts when your build is slower than the current median.",
+      "problem": "Indie developers report iOS review times stretching from under a day to a week or more, and have no way to know whether their wait is normal or a sign of a problem. Commenters attribute the slowdown to a flood of low-quality apps.",
+      "targetUsers": "Indie iOS and Flutter developers submitting apps and updates to the App Store.",
+      "painScore": 5,
+      "effort": "Weekend",
+      "monetization": "Free public dashboard; ₹299/month for private-team alerts, webhook to Slack/Telegram, and per-category history.",
+      "mvp": [
+        "Submit-your-wait form (submission date, review start, outcome, app category)",
+        "Live median and p90 review time, with a 30-day trend",
+        "Alert when your own submission passes the current p90",
+        "Telegram/email notification when status changes",
+        "Public API and embeddable widget"
+      ],
+      "competitors": [
+        { "name": "Existing App Review time trackers", "gap": "Not verified today; whether any current tracker offers per-submission alerts and category-level breakdowns is unconfirmed." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "AppStore – Waiting for Review",
+          "url": "https://news.ycombinator.com/item?id=50142796",
+          "quote": "I've been in the iOS App Review for 4 days, and I'm wondering what the experience is for others with it; 2 years ago, when I submitted a different one, it went through in less than 24 hours.",
+          "engagement": "1 point · 3 comments",
+          "date": "2026-10-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "AppStore – Waiting for Review (comment)",
+          "url": "https://news.ycombinator.com/item?id=50142961",
+          "quote": "It’s sadly the new normal. It used to be fast… lately I’ve waited over a week with a small update to my app that has been on the store for over a decade.",
+          "date": "2026-10-18"
+        }
+      ]
+    }
+  ]
+}
