@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-21",
+  "summary": "Reddit, X and Bluesky were unreachable today, so this is a thin, Hacker News-only report. Strongest themes: people fed up with ads on Android TV and fire-sticks, small businesses pushed to pay Meta just to reach their followers, and locale bugs in money inputs. Four ideas, each backed by multiple independent HN commenters.",
+  "ideas": [
+    {
+      "id": "ad-free-tv-setup-wizard",
+      "title": "One-Tap Ad-Free TV Setup",
+      "category": "Mobile app",
+      "oneLiner": "A phone app that wirelessly sets up an ad-free launcher and trims ad services on Android TV and Fire TV, no ADB knowledge needed.",
+      "problem": "Android TV and Fire TV home screens push ads and promo banners, even inappropriate ones when kids are around. Power users fix it with a third-party launcher, sideloading and ADB, but that is fiddly, and on Fire sticks it is harder still. Non-technical owners are stuck with the ads.",
+      "targetUsers": "Owners of Mi/Android TVs, Fire TV sticks and cheap TV boxes, including non-technical households that rely on a tech-savvy family member.",
+      "painScore": 8,
+      "effort": "1–2 weeks",
+      "monetization": "Free scan plus basic setup; one-time ₹299–₹499 unlock for the full profile (ad-service disabling, remote-button remap, per-device backup).",
+      "mvp": [
+        "Pair with the TV over wireless debugging with a step-by-step guided flow",
+        "One-tap install and default-set of a chosen ad-free launcher",
+        "Disable a curated, reversible list of promo and recommendation packages",
+        "Remap OEM remote shortcut buttons",
+        "Undo / restore-defaults button and a saved profile per device"
+      ],
+      "competitors": [
+        {
+          "name": "Projectivy Launcher",
+          "gap": "Great launcher, but users must find it, sideload it and set it as default themselves; it does not reach the ad services."
+        },
+        {
+          "name": "FLauncher / ATV Launcher Pro",
+          "gap": "Same DIY setup; commenters note Fire sticks make launcher replacement much harder."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "An ad-free Android TV (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50162909",
+          "quote": "It's much harder to switch out the launcher on a FireStick, but I did manage it briefly before it started boot looping right around 1yr of ownership, so it's e-waste now.",
+          "engagement": "392 points thread",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "An ad-free Android TV (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50173383",
+          "quote": "At least Google lets me install Projectivy Launcher on the device I paid for so I never have to see a single ad on my TV. And use ADB to customize those branded OEM remote buttons for HBO/Netflix/etc to do what I want instead.",
+          "engagement": "392 points thread",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "An ad-free Android TV (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50171509",
+          "quote": "Sucks, because Android TV still has some of the best flexibility in a TV-appropriate OS (compared with other options I could find at least) but their priorities don't line up with mine regarding the ads.",
+          "engagement": "392 points thread",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "An ad-free Android TV (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50166309",
+          "quote": "Do you have a suggestion for an alternative to an Apple TV which includes your criteria? That is, good interface, no ads.",
+          "engagement": "392 points thread",
+          "date": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "local-business-hours-page",
+      "title": "Closing-Early Page for Local Shops",
+      "category": "Web app",
+      "oneLiner": "A dead-simple page and QR code where a small shop posts hours, specials and 'closing early today', pushed to WhatsApp and Google listings.",
+      "problem": "Small businesses use Facebook Pages for hours, events and closing-early notices because a website feels like a cost and a chore. Facebook now charges to post links and demotes page content, while customers who avoid Meta can't find basic info.",
+      "targetUsers": "Cafes, salons, tailors, clinics and kirana-style shops with no website; their customers who want hours without a Facebook login.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free page with branding; ₹199–₹399/month for custom domain, WhatsApp broadcast and Google Business Profile sync.",
+      "mvp": [
+        "Phone-first editor: hours, holiday closures, today's special, menu photo",
+        "One-tap 'closing early' banner with auto-expiry",
+        "Free subdomain plus printable QR poster",
+        "Share to WhatsApp status/broadcast and copy for Instagram",
+        "Optional Google Business Profile hours sync"
+      ],
+      "competitors": [
+        {
+          "name": "Squarespace / Wix",
+          "gap": "Commenters say a template takes 2–3 hours even for non-technical owners, and the monthly fee and editing effort still deter tiny shops."
+        },
+        {
+          "name": "Google Business Profile",
+          "gap": "Handles hours but not specials, menus or follower notifications, and many owners never claim it."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Facebook Pages require paid subscription to post more than two links per month (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50168707",
+          "quote": "There needs to be an easy to use low-cost, possible also advertisement driven, alternative that business can latch to so more can leave facebook.",
+          "engagement": "421 points thread",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Facebook Pages require paid subscription to post more than two links per month (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50168934",
+          "quote": "I still remember when Facebook Pages were promoted as an alternative to feeds and newsletters. You could follow a page and be sure to receive all updates from them. Now you even have to pay to share links.",
+          "engagement": "421 points thread",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Facebook Pages require paid subscription to post more than two links per month (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50169860",
+          "quote": "Why is there no GUI desktop app that lets you easily make a website?",
+          "engagement": "421 points thread",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Facebook Pages require paid subscription to post more than two links per month (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50173714",
+          "quote": "Anymore, putting up a basic template page for your business is maybe 2-3 hours if you're really non-technical.",
+          "engagement": "421 points thread",
+          "date": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "locale-safe-money-input",
+      "title": "Locale-Safe Money Input Guard",
+      "category": "Developer tool",
+      "oneLiner": "A tiny drop-in component and lint rule that parses and confirms currency amounts correctly across comma, dot and lakh-style locales.",
+      "problem": "Typing 5,04 gets read as 504.00 on a payment screen, and users report the same bug when selling on marketplaces. It causes real overcharges and slow support disputes.",
+      "targetUsers": "Indie developers and small teams building checkout, top-up or invoicing forms for international or Indian audiences.",
+      "painScore": 6,
+      "effort": "Weekend",
+      "monetization": "Open-source core; paid ₹1,500–₹4,000 one-time licence for the React/Flutter widgets and lint pack, or GitHub sponsors.",
+      "mvp": [
+        "Parser that detects ambiguous input such as 5,04 versus 5.04",
+        "Confirm-in-words step ('five dollars and four cents') before charging",
+        "React and Flutter input widgets",
+        "Lakh/crore and European format test suite",
+        "ESLint rule flagging parseFloat on money fields"
+      ],
+      "competitors": [
+        {
+          "name": "Intl.NumberFormat / currency.js / Dinero.js",
+          "gap": "Format and calculate well but do not guard the raw user-typed string or warn on ambiguous separators."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Anthropic Console overcharged my card 100x due to internationalization input bug (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50123287",
+          "quote": "I'm looking at the \"Add credits\" screen on https://platform.claude.com and it prominently displays the \"total due\" as $504.00 when typing `5,04` into the input...",
+          "engagement": "90 points thread",
+          "date": "2026-10-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Anthropic Console overcharged my card 100x due to internationalization input bug (HN thread)",
+          "url": "https://news.ycombinator.com/item?id=50123844",
+          "quote": "This happens everywhere . I'm in Germany (which uses commas) but have my distro set to English (using dots). I've encountered this problem on many sites, eg Amazon or eBay where I accidentally sell my items for 599,00 instead of 5.99",
+          "engagement": "90 points thread",
+          "date": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "id": "chat-checkin-switch",
+      "title": "Chat-Based Dead Man's Switch",
+      "category": "Mobile app",
+      "oneLiner": "A Telegram/WhatsApp bot that checks in on you and releases messages to chosen people in escalating steps if you go silent.",
+      "problem": "Solo operators and freelancers want a failsafe that tells clients or family where credentials live if something happens. Existing options are tied to one ecosystem, run only on rigid schedules, or require self-hosting and a weekly manual check-in people fear missing.",
+      "targetUsers": "Solo developers, freelancers and small-business owners who hold the only keys to servers, domains and accounts.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for one contact; ₹149–₹299/month for multiple recipients, staged messages and passive signals.",
+      "mvp": [
+        "Plain-language setup in chat: message, recipient, silence threshold",
+        "Escalating reminders before anything is released",
+        "Configurable check-in cadence",
+        "Passive check-in from phone activity or wearable data",
+        "Recipient confirmation and yearly rehearsal reminder"
+      ],
+      "competitors": [
+        {
+          "name": "Google Inactive Account Manager",
+          "gap": "Only covers Google data and checks in roughly quarterly."
+        },
+        {
+          "name": "Death Plan Switch (self-hosted)",
+          "gap": "Fixed weekly email check-in and requires self-hosting."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Death Plan Switch, a self-hosted dead man's switch for solo devs",
+          "url": "https://news.ycombinator.com/item?id=50162040",
+          "quote": "my idea is just have a telegram/facebook chatbot, people talk to it in plain English, what is their message, the receiver and the watch time.",
+          "engagement": "93 points thread",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Death Plan Switch, a self-hosted dead man's switch for solo devs",
+          "url": "https://news.ycombinator.com/item?id=50161907",
+          "quote": "I would make it monthly or quarterly not weekly",
+          "engagement": "93 points thread",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Death Plan Switch, a self-hosted dead man's switch for solo devs",
+          "url": "https://news.ycombinator.com/item?id=50162094",
+          "quote": "interesting concept. feels high gain at 1/wk. like, can it subscribe to my garmin connect or something?",
+          "engagement": "93 points thread",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Death Plan Switch, a self-hosted dead man's switch for solo devs",
+          "url": "https://news.ycombinator.com/item?id=50161793",
+          "quote": "Nice, although it seems likely that I would overlook replying to the email and everyone will panic when they get notified.",
+          "engagement": "93 points thread",
+          "date": "2026-10-20"
+        }
+      ]
+    }
+  ]
+}
