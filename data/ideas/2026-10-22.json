@@ -1,0 +1,533 @@
+{
+  "date": "2026-10-22",
+  "summary": "Hacker News was the only platform I could read directly today, so every source below is a verbatim HN comment or thread title. The strongest themes: surprise AI/cloud bills and leaked API keys with no hard caps, small businesses squeezed by Facebook's two-links-a-month limit, Plex refugees finding Jellyfin hard to share with family, and small-site owners scrambling after a critical PHP vulnerability.",
+  "ideas": [
+    {
+      "id": "ai-key-spend-cap-proxy",
+      "title": "HardCap: a spend-capped proxy for AI and cloud API keys",
+      "category": "Developer tool",
+      "oneLiner": "Put your real OpenAI/Gemini/Anthropic keys behind a tiny gateway that hands out virtual keys with hard daily and monthly dollar limits.",
+      "problem": "Developers keep getting surprise four-figure bills from leaked or abused keys because cloud budgets only alert and never stop spend, and a leaked or compromised vendor key has no blast-radius limit. People want per-key budgets without trusting a heavyweight gateway that itself just had a supply-chain compromise.",
+      "targetUsers": "Indie developers, hackathon builders and small teams calling LLM APIs from scripts, apps and coding agents.",
+      "painScore": 8,
+      "effort": "1–2 weeks",
+      "monetization": "Free self-hosted single binary; hosted version at $9/month per project with Slack/Telegram alerts, or $29/month for teams.",
+      "mvp": [
+        "Virtual keys mapped to the real provider key, injected server-side so the real key never leaves the proxy",
+        "Hard per-key daily and monthly USD caps that return 429 once exceeded",
+        "OpenAI-compatible and Gemini-compatible passthrough with token-based cost estimation",
+        "Instant kill switch and one-click key rotation",
+        "Telegram/email alert at 50/80/100% of budget",
+        "Single static binary plus Docker image"
+      ],
+      "competitors": [
+        {
+          "name": "LiteLLM",
+          "url": "https://github.com/BerriAI/litellm",
+          "gap": "Does routing and budgets but is a large Python surface; HN users are looking for alternatives after a second PyPI compromise."
+        },
+        {
+          "name": "OpenRouter",
+          "url": "https://openrouter.ai",
+          "gap": "Credit-based limits only apply to OpenRouter, not to your existing Google or Anthropic keys."
+        },
+        {
+          "name": "Google Cloud budget alerts",
+          "gap": "Reported as alert-only with delays of hours, so they do not stop a runaway key."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: My Gemini bill shot up suddenly to 2500 USD in one day",
+          "url": "https://news.ycombinator.com/item?id=50171739",
+          "quote": "Unlimited billing is the main reason I will never sign up to use Google or Amazon cloud services, as I use them for other things I wouldn't want to lose access to in the event of chargebacks, etc. Cloud services signup terms are basically legal authorization for them to monetarily charge you for the result of someone else running a script. It would be very easy for these companies to implement settings for hard financial limits, but yet they refuse.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: My Gemini bill shot up suddenly to 2500 USD in one day",
+          "url": "https://news.ycombinator.com/item?id=50168795",
+          "quote": "Google started charging y card every 30 mins or so. Google support said they will help significantly waive this off but they havent been swift.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "OpenCode Hacked: User credentials leaked",
+          "url": "https://news.ycombinator.com/item?id=50134785",
+          "quote": "I saw the email this morning from OpenCode about my key being compromised alongside an email from Anthropic stating that I used up my $20 in API credits for the month.",
+          "date": "2026-10-17"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Compromised LiteLLM 1.107.0 on PyPI Installs a Credential Stealer and Backdoor",
+          "url": "https://news.ycombinator.com/item?id=50183268",
+          "quote": "I am mostly interested in the aspect of having a proxy that unifies multiple ollama and openai-compatible endpoints with model-based routing and failover. Optionally with api-keys, reporting, budgets, etc.",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Compromised LiteLLM 1.107.0 on PyPI Installs a Credential Stealer and Backdoor",
+          "url": "https://news.ycombinator.com/item?id=50182479",
+          "quote": "I myself have written a small llm proxy in Go, doing nothing but injecting the real API key to outgoing requests while itself validating virtual keys it generates, and it works great.",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Google AI Developers Forum",
+          "title": "Unexpected €54k billing spike in 13 hours",
+          "url": "https://discuss.ai.google.dev/t/unexpected-54k-billing-spike-in-13-hours-firebase-browser-key-without-api-restrictions-used-for-gemini-requests/140262",
+          "quote": "Unexpected €54k billing spike in 13 hours: Firebase browser key without API restrictions used for Gemini requests"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN thread mirrored on hn.svelte.dev (item 47791871)",
+          "url": "https://hn.svelte.dev/item/47791871",
+          "quote": "We had a budget alert (€80) and a cost anomaly alert, both of which triggered with a delay of a few hours"
+        }
+      ]
+    },
+    {
+      "id": "facebook-link-in-comment-poster",
+      "title": "LinkSlot: schedule Facebook Page posts and auto-move links to the first comment",
+      "category": "SaaS",
+      "oneLiner": "A scheduler that tracks your Page's free-link quota and automatically posts the link in the first comment instead of the post body.",
+      "problem": "Meta is limiting professional Pages to two organic link posts a month unless they pay for Meta Verified. Small businesses, local papers and venues still rely on Facebook to reach followers and feel pushed to pay for something that used to be free.",
+      "targetUsers": "Small businesses, local news outlets, venues and community organisers who post links from a Facebook Page.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 1 Page with 10 scheduled posts a month; $7/month for 3 Pages and unlimited posts; $19/month for agencies.",
+      "mvp": [
+        "Facebook login and Page picker via Graph API",
+        "Composer that detects links and offers: post as-is, or text-only post with the link in the first comment",
+        "Counter showing how many free link posts remain this month",
+        "Scheduling queue with preview",
+        "Optional parallel post to a free landing page or WhatsApp channel",
+        "Verify through a test Page that comment links really are not counted before launch"
+      ],
+      "competitors": [
+        {
+          "name": "Meta Business Suite",
+          "url": "https://business.facebook.com",
+          "gap": "Native scheduler, but it does not manage the link quota or move links for you."
+        },
+        {
+          "name": "Buffer",
+          "url": "https://buffer.com",
+          "gap": "General cross-poster; no Facebook link-limit logic that I could find (verify before building)."
+        },
+        {
+          "name": "Hootsuite",
+          "url": "https://www.hootsuite.com",
+          "gap": "Priced for agencies and enterprise rather than a local shop owner."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Facebook Pages require paid subscription to post more than two links per month",
+          "url": "https://news.ycombinator.com/item?id=50168934",
+          "quote": "Isn't it funny that every change to \"protect users\" ends up with you paying Facebook more to reach the people that followed your page?",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Facebook Pages require paid subscription to post more than two links per month",
+          "url": "https://news.ycombinator.com/item?id=50168707",
+          "quote": "The issue is that small business still utilize them instead of paying for and maintaining a web site. Want to know our business ours, events, or when we close early ... facebook.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Facebook Pages require paid subscription to post more than two links per month",
+          "url": "https://news.ycombinator.com/item?id=50168207",
+          "quote": "I've been researching local newspapers, and the problems they face, lately, and one of them is that none of the social media sites allow them to get any visits from their followers because they either significantly de-rank posts with links off-site or it costs money to reach followers with links, or both.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Facebook Pages require paid subscription to post more than two links per month",
+          "url": "https://news.ycombinator.com/item?id=50171039",
+          "quote": "I have to use it because for some reason lots of people still are active in groups which are good leads for my business and it sucks",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Facebook Pages require paid subscription to post more than two links per month",
+          "url": "https://news.ycombinator.com/item?id=50169344",
+          "quote": "And I think it's chosen very deliberately: so that you can set up your page for free, promote it, and then realize you need to pay to keep it alive.",
+          "date": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "jellyfin-family-invite-portal",
+      "title": "FamilyReel: invite and onboarding portal for Jellyfin libraries",
+      "category": "Web app",
+      "oneLiner": "Email invites, password self-reset and per-device setup guides that let non-technical relatives watch your Jellyfin library.",
+      "problem": "People leaving Plex after its player-team layoffs find Jellyfin hard to share with family: there is no easy invite flow, remote access is a hurdle, and non-technical users struggle with clients and consoles.",
+      "targetUsers": "Home-media self-hosters who share a library with parents, siblings and friends.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free self-hosted core; $4/month hosted add-on with invite emails, branded landing page and Tailscale-style tunnel setup; $29 one-time licence for the self-hosted pro pack.",
+      "mvp": [
+        "Invite by email that creates the Jellyfin user via its API",
+        "Self-service password reset page",
+        "Per-device setup cards (Apple TV, Fire TV, Android TV, Xbox, browser) with QR codes",
+        "Request-to-add-title form for family members",
+        "Health check that tells the owner why a relative cannot connect (DNS, port, certificate)",
+        "Simple admin view of who has accepted"
+      ],
+      "competitors": [
+        {
+          "name": "Jellyfin",
+          "url": "https://jellyfin.org",
+          "gap": "No built-in email invite flow; remote access and family onboarding are left to the owner."
+        },
+        {
+          "name": "Plex",
+          "url": "https://www.plex.tv",
+          "gap": "Easier sharing, but users are leaving over ads, UI churn and the player-team layoffs."
+        },
+        {
+          "name": "Jellyseerr",
+          "url": "https://github.com/Fallenbagel/jellyseerr",
+          "gap": "Handles media requests, not onboarding or connectivity troubleshooting."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Plex laid off the whole player team",
+          "url": "https://news.ycombinator.com/item?id=50186654",
+          "quote": "currently running jellyfin as a test to replace plex ( different reasons ). So far the experience was good. What seems to be missing is the ease with which you can share your library.",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Plex laid off the whole player team",
+          "url": "https://news.ycombinator.com/item?id=50186841",
+          "quote": "Jellyfin is rough (I've tried!) and especially for external users (family).",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Plex laid off the whole player team",
+          "url": "https://news.ycombinator.com/item?id=50186994",
+          "quote": "Do you have external users (outside your network)? My understanding (and the last time I tried) is that Jellyfin lacks in this department quite a bit.",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Plex laid off the whole player team",
+          "url": "https://news.ycombinator.com/item?id=50188615",
+          "quote": "I have my friends and family using tailscale + jellyfin. Their only complaint is not having an easy way to watch on Xboxes.",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Plex laid off the whole player team",
+          "url": "https://news.ycombinator.com/item?id=50187241",
+          "quote": "non-techie acceptance (Plex seemed more polished at the time, will need to reassess now)",
+          "date": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "legacy-php-patch-alarm",
+      "title": "PatchPing: plain-English alerts for small sites running vulnerable PHP",
+      "category": "SaaS",
+      "oneLiner": "Enter your site URL and get an alert, with host-specific fix steps, when its PHP or WordPress stack is exposed to a newly announced critical bug.",
+      "problem": "After a critical PHP RCE disclosure, small site owners do not know whether they are affected, cannot upgrade legacy PHP, and some cannot even auto-update safely. Emergency workarounds today are shell scripts.",
+      "targetUsers": "Freelancers, small agencies and owners of WordPress or legacy PHP sites on shared or VPS hosting.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 1 site; $5/month for 10 sites with WhatsApp/email alerts; $25/month for agencies with client reports.",
+      "mvp": [
+        "Fingerprint PHP and WordPress versions from public signals",
+        "Watch advisory feeds and map them to fingerprinted sites",
+        "Alert with a plain-English verdict: affected, likely safe or cannot tell",
+        "Copy-paste mitigation per host type (cPanel, Nginx, Apache)",
+        "One-click maintenance-page snippet",
+        "Weekly digest for agencies"
+      ],
+      "competitors": [
+        {
+          "name": "Patchstack",
+          "url": "https://patchstack.com",
+          "gap": "Focused on WordPress plugin and theme vulnerabilities, not the PHP runtime itself."
+        },
+        {
+          "name": "WPScan",
+          "url": "https://wpscan.com",
+          "gap": "WordPress-centric; does not help legacy non-WordPress PHP sites."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "PHP 8.2.35",
+          "url": "https://news.ycombinator.com/item?id=50181730",
+          "quote": "I agree, WordPress should be like the first thing they point out. I'd imagine most WordPress users don't even know it runs on PHP",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "PHP 8.2.35",
+          "url": "https://news.ycombinator.com/item?id=50181918",
+          "quote": "Yeah, I have a legacy site that is popular and doesn't make money with some outdated version of PHP that will not update.",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "PHP 8.2.35",
+          "url": "https://news.ycombinator.com/item?id=50182027",
+          "quote": "last I looked, automatic updates for wordpress meant letting the web server write to the document root, which may be on the same level of negligence as not updating quickly. Plus, wordpress updating isn't going to help you upgrade php.",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "PHP 8.2.35",
+          "url": "https://news.ycombinator.com/item?id=50185852",
+          "quote": "Similar here, except I didn't want to actually shut down the servers, because then I can't patch them! My solution was to just turn off Nginx, which prevents anything from reaching PHP.",
+          "date": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "subtitle-sync-local",
+      "title": "SubFix: fix and generate subtitles from the audio, fully offline",
+      "category": "Desktop app",
+      "oneLiner": "Drop in a video and an out-of-sync .srt and get it re-timed line by line using the audio, or generate subtitles when none exist.",
+      "problem": "Home-media users hunt for subtitles that drift or are offset by seconds; existing fixers only shift all timestamps linearly, and people are building private scripts rather than finding a polished tool.",
+      "targetUsers": "Plex/Jellyfin/Kodi users and people who watch downloaded or ripped video with external subtitles.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "One-time $19 licence; free tier limited to 3 files per day.",
+      "mvp": [
+        "Drag-and-drop video plus .srt",
+        "Audio-based per-line re-sync using a local speech model",
+        "Generate subtitles when none exist",
+        "Batch folder mode",
+        "Preview player with before/after timing",
+        "Writes the fixed file next to the original using media-server naming"
+      ],
+      "competitors": [
+        {
+          "name": "alass",
+          "url": "https://github.com/kaegi/alass",
+          "gap": "Command-line only, which non-developers find hard to use."
+        },
+        {
+          "name": "Bazarr",
+          "url": "https://www.bazarr.media",
+          "gap": "Downloads subtitles for the *arr stack; drift fixing is not its main job."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Voxtral 3",
+          "url": "https://news.ycombinator.com/item?id=50169712",
+          "quote": "can anybody recommend a local model/tool that fixes timestamps of existing srt subtitles? That should be easier than generating them from scratch. When I last looked for this a few years ago, I only found a really primitive one that did a linear transformation of all timestamps in the video, and none to correct each line individually.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Voxtral 3",
+          "url": "https://news.ycombinator.com/item?id=50170073",
+          "quote": "I put together a plex player for firetv that does on device subtitling for whatever you're watching. I got sick of having to find subtitles.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Voxtral 3",
+          "url": "https://news.ycombinator.com/item?id=50180910",
+          "quote": "this was one of my pet peeves because my subtitles were off by up to a couple seconds depending on where the STT frame was.",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Voxtral 3",
+          "url": "https://news.ycombinator.com/item?id=50169835",
+          "quote": "I don't plan to release it as it part of an overall \"media health\" tool I built",
+          "date": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "permanent-second-number",
+      "title": "KeepNumber: a real second phone number that businesses accept",
+      "category": "Mobile app",
+      "oneLiner": "An eSIM-backed secondary number with SMS/MMS-to-email forwarding and decent group messaging, built for people leaving Google Voice.",
+      "problem": "Google Voice is stagnating, businesses increasingly reject VoIP numbers at sign-up, and group texting and SMS-to-email options are poor.",
+      "targetUsers": "Freelancers, privacy-minded users and expats who keep a second number for sign-ups and client contact.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "$5–8/month subscription with a free 7-day trial.",
+      "mvp": [
+        "Provision a non-VoIP eSIM number through a carrier partner",
+        "Inbound SMS/MMS forwarded to email and a push notification",
+        "Group MMS support",
+        "Number port-in from Google Voice",
+        "Quiet hours and spam call screening",
+        "Per-contact labels"
+      ],
+      "competitors": [
+        {
+          "name": "Google Voice",
+          "url": "https://voice.google.com",
+          "gap": "Numbers are flagged as VoIP and feature development has stalled."
+        },
+        {
+          "name": "JMP.chat",
+          "url": "https://jmp.chat",
+          "gap": "Works for some, but is VoIP-based and not seamless for non-technical users."
+        },
+        {
+          "name": "MySudo",
+          "url": "https://mysudo.com",
+          "gap": "Virtual numbers can face the same VoIP rejection by verification APIs."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Anyone migrate off Google Voice?",
+          "url": "https://news.ycombinator.com/item?id=50161821",
+          "quote": "I have used Google Voice for years and generally like it, but an increasing number of businesses are no longer accepting it as a valid phone number to call or text.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Anyone migrate off Google Voice?",
+          "url": "https://news.ycombinator.com/item?id=50163393",
+          "quote": "Businesses who validate phone numbers often use an API (like Twilio Lookup or one of the many, many other services) to check for VoIP numbers and automatically reject them most of the time.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Anyone migrate off Google Voice?",
+          "url": "https://news.ycombinator.com/item?id=50162734",
+          "quote": "If someone finds an better SMS/MMS to email gateway, please let me know. Google Voice's support for group messages is awful.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Anyone migrate off Google Voice?",
+          "url": "https://news.ycombinator.com/item?id=50166644",
+          "quote": "Google Voice has just obviously stagnated over the years with almost zero new features.",
+          "date": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "local-podcast-speaker-transcriber",
+      "title": "TalkText: private podcast and meeting transcripts with speaker labels",
+      "category": "Desktop app",
+      "oneLiner": "A drag-and-drop Mac/Windows app that turns audio into readable, speaker-labelled text with a short summary, all on-device.",
+      "problem": "People want to read rather than listen and want speaker-labelled transcripts and brief summaries, but local diarization is still a hunt through model repos and they do not want their speech sent to the cloud.",
+      "targetUsers": "Podcast listeners, researchers, journalists and professionals with private recordings.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "One-time $29 licence, or $5/month for cloud-sync of transcripts.",
+      "mvp": [
+        "Drag-and-drop audio/video file",
+        "On-device speech-to-text with speaker diarization",
+        "Rename speakers and export to Markdown/SRT/DOCX",
+        "Short summary and chapter list generated locally",
+        "Searchable library of past transcripts",
+        "Podcast RSS URL import"
+      ],
+      "competitors": [
+        {
+          "name": "MacWhisper",
+          "url": "https://goodsnooze.gumroad.com/l/macwhisper",
+          "gap": "Mac only; speaker labelling and summaries are less central, and Windows users are not served."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Voxtral 3",
+          "url": "https://news.ycombinator.com/item?id=50169301",
+          "quote": "Good transcription and diarization which is the primary personal use-case where I want to turn podcast content into text since I read faster than I listen.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Voxtral 3",
+          "url": "https://news.ycombinator.com/item?id=50169159",
+          "quote": "I'm looking for a local model that can do diarization, have any suggestions for this?",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Voxtral 3",
+          "url": "https://news.ycombinator.com/item?id=50169185",
+          "quote": "Hopefully smaller models soon that can be deployed locally for personal use, definitely don't want the speech data sent outside.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "What was a Token Ring network?",
+          "url": "https://news.ycombinator.com/item?id=50122877",
+          "quote": "I wish there was a very brief plain text summary rather than a long video that I don't have time to watch.",
+          "date": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "id": "ct-watch-lite",
+      "title": "CertWatch Lite: alert me if any CA issues a cert for my domain",
+      "category": "Developer tool",
+      "oneLiner": "A free-tier monitor that watches Certificate Transparency logs for your domains and pings you when an unexpected CA or issuer shows up.",
+      "problem": "After a CA key compromise, domain owners realise they have no practical way to know when a rogue certificate is issued for their domain; raw CT log monitoring is heavy and rate-limited.",
+      "targetUsers": "Indie developers, small SaaS owners and agencies who run their own domains.",
+      "painScore": 5,
+      "effort": "Weekend",
+      "monetization": "Free for 3 domains; $5/month for 25 domains with webhook and Slack alerts; $15/month for teams.",
+      "mvp": [
+        "Add domains and an allow-list of expected CAs",
+        "Poll a CT search API for new certificates",
+        "Email/Telegram alert on unexpected issuer or wildcard",
+        "Show CAA record status and suggest a fix",
+        "Weekly digest of certificates seen"
+      ],
+      "competitors": [
+        {
+          "name": "Cert Spotter",
+          "url": "https://sslmate.com/certspotter",
+          "gap": "Exists, so differentiation must come from a free tier and issuer allow-list simplicity."
+        },
+        {
+          "name": "crt.sh",
+          "url": "https://crt.sh",
+          "gap": "Search only; no push alerts."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "eMudhra intermediate CA compromise",
+          "url": "https://news.ycombinator.com/item?id=50172685",
+          "quote": "What's worse is, if this hadn't come to light, how would you even know when an attacker issues a cert for your domain? Well you might think, oh I can monitor the certificate transparency logs. I would say well, good luck downloading and parsing terabytes of certificates as they are logged.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "eMudhra intermediate CA compromise",
+          "url": "https://news.ycombinator.com/item?id=50171305",
+          "quote": "Visibility through Certificate Transparency logs would at least make it a matter of record that it occurred, though.",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "eMudhra intermediate CA compromise",
+          "url": "https://news.ycombinator.com/item?id=50187671",
+          "quote": "Each website could try to monitor the DNS records similar to CT logs, though for targeted attacks that may not work.",
+          "date": "2026-10-21"
+        }
+      ]
+    }
+  ]
+}
