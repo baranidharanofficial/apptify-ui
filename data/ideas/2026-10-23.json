@@ -1,0 +1,286 @@
+{
+  "date": "2026-10-23",
+  "summary": "Only Hacker News was reachable today (Reddit, X, Bluesky and others were blocked), so this is a short, evidence-first list. Strongest themes: developers drowning in AI-written pull requests with no good way to review them, Arc browser's sunset leaving users stranded, and Plex's player-team layoffs pushing self-hosters toward Jellyfin/Navidrome stacks that still lack Plex's polish.",
+  "ideas": [
+    {
+      "id": "pr-review-comprehension-app",
+      "title": "PR Lens: a review surface for AI-sized pull requests",
+      "category": "Developer tool",
+      "oneLiner": "A focused app that shows a big diff in the order you should read it, hides moved code, and explains what changed without doing the review for you.",
+      "problem": "AI agents generate huge diffs and the reviewer is now the bottleneck. GitHub's review UI treats a 5K-line PR like a 50-line one, so developers are hand-building their own review tools and process hacks (review-order sections, local scripts).",
+      "targetUsers": "Developers and small teams reviewing AI-assisted PRs on GitHub or GitLab; tech leads who own review quality.",
+      "painScore": 8,
+      "effort": "1 month+",
+      "monetization": "Free for public repos; $8–12/user/month for private repos and team features; one-off lifetime tier for solo developers.",
+      "mvp": [
+        "Paste a PR URL/number and load the diff via the GitHub API",
+        "Suggested reading order that surfaces core files first, with test and generated files collapsed",
+        "Moved/renamed code detection so unchanged blocks can be skipped",
+        "Per-file plain-language 'what changed and why it might matter' summary (explanation only, no verdicts)",
+        "Click a symbol to highlight every use across the diff",
+        "Local notes that can be posted back as review comments"
+      ],
+      "competitors": [
+        {
+          "name": "pyor.review",
+          "url": "https://pyor.review",
+          "gap": "A solo developer's own solution; shows the need is real but it is not yet a broadly adopted standard."
+        },
+        {
+          "name": "GitHub PR review UI",
+          "url": "https://github.com",
+          "gap": "Users say it still expects them to review PRs the same way regardless of size and gives poor support for large reviews."
+        },
+        {
+          "name": "AI reviewers that review in your place",
+          "gap": "The asker explicitly does not want a tool that does the code review in their place, only one that helps them understand the diff."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What AI tools help me understand a MR?",
+          "url": "https://news.ycombinator.com/item?id=50186182",
+          "quote": "I'm trying to incorporate AI code tools into my flow, but my issue is that I spend a lot of time code reviewing AI. I know there is vibe-coding vs engineering and I'm trying to stay on the engineering side while trying to figure out how to properly use AI. In that spirit, I wanted to find an AI tool that helps me code review better. More specifically, look at a diff and present it to me in a way that makes it easier for me to understand what is going on. I am not looking for a tool to do a code review in my place.",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How to speed up code-reviews?",
+          "url": "https://news.ycombinator.com/item?id=50144074",
+          "quote": "reviewing the code needs a better surface. It’s still the hard part, but what kills me is that GitHub is still expecting us to review PRs the same way, and it’s increasingly stressful due to GitHub’s poor support for a good PR review experience, I ended up building my own solution",
+          "date": "2026-10-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How to deal with shipping AI-written code you don't understand?",
+          "url": "https://news.ycombinator.com/item?id=50162201",
+          "quote": "I've been finding the same limitations with the default PR code review tools. We currently make do by having a section in our PRs \"recommended review order\" with a list of files/dirs that should be looked at first",
+          "date": "2026-10-20",
+          "engagement": "Parent thread: 747 comments"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How to deal with shipping AI-written code you don't understand?",
+          "url": "https://news.ycombinator.com/item?id=50169947",
+          "quote": "I don't even hook my tool up to Github. I just make it ultra easy to whack a PR number into the app and pull up all the details; all my review happens outside Github itself.",
+          "date": "2026-10-20",
+          "engagement": "Parent thread: 747 comments"
+        }
+      ]
+    },
+    {
+      "id": "arc-sidebar-exit-kit",
+      "title": "Arc Exit Kit: move your spaces, pins and folders to another browser",
+      "category": "Desktop app",
+      "oneLiner": "A small desktop tool that reads your Arc sidebar and rebuilds spaces, pinned tabs and folders in Zen, Chrome, Firefox or Safari.",
+      "problem": "Arc is being sunset and users say nothing matches its spaces and pinned-tab model. Even deciding where to go is hard, and migrating bookmarks and organisation out of Arc is unclear.",
+      "targetUsers": "Arc power users (designers, developers, researchers) with years of organised spaces and pinned tabs.",
+      "painScore": 7,
+      "effort": "Weekend",
+      "monetization": "One-time $9–15 for the exporter; free preview showing what would be exported.",
+      "mvp": [
+        "Read Arc's local sidebar data and list spaces, pinned tabs and folders",
+        "Export to bookmarks HTML with folder structure per space",
+        "One-click import helpers/instructions for Zen, Firefox, Chrome and Safari",
+        "Optional JSON export that other tools or scripts can consume",
+        "Dry-run report showing anything that could not be mapped"
+      ],
+      "competitors": [
+        {
+          "name": "Zen Browser",
+          "url": "https://zen-browser.app",
+          "gap": "Closest Arc-like browser, but users report bugs and one could not work out how to migrate bookmarks from Arc."
+        },
+        {
+          "name": "Dia",
+          "gap": "Users say profiles are not as good as spaces and the sidebar feels half baked."
+        },
+        {
+          "name": "Orion",
+          "gap": "No Windows, Linux or Android versions, so not a viable alternative for many."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "A farewell to Arc browser",
+          "url": "https://news.ycombinator.com/item?id=50198032",
+          "quote": "I looked at this a while back but couldn't figure out how to migrate bookmarks from Arc to Zen. Is that possible now?",
+          "date": "2026-10-22",
+          "engagement": "Parent thread: 211 comments"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "A farewell to Arc browser",
+          "url": "https://news.ycombinator.com/item?id=50203566",
+          "quote": "As a longtime Arc user, Dia just doesn't cut it. Profiles aren't as good to use as spaces, and there's no way to share favorite tabs across profiles as there is with spaces.",
+          "date": "2026-10-23",
+          "engagement": "Parent thread: 211 comments"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "A farewell to Arc browser",
+          "url": "https://news.ycombinator.com/item?id=50199932",
+          "quote": "Zen is buggy, much less buggy than before but still buggy. Dia has sidebar tabs now, but it feels half baked, and the AI Chat button is an annoyingly permanent ads. Nook was interesting for 30sec, but you will soon find out it's just not done.",
+          "date": "2026-10-22",
+          "engagement": "Parent thread: 211 comments"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "A farewell to Arc browser",
+          "url": "https://news.ycombinator.com/item?id=50199816",
+          "quote": "Does Dia or Zen have an api I can point Claude Code to? It would be nice to sort tabs via Claude Code, that already has my context.",
+          "date": "2026-10-22",
+          "engagement": "Parent thread: 211 comments"
+        }
+      ]
+    },
+    {
+      "id": "plexamp-style-music-client",
+      "title": "Gramo: a polished music client for Navidrome and Jellyfin libraries",
+      "category": "Mobile app",
+      "oneLiner": "A Flutter music player for self-hosted libraries with smart playlists, proper 'recently added' and handoff between devices.",
+      "problem": "Plex's player-team layoffs have Plexamp fans looking for a replacement. The self-hosted options are described as rough: weak smart playlists, wrong 'recently added', and Jellyfin struggling with large music libraries.",
+      "targetUsers": "Self-hosters with large local music libraries moving off Plex/Plexamp.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "Free with basic playback; one-time $15–20 unlock for smart playlists, offline sync and handoff.",
+      "mvp": [
+        "Connect to Navidrome/Subsonic-compatible servers (Jellyfin later)",
+        "Fast browsing of very large libraries with offline cache",
+        "Smart playlists (rules on genre, rating, play count, date added)",
+        "'Recently added' based on true added date, not file modified time",
+        "Queue transfer between phone and tablet",
+        "Android and iOS from one Flutter codebase"
+      ],
+      "competitors": [
+        {
+          "name": "Plexamp",
+          "gap": "The benchmark people want to keep, but Plex just laid off its player team."
+        },
+        {
+          "name": "Music Assistant",
+          "gap": "Called the closest alternative but 'still really rough around the edges'; smart playlists lacking and 'Recently Added' uses file modified time."
+        },
+        {
+          "name": "Symfonium / Gonic",
+          "url": "https://www.symfonium.app/",
+          "gap": "Praised by users, but Symfonium is Android-only and tagging relies on external tools like MusicBrainz Picard."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Plex laid off the whole player team",
+          "url": "https://news.ycombinator.com/item?id=50187245",
+          "quote": "Is there a good alternative to plex for music?",
+          "date": "2026-10-21",
+          "engagement": "Parent thread: 113 comments"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Plex laid off the whole player team",
+          "url": "https://news.ycombinator.com/item?id=50187421",
+          "quote": "The closest alternative that I've found to Plexamp is MusicAssistant. It's still really rough around the edges as a full replacement. For example: Smart playlists are lacking and/or don't work at all",
+          "date": "2026-10-21",
+          "engagement": "Parent thread: 113 comments"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Plex laid off the whole player team",
+          "url": "https://news.ycombinator.com/item?id=50188224",
+          "quote": "Jellyfin is unusable with my large music library and I was forced to use Navidrome.",
+          "date": "2026-10-21",
+          "engagement": "Parent thread: 113 comments"
+        }
+      ]
+    },
+    {
+      "id": "messy-media-matcher",
+      "title": "Matchmaker: fix mis-detected movies and shows before Jellyfin/Emby scans them",
+      "category": "Desktop app",
+      "oneLiner": "A local app that fingerprints and renames messy downloads so Jellyfin or Emby identify them correctly.",
+      "problem": "Users leaving Plex complain that Jellyfin and Emby fail to recognise content when file names are inconsistent, listing raw files instead, while Plex's matching rarely misses.",
+      "targetUsers": "Home media server owners migrating from Plex to Jellyfin or Emby.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 50 files; $12 one-time licence; optional $3/month for a hosted matching database.",
+      "mvp": [
+        "Scan a folder and show which items a server would likely fail to match",
+        "Match by title, year and runtime using TMDB lookups",
+        "Preview and apply renames or hard links in Jellyfin/Emby naming format",
+        "Undo log for every change",
+        "Watch-folder mode for new downloads"
+      ],
+      "competitors": [
+        {
+          "name": "Jellyfin / Emby built-in scanners",
+          "gap": "Expect a strict naming convention that most downloads do not follow."
+        },
+        {
+          "name": "Plex",
+          "gap": "Matches well but users are leaving over its direction and ads."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Plex laid off the whole player team",
+          "url": "https://news.ycombinator.com/item?id=50187261",
+          "quote": "most movies and shows I download, Jellyfin can't detect what content it is, and instead just lists them as raw video files in a folder since it expects a strict naming convention which most torrents don't follow. Plex seems to have a much better content detection engine",
+          "date": "2026-10-21",
+          "engagement": "Parent thread: 113 comments"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Plex laid off the whole player team",
+          "url": "https://news.ycombinator.com/item?id=50187245",
+          "quote": "The thing I really like about plex was that 99% of the time, it would scan and match up my media, even if file formats were inconsistent. That was a growing pain for Emby",
+          "date": "2026-10-21",
+          "engagement": "Parent thread: 113 comments"
+        }
+      ]
+    },
+    {
+      "id": "wrong-person-signup-alerts",
+      "title": "Misdirected: see which services think your email belongs to someone else",
+      "category": "Web app",
+      "oneLiner": "Scans your inbox for receipts and verification mails addressed to other people and tells you which service to contact.",
+      "problem": "Fintech apps accept a mistyped email after only phone verification, so strangers' accounts get tied to someone else's inbox, and the real owner has no way to fix it.",
+      "targetUsers": "People with old, short or popular email addresses that receive other people's account mail.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free scan; $19/year for ongoing monitoring and pre-written removal request templates.",
+      "mvp": [
+        "Connect Gmail read-only and detect mails addressed to a different name",
+        "Group by sender service with a risk note",
+        "Generate a removal/unlink request email for each service",
+        "Weekly digest of new misdirected mail"
+      ],
+      "competitors": [
+        {
+          "name": "Have I Been Pwned",
+          "url": "https://haveibeenpwned.com",
+          "gap": "Tells you about breaches, not about other people's accounts attached to your address."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Woman faces six years in prison over Cash App account she never opened",
+          "url": "https://news.ycombinator.com/item?id=50197868",
+          "quote": "I have an OG gmail account which a bunch of people have associated with their own accounts. The problem is the provider will verify a phone number, and once that's validated, will accept an email address, even if it's wrong. Two financial entities have accepted my email address tied to other people's account: Chime, and Venmo. There's no way to fix this",
+          "date": "2026-10-22"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Woman faces six years in prison over Cash App account she never opened",
+          "url": "https://news.ycombinator.com/item?id=50202412",
+          "quote": "Not a single comment on how an individual can prevent this? Or is there no way to protect from one’s identity getting stolen and used this way ?",
+          "date": "2026-10-22"
+        }
+      ]
+    }
+  ]
+}
