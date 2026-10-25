@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-25",
+  "summary": "A thin day for evidence: Reddit, X, Bluesky, Mastodon and most non-HN sites were unreachable from the research sandbox, so only Hacker News could be mined, and most of its complaint threads overlap ideas already published this fortnight. Two themes had at least two independent verified voices: self-hosters getting silently blocked by Outlook/Gmail despite perfect DNS setup, and smart-home devices that die or lose features when the vendor's cloud or lifespan runs out.",
+  "ideas": [
+    {
+      "id": "mail-unblock-copilot",
+      "title": "Mail Unblock Copilot",
+      "category": "SaaS",
+      "oneLiner": "Paste your domain and sending IP; get a plain-English diagnosis of why Outlook/Gmail spam-fold or block you, plus the exact steps and pre-filled tickets to get unblocked.",
+      "problem": "People who self-host email (or run a small business domain) do everything right - SPF, DKIM, DMARC, PTR, clean IP - and still land in spam or get their IP banned by Microsoft, with support unable to say why. The fix lives in scattered, opaque tooling (SNDS, JMRP, Google Postmaster, blocklist lookups, support tickets) that nobody explains end to end.",
+      "targetUsers": "Self-hosters, indie founders sending from their own domain, small agencies, and homelab users running Mailcow / Mail-in-a-Box / Stalwart.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free one-off check; Rs 499/month (about $6) for continuous monitoring with alerts when your IP lands on a blocklist or Microsoft/Gmail start rejecting; pay-per-unblock-kit for one-time users.",
+      "mvp": [
+        "Domain + IP input that checks SPF, DKIM, DMARC, PTR/forward-confirmed rDNS, MTA-STS and major DNSBL listings in one report",
+        "Plain-English verdict ranked by likely cause with copy-paste fixes",
+        "Guided walkthrough for registering the IP in Microsoft SNDS/JMRP and Google Postmaster Tools",
+        "Pre-written unblock ticket text for Microsoft and Gmail senders",
+        "Daily re-check with email/push alert when reputation or listings change"
+      ],
+      "competitors": [
+        {
+          "name": "Microsoft SNDS / JMRP",
+          "url": "https://sendersupport.olc.protection.outlook.com/snds/",
+          "gap": "Shows raw reputation data but not why you were blocked or what to change, and unblocking still requires a support ticket Microsoft says it cannot discuss in detail."
+        },
+        {
+          "name": "Google Postmaster Tools",
+          "url": "https://postmaster.google.com/",
+          "gap": "Domain-level dashboards only for senders with enough volume; no guidance for a tiny sender who just needs to get out of spam."
+        },
+        {
+          "name": "MXToolbox",
+          "url": "https://mxtoolbox.com/",
+          "gap": "Good point checks (DNS, blocklists) but no combined diagnosis, no Microsoft/Gmail-specific recovery workflow and no ongoing monitoring for a single hobby domain."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How do people self host email and maintain deliverability?",
+          "url": "https://news.ycombinator.com/item?id=50218062",
+          "quote": "I set up SPF, DKIM, DMARC, reverse IP DNS, etc. I sent 3 emails to my personal outlook/hotmail accounts, all of which went to spam. 1 day later, my IP was banned. Outlook support said they cannot discuss the reason for the ban and will not unban it so I'm out of luck.",
+          "engagement": "Ask HN, 5 comments",
+          "date": "2026-10-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How do people self host email and maintain deliverability? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50219560",
+          "quote": "no matter how good your setup is, if your IP is/was known for sending spam once, you're on some list with the big providers. If you don't already have an IP for years with a solid reputation, you're going to go through a lot of \"please check your spam\" communication.",
+          "date": "2026-10-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "All I wanted was a custom domain email (comment)",
+          "url": "https://news.ycombinator.com/item?id=49958893",
+          "quote": "Email receivers (be it Gmail or your local council) don't differentiate if you're self hosting or a business.",
+          "date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "id": "smart-device-sunset-tracker",
+      "title": "Smart Device Sunset Tracker",
+      "category": "Mobile app",
+      "oneLiner": "Scan your home gadgets and see which ones depend on a vendor cloud, when each one expires or loses support, and what local-control alternative exists before it bricks.",
+      "problem": "Smart-home gear quietly dies on a vendor's schedule (detectors that brick at ten years, features that only exist inside the maker's app) and owners find out only when it stops working. There is no single place that tells you which of your devices are cloud-locked, when they expire, and how to keep them working locally.",
+      "targetUsers": "Smart-home owners with a mix of Wi-Fi bulbs, thermostats and detectors, Home Assistant tinkerers, and landlords or families who maintain safety devices for others.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for up to 10 devices; Rs 299/month (about $4) or Rs 2,499/year for unlimited devices, expiry/recall alerts and household sharing. Affiliate links for local-control replacements.",
+      "mvp": [
+        "Add devices by brand/model (barcode or search) with purchase date",
+        "Per-device card: cloud-dependent or local-capable, expected end-of-life, known features that only work in the vendor app",
+        "Expiry reminders for safety devices such as smoke and CO detectors",
+        "Alerts when a vendor announces a shutdown or feature removal",
+        "Suggested local-first replacements (Zigbee / Thread / Home Assistant friendly)"
+      ],
+      "competitors": [
+        {
+          "name": "Home Assistant",
+          "url": "https://www.home-assistant.io/",
+          "gap": "Controls devices locally but does not track lifespan, expiry or vendor shutdown risk, and has a steep setup for non-tinkerers."
+        },
+        {
+          "name": "Google Home / vendor apps",
+          "gap": "Each shows only its own devices and has no incentive to warn you about cloud lock-in or end-of-life."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Google has officially turned these Nest thermostats back into dumb thermostats (comment)",
+          "url": "https://news.ycombinator.com/item?id=50227605",
+          "quote": "all co2 detectors expire after ten years, nest decided the appropriate action is to just brick it when they were ten years old.",
+          "date": "2026-10-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Google has officially turned these Nest thermostats back into dumb thermostats (comment)",
+          "url": "https://news.ycombinator.com/item?id=50227595",
+          "quote": "a lot of Matter devices (most in my personal experience) use WiFi and often intentionally neuter their Matter support to \"encourage\" you to use their app and/or cloud integration with a major voice assistant.",
+          "date": "2026-10-25"
+        }
+      ]
+    }
+  ]
+}
