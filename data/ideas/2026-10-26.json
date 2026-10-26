@@ -1,0 +1,205 @@
+{
+  "date": "2026-10-26",
+  "summary": "A thin day: Reddit, X and Bluesky were blocked from this environment, so every source below is a Hacker News comment checked against the live thread. Strongest themes were fear of losing Android sideloading, a wish for a light OneNote-style notes app that isn't Electron, parents wanting screen time without algorithmic feeds, and non-developers wanting a simple way to publish a site.",
+  "ideas": [
+    {
+      "id": "sideload-vault",
+      "title": "Sideload Vault",
+      "category": "Mobile app",
+      "oneLiner": "Android app that inventories every sideloaded app, keeps verified APK backups, and restores the whole set onto a new phone.",
+      "problem": "A 540-point HN thread on Google's tightening of sideloading shows people who depend on APKs outside Play (open-source medical apps, privacy-focused setups) worrying about losing them. One commenter already hand-rolls the workflow: save every APK, rsync backups, reload on the next phone. Nothing packages that into a tool.",
+      "targetUsers": "Privacy-minded Android users, GrapheneOS/F-Droid users, people running niche open-source apps such as insulin-pump controllers.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for up to 10 apps; one-time ₹399 / $5 unlock for unlimited apps, encrypted cloud/Nextcloud backup, and scheduled backups.",
+      "mvp": [
+        "Scan installed packages and flag those not installed from Play",
+        "Save a copy of each APK plus SHA-256 and signing-certificate fingerprint",
+        "Export/import a backup bundle to local storage or a WebDAV/Nextcloud target",
+        "Guided restore onto a new phone, one app at a time",
+        "Per-app note showing where the app came from (GitHub, F-Droid, website)"
+      ],
+      "competitors": [
+        {
+          "name": "Obtainium",
+          "url": "https://github.com/ImranR98/Obtainium",
+          "gap": "Tracks and updates apps from release pages, but is not built around backing up the APKs you already have and restoring the whole set to a new device."
+        },
+        {
+          "name": "F-Droid",
+          "url": "https://f-droid.org",
+          "gap": "Only covers apps in its catalogue, not arbitrary APKs from GitHub or vendor sites."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Your Phone Is About to Stop Being Yours: 70 Days Until Lockdown",
+          "url": "https://news.ycombinator.com/item?id=50209497",
+          "quote": "I had \"sideloaded\" all the APKs for the software I used on the old phone and saved the APKs. Moving to a new phone was just a matter of loading all the software and copying my rsync'd backups onto the new phone. It was wonderful.",
+          "engagement": "thread: 540 points · 354 comments",
+          "date": "2026-10-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Your Phone Is About to Stop Being Yours: 70 Days Until Lockdown",
+          "url": "https://news.ycombinator.com/item?id=50209941",
+          "quote": "the absolute best app out there for controlling insulin pumps for diabetics is an open source app you have to \"sideload.\"",
+          "engagement": "thread: 540 points · 354 comments",
+          "date": "2026-10-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Your Phone Is About to Stop Being Yours: 70 Days Until Lockdown",
+          "url": "https://news.ycombinator.com/item?id=50210191",
+          "quote": "As a long time iOS user, I just switched to GrapheneOS as the lack of sideloading, after 8 years, became too much pain.",
+          "engagement": "thread: 540 points · 354 comments",
+          "date": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "freeform-notes-lite",
+      "title": "Freeform Notes Lite",
+      "category": "Desktop app",
+      "oneLiner": "A fast, non-Electron, OneNote-style notes app with free placement and handwriting, built once in Flutter for desktop and tablet.",
+      "problem": "People want OneNote-style free-form pages and handwriting, but say the open-source note apps are crowded and mostly Electron-based. They want something performant that matches OneNote's feature set.",
+      "targetUsers": "Students and professionals who like OneNote's canvas, Linux and Mac users with no good OneNote client, tablet and stylus owners.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "Free local use; paid sync/backup tier at about $3/month or a one-time license for the pro features.",
+      "mvp": [
+        "Infinite page with free text boxes, images and ink",
+        "Pen input with palm rejection and pressure",
+        "Notebook > section > page tree stored as plain local files",
+        "PDF import and annotation",
+        "Fast startup and low memory use, as the main selling point"
+      ],
+      "competitors": [
+        {
+          "name": "Saber",
+          "url": "https://apps.apple.com/app/id1671523739",
+          "gap": "Flutter, open source and handwriting-focused, but it is not a free-placement text-and-ink canvas like OneNote. These HN commenters still ask for one."
+        },
+        {
+          "name": "Microsoft OneNote",
+          "url": "https://www.onenote.com",
+          "gap": "The benchmark commenters cite; tied to Microsoft's ecosystem."
+        },
+        {
+          "name": "Obsidian",
+          "url": "https://obsidian.md",
+          "gap": "Markdown-first, no free-form page placement or native handwriting."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "We should be more ambitious with the software we build",
+          "url": "https://news.ycombinator.com/item?id=50228495",
+          "quote": "The note taking genre of opensource apps is saturated with many options but most of them are electron based. I was hoping that someone with enough motivation and money for tokens would come up with a non-electron option that is similar to onenote, with free form note placement and handwritten notes.",
+          "engagement": "thread: 752 points · 661 comments",
+          "date": "2026-10-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "We should be more ambitious with the software we build",
+          "url": "https://news.ycombinator.com/item?id=50228624",
+          "quote": "I would be glad for a OneNote/Obsidian alternative that's performant.",
+          "engagement": "thread: 752 points · 661 comments",
+          "date": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "kids-feedless-player",
+      "title": "Feedless Kids Player",
+      "category": "Mobile app",
+      "oneLiner": "A parent-curated tablet launcher that plays only approved videos and audio, offline, with no feed, search or autoplay.",
+      "problem": "In a thread on Amazon's toddler tablet, working parents say screen time is sometimes unavoidable but argue a fixed movie is better than an algorithmic feed, and that locking down the open internet for kids is very hard.",
+      "targetUsers": "Parents of children aged 2–8, especially dual-working parents and families on long trips.",
+      "painScore": 4,
+      "effort": "1–2 weeks",
+      "monetization": "Free for a small library; $20/year family plan for unlimited items, multiple child profiles and cloud sync of the library.",
+      "mvp": [
+        "Parent adds videos or audio from local files or a home media server",
+        "Kid mode locks to the approved library with no search, feed or autoplay",
+        "Per-child daily time limit with a gentle end-of-session screen",
+        "Offline playback for travel",
+        "Parent PIN and an activity log"
+      ],
+      "competitors": [
+        {
+          "name": "Amazon Kids+",
+          "url": "https://www.amazon.com/kidsplus",
+          "gap": "Ad-free, but a paid catalogue, with apps and games limited to Fire devices, and it is the product the thread was criticising."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Amazon's \"digital pacifier\" for toddlers",
+          "url": "https://news.ycombinator.com/item?id=50235290",
+          "quote": "I am a dual working parent. It is hard. I am not saying zero screen time. ... I think it's better to give them a movie rather than an algorithmic feed.",
+          "engagement": "thread: 100 points · 135 comments",
+          "date": "2026-10-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Amazon's \"digital pacifier\" for toddlers",
+          "url": "https://news.ycombinator.com/item?id=50235508",
+          "quote": "My wife and I are working parents. This is nightmarish. We know screen kids and they are not good around other people.",
+          "engagement": "thread: 100 points · 135 comments",
+          "date": "2026-10-25"
+        }
+      ]
+    },
+    {
+      "id": "one-page-site-publisher",
+      "title": "One-Page Site Publisher",
+      "category": "Web app",
+      "oneLiner": "A no-config site maker that turns a simple editor into a hosted static site in one click, for people who have no need for WordPress.",
+      "problem": "Commenters ask why there is no easy GUI tool for making a website, and builders describe getting tired of wrestling with WordPress for a very simple task. Facebook's new paid link limits pushed people to want a site of their own.",
+      "targetUsers": "Small businesses, creators and community pages leaving social platforms; non-developers who only need a page or a small blog.",
+      "painScore": 4,
+      "effort": "1–2 weeks",
+      "monetization": "Free subdomain; $4/month for a custom domain, analytics and more pages.",
+      "mvp": [
+        "Pick a template and edit text and images in place",
+        "One-click publish to a static host",
+        "Custom-domain wizard with plain-language DNS steps",
+        "Simple blog or link-list page type",
+        "Export the site as plain files"
+      ],
+      "competitors": [
+        {
+          "name": "Publii",
+          "url": "https://getpublii.com",
+          "gap": "A free desktop static-site CMS, so the 'no GUI app' complaint is not fully true. It behaves like a full CMS, which is more than a one-page site needs."
+        },
+        {
+          "name": "Carrd / Wix",
+          "gap": "Hosted builders with lock-in and paid tiers; users in these threads are asking for something simpler and more portable."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Facebook Pages require paid subscription to post more than two links per month",
+          "url": "https://news.ycombinator.com/item?id=50169860",
+          "quote": "Why is there no GUI desktop app that lets you easily make a website?",
+          "engagement": "thread: 473 points · 404 comments",
+          "date": "2026-10-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What have you built privately with AI that you'd like to share?",
+          "url": "https://news.ycombinator.com/item?id=50175602",
+          "quote": "I got tired of wrestling with Wordpress and more involved machinery for a very simple task",
+          "engagement": "thread: 10 points · 26 comments",
+          "date": "2026-10-21"
+        }
+      ]
+    }
+  ]
+}
