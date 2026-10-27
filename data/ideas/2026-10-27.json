@@ -1,0 +1,238 @@
+{
+  "date": "2026-10-27",
+  "summary": "A thin day: Reddit, X and Bluesky were blocked, so every source is Hacker News. The strongest theme is that browsers still can't save or print the web properly, with five separate commenters describing garbled prints, missing exports and hand-built archives. Smaller clusters: Xcode and Rust build output eating laptop disks, tab hoarders who want a task tree instead of a flat strip, and the unsolved label-sheet mail merge.",
+  "ideas": [
+    {
+      "id": "clean-print-and-archive-extension",
+      "title": "Clean Print & Archive",
+      "category": "Browser extension",
+      "oneLiner": "One click turns any web page into a clean, paginated PDF or self-contained archive, and lets you stack several pages onto one comparison sheet.",
+      "problem": "Browser print produces garbled output on many modern JS-heavy sites, and 'Save page' no longer works offline. People still rely on printing to keep order confirmations, bank payments, recipes, audit evidence and car or property listings they want to compare on paper. SaaS tools such as ticket trackers have no usable export, so people stitch screenshots together by hand.",
+      "targetUsers": "Online shoppers keeping receipts and confirmations, car and property hunters comparing listings, compliance or QA staff archiving tool pages as evidence, and anyone who keeps recipes or references offline.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free for single-page clean PDFs. Pro at about ₹149/month or ₹1,200/year adds multi-page compare sheets, evidence bundles with timestamp and URL footers, and cloud-free searchable archive folders.",
+      "mvp": [
+        "Strip nav, ads, cookie banners and sticky headers with a print-specific render pass, then export to PDF",
+        "Add a footer with the page URL and capture timestamp so receipts and evidence hold up later",
+        "Queue several pages and lay them out side by side or on one sheet for comparison",
+        "Tag and store the PDFs locally with full-text search",
+        "Presets for order confirmations, bank pages, recipes and listing pages"
+      ],
+      "competitors": [
+        {
+          "name": "SingleFile",
+          "url": "https://github.com/gildas-lormeau/SingleFile",
+          "gap": "Saves a page as one HTML file, which suits power users. It doesn't produce a clean print layout, compare sheets or timestamped evidence."
+        },
+        {
+          "name": "Print Friendly & PDF",
+          "url": "https://www.printfriendly.com/",
+          "gap": "Basic cleanup only. It has no multi-page comparison and no audit-style footers, and commenters say app-like pages still print badly."
+        },
+        {
+          "name": "Browser reader mode and Print to PDF",
+          "gap": "Reader mode breaks on some designs, and the native print dialog is what users say produces garbage on Firefox and Chrome."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Websites Should Be Printable",
+          "url": "https://news.ycombinator.com/item?id=50242368",
+          "quote": "I used to work for a vehicle listing site, and over and over again when we talked to real users they would tell us how they would make spreadsheets and print out our vehicle pages (and from other sites too) so they could compare everything together on their kitchen table.",
+          "engagement": "279 points · 52 comments (thread)",
+          "date": "2026-10-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Websites Should Be Printable",
+          "url": "https://news.ycombinator.com/item?id=50243300",
+          "quote": "The tool is hopelessly unable to generate a sensible export or print to pdf for archiving pages to share with customers or auditors. I’ve had to resort to stitching screenshots together in MS Paint to create the offline evidence documents that I need.",
+          "engagement": "279 points · 52 comments (thread)",
+          "date": "2026-10-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Websites Should Be Printable",
+          "url": "https://news.ycombinator.com/item?id=50243196",
+          "quote": "When there is a website that I want to save indefinitely, I will print it to pdf. It means I can go back in a few years after the site is offline or has rearranged its urls (thus breaking bookmarks.)",
+          "engagement": "279 points · 52 comments (thread)",
+          "date": "2026-10-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Websites Should Be Printable",
+          "url": "https://news.ycombinator.com/item?id=50248672",
+          "quote": "It is very annoying that the print command does not work in browsers, because nowadays that is the only reliable way to save a Web page.",
+          "engagement": "279 points · 52 comments (thread)",
+          "date": "2026-10-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Websites Should Be Printable",
+          "url": "https://news.ycombinator.com/item?id=50243401",
+          "quote": "Property search websites too. Boggles my mind that Rightmove can make it possible for you to add notes on a property page but still has a shit print view.",
+          "engagement": "279 points · 52 comments (thread)",
+          "date": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "build-cruft-cleaner-xcode-rust",
+      "title": "Build Cruft Cleaner for Xcode & Rust",
+      "category": "Developer tool",
+      "oneLiner": "A small desktop app that finds Xcode DerivedData, simulators, Rust target folders and similar build output, shows what each costs, and cleans it safely.",
+      "problem": "Developers on small SSDs lose tens of gigabytes to hidden build output. One Mac developer found about 8GB generated per Xcode build in a hidden folder and filled the disk over 20 releases. Another abandoned projects because Rust target directories took tens of gigabytes. Generic disk analyzers on the Mac are described as frustrating and useless for this case.",
+      "targetUsers": "iOS, macOS and Rust developers on 256GB laptops or Mac minis, including indie developers who build and ship often.",
+      "painScore": 6,
+      "effort": "Weekend",
+      "monetization": "Free scan, then a one-time license of about ₹1,500 (or ₹399 per year) for scheduled auto-clean, per-project rules and more ecosystems (Gradle, Flutter, node_modules, Docker).",
+      "mvp": [
+        "Scan known locations: Xcode DerivedData, Archives, simulator runtimes, device support files, Rust target, node_modules, Gradle caches",
+        "Show size per project and last-built date, and list the oldest and biggest first",
+        "One-click clean with a dry-run preview and a safe-delete list that never touches source",
+        "Menu-bar nudge when free space drops below a threshold",
+        "Monthly auto-clean of projects not built in N days"
+      ],
+      "competitors": [
+        {
+          "name": "DevCleaner for Xcode",
+          "url": "https://github.com/vashpan/xcode-dev-cleaner",
+          "gap": "Xcode-only, so it misses Rust, Flutter and JS build output that the same developers also accumulate."
+        },
+        {
+          "name": "Kondo",
+          "url": "https://github.com/tbillington/kondo",
+          "gap": "Command-line tool aimed at project folders. It has no scheduled cleaning or Xcode-specific caches."
+        },
+        {
+          "name": "DaisyDisk / CleanMyMac",
+          "gap": "General disk analyzers. They don't know which build folders are safe to remove, and the commenter calls Apple-land analyzers useless for this."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "OBS Studio 33",
+          "url": "https://news.ycombinator.com/item?id=50224478",
+          "quote": "Xcode generates a ton of hidden cruft in the DerivedData folder during every build/release that I wasn't even aware of! I spent a couple days googling and trying free & paid disk space analyzers",
+          "engagement": "473 points · 24 comments (thread)",
+          "date": "2026-10-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "2026 is an exciting year for the Rust compiler (and me)",
+          "url": "https://news.ycombinator.com/item?id=50170810",
+          "quote": "I had to abandon several projects until I bought a significantly beefier computer because of disk space, which is ridiculous. A lot of it was rust target directories taking up tens of gigabytes.",
+          "engagement": "196 points · 11 comments (thread)",
+          "date": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "research-tab-tree",
+      "title": "Research Tab Tree",
+      "category": "Browser extension",
+      "oneLiner": "Turns a pile of open tabs into a prunable tree per task, with notes, so research can be paused for months and resumed.",
+      "problem": "People research by opening dozens of tabs in a branching pattern: wide search, shortlist, then deep dives per candidate. A flat tab strip can't show that structure. Tab hoarders keep tabs open for months, or copy links by hand into notes. ADHD users describe losing the thread and leaving ten tabs behind.",
+      "targetUsers": "Heavy researchers, shoppers comparing products, students doing literature reviews, and people with ADHD who start many side projects.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 3 trees. Pro at about ₹99/month adds unlimited trees, sync across devices, a Markdown or Obsidian export, and a 'resume where I left off' digest.",
+      "mvp": [
+        "Auto-record which tab opened which, building a tree per task",
+        "Prune a branch to close or archive a whole product or topic at once",
+        "Add a one-line note to any node",
+        "Freeze a tree to a sleeping task and restore all tabs later",
+        "Export the tree to Markdown for Obsidian or Notion"
+      ],
+      "competitors": [
+        {
+          "name": "Tree Style Tab",
+          "url": "https://addons.mozilla.org/firefox/addon/tree-style-tab/",
+          "gap": "Firefox only and a sidebar rather than a task tool. It has no notes, task freezing or export."
+        },
+        {
+          "name": "Workona",
+          "url": "https://workona.com/",
+          "gap": "Workspace-based, not a tree. Users still organize everything manually."
+        },
+        {
+          "name": "OneTab",
+          "url": "https://www.one-tab.com/",
+          "gap": "Collapses tabs into a flat list, which loses the branching structure."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Overgrown, when plants invade your abandoned tabs",
+          "url": "https://news.ycombinator.com/item?id=50241427",
+          "quote": "I wish I had another way to visualize them. A mind map would be ideal, this is also why I like tab groups and tree-style tabs.",
+          "engagement": "400 points · 35 comments (thread)",
+          "date": "2026-10-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Overgrown, when plants invade your abandoned tabs",
+          "url": "https://news.ycombinator.com/item?id=50237543",
+          "quote": "And I'm left with 10 tabs that were suppose to kick start my idea. To my own surprise I tend to go back to these ideas, but sometimes it takes me months, and sometimes, I keep these tabs on one of my devices, opened for months at a time.",
+          "engagement": "400 points · 35 comments (thread)",
+          "date": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "label-sheet-mail-merge",
+      "title": "Label Sheet Mail Merge",
+      "category": "Web app",
+      "oneLiner": "Upload a CSV, pick your adhesive label sheet, and get a PDF whose addresses line up with the labels on the first print.",
+      "problem": "Mail-merging a spreadsheet onto adhesive label paper is an annual nightmare outside Microsoft Word. One user checks LibreOffice or OnlyOffice every year and ends up with misaligned labels on ruined sheets. Another commenter on the same thread suggested someone should build an app just for mail merge.",
+      "targetUsers": "Small offices, clubs, nonprofits and shops that mail invoices, invitations or parcels and want an alternative to MS Word.",
+      "painScore": 5,
+      "effort": "Weekend",
+      "monetization": "Free for up to 30 labels per sheet-run with a watermark. Paid at about ₹199 per month or ₹499 one-time per template pack for unlimited labels, custom sizes and saved address books.",
+      "mvp": [
+        "CSV or Google Sheets import with column mapping",
+        "Built-in label presets for common sheet sizes (A4 and Letter grids)",
+        "Live preview with a margin and offset calibration test page",
+        "PDF export that stays aligned across printers",
+        "Save templates and address lists"
+      ],
+      "competitors": [
+        {
+          "name": "Avery Design & Print",
+          "url": "https://www.avery.com/",
+          "gap": "Tied to Avery sheet codes and requires an account, so users on other brands still struggle with alignment."
+        },
+        {
+          "name": "LibreOffice / OnlyOffice mail merge",
+          "gap": "The commenter says the process differs every year and labels still misalign despite the claimed format compatibility."
+        },
+        {
+          "name": "Microsoft Word mail merge",
+          "gap": "Works but forces Windows and a Microsoft subscription, which the commenter dislikes."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Danish Government silently drops plan to dump MS Office",
+          "url": "https://news.ycombinator.com/item?id=50224288",
+          "quote": "I will try to do this same exact action, which every office in the world likely does a significant number of times per year. Every year, once I figure out how to mail merge (sometimes, a drastically different process in the interface, whereas Microsoft has kept this relatively intuitive throughout the ages) I end up with misaligned labels on a sheet of ruined label paper, despite the alleged format compatibility of the open source alternatives.",
+          "engagement": "231 points · 26 comments (thread)",
+          "date": "2026-10-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Danish Government silently drops plan to dump MS Office",
+          "url": "https://news.ycombinator.com/item?id=50225149",
+          "quote": "Maybe there should be an app just for doing mail-merge. That should be fairly simple I assume?",
+          "engagement": "231 points · 26 comments (thread)",
+          "date": "2026-10-24"
+        }
+      ]
+    }
+  ]
+}
