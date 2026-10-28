@@ -1,0 +1,376 @@
+{
+  "date": "2026-10-28",
+  "summary": "Reddit's public RSS feeds and Hacker News were the only platforms reachable today, so this report is thinner than usual (7 ideas, each with 2-3 verified sources). The strongest theme is the Railway breach and outage, which left developers told to rotate every secret while deploys were paused. Smaller, steady themes are spam SMS that generic blockers miss, nomad visa rules that change faster than calculators, and Etsy sellers and buyers working around gaps in Etsy's own tools.",
+  "ideas": [
+    {
+      "id": "breach-day-secrets-rotator",
+      "title": "Breach-Day Secrets Rotator",
+      "category": "Developer tool",
+      "oneLiner": "When a host or SaaS leaks your env vars, get a prioritized, provider-by-provider checklist of every key to rotate, in the right order.",
+      "problem": "After Railway disclosed that environment variables may have been accessed, customers were told to revoke and reissue every key, but builds were paused so they could not redeploy with the new ones. Most people do not have a single inventory of which API keys, database credentials and registry tokens live in which service. Existing rotation tools assume a calm, scheduled rotation, not an emergency across ten dashboards.",
+      "targetUsers": "Solo developers and small teams running apps on Railway, Render, Vercel, Fly or similar hosts, with secrets spread across hosting, GitHub Actions and local .env files.",
+      "painScore": 8,
+      "effort": "1–2 weeks",
+      "monetization": "Free local CLI that scans repos and .env files. Paid web dashboard at about $9/month for saved inventories, rotation runbooks per provider and incident-mode reminders. Or $15 one-time per incident pack.",
+      "mvp": [
+        "Scan a repo, .env files and pasted host variable exports (client-side only) and group secrets by provider (Stripe, OpenAI, AWS, Postgres and others)",
+        "Ordered rotation checklist per provider with direct dashboard links and revoke-then-reissue vs dual-key steps",
+        "Dependency order: rotate the keys that unlock other keys first (cloud root and registry credentials before app keys)",
+        "Mode for when deploys are blocked: lists which secrets need a redeploy and which can be swapped at the provider side",
+        "Exportable incident log (timestamp per key rotated) to share with a team or client"
+      ],
+      "competitors": [
+        {
+          "name": "Infisical secret rotation",
+          "url": "https://infisical.com/docs/documentation/platform/secret-rotation/overview",
+          "gap": "Built around scheduled rotation inside Infisical, so it only helps if you already moved your secrets there before the incident."
+        },
+        {
+          "name": "Doppler rotation engine",
+          "url": "https://doppler.com/blog/the-current-secrets-rotation-process-is-broken",
+          "gap": "Needs Doppler as the source of truth; does not help with an inventory of secrets scattered across hosts and .env files."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Reddit",
+          "title": "r/webdev: Railway hacked - Env's leaked",
+          "url": "https://www.reddit.com/r/webdev/comments/1xc3poo/railway_hacked_envs_leaked/",
+          "quote": "Until builds are restored, you will not be able to roll out new versions.",
+          "date": "2026-10-22"
+        },
+        {
+          "platform": "Reddit",
+          "title": "r/webdev: Railway’s October 21 incident is hard to brush off as “these things happen”",
+          "url": "https://www.reddit.com/r/webdev/comments/1xdl812/railways_october_21_incident_is_hard_to_brush_off/",
+          "quote": "They were being told to replace their secrets while deployments were paused, preventing them from updating their applications with the replacement credentials.",
+          "date": "2026-10-23"
+        },
+        {
+          "platform": "Reddit",
+          "title": "r/webdev: Railway hosting is deeply unreliable",
+          "url": "https://www.reddit.com/r/webdev/comments/1xbsssb/railway_hosting_is_deeply_unreliable/",
+          "quote": "We couldnt update a single project or make any changes in our system.",
+          "date": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "spam-sms-score-filter",
+      "title": "Spam SMS Score Filter",
+      "category": "Mobile app",
+      "oneLiner": "An Android filter that scores each text against your own allow-words and sender groups, instead of a one-size-fits-all spam list.",
+      "problem": "Spam texts keep arriving from fresh numbers, so unsubscribing and number blocking do not work. People who want to block unknown senders worry about missing real messages such as a school or a clinic. The one tool praised for granular rules is hard to configure, and one commenter built their own LLM daemon in six hours because nothing fit.",
+      "targetUsers": "Android users, including in India where promotional and scam SMS from rotating sender IDs are common, who want fewer spam texts without missing OTPs and family messages.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free tier with rules on-device. Pro at about ₹99/month or ₹799/year for the optional cloud scoring model, shared rule packs and backup of rules.",
+      "mvp": [
+        "Default-SMS-app-free design: read incoming notifications, score the text on-device",
+        "Sender groups (contacts, past senders, same area code or prefix, unknown) with a separate threshold per group",
+        "Weighted keyword and pattern lists, plus an always-keep list (your bank, your doctor, family names)",
+        "Three outcomes per score band: allow, silence, move to a junk list you can review and undo",
+        "Starter rule packs, for example OTP and bank alerts always kept and promo or lottery phrases penalized"
+      ],
+      "competitors": [
+        {
+          "name": "SpamBlocker (open source)",
+          "url": "https://alternativeto.net/software/truecaller--caller-id/?p=3",
+          "gap": "Powerful regex and group rules but aimed at tinkerers; users still ask for weighting and easier setup."
+        },
+        {
+          "name": "NoSpamPro",
+          "url": "https://alternativeto.net/software/nospampro-spam-sms-and-call-blocker",
+          "gap": "Local engine plus cloud AI with no user-tunable per-sender thresholds described."
+        },
+        {
+          "name": "Truecaller",
+          "url": "https://alternativeto.net/software/truecaller--caller-id",
+          "gap": "Depends on a crowd database and raises privacy concerns, and it gives little per-user control over borderline texts."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Somebody please stop the spam texts (comment)",
+          "url": "https://news.ycombinator.com/item?id=50262513",
+          "quote": "Last time I checked NoMo nor anything else has that level of granularity. All the other spam blocker tools prioritize \"one-click simple\" which means all their scoring is generic",
+          "date": "2026-10-27"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Somebody please stop the spam texts (comment)",
+          "url": "https://news.ycombinator.com/item?id=50263852",
+          "quote": "A use android, I built a daemon that auths to my Google messages and uses a cheap llm to read all my texts and if it judges they are spam reports and blocks them. 100% success so far.",
+          "date": "2026-10-27"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Somebody please stop the spam texts (comment)",
+          "url": "https://news.ycombinator.com/item?id=50250526",
+          "quote": "Here in Ohio I am getting nearly 100 a day recently. I would like to block unknown numbers, but I have kids and I certainly don't want to miss an emergency message.",
+          "date": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "nomad-stay-rules-planner",
+      "title": "Nomad Stay-Rules Planner",
+      "category": "Mobile app",
+      "oneLiner": "A trip planner that does multi-country 90/180 math (including border-day overlap) and alerts you when a visa rule you rely on changes.",
+      "problem": "Digital nomads plan around Schengen-style limits, but common itineraries fail because border days count in both jurisdictions. Meanwhile entry rules shift quickly, such as Thailand cutting visa-free stays to 30 days and tightening where the DTV can be applied for. Calculator apps count one zone and do not warn about the rule changes.",
+      "targetUsers": "Remote workers and long-term travellers, including Indian freelancers moving between visa-limited countries, who plan stays months ahead.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free single-zone calculator. Pro at about $20/year for multi-jurisdiction itinerary checks, change alerts for countries you follow and calendar export.",
+      "mvp": [
+        "Trip timeline with entry and exit dates and a rolling window per jurisdiction (90/180 and custom rules)",
+        "Detects the shared border-day problem and the earliest legal re-entry date for a planned itinerary",
+        "Suggests how many days in a third jurisdiction are needed before re-entry",
+        "Curated rule cards for about 20 popular nomad countries, with a last-verified date and official source link",
+        "Push alert when a followed country's rule card changes"
+      ],
+      "competitors": [
+        {
+          "name": "90 Days Schengen Calculator",
+          "url": "https://apps.apple.com/in/app/id6759725296",
+          "gap": "Tracks the Schengen window only; no cross-jurisdiction itinerary check or alerts for other countries' rules."
+        },
+        {
+          "name": "Visably",
+          "url": "https://apps.apple.com/us/app/visably/id6743715664",
+          "gap": "Schengen-focused calculator; no coverage described for nomad visas elsewhere or rule-change feeds."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Reddit",
+          "title": "r/digitalnomad: PSA: Reminder on waiting out Schengen timer. I’ve seen some dangerous itineraries.",
+          "url": "https://www.reddit.com/r/digitalnomad/comments/1xcobmw/psa_reminder_on_waiting_out_schengen_timer_ive/",
+          "quote": "The issue is your border crossing days count towards both jurisdictions.",
+          "date": "2026-10-22"
+        },
+        {
+          "platform": "Reddit",
+          "title": "r/digitalnomad: Thailand cut visa-free stays to 30 days and DTV now has to be applied for from your home country",
+          "url": "https://www.reddit.com/r/digitalnomad/comments/1xbr5ir/thailand_cut_visafree_stays_to_30_days_and_dtv/",
+          "quote": "I check official immigration pages for 25 countries every week.",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Reddit",
+          "title": "r/digitalnomad: Thailand short term extension is really rough...",
+          "url": "https://www.reddit.com/r/digitalnomad/comments/1xfnzmt/thailand_short_term_extension_is_really_rough/",
+          "quote": "Thailand system for short term visa extension is worse than American DMV experience.",
+          "date": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "mail-relay-setup-wizard",
+      "title": "Self-Host Mail Relay Wizard",
+      "category": "Developer tool",
+      "oneLiner": "Guided setup that keeps your inbox self-hosted but sends outbound mail through a reputable relay, with the DNS records checked for you.",
+      "problem": "People who want to own their email set up SPF, DKIM, DMARC and reverse DNS correctly and still land in spam or get their IP banned with no explanation. The common advice (receive yourself, send through a relay) is scattered across forum posts and easy to misconfigure, so many give up or are told not to try.",
+      "targetUsers": "Developers and privacy-minded users self-hosting email on a VPS with Mailcow, Stalwart or Postfix.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free DNS and config checker. Paid at about $5/month for a guided relay setup, monitoring of blocklists and DMARC reports, and alerts when deliverability drops.",
+      "mvp": [
+        "Domain checker for SPF, DKIM, DMARC, rDNS and MTA-STS with plain-English fixes",
+        "Config generator that sets outbound relay in Postfix, Mailcow or Stalwart for the user's chosen relay provider",
+        "Test-send to Gmail, Outlook and Yahoo test inboxes with a pass or fail report",
+        "Blocklist monitor for the VPS IP with email alert",
+        "Parsed DMARC aggregate reports in a simple dashboard"
+      ],
+      "competitors": [
+        {
+          "name": "Stalwart mail server (relay routes)",
+          "url": "https://support.stalw.art/t/mailchannels-or-other-smtp-smart-host/1456",
+          "gap": "Relay support exists but is configured through routing expressions; no guided path or deliverability testing."
+        },
+        {
+          "name": "Mailcow with external relay (community guides)",
+          "url": "https://lowendtalk.com/discussion/178881/self-hosted-mailcow-relaying-through-mxroute/p1",
+          "gap": "Setup knowledge lives in dated forum tutorials and is per-provider and manual."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How do people self host email and maintain deliverability?",
+          "url": "https://news.ycombinator.com/item?id=50218062",
+          "quote": "I sent 3 emails to my personal outlook/hotmail accounts, all of which went to spam. 1 day later, my IP was banned. Outlook support said they cannot discuss the reason for the ban and will not unban it so I'm out of luck.",
+          "engagement": "7 points · 6 comments",
+          "date": "2026-10-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Stalwart v1.0: The Fastest Mail Server on the Planet (comment)",
+          "url": "https://news.ycombinator.com/item?id=50247444",
+          "quote": "Have you had any issues with deliverability? Whenever I consider self-hosting email I think about the number of comments I've seen on HN saying don't.",
+          "date": "2026-10-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Stalwart v1.0: The Fastest Mail Server on the Planet (comment)",
+          "url": "https://news.ycombinator.com/item?id=50247872",
+          "quote": "you can separate sending and receiving: host the receiving yourself and use a service for sending (e.g. Mailchimp, Sendgrid etc.). That can address many concerns.",
+          "date": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "etsy-payout-and-stock-keeper",
+      "title": "Etsy Payout & Stock Keeper",
+      "category": "Web app",
+      "oneLiner": "Explains exactly what Etsy will deposit and when (reserves, holds, negative balances) and fixes listing stock after cancellations.",
+      "problem": "Etsy sellers struggle to predict deposits because pending amounts, reserves and holds are confusing, which hurts cash flow for new shops. Separately, cancelled orders do not restore listing quantity, so stock drifts out of sync and has to be fixed by hand.",
+      "targetUsers": "Small Etsy sellers, especially new and print-on-demand shops, that live on predictable payouts and cannot afford overselling.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free payout explainer. Paid at about $6/month for connected-shop sync, cash-flow forecast and automatic stock restore on cancellation.",
+      "mvp": [
+        "Connect the shop via Etsy's API or paste payment account figures to see an itemised expected deposit",
+        "Plain-English explanation of reserve vs hold vs negative balance for the shop's current state",
+        "Cash-flow calendar showing when held funds should release based on shipping and tracking status",
+        "Detect cancelled orders and prompt to restore listing quantity (or restore it automatically)",
+        "Weekly email with upcoming deposits and stock mismatches"
+      ],
+      "competitors": [
+        {
+          "name": "Etsy Payment account (built-in)",
+          "url": "https://community.etsy.com/forum/announcements-290/topic/january-2021-updates-to-etsys-seller-policies-22574/?focus_post=740867",
+          "gap": "Shows reserved and available amounts but sellers still ask how the final deposit is calculated and when held funds release."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Reddit",
+          "title": "r/Etsy: Information about Deposit",
+          "url": "https://www.reddit.com/r/Etsy/comments/1xe4rfs/information_about_deposit/",
+          "quote": "My pending amount is £59. My net profit for October is £55. My total balance is £39. My current amount is -£23. Could you please clarify which amount will be deposited into my account after considering these figures?",
+          "date": "2026-10-24"
+        },
+        {
+          "platform": "Reddit",
+          "title": "r/Etsy: How are new POD Sellers dealing with cash flow due to Etsy payment holds?",
+          "url": "https://www.reddit.com/r/Etsy/comments/1xh4tp7/how_are_new_pod_sellers_dealing_with_cash_flow/",
+          "quote": "I naively was assuming not much had changed since & completely neglected to factor these new policies into consideration before trying to open another new shop.",
+          "date": "2026-10-27"
+        },
+        {
+          "platform": "Reddit",
+          "title": "r/Etsy: Finally figured out why my inventory gets messed up!",
+          "url": "https://www.reddit.com/r/Etsy/comments/1xdfsw1/finally_figured_out_why_my_inventory_gets_messed/",
+          "quote": "Etsy does NOT correct the # available in the listing, no matter how you answer that question. So regardless of how you answer, you still have to manually edit your listing to add back the cancelled item.",
+          "date": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "etsy-ai-listing-filter",
+      "title": "Etsy Human-Made Filter",
+      "category": "Browser extension",
+      "oneLiner": "A browser extension that lets Etsy shoppers hide shops they have flagged and listings that look AI-generated, since Etsy offers no block or exclude option.",
+      "problem": "Shoppers looking for human-made art find search results full of AI-style listings and cannot block shops or exclude them from search. Etsy announced stricter AI rules and a report button this week, but still no buyer-side filter, and some sellers are faking process videos with AI.",
+      "targetUsers": "Etsy buyers who want handmade or human-made goods, plus gift shoppers around the holiday season.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for a personal blocklist. Optional $2/month for shared community blocklists and signals such as shop age, review patterns and Etsy's own human-involvement labels.",
+      "mvp": [
+        "One-click Hide this shop on search and listing pages, stored locally and synced via browser account",
+        "Importable and shareable blocklists curated by the community",
+        "Badge on listings using Etsy's own disclosures and simple signals (shop age, uniform image style across a shop)",
+        "Toggle to prefer shops you bought from or favorited",
+        "Report-to-Etsy shortcut that fills in the flag reason"
+      ],
+      "competitors": [
+        {
+          "name": "Etsy AI policy and report feature",
+          "url": "https://retaildive.com/news/etsy-updates-ai-use-policies-emphasize-craftsmanship/833838",
+          "gap": "Adds seller rules and reporting but no buyer-side block or filter for search results."
+        },
+        {
+          "name": "Manual workaround: add \"handmade\" or \"human-made\" to searches",
+          "url": "https://www.slashgear.com/1519359/how-to-tell-if-art-is-ai-generated-on-etsy",
+          "gap": "Reduces AI results but does not remove them and cannot be saved per shop."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Reddit",
+          "title": "r/Etsy: AI-free designs",
+          "url": "https://www.reddit.com/r/Etsy/comments/1xbunfe/aifree_designs/",
+          "quote": "I’m frustrated because Etsy doesn’t give you the ability to block any shops, nor exclude them from search results (the -shop: doesn’t seem to work for many shops).",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Reddit",
+          "title": "r/Etsy: AI used to ‘prove’ not AI",
+          "url": "https://www.reddit.com/r/Etsy/comments/1xea29s/ai_used_to_prove_not_ai/",
+          "quote": "Today I saw a listing on Etsy with very AI style art.",
+          "date": "2026-10-24"
+        },
+        {
+          "platform": "Reddit",
+          "title": "r/Etsy: Etsy Is Finally Cracking Down On AI!!!",
+          "url": "https://www.reddit.com/r/Etsy/comments/1xckrqb/etsy_is_finally_cracking_down_on_ai/",
+          "quote": "As a long-time shopper in the past, I am so excited for this; it’s been allowed go on too long.",
+          "date": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "id": "saved-reels-finder",
+      "title": "Saved Reels Finder",
+      "category": "Mobile app",
+      "oneLiner": "Share any saved reel or TikTok into one app that pulls out the recipe, place or product and lets you search it later in plain language.",
+      "problem": "People save lots of short videos and then cannot find them when they need them. Platform collections and screenshots break down, and the saved recipe or cafe is never used.",
+      "targetUsers": "Heavy Instagram and TikTok savers, including Indian users saving cafes, travel spots and recipes who are on Android.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free up to about 50 saves. Pro at about ₹149/month or ₹999/year for unlimited saves, AI extraction and grocery lists.",
+      "mvp": [
+        "Android share-sheet target that accepts reel and TikTok links",
+        "Auto-classify into recipes, places, products, workouts and ideas",
+        "Extract ingredients and locations from captions and transcripts",
+        "Natural-language search over everything saved",
+        "Map view for saved places and a grocery list for saved recipes"
+      ],
+      "competitors": [
+        {
+          "name": "InstaSave",
+          "url": "https://hunted.space/product/instasave",
+          "gap": "Instagram-only and AI-sorted; crowded space with similar launches."
+        },
+        {
+          "name": "Ordo",
+          "url": "https://hunted.space/product/ordo",
+          "gap": "Organizes by topic but not by extracted actionable details such as ingredients and map pins."
+        },
+        {
+          "name": "Recall",
+          "url": "https://docs.recall.it/use-cases/content-type/social/instagram",
+          "gap": "General knowledge-capture tool, not tuned for recipes and places from short video."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Reddit",
+          "title": "r/AppIdeas: Anyone else struggle to find saved TikToks?",
+          "url": "https://www.reddit.com/r/AppIdeas/comments/1xbrrsz/anyone_else_struggle_to_find_saved_tiktoks/",
+          "quote": "I save tons of TikTok videos, but when I want to watch them again, I can never find them",
+          "date": "2026-10-21"
+        },
+        {
+          "platform": "Reddit",
+          "title": "r/AppIdeas: I built an iPhone app because I never used anything I saved!",
+          "url": "https://www.reddit.com/r/AppIdeas/comments/1xdkvlk/i_built_an_iphone_app_because_i_never_used/",
+          "quote": "I saved a one-pot pasta reel a few weeks back. When I wanted to make it, I scrolled through my saves for 15 minutes, couldn’t find it, and ended up ordering in.",
+          "date": "2026-10-23"
+        }
+      ]
+    }
+  ]
+}
