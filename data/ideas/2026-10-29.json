@@ -1,0 +1,204 @@
+{
+  "date": "2026-10-29",
+  "summary": "A thin day: Reddit, Bluesky, Mastodon and most other sites were blocked from this environment, so only Hacker News yielded verifiable complaints. Strongest themes were remote job seekers outside the US/EU being filtered out by hidden country restrictions, developers left exposed by the eMudhra compromised-CA fallout, and people paying for streaming promos they forget to cancel.",
+  "ideas": [
+    {
+      "id": "remote-jobs-open-to-my-country",
+      "title": "Remote Jobs That Actually Hire in Your Country",
+      "category": "Web app",
+      "oneLiner": "A job board that only shows 'remote' roles you are legally and practically allowed to take from your own country, with a verified hiring-region tag.",
+      "problem": "Postings say 'remote' but quietly restrict hiring to specific countries or economic zones because of payroll, tax and compliance rules. Candidates outside the US/EU burn weeks applying and only learn about the restriction on rejection.",
+      "targetUsers": "Remote-seeking professionals in India, Nigeria, Pakistan, the Philippines and other regions that are commonly excluded, plus the contractors and agencies that hire them.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free browsing; ₹199–499/month for alerts, 'contractor-friendly' filters and an application tracker. Optional paid featured listings for employers who confirm they hire contractors in the candidate's country.",
+      "mvp": [
+        "Aggregate public remote listings and parse the location text, flagging 'Worldwide', 'Americas only', 'EU timezone' and similar",
+        "Country picker with a clear 'can I be hired from here?' result per listing",
+        "Tag whether the employer says it hires contractors or only employees through an EOR",
+        "Email or push alert when a new role matches your country and skills",
+        "Report button so users can mark a listing that rejected them on location"
+      ],
+      "competitors": [
+        {
+          "name": "General remote job boards (Remote OK, We Work Remotely, Remotive)",
+          "gap": "Their 'worldwide' labelling is self-reported by employers, and candidates in the thread still report being rejected on location after applying."
+        },
+        {
+          "name": "LinkedIn Remote filter",
+          "gap": "Treats 'remote' as a work-style flag and does not tell you which countries the employer can actually hire in."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Why remote roles are becoming extinct in 2026?",
+          "url": "https://news.ycombinator.com/item?id=50255318",
+          "quote": "I've been looking for new remote roles (marketing) for a while but there's no good role hiring remotely everywhere. I'm from India.",
+          "engagement": "44 comments",
+          "date": "2026-10-27"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Why remote roles are becoming extinct in 2026? (reply by rohansrma)",
+          "url": "https://news.ycombinator.com/item?id=50256280",
+          "quote": "So, far I've applied to 75 jobs in two months and I got rejections just because of location issues.",
+          "date": "2026-10-27"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Why remote roles are becoming extinct in 2026? (reply by theafaid)",
+          "url": "https://news.ycombinator.com/item?id=50268606",
+          "quote": "What's becoming less common is location-independent employment. Many companies still offer remote positions, but they increasingly restrict hiring to specific countries because of payroll, taxation, employment laws, and compliance.",
+          "date": "2026-10-28"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Why remote roles are becoming extinct in 2026? (reply by keiferski)",
+          "url": "https://news.ycombinator.com/item?id=50258100",
+          "quote": "It's my impression that many of the roles that were previously \"remote from anywhere in the world\" are being replaced with either 1) a current employee using AI to be more productive or 2) a remote/partially remote job with the requirement to be in the same country/economic zone.",
+          "date": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "id": "ca-trust-store-drift-checker",
+      "title": "Trust-Store Drift Checker for Compromised CAs",
+      "category": "Developer tool",
+      "oneLiner": "A tiny CLI and menu-bar app that checks which of your tools (curl, git, Python, Node, browsers) still trust a distrusted CA, and re-checks after every OS update.",
+      "problem": "After the compromise of eMudhra intermediate CAs, Apple blocked them for system frameworks, but command-line tools that read /etc/ssl/cert.pem still accept them. Manual fixes get silently undone by OS updates, and there is no easy way to see what is still exposed.",
+      "targetUsers": "Developers, DevOps and security-minded teams on macOS and Linux, including the many in India who deal with eMudhra-issued certificates.",
+      "painScore": 6,
+      "effort": "Weekend",
+      "monetization": "Free open-source CLI; paid team dashboard (about $5 per seat per month) that reports drift across a fleet of laptops and CI runners.",
+      "mvp": [
+        "Maintained list of distrusted roots and intermediates, with a test endpoint per CA",
+        "Check curl, git, python3, node and system keychain, and report which still trust each CA",
+        "One-command remediation that sets SSL_CERT_FILE to a cleaned bundle",
+        "Re-run automatically after OS updates and warn if a previous fix was reverted",
+        "JSON output for CI and MDM tooling"
+      ],
+      "competitors": [
+        {
+          "name": "Tanium and Konfirmity advisories and scripts",
+          "gap": "One-off removal scripts for enterprises. They warn a later macOS update may restore the file, and nothing re-checks automatically for individual developers."
+        },
+        {
+          "name": "Apple's built-in distrust list",
+          "gap": "Applies to Security.framework clients only. Apple says curl and git using /etc/ssl/cert.pem are not covered until a future update."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: The latest macOS Sequoia update seems to revert the eMudhra workaround",
+          "url": "https://news.ycombinator.com/item?id=50206041",
+          "quote": "As far as I understand the macOS update has reinstalled the compromised certificates, and I have to re-apply the manual workaround again. I didn't expect that.",
+          "date": "2026-10-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ten days later, Git on macOS still trusts the compromised eMudhra certificate (reply by RetroTechie)",
+          "url": "https://news.ycombinator.com/item?id=50273197",
+          "quote": "If MacOS' setup somehow doesn't allow untangling a (still deemed trustworthy?!?) root certificate issued by eMudhra from the broken intermediate certificates, then revoke that whole chain including the root & accept collateral damage.",
+          "date": "2026-10-28"
+        },
+        {
+          "platform": "Apple Developer Forums",
+          "title": "macOS /etc/ssl/cert.pem still trusts the eMudhra roots: curl and python3 accept the compromised intermediates",
+          "url": "https://developer.apple.com/forums/thread/852912",
+          "quote": "Apple blocked the eight compromised eMudhra intermediate CAs (CVE-2026-111943) for Security.framework clients. But on macOS 27.0.1 (26A434), `/usr/bin/curl` and `/usr/bin/python3` still accept certificates from them."
+        }
+      ]
+    },
+    {
+      "id": "promo-expiry-cancel-reminder",
+      "title": "Promo and Trial Expiry Cancel Reminder",
+      "category": "Mobile app",
+      "oneLiner": "A one-time-purchase, on-device app that tracks discounted streaming deals and free trials and nudges you with the cancel link a few days before the price jumps.",
+      "problem": "People take introductory deals and trials, forget to cancel, and pay for months. Existing subscription trackers are themselves subscriptions that people then forget to cancel.",
+      "targetUsers": "Streaming and app-subscription users, especially in India where UPI autopay mandates renew silently, and anyone who rotates between services for deals.",
+      "painScore": 5,
+      "effort": "Weekend",
+      "monetization": "Free for 3 reminders; one-time unlock of ₹199 / $4.99, with no recurring plan.",
+      "mvp": [
+        "Add a deal in two taps with service, price after promo, and end date",
+        "Local notifications 7, 3 and 1 day before the deal ends",
+        "Built-in cancel deep links for the top 50 services",
+        "Share-sheet import from confirmation emails and SMS, processed on device",
+        "Monthly 'money saved by cancelling' summary"
+      ],
+      "competitors": [
+        {
+          "name": "TrialGuard (iOS)",
+          "gap": "Reminders only, and no India-specific UPI mandate awareness."
+        },
+        {
+          "name": "TrialMinder / TrialPing (Chrome extensions)",
+          "url": "https://chromewebstore.google.com/detail/fhjdfmdpidcabnkodkjfgeepfmlmnfad",
+          "gap": "Desktop-only, so reminders do not reach you where you actually cancel (the phone), and the free plan is capped at a few reminders."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Disney Raising Prices Days After Confirming Ads Will Now Show (comment by nswizzle31)",
+          "url": "https://news.ycombinator.com/item?id=50211094",
+          "quote": "Just like I did for Fox One during the World Cup and then 4 months and $120 later I remember to cancel it. Then I pay for a subscription for a tool to remind me to cancel subscriptions and forget to cancel that one too.",
+          "date": "2026-10-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Disney Raising Prices Days After Confirming Ads Will Now Show (comment by aaronbrethorst)",
+          "url": "https://news.ycombinator.com/item?id=50211689",
+          "quote": "I canceled after year 2, and rejoined when I got an offer to pay $5/month for the ads tier this past November. I'll be canceling in a couple weeks when that deal expires.",
+          "date": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "free-source-for-paywalled-articles",
+      "title": "Free Source Finder for Paywalled Articles",
+      "category": "Browser extension",
+      "oneLiner": "When you open a paywalled news link, the extension finds legitimate free coverage of the same story (wire copies, syndication, primary sources) and shows it beside the original.",
+      "problem": "Readers and community moderators want to share news links that everyone can read. Bypass sites are shady and inconsistent, and a headline alone is often all the discussion has to go on.",
+      "targetUsers": "Forum and newsletter users who share links, and readers who hit several paywalls a day.",
+      "painScore": 4,
+      "effort": "1–2 weeks",
+      "monetization": "Free tier with a few lookups a day; $3/month for unlimited lookups and a share-link generator that bundles the open alternatives.",
+      "mvp": [
+        "Detect a paywalled page and extract the story's key entities and headline",
+        "Search syndication partners, wire services and primary documents for matching free coverage",
+        "Side panel with ranked free alternatives and a similarity score",
+        "One-click share link that lists the open sources instead of the paywalled one",
+        "Allow-list of reputable sources so results are not scraped junk"
+      ],
+      "competitors": [
+        {
+          "name": "archive.today and similar snapshot sites",
+          "gap": "The only workaround people trust, but one commenter calls it shady because the text could be altered later, and links are inconsistent."
+        },
+        {
+          "name": "Ground News and similar aggregators",
+          "gap": "Built for comparing coverage, not for finding a freely readable copy of the exact story from a link you are about to share."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Should something be done about paywalled articles?",
+          "url": "https://news.ycombinator.com/item?id=50272695",
+          "quote": "Sometimes big news will end up paywalled and an often subjective HN title is all you have to work with.",
+          "date": "2026-10-28"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Archive.today links going forward (comment by ada-h00k)",
+          "url": "https://news.ycombinator.com/item?id=50277559",
+          "quote": "The only reason people use such dubious sites is that there's no other way to share a link to a news site without risking that the text will be altered later or hidden behind a paywall.",
+          "date": "2026-10-28"
+        }
+      ]
+    }
+  ]
+}
