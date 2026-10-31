@@ -1,0 +1,280 @@
+{
+  "date": "2026-10-31",
+  "summary": "Reddit, X and Bluesky were blocked from this environment, so today's evidence is Hacker News only and the report is shorter than usual. The strongest themes: paid Proton users hunting for an exit after leadership backlash, supply-chain worries around editor extension marketplaces and web-app updates, and distrust of AI-prepared tax returns.",
+  "ideas": [
+    {
+      "id": "email-provider-switch-kit",
+      "title": "Email Switch Kit",
+      "category": "Web app",
+      "oneLiner": "A guided migration planner for moving off Proton (or any mail host): export, import, DNS cutover, forwarding and a checklist of every account that uses the old address.",
+      "problem": "Long-time paid Proton users say they are looking for alternatives after the CEO's public statements, but moving a decade of mail, contacts, calendars and logins is a multi-tool chore. Proton's export route needs a separate export app plus the new provider's MBOX importer, and nobody tracks which services still point at the old address.",
+      "targetUsers": "Privacy-minded paying email users, small teams of 2–10 people choosing between Fastmail, Tuta, Zoho and Posteo, and people who own a custom domain.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free checklist and planner; ₹/$9 one-time 'migration pass' for the account-inventory scanner, or $29 for small teams.",
+      "mvp": [
+        "Pick source and destination provider and get a step-by-step personalised runbook (export, import, calendars, contacts)",
+        "Paste in or import a password-manager CSV or inbox sender list to build an inventory of accounts to update",
+        "Custom-domain DNS cutover helper (MX, SPF, DKIM, DMARC records with a copy-paste diff)",
+        "30-day forwarding and 'still receiving at old address' tracker with reminders",
+        "Side-by-side provider comparison (jurisdiction, protocols, price, export support)"
+      ],
+      "competitors": [
+        {
+          "name": "Fastmail migration guide",
+          "url": "https://www.fastmail.help/hc/en-us/articles/5415389872143-Migrate-to-Fastmail-from-Proton-Mail",
+          "gap": "Covers only the mail import into Fastmail; the export is a separate Proton app and calendars and contacts are manual uploads. It does not help find which accounts to update."
+        },
+        {
+          "name": "Proton Easy Switch",
+          "url": "https://proton.me/support/troubleshooting-easy-switch",
+          "gap": "Moves mail into Proton, not out of it."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Proton thread comment",
+          "url": "https://news.ycombinator.com/item?id=50311054",
+          "quote": "As a long time paid Proton user I'm looking for alternatives. Nothing I've seen from Andy Yen these past few days has given me a shred of confidence in the leadership there..",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Proton thread comment",
+          "url": "https://news.ycombinator.com/item?id=50304898",
+          "quote": "I would prefer not to have to migrate but this behavior is very concerning. I wish I could just (reliably/practically) host my own damn email server.",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Proton thread comment",
+          "url": "https://news.ycombinator.com/item?id=50308738",
+          "quote": "Been a paying customer for probably about 3 years now. Off to either Fastmail or Tuta most likely.",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Proton thread comment",
+          "url": "https://news.ycombinator.com/item?id=50308525",
+          "quote": "Is fastmail better than zoho? I'm have trouble choosing between them to move small org (of 5 people or so).",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Email service comment",
+          "url": "https://news.ycombinator.com/item?id=50294125",
+          "quote": "I just want to pay someone and then get a reliable email service in reuturn.",
+          "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "editor-extension-provenance-check",
+      "title": "Extension Provenance Check",
+      "category": "Developer tool",
+      "oneLiner": "A CLI and editor plugin that verifies every installed VS Code or Cursor extension really comes from the publisher it claims, and alerts on look-alikes and unexpected updates.",
+      "problem": "After the Cursor marketplace incident that shipped a fake Anthropic-branded extension, developers point out that Open VSX has weak publisher verification and no package signing, so they cannot tell an authentic extension from an impostor.",
+      "targetUsers": "Developers on Cursor, VSCodium, Windsurf and other Open VSX-based editors; security-conscious teams.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free CLI; $5/month per developer or $49/month per team for continuous monitoring, an org allowlist and Slack alerts.",
+      "mvp": [
+        "Scan installed extensions and compare publisher, repo URL and hash against the upstream VS Code Marketplace and GitHub releases",
+        "Flag extensions whose publisher differs between marketplaces, or that are brand-new look-alikes",
+        "Alert when an installed extension updates, with a diff of manifest permissions and activation events",
+        "Team allowlist file checked in to the repo with CI check",
+        "Weekly digest of newly reported malicious extension IDs"
+      ],
+      "competitors": [
+        {
+          "name": "vsix-audit (Trail of Bits)",
+          "url": "https://github.com/trailofbits/vsix-audit",
+          "gap": "A CLI that runs detection modules on a single extension; it needs Node 22, has no continuous monitoring, and does not check cross-marketplace publisher mismatches."
+        },
+        {
+          "name": "SafeDep vet",
+          "url": "https://github.com/safedep/vet",
+          "gap": "General dependency scanner with an extension option; no team allowlists or update diffs."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Cursor marketplace incident thread",
+          "url": "https://news.ycombinator.com/item?id=50310578",
+          "quote": "The issue could be resolved by introducing some sort of signing for openvsx extension packages. Then regardless of from where one downloaded Claude, it can be always verified to be authentic or not.",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Cursor marketplace incident thread",
+          "url": "https://news.ycombinator.com/item?id=50309347",
+          "quote": "Cursor marketplace is a mirror of Open VSX except they inject some plugins that are not in Open VSX for some reason. This works because Open VSX has basically no security. Which was already an issue.",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Cursor marketplace incident thread",
+          "url": "https://news.ycombinator.com/item?id=50309587",
+          "quote": "Cursor's \"marketplace proxy\" is, by definition, an MitM of Open VSX. Why on earth is that trustworthy to its users?",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Cursor marketplace incident thread",
+          "url": "https://news.ycombinator.com/item?id=50311624",
+          "quote": "they need to make a really big post somewhere that's not a HN comment that this was in fact a compromise of the Cursor marketplace, not an employee's machine",
+          "date": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "webapp-bundle-pinning-extension",
+      "title": "Pinned Web App Guard",
+      "category": "Browser extension",
+      "oneLiner": "A browser extension that lets you pin a web app to a known-good JavaScript release and warns before an unreviewed update runs.",
+      "problem": "After a crypto-exchange style web-app attack, commenters say there is no practical way to lock a web app to a reproducible build or only accept updates signed by an offline key. Subresource integrity covers only separately hosted resources.",
+      "targetUsers": "Users of wallets, banking and password web apps, and developers who want to offer verified web clients.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "Free for users; $29/month for app publishers who want a signed-manifest registry and verification badge.",
+      "mvp": [
+        "Hash all scripts a chosen site loads and store them as the pinned release",
+        "Block or warn on any changed script, showing a diff summary",
+        "Publisher-signed manifest support (offline signing key) for opt-in sites",
+        "Per-site allow update button with a changelog link",
+        "Export/import pins for teams"
+      ],
+      "competitors": [
+        {
+          "name": "Code Verify (Meta)",
+          "url": "https://apps.apple.com/fi/app/code-verify/id6475794471?l=fi",
+          "gap": "Built around Meta properties and a Cloudflare-hosted reference; third-party sites are not supported out of the box."
+        },
+        {
+          "name": "code-verify fork (AadarshSree)",
+          "url": "https://github.com/AadarshSree/code-verify",
+          "gap": "You must clone and build it yourself, and the original audit endpoint is not public."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Web-app attack thread",
+          "url": "https://news.ycombinator.com/item?id=50308402",
+          "quote": "Fundamentally: There is no way to lock webapps to reproducible builds. Except: IPFS could do it but IPFS has been very very poorly maintained.",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Web-app attack thread",
+          "url": "https://news.ycombinator.com/item?id=50308942",
+          "quote": "There is no way to, for instance, only allow updates to a PWA from files signed by an offline key.",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Web-app attack thread",
+          "url": "https://news.ycombinator.com/item?id=50308882",
+          "quote": "Fundamentally: There is no way to lock webapps to reproducible builds. One could absolutely use subresource integrity to lock one's reference to a vendor's subresource to a specific version.",
+          "date": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "personal-tax-return-second-opinion",
+      "title": "Tax Return Second Opinion",
+      "category": "AI tool",
+      "oneLiner": "Upload your prepared tax return or ITR plus source documents and get a field-by-field mismatch and deduction check before you file.",
+      "problem": "People are using LLMs to prepare taxes or to double-check an accountant's work, and finding that human-prepared returns can be riddled with wrong fields. A CPA says the realistic use is transcription and review, not end-to-end filing. Consumers have no cheap, private cross-check tool.",
+      "targetUsers": "Salaried individuals and freelancers filing their own or accountant-prepared returns, starting with Indian ITR filers.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free scan summary; ₹299–₹499 per return for the full report with source citations; CA referral fees.",
+      "mvp": [
+        "Upload return PDF or JSON plus Form 16, AIS/26AS and bank interest statements",
+        "Extract values and flag fields that do not match the source documents",
+        "Check for common missed deductions and wrong regime choice",
+        "Output a short list of questions to take back to your accountant",
+        "Delete-after-processing privacy mode with local-only option"
+      ],
+      "competitors": [
+        {
+          "name": "TaxGPT Agent Andrew",
+          "url": "https://www.taxgpt.com/agent-andrew",
+          "gap": "Aimed at professional firms; priced and designed for preparers, not individuals."
+        },
+        {
+          "name": "Thomson Reuters Ready to Review",
+          "url": "https://tax.thomsonreuters.com/en/products/ready-to-review/features",
+          "gap": "Enterprise product for accounting firms."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "AI tax preparation thread",
+          "url": "https://news.ycombinator.com/item?id=50281827",
+          "quote": "I prepared my taxes this year using Astra + Codex. ... They sent it back for final review, and I had Codex check it; it was riddled with errors. The refund was nearly $2k lower than it should have been",
+          "date": "2026-10-28"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "AI tax preparation thread",
+          "url": "https://news.ycombinator.com/item?id=50281324",
+          "quote": "As a veteran tax CPA, I think LLMs can be very good at preparing taxes but I would not trust them to complete a tax return start to finish.",
+          "date": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "fan-account-exposure-checker",
+      "title": "Pseudonym Exposure Check",
+      "category": "Web app",
+      "oneLiner": "After a site breach, check whether an email or username can be tied to your real identity across other services and get a plan to separate them.",
+      "problem": "After the AO3 security incident, commenters worry that emails containing real names plus reading history could be linked back to people, and some predict someone will build a lookup tool to expose them. Pseudonymous users want to know how linkable their accounts are.",
+      "targetUsers": "Fandom writers and readers, hobby communities and anyone keeping a pseudonymous online identity.",
+      "painScore": 4,
+      "effort": "Weekend",
+      "monetization": "Free check; $3/month for alerts and a guided alias-email rollout.",
+      "mvp": [
+        "Check an email against public breach lists and flag when it contains a real name",
+        "Scan your username for reuse across popular sites",
+        "Generate a step list for creating separate aliases and changing the login email",
+        "Alert when a new breach includes your address",
+        "Plain-language explainer of what a breached hashed password means"
+      ],
+      "competitors": [
+        {
+          "name": "Have I Been Pwned",
+          "url": "https://haveibeenpwned.com",
+          "gap": "Tells you a breach exists but not how linkable your pseudonym is or how to separate identities."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "AO3 incident thread",
+          "url": "https://news.ycombinator.com/item?id=50312025",
+          "quote": "I am certain that many people will have signed up with an email address that contains their real name. If this leaks I've gotta imagine that someone with a particularly dark/evil sense of honour makes a tool where you enter an email address and are shown an AO3 presence.",
+          "date": "2026-10-31"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "AO3 incident thread",
+          "url": "https://news.ycombinator.com/item?id=50311667",
+          "quote": "anonymous mail accounts make sense for fan work every bit as much as a PO Box does",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "AO3 incident thread",
+          "url": "https://news.ycombinator.com/item?id=50311044",
+          "quote": "Can you imagine the damage that could happen just by leaking everyone's username, email address, and all the stories they've written/kudos'ed/bookmarked? Like a miniature version of the Ashley Madison hack.",
+          "date": "2026-10-30"
+        }
+      ]
+    }
+  ]
+}
