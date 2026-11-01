@@ -1,0 +1,242 @@
+{
+  "date": "2026-11-01",
+  "summary": "Reddit, X and Bluesky were unreachable today, so this is a smaller report built only from Hacker News threads I could read in full. The strongest themes are developers losing paid AI quota to failed requests and silent model quality drift, plus fatigue from supervising many parallel coding agents and teams quietly dropping code review.",
+  "ideas": [
+    {
+      "id": "ai-quota-loss-ledger",
+      "title": "AI Quota Loss Ledger",
+      "category": "Developer tool",
+      "oneLiner": "A local tracker that shows how much of your Claude or other AI plan limit was burned by failed, retried or runaway requests.",
+      "problem": "Paid AI plans meter usage in 5-hour and weekly pools. Users report that failed requests still consume the limit, that retry restarts the task and spends more, and that the usage bars they relied on sometimes disappear. They cannot tell where the quota went.",
+      "targetUsers": "Heavy Claude Code / Claude web users on Pro and Max plans, and developers who use several AI coding tools.",
+      "painScore": 7,
+      "effort": "Weekend",
+      "monetization": "Free CLI plus a one-time or small monthly Pro tier (about $3-5/month) for history, alerts and multi-provider support.",
+      "mvp": [
+        "Read local Claude Code session logs and compute tokens per session and per day",
+        "Flag sessions that ended in errors or retries and total the wasted tokens",
+        "Show a live weekly-pool burn-down with a projected run-out time",
+        "Desktop or menu-bar alert at 50/80/95% of the weekly pool",
+        "Export a CSV for an evidence-backed support ticket"
+      ],
+      "competitors": [
+        {
+          "name": "LimitPilot — Claude Usage Tracker",
+          "url": "https://chromewebstore.google.com/detail/dcflgflhanoepelhmnhaiifbllogomll",
+          "gap": "Browser gauge for session and weekly limits; it shows the number but not which requests wasted quota (per its store listing; I did not test it)."
+        },
+        {
+          "name": "Claude Usage Meter",
+          "gap": "Strip above the composer showing session, weekly and Fable usage; I could not verify that it attributes loss to failed requests."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Claude is using my limits even though it's infra is failing",
+          "url": "https://news.ycombinator.com/item?id=50313539",
+          "quote": "I had some chats where I lost 80% my limits by retrying the task, with no luck of completing it.",
+          "engagement": "4 points · 5 comments",
+          "date": "2026-10-31"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Antrophic tightened usage limits?",
+          "url": "https://news.ycombinator.com/item?id=50294644",
+          "quote": "I burned through 50% of my weekly limit in 2 moderate sessions.",
+          "engagement": "6 points",
+          "date": "2026-10-29"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Opus 5.5 suddenly dumb as rocks? (comment by nikolay)",
+          "url": "https://news.ycombinator.com/item?id=50296588",
+          "quote": "I don't get anything done with Claude in the past 2-3 weeks - just eating up its weekly quota within a day.",
+          "engagement": "31 comments in thread",
+          "date": "2026-10-29"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Does anybody also miss the status for the 5h-limit in Claude?",
+          "url": "https://news.ycombinator.com/item?id=50314506",
+          "quote": "the bar showing the usage for the 5h-Limit in the settings/usage modal AND the listing of \"5h Limit usage\" in Claude Code (/usage) is also vanished.",
+          "engagement": "2 points",
+          "date": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "model-drift-canary",
+      "title": "Model Drift Canary",
+      "category": "AI tool",
+      "oneLiner": "Run your own fixed prompts against your AI coding model every day and get an alert when quality or token appetite shifts.",
+      "problem": "Every few weeks developers feel their model got worse (more forgetful, more verbose, ignoring corrections), but nobody can prove it. Public benchmarks don't match their own prompts and they cannot tell a real change from an A/B test or a bad day.",
+      "targetUsers": "Developers and small teams who rely on Claude, GPT or similar models for daily coding work and pay per seat or per token.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 3 canary prompts; $9/month for unlimited prompts, multiple models and Slack/email alerts.",
+      "mvp": [
+        "Define 5-20 canary prompts with expected checks (tests pass, JSON schema, exact-match)",
+        "Scheduled daily runs against chosen models through the user's own API key",
+        "Track pass rate, response length and token usage over time on one chart",
+        "Alert when a metric moves beyond a rolling baseline",
+        "Shareable report page to attach to a vendor support ticket"
+      ],
+      "competitors": [
+        {
+          "name": "BridgeBench nerf-bench",
+          "url": "https://www.bridgebench.ai/nerf-bench/claude-opus-5-5",
+          "gap": "Publishes daily public benchmark results for a model, but not your own prompts, so it cannot confirm a regression in your workflow (surfaced in the HN thread; I did not test it)."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Opus 5.5 suddenly dumb as rocks?",
+          "url": "https://news.ycombinator.com/item?id=50296367",
+          "quote": "Noticeably worse output across multiple agents on very different projects.",
+          "engagement": "31 comments",
+          "date": "2026-10-29"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Opus 5.5 suddenly dumb as rocks? (comment by itopaloglu83)",
+          "url": "https://news.ycombinator.com/item?id=50297779",
+          "quote": "there’s this fixation from the model where if you ever need to make a correction, it simply becomes disinterested with your instructions.",
+          "engagement": "31 comments in thread",
+          "date": "2026-10-29"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Opus 5.5 suddenly dumb as rocks? (comment by Bender)",
+          "url": "https://news.ycombinator.com/item?id=50298584",
+          "quote": "if I let Opus 5.5 run for too many turns (not sure how to quantify that) it starts exhibiting signs of human dementia.",
+          "engagement": "31 comments in thread",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Opus 5.5 suddenly dumb as rocks? (comment by 1_1xdev1)",
+          "url": "https://news.ycombinator.com/item?id=50300503",
+          "quote": "you, and they, might be getting a/b tested",
+          "engagement": "31 comments in thread",
+          "date": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "parallel-agent-cockpit",
+      "title": "Parallel Agent Cockpit",
+      "category": "Desktop app",
+      "oneLiner": "One calm dashboard that shows what each running coding agent is doing, what needs your decision, and what changed in shared memory.",
+      "problem": "Developers now supervise several agents at once. They report decision fatigue, context switching and a flood of generated text to review, and multiple agents overwrite a shared memory file with no trace of who changed what.",
+      "targetUsers": "Developers running two or more AI coding agents in parallel, especially solo founders and small teams.",
+      "painScore": 7,
+      "effort": "1 month+",
+      "monetization": "Free for 2 concurrent agents; $12/month Pro for unlimited agents, notifications and history.",
+      "mvp": [
+        "Detect running agent sessions (terminal/tmux/log files) and list state: working, waiting for input, errored, done",
+        "Single queue of pending approvals with the relevant diff or command inline",
+        "Versioned shared-notes file with per-agent attribution and one-click revert",
+        "Desktop and phone notification only when an agent needs a decision",
+        "Daily summary of what each agent finished"
+      ],
+      "competitors": [
+        {
+          "name": "herdr",
+          "gap": "A terminal multiplexer for agents that an HN commenter said they use a lot; I did not evaluate it and cannot say what gap remains beyond what commenters describe."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Are you tired too in this AI era?",
+          "url": "https://news.ycombinator.com/item?id=50301479",
+          "quote": "The constant guardrailing, decision making, and context switching overload me.",
+          "engagement": "141 comments",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Are you tired too in this AI era? (comment by ChaitanyaSai)",
+          "url": "https://news.ycombinator.com/item?id=50301541",
+          "quote": "We need entirely new visualizations of work flow that recognizes we are now doing more, and in parallel.",
+          "engagement": "141 comments in thread",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Are you tired too in this AI era? (comment by fabioborellini)",
+          "url": "https://news.ycombinator.com/item?id=50301575",
+          "quote": "There's just too much to review and ignore.",
+          "engagement": "141 comments in thread",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What is your best hack to keep your agent's context in sync?",
+          "url": "https://news.ycombinator.com/item?id=50305638",
+          "quote": "One of the problems I face is multiple agents writing to a common memory which can lead to unwanted memory overwrites without any trace.",
+          "engagement": "1 point",
+          "date": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "no-review-merge-safety-net",
+      "title": "No-Review Merge Safety Net",
+      "category": "SaaS",
+      "oneLiner": "A GitHub app that records which merges skipped human review, risk-scores them, and produces the audit trail compliance asks for.",
+      "problem": "Teams are quietly dropping code review because AI speeds up writing code, while security people report AI-built apps full of holes. Leaders still worry about SOC 2 evidence. Nothing tracks the gap between 'we agreed to merge without review' and what actually shipped.",
+      "targetUsers": "Small engineering teams (5-50 devs) that use AI heavily and need SOC 2 or customer security questionnaires.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "$29/month per org for up to 10 repos; $99/month for audit exports and Slack digests.",
+      "mvp": [
+        "GitHub App that lists merged PRs with no approving review",
+        "Risk score per PR (touches auth, secrets, dependencies, infra, size)",
+        "Weekly digest of unreviewed high-risk merges to a Slack channel",
+        "Policy file: which paths always require review",
+        "Exportable audit CSV for compliance evidence"
+      ],
+      "competitors": [
+        {
+          "name": "CodeRabbit",
+          "url": "https://coderabbit.ai",
+          "gap": "Does AI review itself; it doesn't track or report the merges where humans skipped review (from general knowledge; not verified today)."
+        },
+        {
+          "name": "Vanta",
+          "url": "https://vanta.com",
+          "gap": "Compliance automation that can check review rules but is heavyweight and expensive for small teams (from general knowledge; not verified today)."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Is your leadership pushing you to skip dev review? (comment by is_the_grass_gr)",
+          "url": "https://news.ycombinator.com/item?id=50292559",
+          "quote": "The other devs have already torpedoed standups and now no one wants to code review anymore.",
+          "engagement": "7 comments",
+          "date": "2026-10-29"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Is your leadership pushing you to skip dev review? (comment by wreath)",
+          "url": "https://news.ycombinator.com/item?id=50300544",
+          "quote": "Its mostly engineers who interpret shipping fast as “no code review” and other risky things like automated deployment with poor test suite",
+          "engagement": "7 comments",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Deployed vibecoded apps in prod at scale? (comment by elmer2)",
+          "url": "https://news.ycombinator.com/item?id=50315760",
+          "quote": "Bad. I'm in security and the vibe-coded apps are riddled with security issues.",
+          "engagement": "2 points",
+          "date": "2026-10-31"
+        }
+      ]
+    }
+  ]
+}
