@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-02",
+  "summary": "Thin day: Reddit, X, Bluesky and mirrors were blocked, so only Hacker News comments could be verified. Two themes had 2+ verifiable sources: developers who run AI coding agents with full disk access because sandboxing is too much friction, and people hit by the Scribd breach who cannot tell which card is stored where and cannot get virtual cards from their banks.",
+  "ideas": [
+    {
+      "id": "agent-sandbox-one-click",
+      "title": "One-Click Sandbox for Local AI Coding Agents",
+      "category": "Developer tool",
+      "oneLiner": "Run Claude Code, Codex or any CLI agent in an isolated profile with a folder and network allowlist, set up in one command.",
+      "problem": "Developers say they run coding agents with full disk access because proper isolation means custom VMs and duct tape. Even those who want to sandbox are unsure how to allow only specific hosts, such as SSH to a fixed set of servers.",
+      "targetUsers": "Developers and freelancers who run AI coding agents on their daily-driver laptop, especially on company-managed machines where VMs are restricted.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free CLI for personal use. Paid Pro at about $6/month or ₹499/month for saved policies, team-shared allowlists and an audit log of blocked actions.",
+      "mvp": [
+        "Wrap any command with a profile that limits file access to the current project folder",
+        "Network allowlist by hostname or IP, with a prompt to approve new hosts",
+        "Hide .env, ~/.ssh and cloud credential folders by default",
+        "Presets for Claude Code, Codex and Aider",
+        "Log of every blocked file or network access"
+      ],
+      "competitors": [
+        {
+          "name": "Dev containers / Docker",
+          "gap": "Requires custom setup per project, and commenters say corporate machines often block virtualization."
+        },
+        {
+          "name": "Agent-built-in sandboxes",
+          "gap": "One commenter calls the best available an 'IDE with an exec sandbox leaking like an hourglass'."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Binance-hacker-1029 – $5.6B stolen from Binance",
+          "url": "https://news.ycombinator.com/item?id=50313980",
+          "quote": "The dirty little secret of our industry is that everyone runs agents with full disk access on their machines as there's no good way to sandbox it.",
+          "date": "2026-10-31"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Backdoor in Claude Code for VS Code extension on the Cursor Marketplace",
+          "url": "https://news.ycombinator.com/item?id=50306926",
+          "quote": "How do you sandbox this usecase? Say you need an agent to do ssh to a set of servers on a regular basis so you kind of allow ssh. Can you configure just a set of IPs it may reach?",
+          "date": "2026-10-30"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Backdoor in Claude Code for VS Code extension on the Cursor Marketplace",
+          "url": "https://news.ycombinator.com/item?id=50305706",
+          "quote": "There is too much friction when you try to isolate things. You have to do custom stuff then the company won't let you virtualize (can't install stuff...)",
+          "date": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "card-on-file-breach-tracker",
+      "title": "Card-on-File Tracker for Breach Day",
+      "category": "Mobile app",
+      "oneLiner": "Keeps a private list of which merchants hold which of your cards, so a breach alert tells you exactly what to rotate.",
+      "problem": "After a breach, people cannot tell which card was exposed or which sites use it, and in many countries banks do not offer virtual cards that would limit the damage.",
+      "targetUsers": "Anyone with several cards and subscriptions, especially in regions without Privacy.com-style virtual cards, including India.",
+      "painScore": 6,
+      "effort": "Weekend",
+      "monetization": "Free for up to 3 cards. One-time unlock of about ₹299 or $4 for unlimited cards, plus an optional yearly plan for encrypted sync.",
+      "mvp": [
+        "Add merchants and subscriptions and link each to a card's last 4 digits",
+        "Local-only encrypted storage with no card numbers kept",
+        "Search by merchant name to see which card is affected after a breach",
+        "Checklist for replacing a card: list every merchant to update",
+        "Monthly reminder to review stale merchants"
+      ],
+      "competitors": [
+        {
+          "name": "Privacy.com",
+          "url": "https://privacy.com",
+          "gap": "Commenters say nothing comparable exists in their countries, and local virtual-card services have limits that make them unusable."
+        },
+        {
+          "name": "Password managers",
+          "gap": "They store card numbers but do not give a per-card view of which merchants would break when a card is cancelled."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Scribd Breached",
+          "url": "https://news.ycombinator.com/item?id=50313910",
+          "quote": "How do we even know which credit card is affected by this if we want to cancel it?",
+          "date": "2026-10-31"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Scribd Breached",
+          "url": "https://news.ycombinator.com/item?id=50314272",
+          "quote": "No banks in my country offer anything akin to Privacy.com. There are a few \"virtual card\" services but they have limits that make them virtually unusable.",
+          "date": "2026-10-31"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Scribd Breached",
+          "url": "https://news.ycombinator.com/item?id=50313747",
+          "quote": "there are hardly any adequate alternatives for the rest of the world, as far as I know.",
+          "date": "2026-10-31"
+        }
+      ]
+    }
+  ]
+}
