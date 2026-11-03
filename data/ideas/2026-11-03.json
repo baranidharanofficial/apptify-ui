@@ -1,0 +1,129 @@
+{
+  "date": "2026-11-03",
+  "summary": "A thin day: Reddit, Bluesky and X were unreachable, so only Hacker News (this week's comments and Ask HN posts) could be mined, and only two complaints had enough independent, verifiable sources. Developers are being locked out of GitHub with no notice or support, and people can't curate or share a slop-free YouTube feed without Google Takeout hacks.",
+  "ideas": [
+    {
+      "id": "repo-lifeboat",
+      "title": "Repo Lifeboat",
+      "category": "SaaS",
+      "oneLiner": "Continuous off-GitHub mirror of all your repos, issues and PRs, plus an appeal tracker for when your account is suspended.",
+      "problem": "Developers are having GitHub accounts suspended or locked with no notice and a ticket-only support path that can go unanswered for months. Their code, issues and paid orgs become unreachable overnight, and the existing backup tools are CLI scripts people set up only after it's too late.",
+      "targetUsers": "Solo developers, freelancers, students and small teams whose whole work history lives in one GitHub account.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 5 repos; $4/month personal plan for unlimited repos with scheduled mirrors to your own S3/R2/Backblaze bucket; $15/month team plan.",
+      "mvp": [
+        "Connect GitHub with a read-only token and pick repos/orgs to protect",
+        "Scheduled incremental mirror of git data, issues, PR discussions and wikis to your own S3/R2 bucket or a Forgejo/Codeberg instance",
+        "One-click restore export: bundle that can be pushed to another forge",
+        "Account-health check that emails you if the token starts failing (a likely sign of suspension)",
+        "Appeal tracker with the support URLs and a timestamped checklist/template for reinstatement tickets"
+      ],
+      "competitors": [
+        {
+          "name": "python-github-backup",
+          "url": "https://pypi.org/project/github-backup",
+          "gap": "A command-line tool: issues and PR details are opt-in flags, private repos need token setup, and scheduling (cron/CI) is left to the user, so most people don't have it running before a lockout."
+        },
+        {
+          "name": "Forgejo/Gitea pull mirrors",
+          "gap": "Mirror git data only, require running your own server, and don't carry issues or PR discussions in a restorable form."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What to do about incorrectly suspended GitHub account, no notice?",
+          "url": "https://news.ycombinator.com/item?id=50342838",
+          "quote": "They have no form of support other than creating a ticket for reinstatement, that I've seen in some cases not get a response for months.",
+          "engagement": "Ask HN post",
+          "date": "2026-11-02"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What to do about incorrectly suspended GitHub account, no notice? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50345038",
+          "quote": "I actually did look back through my e-mails and find an e-mail from GitHub from a year and half later confirming my access to Github For Education had expired",
+          "engagement": "Comment from a second affected user",
+          "date": "2026-11-02"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "My GitHub account has been suspended",
+          "url": "https://news.ycombinator.com/item?id=50286798",
+          "quote": "They dont give any reason . i've chek my mail inbox also there is no github reminder . i also there support mail is bounced so i cant sent them mail.",
+          "engagement": "Separate thread from a different user",
+          "date": "2026-10-29"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How do you grow OSS projects? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50243069",
+          "quote": "I got fed up with github and moved to codeberg",
+          "engagement": "Comment showing appetite to move off GitHub",
+          "date": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "id": "slop-free-youtube-feed",
+      "title": "Curated YouTube Feed Builder",
+      "category": "Web app",
+      "oneLiner": "Build a chronological, algorithm-free feed from a shareable list of channels, with no Google Takeout dance.",
+      "problem": "People can't stop the YouTube homepage from feeding them slop, and the alternatives are awkward: sharing a subscription list means exporting via Google Takeout, and curated-feed projects lack basics like recency sorting or a TV app.",
+      "targetUsers": "Tech and niche-interest viewers who watch a small set of channels, and curators who want to share a channel list with friends or a community.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for up to 50 channels; $3/month for unlimited channels, watch-later sync and a TV-friendly view; optional paid public curated lists.",
+      "mvp": [
+        "Paste channel URLs or upload a Takeout/OPML/CSV file to create a list",
+        "Chronological feed with upload-date, duration and type filters",
+        "Shareable link for a channel list that others can clone in one click",
+        "Sort by recency and hide Shorts",
+        "Responsive layout usable on a TV browser (Apple TV/Android TV) as a first step toward native apps"
+      ],
+      "competitors": [
+        {
+          "name": "FreeTube / NewPipe",
+          "url": "https://docs.freetubeapp.io/usage/importing-subscriptions/",
+          "gap": "Subscriptions move only via export files (CSV/OPML) between apps, it is install-per-device with no shareable curated list, and Google's export format changes have broken imports before."
+        },
+        {
+          "name": "HackerTube",
+          "gap": "A single fixed curation (HN-recommended videos) rather than a tool to build your own feed; commenters asked for recency sorting and an Apple TV app."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Can you help me design my YouTube feed?",
+          "url": "https://news.ycombinator.com/item?id=50344418",
+          "quote": "I can't stop the Youtube homepage from feeding me slop.",
+          "engagement": "Ask HN post",
+          "date": "2026-11-02"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HackerTube: YouTube built from videos recommended by HN (comment)",
+          "url": "https://news.ycombinator.com/item?id=50324037",
+          "quote": "Apparently the easiest way to share a subscription list is by first exporting the data with google takeout.",
+          "date": "2026-11-01"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HackerTube: YouTube built from videos recommended by HN (comment)",
+          "url": "https://news.ycombinator.com/item?id=50320852",
+          "quote": "Oh how I wish there was an Apple TV app for this. I do all my YouTube browsing on an Apple TV.",
+          "date": "2026-10-31"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HackerTube: YouTube built from videos recommended by HN (comment)",
+          "url": "https://news.ycombinator.com/item?id=50319936",
+          "quote": "I wish there was a way to sort by recency, if i'm mainly interested in finding obscure gems from like last 6 to 12 months of ai and tech updates",
+          "date": "2026-10-31"
+        }
+      ]
+    }
+  ]
+}
