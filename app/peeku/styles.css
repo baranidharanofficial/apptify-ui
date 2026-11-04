@@ -1,0 +1,322 @@
+/* Peeku launch page. Scoped under .pk, because a CSS file imported by a
+   route still loads globally in the app router (the privacy page shares
+   this folder but not these classes). The icon is on black, so the page is
+   dark in both colour schemes. */
+
+.pk {
+    --bg: #0b0909;
+    --line: #2a2222;
+    --text: #f7eee3;
+    --muted: #b9a79c;
+    --blush: #f4a3a8;
+    --butter: #f6c86a;
+    --breath: 10s;
+
+    position: relative;
+    isolation: isolate;
+    min-height: 100svh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2.5rem, 7vh, 4.5rem) 16px clamp(4.5rem, 10vh, 6rem);
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-nunito), ui-rounded, system-ui, sans-serif;
+
+    /* Waitlist card, themed through the shared component's properties. */
+    --wl-card-bg: rgba(28, 22, 22, 0.82);
+    --wl-card-border: 1px solid var(--line);
+    --wl-card-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.9);
+    --wl-text: var(--text);
+    --wl-muted: var(--muted);
+    --wl-field-bg: #151111;
+    --wl-field-border: #3a2f2f;
+    --wl-field-text: var(--text);
+    --wl-placeholder: #7d6d66;
+    --wl-accent: var(--blush);
+    --wl-accent-hover: #f7b6ba;
+    --wl-accent-text: #2a1416;
+    --wl-focus-ring: rgba(244, 163, 168, 0.4);
+    --wl-done-bg: rgba(244, 163, 168, 0.15);
+    --wl-done-fg: var(--blush);
+    --wl-error: #ff9a8a;
+}
+
+/* A warm blush glow behind the icon, like cheeks in lamplight. */
+.pk-glow {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse 50% 38% at 50% 22%, rgba(244, 163, 168, 0.16), transparent 70%),
+        radial-gradient(ellipse 70% 50% at 50% 110%, rgba(246, 200, 106, 0.08), transparent 70%);
+}
+
+.pk-content {
+    width: 100%;
+    max-width: 34rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* The breathing icon. */
+.pk-breath {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: clamp(9rem, 30vw, 13rem);
+    aspect-ratio: 1;
+    animation: pkRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.pk-icon {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 23%;
+    outline: 1px solid var(--line);
+    box-shadow: 0 24px 60px -16px rgba(244, 163, 168, 0.3);
+}
+
+.pk-ring {
+    position: absolute;
+    inset: -14%;
+    border-radius: 50%;
+    border: 1.5px solid rgba(244, 163, 168, 0.35);
+    background: radial-gradient(circle, rgba(244, 163, 168, 0.08), transparent 70%);
+    animation: pkBreathe var(--breath) ease-in-out infinite;
+}
+
+.pk-ring-b {
+    inset: -30%;
+    border-color: rgba(246, 200, 106, 0.18);
+    background: none;
+    animation-delay: 0.35s;
+}
+
+/* Four seconds in, a short hold, four seconds out, a short hold. */
+@keyframes pkBreathe {
+
+    0%,
+    100% {
+        transform: scale(0.82);
+        opacity: 0.35;
+    }
+
+    40%,
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+
+    90% {
+        transform: scale(0.82);
+        opacity: 0.35;
+    }
+}
+
+/* "Breathe in" and "Breathe out" swap on the ring's count. */
+.pk-cue {
+    position: relative;
+    height: 1.4em;
+    width: 100%;
+    margin: clamp(1.8rem, 4vh, 2.4rem) 0 0;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blush);
+}
+
+.pk-cue span {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: pkCueIn var(--breath) ease-in-out infinite;
+}
+
+.pk-cue .pk-cue-out {
+    animation-name: pkCueOut;
+}
+
+@keyframes pkCueIn {
+
+    0%,
+    40%,
+    100% {
+        opacity: 0;
+    }
+
+    8%,
+    32% {
+        opacity: 1;
+    }
+}
+
+@keyframes pkCueOut {
+
+    0%,
+    50%,
+    90%,
+    100% {
+        opacity: 0;
+    }
+
+    58%,
+    82% {
+        opacity: 1;
+    }
+}
+
+.pk-title {
+    margin: 0.4rem 0 0;
+    font-weight: 800;
+    font-size: clamp(3.2rem, 13vw, 5.6rem);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    animation: pkRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.pk-subtitle {
+    margin: 0.7rem 0 0;
+    font-weight: 600;
+    font-size: clamp(1.05rem, 3.4vw, 1.4rem);
+    color: var(--muted);
+    animation: pkRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+}
+
+.pk-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55em;
+    margin: clamp(1rem, 2.6vh, 1.4rem) 0 0;
+    padding: 0.5em 1.15em 0.5em 0.85em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #171212;
+    font-weight: 700;
+    font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+    animation: pkRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
+}
+
+.pk-flower {
+    width: 1.2em;
+    height: 1.2em;
+    fill: var(--butter);
+}
+
+.pk-flower-heart {
+    fill: #e0a43e;
+}
+
+/* How it works: three short steps. */
+.pk-steps {
+    list-style: none;
+    width: 100%;
+    max-width: 28rem;
+    margin: clamp(1.6rem, 4vh, 2.2rem) 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+    text-align: left;
+    animation: pkRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+.pk-step {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: rgba(23, 18, 18, 0.7);
+}
+
+.pk-step strong {
+    display: block;
+    font-weight: 800;
+    font-size: 0.98rem;
+}
+
+.pk-step-body {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.pk-step-n {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: rgba(244, 163, 168, 0.14);
+    color: var(--blush);
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
+.pk .wl-joined-icon .pk-flower {
+    width: 100%;
+    height: 100%;
+}
+
+.pk-note {
+    margin: 1rem 0 0;
+    max-width: 26rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--muted);
+    animation: pkRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+}
+
+.pk-footer {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.pk-footer a {
+    color: var(--text);
+    font-weight: 700;
+}
+
+@keyframes pkRise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pk *,
+    .pk *::before,
+    .pk *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    /* Without the count, show one steady cue instead of neither. */
+    .pk .pk-cue-in {
+        opacity: 1;
+    }
+}
