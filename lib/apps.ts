@@ -21,7 +21,7 @@ export type AppEntry = {
     href: string
     icon: string
     // Picks the card's look; see .app-card--* in globals.css.
-    theme: 'readio' | 'habidots' | 'dog'
+    theme: 'readio' | 'habidots' | 'peeku' | 'dog'
     live: boolean
     stats?: AppStats
 }
@@ -44,6 +44,14 @@ export const APPS: AppEntry[] = [
         theme: 'habidots',
         live: true,
         stats: APP_STATS.habidots,
+    },
+    {
+        name: 'Peeku',
+        blurb: 'One slow breath before the apps you overuse',
+        href: '/peeku',
+        icon: '/peeku/icon.png',
+        theme: 'peeku',
+        live: false,
     },
     {
         name: 'Dog on Walk',

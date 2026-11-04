@@ -429,6 +429,25 @@ body {
     background: radial-gradient(ellipse 60% 50% at 0% 100%, rgba(255, 110, 45, 0.18), transparent 70%);
 }
 
+/* Peeku: night black with breathing rings spreading from the corner, in
+   the icon's cream and blush. */
+.app-card--peeku {
+    --card-bg: radial-gradient(ellipse 90% 70% at 100% 0%, #2a1a1c 0%, #0b0909 70%);
+    --card-fg: #f7eee3;
+    --card-muted: #c9b6aa;
+    --card-edge: rgba(247, 238, 227, 0.1);
+    --chip-bg: rgba(247, 238, 227, 0.1);
+    --go-hover-fg: #0b0909;
+}
+
+.app-card--peeku::before {
+    background: repeating-radial-gradient(circle at 100% 0%,
+            transparent 0 26px,
+            rgba(244, 163, 168, 0.16) 26px 27.5px);
+    -webkit-mask-image: radial-gradient(circle at 100% 0%, #000 10%, transparent 75%);
+    mask-image: radial-gradient(circle at 100% 0%, #000 10%, transparent 75%);
+}
+
 /* Dog on Walk: a sunny sky over green hills. */
 .app-card--dog {
     --card-bg: linear-gradient(180deg, #5bbcf2 0%, #bfe5fb 70%);
