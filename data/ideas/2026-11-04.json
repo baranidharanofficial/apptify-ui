@@ -1,0 +1,238 @@
+{
+  "date": "2026-11-04",
+  "summary": "Only Hacker News was reachable today (Reddit, X, Bluesky, Stack Exchange and Mastodon were blocked), so this is a smaller, HN-only report. The strongest themes: a 1,000-point backlash against Postman's AI/telemetry behaviour, people still hand-typing expenses because bank syncing is unreliable, and a growing wish for search that filters AI slop.",
+  "ideas": [
+    {
+      "id": "no-account-api-client",
+      "title": "Quiet API Client",
+      "category": "Developer tool",
+      "oneLiner": "A tiny, offline-only HTTP request tool with no account, no cloud sync and no AI, sold as a one-time purchase.",
+      "problem": "A thread about Postman silently installing AI plugins and attempting to share API data hit 1,000+ points. Developers say they only want a 'glorified cURL GUI', but the popular tools push cloud accounts, AI features and pricing pages, so commenters expect every free option to be enshittified eventually.",
+      "targetUsers": "Backend and mobile developers who poke at endpoints daily and handle secrets or internal APIs they cannot send to a vendor cloud.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "One-time $19–29 license (no subscription) with a free tier; the 'no account, zero network calls' promise is the selling point. Optional team licence for shared collections via a git folder.",
+      "mvp": [
+        "Send GET/POST/etc. requests with headers, query params, JSON and form bodies, and see a formatted response",
+        "Collections stored as plain files in a folder, so they can be committed to git",
+        "Environment variables with secrets kept in the OS keychain",
+        "Import from cURL, Postman and Insomnia exports",
+        "Verifiable zero-egress mode: no telemetry, works fully offline, with a documented network allowlist"
+      ],
+      "competitors": [
+        {
+          "name": "Bruno",
+          "url": "https://www.usebruno.com",
+          "gap": "Named in the thread as the better alternative to Insomnia, but it has a pricing page and commenters still say they expect any funded tool to monetise its way into the same behaviour; a hard 'no network, one-time price' stance is not its positioning."
+        },
+        {
+          "name": "Insomnia",
+          "url": "https://insomnia.rest",
+          "gap": "Commenters say it forces you to create a cloud account."
+        },
+        {
+          "name": "Postman",
+          "url": "https://www.postman.com",
+          "gap": "The subject of the complaint: auto-installed AI plugins and data-sharing concerns, with users calling it enshittified."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Postman silently auto-installs AI plugins and attempts to share all API data",
+          "url": "https://news.ycombinator.com/item?id=50355247",
+          "quote": "I am going to give Insomnia a try, I've heard people talk about it and a few others on HN over the years. I just need a glorified cURL GUI at the end of the day.",
+          "engagement": "1051 points on the thread",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Postman silently auto-installs AI plugins and attempts to share all API data",
+          "url": "https://news.ycombinator.com/item?id=50355903",
+          "quote": "Insomnia has a problem, since it forces you to create a cloud account with them. Bruno [1] is the current better alternative to Insomnia.",
+          "engagement": "1051 points on the thread",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Postman silently auto-installs AI plugins and attempts to share all API data",
+          "url": "https://news.ycombinator.com/item?id=50355529",
+          "quote": "That looks appealing but the existence of a Pricing page tells me it's just a matter of time. I have a sense that a dumb Web API testing UI application is really not that hard to get AI to implement.",
+          "engagement": "1051 points on the thread",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Postman silently auto-installs AI plugins and attempts to share all API data",
+          "url": "https://news.ycombinator.com/item?id=50359290",
+          "quote": "My main point was that I wouldn't want my secrets to ever be sent to Postman under any circumstance",
+          "engagement": "1051 points on the thread",
+          "date": "2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "zero-typing-expense-tracker-india",
+      "title": "SMS-Powered Expense Tracker",
+      "category": "Mobile app",
+      "oneLiner": "A Flutter expense tracker for India that builds your ledger from bank and UPI SMS alerts on-device, so you never type an expense.",
+      "problem": "People keep abandoning expense trackers because of manual data entry, and bank-sync aggregators like Plaid and SimpleFin don't cover every bank or non-card spending. Commenters on a self-hosted expense tracker launch say reliable automatic data is the missing piece.",
+      "targetUsers": "Salaried people and freelancers in India who pay mostly by UPI and cards and want automatic tracking without handing bank credentials to an aggregator.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for the last 3 months of history; ₹149/month or ₹999/year for unlimited history, export and budgets. Everything is processed on-device, which is the selling point.",
+      "mvp": [
+        "Android SMS permission with on-device parsing of bank debit/credit and UPI messages into amount, merchant and date",
+        "Auto-categorisation by merchant with one-tap corrections that the app learns from",
+        "Cash and non-SMS entry in two taps (quick-add widget)",
+        "Monthly category view and a simple budget-per-category alert",
+        "CSV export and local encrypted backup"
+      ],
+      "competitors": [
+        {
+          "name": "Plaid-based budgeting apps",
+          "url": "https://plaid.com",
+          "gap": "Per commenters, Plaid doesn't support all banks and has issues with various providers, and it doesn't capture spending not paid by cards."
+        },
+        {
+          "name": "SimpleFIN",
+          "url": "https://www.simplefin.org",
+          "gap": "Used by the self-hosted tracker in the thread, which is limited to the banks SimpleFIN supports and to USD."
+        },
+        {
+          "name": "Spreadsheets",
+          "gap": "The launch post's author calls his years of Excel tracking 'ugly and annoying to use'."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "MoneyPouch – self hosted expense tracker",
+          "url": "https://news.ycombinator.com/item?id=50316664",
+          "quote": "Theres so many expense trackers out there and theres one single thing preventing them from just taking over and solving a huge part of personal finance The data entry.",
+          "engagement": "11 points on the thread",
+          "date": "2026-10-31"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "MoneyPouch – self hosted expense tracker",
+          "url": "https://news.ycombinator.com/item?id=50316676",
+          "quote": "even those like plaid and such all have tons of issues with various providers, so it's an imperfect system.",
+          "engagement": "11 points on the thread",
+          "date": "2026-10-31"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "MoneyPouch – self hosted expense tracker",
+          "url": "https://news.ycombinator.com/item?id=50322415",
+          "quote": "building a tracker is easy but getting the data is the pain point... I am using plaid but it doesn't support all the banks, not to mention tracking expense not paid by cards.",
+          "engagement": "11 points on the thread",
+          "date": "2026-11-01"
+        }
+      ]
+    },
+    {
+      "id": "slop-and-paywall-filter-search",
+      "title": "Clean Results Lens",
+      "category": "Browser extension",
+      "oneLiner": "A browser extension that hides AI-slop sites, fake fan wikis and paywalled links from Google results using a community-maintained blocklist.",
+      "problem": "Searchers say result quality has dropped: fake wikis with inaccurate AI-written pages and SEO spam crowd out useful pages, and paywalled hits waste clicks. Commenters ask why search engines don't filter this themselves.",
+      "targetUsers": "Heavy searchers, students, gamers looking up niche game info and researchers who currently scroll past junk results.",
+      "painScore": 6,
+      "effort": "Weekend",
+      "monetization": "Free with a core blocklist; $3/month for auto-updating curated lists, per-topic lenses (games, recipes, health) and sync across browsers.",
+      "mvp": [
+        "Content script that hides or dims results from domains on a blocklist on Google, Bing and DuckDuckGo",
+        "Crowd-sourced 'report this result as slop' button that feeds a shared list",
+        "Paywall badge and optional hiding for known paywalled domains",
+        "Personal allow/deny lists and an import of existing uBlacklist rules",
+        "Counter showing how many junk results were hidden"
+      ],
+      "competitors": [
+        {
+          "name": "Kagi",
+          "url": "https://kagi.com",
+          "gap": "A paid search engine, so users must switch engines and pay a subscription; the commenters here are talking about filtering within the search they already use."
+        },
+        {
+          "name": "uBlacklist",
+          "gap": "A manual block-list extension; users have to find and curate bad domains themselves and it has no slop or paywall detection."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "AI fan wikis riddled with errors are muddying the waters of games culture",
+          "url": "https://news.ycombinator.com/item?id=50334095",
+          "quote": "People talk about their being a market for google without the AI features, but i think the real market would be google that filters out slop results. Bonus points for also filtering out paywalls. I'm tired of search results being useless.",
+          "engagement": "101 points on the thread",
+          "date": "2026-11-02"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "AI fan wikis riddled with errors are muddying the waters of games culture",
+          "url": "https://news.ycombinator.com/item?id=50333001",
+          "quote": "I've seen a couple of these in search results while looking for info about more niche games and at first I thought they were fan made but like the article mentions they're not actually wikis, nor do they contain accurate information.",
+          "engagement": "101 points on the thread",
+          "date": "2026-11-02"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Google will turn off search for schools that reject AI",
+          "url": "https://news.ycombinator.com/item?id=50360491",
+          "quote": "If Gemini's good at sorting through search results, and they're already using Gemini on every search, why don't they use it to help filter out the SEO spam?",
+          "engagement": "562 points on the thread",
+          "date": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "id": "home-device-allowlist-box",
+      "title": "Home Device Gatekeeper",
+      "category": "Other",
+      "oneLiner": "A Raspberry Pi/OpenWrt appliance that blocks every new smart-home device by default and lets it reach only the domains it needs, from a crowd-sourced per-model allowlist.",
+      "problem": "People are uneasy about how many connected devices in their homes phone home and what they send. Existing options are DNS blockers or MAC allowlists that give a device full outbound access once approved, and nobody maintains a per-model list of what a dishwasher or TV actually needs.",
+      "targetUsers": "Privacy-minded home-lab users and smart-TV/appliance owners who can flash a router or run a Pi but don't want to hand-write firewall rules per device.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "Open-source core; $5/month for the hosted, curated allowlist database and alerts, or a pre-flashed device sold at a margin.",
+      "mvp": [
+        "Pi or OpenWrt image that puts new devices into a quarantine VLAN by default",
+        "Device fingerprinting by MAC vendor and DNS behaviour to suggest make/model",
+        "Per-device domain allowlist with a 'learn mode' that records what the device contacts over a week",
+        "Shared, upvoted allowlist profiles for popular TVs, fridges and appliances",
+        "Dashboard showing blocked connection attempts per device"
+      ],
+      "competitors": [
+        {
+          "name": "Pi-hole / AdGuard Home",
+          "url": "https://pi-hole.net",
+          "gap": "Suggested in the thread, but they are DNS blocklists, not default-deny per device, and don't know which domains a given model needs to function."
+        },
+        {
+          "name": "GL.iNet allowlist mode",
+          "url": "https://www.gl-inet.com",
+          "gap": "A commenter says unknown MACs are denied until approved, but once unblocked a device gets unrestricted outbound access and there is no crowd-sourced list."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: uBlock Origin for the IoT devices in my house?",
+          "url": "https://news.ycombinator.com/item?id=50333058",
+          "quote": "My dishwasher has a MAC address. So do dozens of other things in my house, and I have no idea what most of them send home.",
+          "engagement": "1 point · 4 comments",
+          "date": "2026-11-02"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Which TV do you recommend for privacy?",
+          "url": "https://news.ycombinator.com/item?id=50333162",
+          "quote": "Our Samsung fridge will mesh network with any Samsung TV specifically to exfiltrate marketing info, at least according to the manual.",
+          "engagement": "721 points · 865 comments on the thread",
+          "date": "2026-11-02"
+        }
+      ]
+    }
+  ]
+}
