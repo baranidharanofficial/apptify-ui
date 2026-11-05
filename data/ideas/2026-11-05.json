@@ -1,0 +1,363 @@
+{
+  "date": "2026-11-05",
+  "summary": "Today's strongest theme is distrust of vendor-controlled settings: AI chat training toggles flipping back on, Windows 11 setup forcing accounts, and car head units that ignore the user. Self-hosted web archiving and YouTube-without-the-algorithm on TV also came up repeatedly. Reddit, X and Bluesky were blocked today, so every source below is from Hacker News.",
+  "ideas": [
+    {
+      "id": "ai-training-optout-watchdog",
+      "title": "AI Opt-Out Watchdog",
+      "category": "Browser extension",
+      "oneLiner": "An extension that checks your ChatGPT, Gemini and other AI data-sharing toggles every day and alerts you the moment one flips back to 'train on my chats'.",
+      "problem": "A team found 'Improve the model for everyone' had been silently re-enabled in Codex after they had all turned it off. Another user says Mistral reset every staff slider to 'on' during a policy change. On Gemini, commenters say there is no real opt-out other than losing chat history, so people discover settings too late.",
+      "targetUsers": "Developers, freelancers and small teams who paste client code or private documents into AI tools and have to prove to clients or employers that sharing is off.",
+      "painScore": 8,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 2 providers; ₹199–399/month (or $4–5) for unlimited accounts, change alerts by email/Telegram, and a team dashboard with an exportable audit log.",
+      "mvp": [
+        "Detect and read the data-controls page state for ChatGPT and Gemini while the user is logged in (read-only, nothing leaves the browser)",
+        "Daily background check with a desktop notification if training or human review is switched on",
+        "One-click link to the exact settings page for each provider",
+        "Local change log with timestamps for audit purposes",
+        "Add Claude, Mistral and Codex settings pages after the first release"
+      ],
+      "competitors": [
+        {
+          "name": "Provider settings pages (ChatGPT Data Controls, Gemini Keep Activity)",
+          "url": "https://chatgpt.com/settings/data-controls",
+          "gap": "They only show state when you open them manually, and users report the state changing without notice."
+        },
+        {
+          "name": "General privacy dashboards / manual checklists",
+          "gap": "No tool I found monitors AI-training toggles across several vendors and alerts on change; this is checked by hand."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "OpenAI seems to be silently re-enabling model training on Codex chats",
+          "url": "https://news.ycombinator.com/item?id=50352757",
+          "quote": "My company is pretty paranoid about leaking IP to the frontier labs through prompts, so we've all been diligent about disabling data sharing in Codex/Claude Code/etc. But yesterday my coworkers and I noticed that the setting had been silently reenabled in Codex. None of us knowingly opted back in.",
+          "engagement": "518 points on the thread",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "OpenAI seems to be silently re-enabling model training on Codex chats",
+          "url": "https://news.ycombinator.com/item?id=50354115",
+          "quote": "I fell right in the middle of them changing from opt-in to opt-out AND removing their org-wide dial (on the Teams plan). They reversed that last decision (the org-wide dial returned) about 48 hours later, but in the process they turned all sliders for all my staff back to \"on\".",
+          "engagement": "518 points on the thread",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Gemini trains on chat history, even for subscribers (personal accounts)",
+          "url": "https://news.ycombinator.com/item?id=50365094",
+          "quote": "You cannot opt out, except by using only temporary chats. You cannot keep your chat histories visible to yourself only. If you want to access your previous chats, you cannot opt out of human review and training models on your chats.",
+          "engagement": "630 points on the thread",
+          "date": "2026-11-04"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Gemini trains on chat history, even for subscribers (personal accounts)",
+          "url": "https://news.ycombinator.com/item?id=50364314",
+          "quote": "What's worse is if you have a Pixel phone then Gemini is completely useless without enabling this setting.",
+          "engagement": "630 points on the thread",
+          "date": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "id": "serverless-web-archive-clipper",
+      "title": "Archive-It-Yourself Clipper",
+      "category": "Desktop app",
+      "oneLiner": "A local-first app plus browser extension that saves full copies of pages you care about from your own logged-in browser and keeps them searchable, with no ArchiveBox server to maintain.",
+      "problem": "A thread on backing up websites drew 600+ points. People who run ArchiveBox say queues fill with failed scans and maintenance gets annoying, and server-side capture fails on sites behind Cloudflare. They stitch together Linkding, SingleFile and other tools by hand, and several people have built their own small tools to fill the gap.",
+      "targetUsers": "Researchers, writers, developers and heavy bookmarkers who have seen link rot eat their saved links and don't want to run a home server.",
+      "painScore": 7,
+      "effort": "1 month+",
+      "monetization": "Free local app; $4/month or $39/year for encrypted sync to the user's own S3/Drive bucket, full-text search across devices and scheduled re-checks for dead links. One-time $29 licence as an alternative.",
+      "mvp": [
+        "One-click capture in the browser using the user's own session (works for paywalled and Cloudflare-protected pages)",
+        "Single-file HTML plus screenshot stored in a plain folder",
+        "Full-text search and tags",
+        "Dead-link checker that tells you which saved bookmarks are now 404",
+        "Optional sync to the user's own cloud storage"
+      ],
+      "competitors": [
+        {
+          "name": "ArchiveBox",
+          "url": "https://archivebox.io",
+          "gap": "Commenters report failed-scan queues, upkeep burden, and trouble capturing sites that block server-side crawlers."
+        },
+        {
+          "name": "SingleFile",
+          "url": "https://www.getsinglefile.com",
+          "gap": "Great capture, but no library, search or sync of its own; people pair it with Linkding or Karakeep."
+        },
+        {
+          "name": "Linkding / Karakeep / Linkwarden",
+          "gap": "Need a self-hosted server; users describe gluing several pieces together."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "If you love a website, back it up",
+          "url": "https://news.ycombinator.com/item?id=50339131",
+          "quote": "I've been using Archivebox for years also, but it recent years it started to have multiple issues. My queues are full of pages that failed to scan, and it's been several versions since I actually had anything new there.",
+          "engagement": "666 points on the thread",
+          "date": "2026-11-02"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "If you love a website, back it up",
+          "url": "https://news.ycombinator.com/item?id=50339173",
+          "quote": "With numerous sites moving to Cloudflare to mitigate AI agent crawling, it makes it really hard (or outright impossible) to capture a page because it wants to do it server side.",
+          "engagement": "666 points on the thread",
+          "date": "2026-11-02"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "If you love a website, back it up",
+          "url": "https://news.ycombinator.com/item?id=50339538",
+          "quote": "I used ArchiveBox for years. It's really good. The self-hosting and maintenance gets annoying after a while though.",
+          "engagement": "666 points on the thread",
+          "date": "2026-11-02"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "If you love a website, back it up",
+          "url": "https://news.ycombinator.com/item?id=50339837",
+          "quote": "This is basically the main reason that I started building https://github.com/mfinelli/recueil. It _only_ works in your browser so you can bypass captchas or paywalls or whatever",
+          "engagement": "666 points on the thread",
+          "date": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "id": "subscriptions-only-tv-youtube",
+      "title": "Subs-Only YouTube for TV",
+      "category": "Mobile app",
+      "oneLiner": "A tvOS and Android TV app that shows only your subscriptions, newest first, with duration filters and no recommendations.",
+      "problem": "People say YouTube's recommendations are poor but hard to turn off, and that limiting the app to subscriptions is 'annoyingly difficult'. Many watch on an Apple TV, where the community-made alternatives are web-only, so they have nowhere to go. Others ask for sort-by-recency and duration filters.",
+      "targetUsers": "Paying YouTube users who watch mostly on a living-room TV and want a calm, subscriptions-only feed.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "One-time $9.99 or $2/month; free tier limited to 20 channels. No ads, no tracking.",
+      "mvp": [
+        "Import channels from a pasted list or a Google Takeout subscriptions file",
+        "Chronological feed with duration and 'watched' filters",
+        "Remote-friendly TV UI with large thumbnails",
+        "Resume position and a simple watch-later queue",
+        "Phone companion for adding channels"
+      ],
+      "competitors": [
+        {
+          "name": "SmartTube / Grayjay",
+          "gap": "A commenter uses Grayjay with the home page disabled, but it is mainly Android and desktop; Apple TV users in the thread have no equivalent."
+        },
+        {
+          "name": "YouTube app (Subscriptions tab)",
+          "gap": "Recommendations dominate the home screen and commenters say limiting it to subscriptions is awkward."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HackerTube: YouTube built from videos recommended by HN",
+          "url": "https://news.ycombinator.com/item?id=50319949",
+          "quote": "I pay for YT premium but noticed the quality of recommendations is subpar yet I still end up wasting time watching it. So I decided I need to limit my feed to my subscribed videos only, which YT app makes annoyingly difficult.",
+          "engagement": "2877 points on the thread",
+          "date": "2026-10-31"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HackerTube: YouTube built from videos recommended by HN",
+          "url": "https://news.ycombinator.com/item?id=50320852",
+          "quote": "Oh how I wish there was an Apple TV app for this. I do all my YouTube browsing on an Apple TV.",
+          "engagement": "2877 points on the thread",
+          "date": "2026-10-31"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HackerTube: YouTube built from videos recommended by HN",
+          "url": "https://news.ycombinator.com/item?id=50319936",
+          "quote": "I wish there was a way to sort by recency, if i'm mainly interested in finding obscure gems from like last 6 to 12 months of ai and tech updates",
+          "engagement": "2877 points on the thread",
+          "date": "2026-10-31"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HackerTube: YouTube built from videos recommended by HN",
+          "url": "https://news.ycombinator.com/item?id=50319890",
+          "quote": "This is great, would love filters for duration and sort by upload date",
+          "engagement": "2877 points on the thread",
+          "date": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "windows-11-clean-setup-kit",
+      "title": "Clean Windows 11 Setup Kit",
+      "category": "Desktop app",
+      "oneLiner": "A guided installer builder that makes Windows 11 media with a local account, no bundled extras and a classic-style shell, and keeps working when Microsoft changes the tricks.",
+      "problem": "Commenters on a Windows 11 thread say they won't use it while an online account is required, and others want a classic NT4/2000-style interface badly enough to say they would pay. Users who do reinstall piece together command-prompt tricks or unofficial guides to avoid the extras.",
+      "targetUsers": "Gamers with a Windows box, small-office admins and people refurbishing PCs for family who want a plain, predictable Windows.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free basic builder; $19 one-time Pro with presets for multiple PCs, unattended answer files and a classic-shell option.",
+      "mvp": [
+        "Pick the official ISO and write a USB drive",
+        "Answer-file generator: local account, privacy defaults, region and username preset",
+        "Optional removal list for bundled apps with a preview",
+        "Check-after-update tool that tells you if a Windows update re-enabled anything",
+        "Saved profiles for repeat installs"
+      ],
+      "competitors": [
+        {
+          "name": "Rufus",
+          "url": "https://rufus.ie",
+          "gap": "Offers account and requirement bypass options, but search results note it does more than needed and its methods depend on Microsoft not closing loopholes."
+        },
+        {
+          "name": "NTLite",
+          "url": "https://ntlite.com",
+          "gap": "Powerful but paid and aimed at experts; forum threads show local-account support needs manual settings per release."
+        },
+        {
+          "name": "massgrave.dev guides",
+          "url": "https://massgrave.dev",
+          "gap": "A commenter found it helpful for getting LTSC, but it is guides rather than a one-click builder."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Microsoft fixes a Windows 11 annoyance as PC revenue declines",
+          "url": "https://news.ycombinator.com/item?id=50360844",
+          "quote": "As long as they still require online account to install, nope, not for me. That's stupid requirement.",
+          "engagement": "105 points on the thread",
+          "date": "2026-11-04"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Microsoft fixes a Windows 11 annoyance as PC revenue declines",
+          "url": "https://news.ycombinator.com/item?id=50361753",
+          "quote": "I had recently had to install windows for the first time in years, did some chatting with mr gpt and poking around on reddit until I arrived at: https://massgrave.dev. They guide you on how to download windows LTSC from the \"official\" Microsoft links. So much less crap shoved down the system, it's kind of nice.",
+          "engagement": "105 points on the thread",
+          "date": "2026-11-04"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Microsoft fixes a Windows 11 annoyance as PC revenue declines",
+          "url": "https://news.ycombinator.com/item?id=50360953",
+          "quote": "I'd pay for this, compatible with Windows 11 apps, but basically works like NT4.",
+          "engagement": "105 points on the thread",
+          "date": "2026-11-04"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Microsoft fixes a Windows 11 annoyance as PC revenue declines",
+          "url": "https://news.ycombinator.com/item?id=50360814",
+          "quote": "Windows 11 is a major regression. 10 was better, but I’d pay for a modern version of windows 2kpro UI.",
+          "engagement": "105 points on the thread",
+          "date": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "id": "car-bluetooth-autoplay-blocker",
+      "title": "Car Autoplay Blocker",
+      "category": "Mobile app",
+      "oneLiner": "An Android app that stops your phone's music or podcast from auto-resuming when it connects to a car's Bluetooth or USB, and handles the car's forced Play commands.",
+      "problem": "Several drivers say their car head unit sends a Play command every time the phone connects, or restarts audio the moment they pause on the phone. Fixing the car's software is not possible for most owners.",
+      "targetUsers": "Android drivers with older or mid-range cars whose head units can't be configured.",
+      "painScore": 5,
+      "effort": "Weekend",
+      "monetization": "Free with one profile; ₹99 or $1.99 one-time for per-car profiles and rules like 'allow only after I press play'.",
+      "mvp": [
+        "Detect connection to a chosen car (Bluetooth device or USB)",
+        "Pause and ignore Play commands for the first N seconds after connecting",
+        "Per-car profile with an 'ignore external play' switch",
+        "Quick toggle tile in the notification shade",
+        "Optional hold timer after the user pauses manually"
+      ],
+      "competitors": [
+        {
+          "name": "Bluetooth auto-play apps and Tasker",
+          "gap": "Existing automation tools are mostly built to start music on connect, not block it, and need manual rule building (I did not verify specific listings)."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Jailbreaking my car's navigation system just so I can change the time",
+          "url": "https://news.ycombinator.com/item?id=50354198",
+          "quote": "I'd love to pwn the head unit in my 2014 Honda CR-V just so I can stop it from sending a \"Play\" command every time a phone associates with the Bluetooth and the audio system was left \"on\".",
+          "engagement": "932 points on the thread",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Jailbreaking my car's navigation system just so I can change the time",
+          "url": "https://news.ycombinator.com/item?id=50355185",
+          "quote": "I also have a 2014 CR-V and I hate this too.",
+          "engagement": "932 points on the thread",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Jailbreaking my car's navigation system just so I can change the time",
+          "url": "https://news.ycombinator.com/item?id=50356506",
+          "quote": "Had a Chevy that was extremely obnoxious about this. If it was playing over USB it absolutely would not allow it to stop. Hitting pause on the phone would have the car immediately hit play to restart it.",
+          "engagement": "932 points on the thread",
+          "date": "2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "usual-order-reorder-assistant",
+      "title": "One-Tap Usual Order",
+      "category": "Mobile app",
+      "oneLiner": "A chat or widget that re-places your regular food order at your usual time, so you skip the delivery-app browsing and upsells.",
+      "problem": "In a thread about AI agents and DoorDash, commenters say they order the same thing every time and would happily delegate it, and one calls delivery apps 'dark-pattern-filled' with constant upsells. Skeptics point out that the labelled data in the apps is poor.",
+      "targetUsers": "Office workers and families who repeat the same lunch or grocery order weekly.",
+      "painScore": 4,
+      "effort": "1 month+",
+      "monetization": "Free for 1 saved order; ₹149/month for several saved orders, schedule prompts and price alerts. Depends on deep-link or partner access, which is the main risk.",
+      "mvp": [
+        "Save a 'usual' order from a restaurant's link or a past order screenshot",
+        "Lunchtime notification: 'Order the usual?' with one tap to open the prefilled cart",
+        "Order history and typical-spend view",
+        "Skip-week and swap-item options"
+      ],
+      "competitors": [
+        {
+          "name": "Delivery apps' own Reorder features",
+          "gap": "Users in the thread still complain about the interfaces, upsells and ads they must get through."
+        },
+        {
+          "name": "Voice assistants (Alexa reorder)",
+          "gap": "Commenters say they mainly use it for paper towels and toilet paper, not hot food."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Basically no one is using AI agents for their DoorDash orders",
+          "url": "https://news.ycombinator.com/item?id=50371171",
+          "quote": "if there's a number I can text \"hey get me a pizza\" and it re-orders the same pizza order I make every Friday night, I'm going to use it.",
+          "engagement": "79 points on the thread",
+          "date": "2026-11-04"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Basically no one is using AI agents for their DoorDash orders",
+          "url": "https://news.ycombinator.com/item?id=50373462",
+          "quote": "I order the same thing every single time(though on a local alternative & not doordash) and I totally wish I could have an agent drive that. At my lunch time ask me if it can order the usual, I say yes it places the order",
+          "engagement": "79 points on the thread",
+          "date": "2026-11-05"
+        }
+      ]
+    }
+  ]
+}
