@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { Fredoka } from "next/font/google";
+import { fredoka } from "./fredoka";
 import { Paw } from "./paw";
 import { Scene } from "./scene";
 import { WaitlistForm } from "../_components/waitlist-form";
 import "./styles.css";
-
-// Rounded and friendly, close to the app icon's lettering.
-const fredoka = Fredoka({
-    subsets: ["latin"],
-    weight: ["500", "600", "700"],
-    variable: "--font-fredoka",
-});
 
 const description =
     "A pet focus timer: stay on task and your dog heads out on an adventure. Get notified on launch day.";

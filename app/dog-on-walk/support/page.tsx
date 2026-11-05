@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Fredoka } from "next/font/google";
 import { LuChevronDown, LuMail } from "react-icons/lu";
+import { fredoka } from "../fredoka";
 // Shares the account deletion page's look (cards, badges, footer).
 import "../delete-account/styles.css";
 import "./styles.css";
-
-const fredoka = Fredoka({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-fredoka",
-});
 
 export const metadata: Metadata = {
   title: "Support · Dog on Walk",

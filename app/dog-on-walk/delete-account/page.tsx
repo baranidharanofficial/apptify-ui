@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Fredoka } from "next/font/google";
 import {
   LuBarChart,
   LuCheck,
@@ -15,15 +14,9 @@ import {
   LuUserX,
   LuUsers,
 } from "react-icons/lu";
+import { fredoka } from "../fredoka";
 import { DeleteAccountForm } from "./delete-form";
 import "./styles.css";
-
-// Rounded and friendly, like the app and its launch page.
-const fredoka = Fredoka({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-fredoka",
-});
 
 export const metadata: Metadata = {
   title: "Delete Your Account · Dog on Walk",
