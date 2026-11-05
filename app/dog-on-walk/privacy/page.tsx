@@ -38,10 +38,12 @@ export default function PolicyPage() {
       <h4>Accounts (Optional)</h4>
       <p>
         You do not need an account to use Dog on Walk. You can choose to sign
-        in with Apple or Google so Pro comes with you to a new phone, and to
-        walk with friends. Sign-in is handled by Google Firebase
-        Authentication, which receives your account ID, name and email address
-        from Apple or Google (with Apple, you can choose to hide your email).
+        in with Apple, Google, or an email and password so Pro comes with you
+        to a new phone, and to walk with friends. Sign-in is handled by Google
+        Firebase Authentication, which receives your account ID, name and
+        email address from Apple or Google (with Apple, you can choose to hide
+        your email). If you sign in with email, Firebase stores your email
+        address and a securely hashed password, which we never see.
         Your account ID is also shared with RevenueCat so your purchases can be
         restored. Your walks and progress are not uploaded, except what rooms
         share (see below).
