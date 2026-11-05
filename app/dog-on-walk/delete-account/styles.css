@@ -1,95 +1,384 @@
-p {
-    padding-bottom: 16px;
+/* Dog on Walk account deletion page. Scoped under .dda, because a CSS file
+   imported by a route still loads globally in the app router. Colours follow
+   the launch page; like it, the page stays a sunny day in dark mode. */
+
+.dda {
+    --navy: #15203b;
+    --slate: #5a6b85;
+    --line: #e1e8f1;
+    --cream: #fff3d6;
+    --brown: #8a4a12;
+    --orange: #f08a1c;
+    --orange-deep: #d9720a;
+    --sky: #bfe5fb;
+    --sky-ink: #1f6fa8;
+    --coral: #e0555f;
+    --coral-deep: #b83c46;
+    --coral-soft: #fdecee;
+    --green: #2f8f5f;
+    --green-soft: #e7f5ec;
+    --radius: 1.5rem;
+    --shadow: 0 22px 44px -26px rgba(21, 32, 59, 0.4),
+        0 2px 6px rgba(21, 32, 59, 0.05);
+
+    min-height: 100svh;
+    background:
+        radial-gradient(60rem 22rem at 50% -6rem, #ffffff 0%, transparent 70%),
+        linear-gradient(180deg, var(--sky) 0, #e3f4fd 26rem, #f5fafe 44rem);
+    color: var(--navy);
+    font-family: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.55;
+    padding: 0 16px 3rem;
 }
 
-h3 {
-    font-size: 28px;
-    font-weight: 600;
-    padding-bottom: 16px;
-}
-
-h4 {
-    font-size: 20px;
+.dda a {
+    color: var(--sky-ink);
     font-weight: 500;
-    padding-bottom: 8px;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
 }
 
-.da-card {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 28px;
-    padding: 20px;
-    border: 1px solid #d9e1db;
-    border-radius: 16px;
-    background: #ffffff;
+.dda svg {
+    flex-shrink: 0;
 }
 
-.da-card p {
-    padding-bottom: 0;
+/* Hero */
+
+.dda-hero {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: clamp(2rem, 7vh, 4rem) 0 clamp(1.6rem, 4vh, 2.4rem);
+    text-align: center;
 }
 
-.da-done {
-    border-color: #2f7d5b;
-    background: #eef6f1;
-}
-
-.da-label {
-    font-weight: 600;
-}
-
-.da-optional,
-.da-hint {
-    color: #5d6b63;
-    font-weight: 400;
-}
-
-.da-hint {
-    font-size: 14px;
-    margin-top: -2px;
-    margin-bottom: 8px;
-}
-
-.da-input {
-    width: 100%;
-    padding: 10px 12px;
-    border: 2px solid #d8ded9;
-    border-radius: 12px;
-    font: inherit;
-    background: #ffffff;
-    color: #1f2a24;
-}
-
-.da-input:focus {
-    outline: none;
-    border-color: #2f7d5b;
-}
-
-.da-fieldset {
-    margin-bottom: 8px;
-    border: 0;
-    padding: 0;
-}
-
-.da-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 18px;
-    margin-top: 8px;
-}
-
-.da-option {
+.dda .dda-brand {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 0.6rem;
+    padding: 0.35rem 1rem 0.35rem 0.35rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 8px 20px -12px rgba(21, 32, 59, 0.45);
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+}
+
+.dda-brand img {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 23%;
+}
+
+.dda-hero h1 {
+    margin-top: 1.1rem;
+    font-weight: 700;
+    font-size: clamp(2.3rem, 8vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+}
+
+.dda-lede {
+    max-width: 34rem;
+    margin: 0.9rem auto 0;
+    color: var(--slate);
+    font-size: clamp(1.02rem, 2.6vw, 1.15rem);
+}
+
+/* Layout */
+
+.dda-body {
+    max-width: 46rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.dda-card {
+    padding: clamp(1.25rem, 4vw, 1.75rem);
+    border-radius: var(--radius);
+    background: #ffffff;
+    box-shadow: var(--shadow);
+}
+
+.dda-card-tight {
+    padding: clamp(1.1rem, 3.5vw, 1.4rem);
+}
+
+.dda-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.1rem;
+}
+
+.dda-badge {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    background: var(--cream);
+    color: var(--orange-deep);
+}
+
+.dda-badge svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.dda-badge-sky {
+    background: #e2f2fc;
+    color: var(--sky-ink);
+}
+
+.dda-eyebrow {
+    color: var(--slate);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.dda-card h2 {
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.2;
+}
+
+.dda-muted {
+    color: var(--slate);
+}
+
+/* Option 1: steps */
+
+.dda-steps {
+    counter-reset: step;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.dda-steps li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 2.6rem;
+    min-height: 1.9rem;
+    padding-top: 0.15rem;
+}
+
+.dda-steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    background: var(--orange);
+    box-shadow: 0 3px 0 var(--orange-deep);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.dda-ui {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.05em 0.55em;
+    border: 1.5px solid var(--line);
+    border-radius: 0.6rem;
+    background: #f4f8fc;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dda-ui-danger {
+    border-color: #f6c9ce;
+    background: var(--coral-soft);
+    color: var(--coral-deep);
+}
+
+.dda-good {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: 0.9rem;
+    background: var(--green-soft);
+    color: var(--green);
+    font-weight: 600;
+}
+
+/* Option 2: form */
+
+.dda-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-top: 1.2rem;
+}
+
+.dda-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    min-width: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.dda-field > label,
+.dda-field > legend {
+    font-weight: 600;
+}
+
+.dda-field > legend {
+    margin-bottom: 0.45rem;
+}
+
+.dda-optional {
+    margin-left: 0.3rem;
+    padding: 0.05rem 0.5rem;
+    border-radius: 999px;
+    background: #eef2f7;
+    color: var(--slate);
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.dda-field input,
+.dda-field textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--line);
+    border-radius: 1rem;
+    background: #ffffff;
+    color: var(--navy);
+    font: inherit;
+    font-weight: 500;
+    transition:
+        border-color 0.15s,
+        box-shadow 0.15s;
+}
+
+.dda-field textarea {
+    resize: vertical;
+    min-height: 5.5rem;
+}
+
+.dda-field input::placeholder,
+.dda-field textarea::placeholder {
+    color: #9aa6b8;
+}
+
+.dda-field input:focus,
+.dda-field textarea:focus {
+    outline: none;
+    border-color: var(--orange);
+    box-shadow: 0 0 0 4px rgba(240, 138, 28, 0.18);
+}
+
+.dda-field input[aria-invalid="true"] {
+    border-color: var(--coral);
+}
+
+.dda-hint {
+    display: flex;
+    gap: 0.45rem;
+    color: var(--slate);
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+
+.dda-hint svg {
+    margin-top: 0.15rem;
+}
+
+.dda-methods {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+@media (min-width: 560px) {
+    .dda-methods {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.dda-method {
+    position: relative;
     cursor: pointer;
 }
 
-.da-option input {
-    accent-color: #2f7d5b;
+.dda-method input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
 }
 
-.da-honeypot {
+.dda-method span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.7rem 0.5rem;
+    border: 2px solid var(--line);
+    border-radius: 1rem;
+    font-weight: 600;
+    transition:
+        border-color 0.15s,
+        background 0.15s,
+        color 0.15s;
+}
+
+.dda-method span svg {
+    font-size: 1.15rem;
+}
+
+.dda-method:hover span {
+    border-color: #c9d5e3;
+}
+
+.dda-method input:checked + span {
+    border-color: var(--orange);
+    background: var(--cream);
+    color: var(--brown);
+}
+
+.dda-method input:focus-visible + span {
+    box-shadow: 0 0 0 4px rgba(240, 138, 28, 0.25);
+}
+
+.dda-confirm {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.8rem 0.95rem;
+    border-radius: 1rem;
+    background: #f6f8fb;
+    cursor: pointer;
+}
+
+.dda-confirm input {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+    accent-color: var(--coral);
+}
+
+.dda-honeypot {
     position: absolute;
     left: -9999px;
     width: 1px;
@@ -97,25 +386,237 @@ h4 {
     opacity: 0;
 }
 
-.da-error {
-    color: #b8485a;
+.dda-error {
+    padding: 0.65rem 0.9rem;
+    border-radius: 0.9rem;
+    background: var(--coral-soft);
+    color: var(--coral-deep);
     font-weight: 600;
 }
 
-.da-button {
-    align-self: flex-start;
-    margin-top: 8px;
-    padding: 12px 20px;
+.dda-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    width: 100%;
+    margin-bottom: 3px;
+    padding: 0.95rem 1.4rem;
     border: 0;
-    border-radius: 12px;
-    background: #b8485a;
+    border-radius: 1rem;
+    background: var(--coral);
+    box-shadow: 0 4px 0 var(--coral-deep);
     color: #ffffff;
     font: inherit;
     font-weight: 600;
+    font-size: 1.08rem;
     cursor: pointer;
+    transition:
+        transform 0.1s,
+        box-shadow 0.1s,
+        background 0.15s;
 }
 
-.da-button:disabled {
-    opacity: 0.6;
+@media (min-width: 560px) {
+    .dda-button {
+        width: auto;
+        align-self: flex-start;
+    }
+}
+
+.dda-button:hover {
+    background: #e7666f;
+}
+
+.dda-button:active:not(:disabled) {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 var(--coral-deep);
+}
+
+.dda-button:focus-visible {
+    outline: 3px solid rgba(224, 85, 95, 0.4);
+    outline-offset: 3px;
+}
+
+.dda-button:disabled {
+    opacity: 0.65;
     cursor: default;
+}
+
+.dda-alt {
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1.5px dashed var(--line);
+    color: var(--slate);
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+
+/* Sent */
+
+.dda-done {
+    margin-top: 1.2rem;
+    padding: 1.4rem;
+    border-radius: 1.2rem;
+    background: var(--green-soft);
+    text-align: center;
+}
+
+.dda-done-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    margin: 0 auto;
+    color: var(--green);
+}
+
+.dda-done-title {
+    margin-top: 0.4rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.dda-done-text {
+    color: var(--slate);
+    overflow-wrap: anywhere;
+}
+
+.dda-timeline {
+    counter-reset: next;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 22rem;
+    margin: 1rem auto 0;
+    text-align: left;
+}
+
+.dda-timeline li {
+    counter-increment: next;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.dda-timeline li::before {
+    content: counter(next);
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--green);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+/* Your data */
+
+.dda-section-title {
+    margin: 0.75rem 0 0.9rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.dda-grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+@media (min-width: 720px) {
+    .dda-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.dda-list-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.9rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.dda-list-title-deleted {
+    background: var(--coral-soft);
+    color: var(--coral-deep);
+}
+
+.dda-list-title-kept {
+    background: #eaf1f8;
+    color: var(--slate);
+}
+
+.dda-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dda-list li {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.dda-item-icon {
+    display: grid;
+    place-items: center;
+    width: 2.3rem;
+    height: 2.3rem;
+    flex-shrink: 0;
+    border-radius: 0.8rem;
+    background: #f2f6fa;
+    color: var(--slate);
+}
+
+.dda-item-icon svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.dda-list strong {
+    font-weight: 600;
+}
+
+.dda-list p {
+    color: var(--slate);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Subscriptions */
+
+.dda-callout {
+    display: flex;
+    gap: 0.9rem;
+    padding: 1.1rem 1.25rem;
+    border-radius: var(--radius);
+    background: var(--cream);
+    color: var(--brown);
+}
+
+.dda-callout svg {
+    margin-top: 0.2rem;
+    font-size: 1.35rem;
+}
+
+.dda-callout strong {
+    font-weight: 600;
+}
+
+/* Footer */
+
+.dda-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    color: var(--slate);
+    font-size: 0.92rem;
 }

@@ -1,109 +1,222 @@
-import React from "react";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { Fredoka } from "next/font/google";
+import {
+  LuBarChart,
+  LuCheck,
+  LuCreditCard,
+  LuMail,
+  LuMap,
+  LuReceipt,
+  LuSettings,
+  LuShieldCheck,
+  LuSmartphone,
+  LuTrash2,
+  LuUserX,
+  LuUsers,
+} from "react-icons/lu";
 import { DeleteAccountForm } from "./delete-form";
 import "./styles.css";
+
+// Rounded and friendly, like the app and its launch page.
+const fredoka = Fredoka({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-fredoka",
+});
 
 export const metadata: Metadata = {
   title: "Delete Your Account · Dog on Walk",
   description:
     "How to delete your Dog on Walk account, in the app or by asking us, and what happens to your data.",
+  icons: {
+    icon: "/dog-on-walk/icon.jpg",
+    apple: "/dog-on-walk/icon.jpg",
+  },
 };
 
 const CONTACT = "baranidharanofficial@gmail.com";
 
+/** The name of something on screen in the app, like a button. */
+function Ui({ icon, danger, children }: {
+  icon: ReactNode;
+  danger?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <span className={`dda-ui${danger ? " dda-ui-danger" : ""}`}>
+      {icon}
+      {children}
+    </span>
+  );
+}
+
+function DataItem({ icon, title, children }: {
+  icon: ReactNode;
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <li>
+      <span className="dda-item-icon" aria-hidden="true">
+        {icon}
+      </span>
+      <div>
+        <strong>{title}</strong>
+        <p>{children}</p>
+      </div>
+    </li>
+  );
+}
+
 export default function DeleteAccountPage() {
   return (
-    <div className="p-8 max-w-3xl">
-      <img
-        src="/dog-on-walk/icon.jpg"
-        alt="Dog on Walk"
-        className="h-[100px] mb-3 rounded-[22px]"
-      />
-      <h3>Delete Your Dog on Walk Account</h3>
-      <p>
-        Dog on Walk is made by Apptify. Signing in is optional: you only have
-        an account if you signed in with Apple, Google, or an email and
-        password. You can delete that account at any time, in either of the
-        ways below.
-      </p>
+    <main className={`dda ${fredoka.variable}`}>
+      <header className="dda-hero">
+        <a className="dda-brand" href="/dog-on-walk">
+          <img src="/dog-on-walk/icon.jpg" alt="" width={44} height={44} />
+          Dog on Walk
+        </a>
+        <h1>Delete your account</h1>
+        <p className="dda-lede">
+          Signing in to Dog on Walk is optional. If you made an account with
+          Apple, Google or an email, you can delete it at any time, in either
+          of the ways below.
+        </p>
+      </header>
 
-      <h4>Delete It in the App (Quickest)</h4>
-      <ol className="list-decimal pl-6 pb-4">
-        <li>Open Dog on Walk and tap Map on the home screen.</li>
-        <li>Tap the gear button to open Settings.</li>
-        <li>
-          Under Account, tap <strong>Delete account</strong> and confirm.
-        </li>
-        <li>
-          Sign in once more, or type your password, to confirm it&rsquo;s you.
-        </li>
-      </ol>
-      <p>Your account is deleted straight away.</p>
+      <div className="dda-body">
+        <section className="dda-card" aria-labelledby="dda-in-app">
+          <div className="dda-card-head">
+            <span className="dda-badge" aria-hidden="true">
+              <LuSmartphone />
+            </span>
+            <div>
+              <p className="dda-eyebrow">Option 1 · Quickest</p>
+              <h2 id="dda-in-app">Delete it in the app</h2>
+            </div>
+          </div>
+          <ol className="dda-steps">
+            <li>
+              Open Dog on Walk and tap <Ui icon={<LuMap />}>Map</Ui> on the
+              home screen.
+            </li>
+            <li>
+              Tap the <Ui icon={<LuSettings />}>gear</Ui> button to open
+              Settings.
+            </li>
+            <li>
+              Under Account, tap{" "}
+              <Ui icon={<LuTrash2 />} danger>
+                Delete account
+              </Ui>{" "}
+              and confirm.
+            </li>
+            <li>
+              Sign in once more, or type your password, to confirm it&rsquo;s
+              you.
+            </li>
+          </ol>
+          <p className="dda-good">
+            <LuCheck aria-hidden="true" />
+            Your account is deleted straight away.
+          </p>
+        </section>
 
-      <h4>Or Ask Us to Delete It</h4>
-      <p>
-        No longer have the app? Send us the request below. We&rsquo;ll email
-        you to check the request is yours, then delete your account within 30
-        days and let you know when it&rsquo;s done. You can also email{" "}
-        <a
-          className="underline"
-          href={`mailto:${CONTACT}?subject=${encodeURIComponent(
-            "Delete my Dog on Walk account"
-          )}`}
-        >
-          {CONTACT}
-        </a>{" "}
-        from the address you signed in with.
-      </p>
-      <DeleteAccountForm app="dog-on-walk" />
+        <section className="dda-card" aria-labelledby="dda-ask">
+          <div className="dda-card-head">
+            <span className="dda-badge dda-badge-sky" aria-hidden="true">
+              <LuMail />
+            </span>
+            <div>
+              <p className="dda-eyebrow">Option 2 · No app?</p>
+              <h2 id="dda-ask">Ask us to delete it</h2>
+            </div>
+          </div>
+          <p className="dda-muted">
+            We&rsquo;ll email you to check the request is yours, then delete
+            your account within 30 days and let you know when it&rsquo;s done.
+          </p>
+          <DeleteAccountForm app="dog-on-walk" />
+          <p className="dda-alt">
+            Prefer email? Write to{" "}
+            <a
+              href={`mailto:${CONTACT}?subject=${encodeURIComponent(
+                "Delete my Dog on Walk account"
+              )}`}
+            >
+              {CONTACT}
+            </a>{" "}
+            from the address you signed in with.
+          </p>
+        </section>
 
-      <h4>What Gets Deleted</h4>
-      <ul className="list-disc pl-6 pb-4">
-        <li>
-          Your account in Google Firebase Authentication: your account ID,
-          email address and name, and your password if you used email.
-        </li>
-        <li>
-          Your entries in any Walk with Friends rooms: your dog&rsquo;s name
-          and look, and how your room walks went.
-        </li>
-      </ul>
+        <section aria-labelledby="dda-data">
+          <h2 id="dda-data" className="dda-section-title">
+            What happens to your data
+          </h2>
+          <div className="dda-grid">
+            <div className="dda-card dda-card-tight">
+              <h3 className="dda-list-title dda-list-title-deleted">
+                <LuTrash2 aria-hidden="true" />
+                Deleted
+              </h3>
+              <ul className="dda-list">
+                <DataItem icon={<LuUserX />} title="Your account">
+                  Your account ID, email address and name in Google Firebase,
+                  and your password if you signed in with email.
+                </DataItem>
+                <DataItem icon={<LuUsers />} title="Your room entries">
+                  Your dog&rsquo;s name and look, and how your Walk with
+                  Friends walks went.
+                </DataItem>
+              </ul>
+            </div>
+            <div className="dda-card dda-card-tight">
+              <h3 className="dda-list-title dda-list-title-kept">
+                <LuShieldCheck aria-hidden="true" />
+                Kept
+              </h3>
+              <ul className="dda-list">
+                <DataItem icon={<LuSmartphone />} title="Data on your phone">
+                  Your dog, walks, streaks, journey and settings live only on
+                  your device, so we can&rsquo;t see or delete them. They stay
+                  until you delete the app.
+                </DataItem>
+                <DataItem icon={<LuReceipt />} title="Purchase records">
+                  Apple or Google, and RevenueCat (which handles purchases for
+                  us), keep what you bought, for accounting and so you can
+                  restore it. We don&rsquo;t give them your name or email.
+                </DataItem>
+                <DataItem icon={<LuBarChart />} title="Usage statistics">
+                  Firebase Analytics events aren&rsquo;t linked to your
+                  account. Google deletes them under its standard retention
+                  settings.
+                </DataItem>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-      <h4>What Stays</h4>
-      <ul className="list-disc pl-6 pb-4">
-        <li>
-          <strong>Data on your phone.</strong> Your dog, walks, streaks,
-          journey and settings are stored only on your device, so we
-          can&rsquo;t see or delete them. They stay until you delete the app.
-        </li>
-        <li>
-          <strong>Purchase records.</strong> Apple or Google, and RevenueCat
-          (which handles purchases for us), keep records of what you bought,
-          for accounting and so you can restore purchases. We don&rsquo;t give
-          them your name or email.
-        </li>
-        <li>
-          <strong>Usage statistics.</strong> Firebase Analytics events
-          aren&rsquo;t linked to your account. Google deletes them
-          automatically under its standard retention settings.
-        </li>
-      </ul>
+        <aside className="dda-callout">
+          <LuCreditCard aria-hidden="true" />
+          <p>
+            <strong>Deleting your account doesn&rsquo;t cancel Pro.</strong>{" "}
+            Cancel a subscription in your App Store or Google Play account
+            settings. A lifetime purchase stays with your Apple or Google
+            account, and you can get it back with Restore purchases in
+            Settings.
+          </p>
+        </aside>
 
-      <h4>Subscriptions</h4>
-      <p>
-        Deleting your account does not cancel a Pro subscription. Cancel it in
-        your App Store or Google Play account settings. A lifetime purchase
-        stays with your Apple or Google account, and you can get it back with
-        Restore purchases in Settings.
-      </p>
-
-      <p>
-        See the{" "}
-        <a className="underline" href="/dog-on-walk/privacy">
-          privacy policy
-        </a>{" "}
-        for everything Dog on Walk collects.
-      </p>
-    </div>
+        <footer className="dda-footer">
+          <a href="/dog-on-walk/privacy">Privacy policy</a>
+          <span aria-hidden="true">·</span>
+          <span>
+            Made by <a href="/">Apptify</a>
+          </span>
+        </footer>
+      </div>
+    </main>
   );
 }

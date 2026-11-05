@@ -1,17 +1,26 @@
 "use client";
 
-import { useState, useTransition, type FormEvent } from "react";
+import { useState, useTransition, type FormEvent, type ReactNode } from "react";
+import { FaApple } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { LuCheckCircle, LuHelpCircle, LuMail, LuTrash2 } from "react-icons/lu";
 import {
     requestAccountDeletion,
     type DeletionApp,
 } from "@/actions/requestAccountDeletion";
 
-const METHODS = [
-    ["apple", "Sign in with Apple"],
-    ["google", "Sign in with Google"],
-    ["email", "Email and password"],
-    ["unsure", "Not sure"],
-] as const;
+const METHODS: [value: string, label: string, icon: ReactNode][] = [
+    ["apple", "Apple", <FaApple key="apple" />],
+    ["google", "Google", <FcGoogle key="google" />],
+    ["email", "Email", <LuMail key="email" />],
+    ["unsure", "Not sure", <LuHelpCircle key="unsure" />],
+];
+
+const NEXT_STEPS = [
+    "We email you to check the request is yours.",
+    "We delete your account within 30 days.",
+    "We email you again when it’s done.",
+];
 
 // Sends the request to the developer by email; nothing is deleted until
 // they've confirmed with the requester.
@@ -36,70 +45,89 @@ export function DeleteAccountForm({ app }: { app: DeletionApp }) {
 
     if (sentTo !== null) {
         return (
-            <div className="da-card da-done" role="status">
-                <p>
-                    <strong>Request sent.</strong> We&rsquo;ll email{" "}
-                    {sentTo || "you"} to check the request is yours, then
-                    delete your account within 30 days and let you know when
-                    it&rsquo;s done.
+            <div className="dda-done" role="status">
+                <LuCheckCircle className="dda-done-icon" aria-hidden="true" />
+                <p className="dda-done-title">Request sent</p>
+                <p className="dda-done-text">
+                    Look out for an email to <strong>{sentTo}</strong>.
                 </p>
+                <ol className="dda-timeline">
+                    {NEXT_STEPS.map((step) => (
+                        <li key={step}>{step}</li>
+                    ))}
+                </ol>
             </div>
         );
     }
 
     return (
-        <form className="da-card" onSubmit={onSubmit}>
-            <label htmlFor="da-email" className="da-label">
-                Your account&rsquo;s email
-            </label>
-            <input
-                id="da-email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                inputMode="email"
-                placeholder="you@example.com"
-                required
-                maxLength={320}
-                disabled={pending}
-                aria-invalid={error ? true : undefined}
-                aria-describedby="da-email-hint"
-                className="da-input"
-            />
-            <p id="da-email-hint" className="da-hint">
-                Used Sign in with Apple and chose Hide My Email? Find the
-                address on your iPhone in Settings &rsaquo; your name &rsaquo;
-                Sign in with Apple &rsaquo; Dog on Walk.
-            </p>
+        <form className="dda-form" onSubmit={onSubmit}>
+            <div className="dda-field">
+                <label htmlFor="dda-email">Your account&rsquo;s email</label>
+                <input
+                    id="dda-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    inputMode="email"
+                    placeholder="you@example.com"
+                    required
+                    maxLength={320}
+                    disabled={pending}
+                    aria-invalid={error ? true : undefined}
+                    aria-describedby="dda-email-hint"
+                />
+                <p id="dda-email-hint" className="dda-hint">
+                    <FaApple aria-hidden="true" />
+                    <span>
+                        Hid your email with Sign in with Apple? Find the address
+                        on your iPhone in Settings &rsaquo; your name &rsaquo;
+                        Sign in with Apple &rsaquo; Dog on Walk.
+                    </span>
+                </p>
+            </div>
 
-            <fieldset className="da-fieldset" disabled={pending}>
-                <legend className="da-label">How did you sign in?</legend>
-                <div className="da-options">
-                    {METHODS.map(([value, label]) => (
-                        <label key={value} className="da-option">
+            <fieldset className="dda-field" disabled={pending}>
+                <legend>How did you sign in?</legend>
+                <div className="dda-methods">
+                    {METHODS.map(([value, label, icon]) => (
+                        <label key={value} className="dda-method">
                             <input
                                 type="radio"
                                 name="method"
                                 value={value}
                                 defaultChecked={value === "unsure"}
                             />
-                            {label}
+                            <span>
+                                {icon}
+                                {label}
+                            </span>
                         </label>
                     ))}
                 </div>
             </fieldset>
 
-            <label htmlFor="da-note" className="da-label">
-                Anything else? <span className="da-optional">(optional)</span>
+            <div className="dda-field">
+                <label htmlFor="dda-note">
+                    Anything else? <span className="dda-optional">Optional</span>
+                </label>
+                <textarea
+                    id="dda-note"
+                    name="note"
+                    rows={3}
+                    maxLength={1000}
+                    disabled={pending}
+                    placeholder="For example, roughly when you signed up"
+                />
+            </div>
+
+            <label className="dda-confirm">
+                <input type="checkbox" name="confirm" required disabled={pending} />
+                <span>
+                    I understand my Dog on Walk account will be deleted for
+                    good.
+                </span>
             </label>
-            <textarea
-                id="da-note"
-                name="note"
-                rows={3}
-                maxLength={1000}
-                disabled={pending}
-                className="da-input"
-            />
 
             {/* Honeypot, kept out of sight and out of the tab order. */}
             <input
@@ -107,17 +135,18 @@ export function DeleteAccountForm({ app }: { app: DeletionApp }) {
                 name="company"
                 tabIndex={-1}
                 autoComplete="off"
-                className="da-honeypot"
+                className="dda-honeypot"
                 aria-hidden="true"
             />
 
             {error && (
-                <p className="da-error" role="alert">
+                <p className="dda-error" role="alert">
                     {error}
                 </p>
             )}
 
-            <button type="submit" disabled={pending} className="da-button">
+            <button type="submit" disabled={pending} className="dda-button">
+                <LuTrash2 aria-hidden="true" />
                 {pending ? "Sending…" : "Request account deletion"}
             </button>
         </form>
