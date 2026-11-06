@@ -1,0 +1,213 @@
+{
+  "date": "2026-11-06",
+  "summary": "Thin day: Reddit, X and Bluesky were blocked from the research environment, so only Hacker News was searchable and only four ideas had two or more verifiable sources. Themes: Google Maps getting worse with no polished alternative, non-developers locked out of retirement/budget planning, hard-to-cancel subscriptions, and dependency-update fatigue for small teams.",
+  "ideas": [
+    {
+      "id": "clean-maps-front-end",
+      "title": "Clean Maps: a calmer navigation app with working filters",
+      "category": "Mobile app",
+      "oneLiner": "A Google-Maps-style app with north-up lock, honest star/open-now filters and no clutter, built on open map data plus a places-data layer.",
+      "problem": "Users say Google Maps search results are irrelevant, the 4.5+ star and open-now filters return wrong places, navigation reroutes pointlessly and the UI can't be decluttered. OSM-based alternatives lose on business and POI data quality, and paid alternatives keep locking features.",
+      "targetUsers": "Travellers and urban commuters fed up with Google Maps, including the privacy-minded.",
+      "painScore": 7,
+      "effort": "1 month+",
+      "monetization": "Free basic app; ₹99/month or ₹799/year Pro for offline maps, saved lists and advanced filters.",
+      "mvp": [
+        "Map view with a permanent north-up lock",
+        "Search with strict, correct rating and open-now filters",
+        "Turn-by-turn navigation with a minimal HUD and no reroute nagging",
+        "Saved places and lists with import from Google Takeout",
+        "Offline regions"
+      ],
+      "competitors": [
+        {
+          "name": "CoMaps / Organic Maps",
+          "url": "https://comaps.app",
+          "gap": "Relies on OSM, so business and POI accuracy and recency lag Google and Apple (per commenter)."
+        },
+        {
+          "name": "Mapy.cz",
+          "url": "https://mapy.cz",
+          "gap": "Locking more and more features behind a paywall (per commenter)."
+        },
+        {
+          "name": "Kagi Maps",
+          "url": "https://kagi.com",
+          "gap": "Search-first, with filters still missing for some use cases (per commenter)."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment on Google Maps frustrations",
+          "url": "https://news.ycombinator.com/item?id=50387124",
+          "quote": "Google Maps is becoming so frustrating: 1. Navigation makes pointless detours. 2. The \"rotate the map back to north-up\" button doesn't work.",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment on moving off Google Maps",
+          "url": "https://news.ycombinator.com/item?id=50385641",
+          "quote": "selecting \"4.5+ Stars\" filter returns places rated only 3 stars and hides valid 4.5+ star results, \"open now\" includes places that the results themselves say are closed",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment on CoMaps and OSM data quality",
+          "url": "https://news.ycombinator.com/item?id=50386508",
+          "quote": "The reason I can't use CoMaps much is because OSM just doesn't have the same accuracy and recency of data on businesses and POIs in my area as compared to Google/Apple.",
+          "date": "2026-11-06"
+        }
+      ]
+    },
+    {
+      "id": "plain-english-retirement-planner",
+      "title": "Plain-English Retirement and Budget Planner",
+      "category": "Web app",
+      "oneLiner": "A guided planner that does the Monte-Carlo and tax maths for people who won't build their own spreadsheet.",
+      "problem": "Developers now build personal retirement simulators and finance spreadsheets with AI in an evening, but ordinary people won't spend days tuning code or sheets, and commenters note most finance apps are dashboard-and-subscription products.",
+      "targetUsers": "Salaried non-technical people, including Indian professionals planning around EPF, NPS and mutual funds.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free basic plan; ₹299/month or ₹2,499/year for saved scenarios, PDF reports and tax-regime comparison.",
+      "mvp": [
+        "Questionnaire-driven inputs (income, expenses, corpus, SIPs)",
+        "Monte-Carlo retirement success probability with plain-language output",
+        "India tax regime comparison",
+        "Export data to CSV or Sheets",
+        "Scenario compare (retire at 50 vs 55)"
+      ],
+      "competitors": [
+        {
+          "name": "Ticker / Groww / INDmoney",
+          "gap": "Tracking dashboards, not an easy what-if retirement planner; not verified in depth."
+        },
+        {
+          "name": "Firefly/Monarch-style budget apps",
+          "gap": "Dashboard and subscription model that users call out as limiting export (per commenter)."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News thread on AI-built personal finance tools",
+          "url": "https://news.ycombinator.com/item?id=50373613",
+          "quote": "But that's you, a developer, who not only understands what they actually _need_ in order to have a good budgeting app and retirement planning app, for lack of a better word, but also are willing to spend the time setting it up, understand how it functions, and get it functional.",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News reply in the same thread",
+          "url": "https://news.ycombinator.com/item?id=50375073",
+          "quote": "The average person isn’t going to want to sit down and spend two days to fine-tune code or a spreadsheet to accomplish this.",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment on Show HN: Aggregate Finance",
+          "url": "https://news.ycombinator.com/item?id=50376968",
+          "quote": "Most finance apps in the market use dashboards and subscription model, so being able to export everything is a nice feature.",
+          "date": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "id": "cancel-it-for-me-guides",
+      "title": "CancelPath: step-by-step cancel scripts and letters",
+      "category": "Web app",
+      "oneLiner": "A searchable library of how to actually cancel each subscription, with the exact steps, a phone script and a ready-to-send cancellation letter.",
+      "problem": "People report subscription cancellation as hour-long queues with retention offers, dark patterns and poor support, and one user was charged for a subscription that no longer shows as active with no clear way to reach support.",
+      "targetUsers": "Anyone with several paid subscriptions, including Indian users dealing with card mandates and UPI autopay.",
+      "painScore": 6,
+      "effort": "Weekend",
+      "monetization": "Free guides with ads or affiliate; ₹49/month for reminders and letter generation.",
+      "mvp": [
+        "Searchable guide per service with exact cancel path",
+        "Phone and chat script generator",
+        "Cancellation letter and email templates",
+        "Mandate and autopay revoke steps for India",
+        "Crowd-reported 'worked / didn't work' votes"
+      ],
+      "competitors": [
+        {
+          "name": "JustDeleteMe / DeleteMe-style lists",
+          "gap": "Account deletion, not subscription cancellation scripts; not verified in depth."
+        },
+        {
+          "name": "Rocket Money",
+          "url": "https://www.rocketmoney.com",
+          "gap": "US-focused and paid concierge; weak for Indian mandates."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment on subscription businesses",
+          "url": "https://news.ycombinator.com/item?id=50384284",
+          "quote": "so many subscription businesses have made it damn near impossible to end your subscription without sitting in a queue for an hour and having their retention specialist give you 900 offers to stay.",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment on Big Tech frustrations",
+          "url": "https://news.ycombinator.com/item?id=50374773",
+          "quote": "Dark pattern subscriptions that are very difficult to cancel 3. Garbage customer support, even for paying customers",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How to contact Google support after cancel a subscription?",
+          "url": "https://news.ycombinator.com/item?id=50383093",
+          "quote": "But I've just been charged for it! I logged back in, and the subscription doesn't show as active.",
+          "date": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "id": "cve-update-triage-small-teams",
+      "title": "UpdateTriage: which dependency CVEs actually matter",
+      "category": "Developer tool",
+      "oneLiner": "A GitHub app that collapses Dependabot alerts into one reviewed, tested update PR per week and flags only exploitable ones.",
+      "problem": "Small teams without a private registry spend large amounts of time and attention reading CVEs, finding patched versions for their major, and testing; commenters say Dependabot alone isn't very useful because testing and deployment remain the bigger lift.",
+      "targetUsers": "Solo developers and small teams running Next.js, Flutter or Node projects.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "Free for one repo; $9/month per repo-set for grouped PRs and reachability checks.",
+      "mvp": [
+        "GitHub app that groups alerts into one weekly PR",
+        "Auto-pick patched version within the semver range",
+        "Run the repo's test command in CI and report",
+        "Plain-language CVE summary with reachability hints",
+        "Slack/email digest"
+      ],
+      "competitors": [
+        {
+          "name": "Dependabot",
+          "url": "https://github.com/dependabot",
+          "gap": "Per-alert noise; commenter says it isn't very useful on its own."
+        },
+        {
+          "name": "Renovate",
+          "url": "https://github.com/renovatebot/renovate",
+          "gap": "Powerful but complex to configure; not verified in depth."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How do small teams pragmatically manage Dependabot fatigue?",
+          "url": "https://news.ycombinator.com/item?id=50377668",
+          "quote": "From my personal experience, this takes an awful lot of time and attention",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Reply in the same Ask HN thread",
+          "url": "https://news.ycombinator.com/item?id=50378063",
+          "quote": "Dependabot isn't very useful in my view.",
+          "date": "2026-11-05"
+        }
+      ]
+    }
+  ]
+}
