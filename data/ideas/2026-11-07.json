@@ -1,0 +1,312 @@
+{
+  "date": "2026-11-07",
+  "summary": "Reddit, X and Bluesky were all blocked from this environment today, so every source is a Hacker News comment from the last week, and only themes with at least two independent commenters made the cut. The strongest signals: people want hard control over autoplay media and over recommendation engines that ignore skips and thumbs-down, solo devs are priced out of cloud Mac CI, and OAuth or API-key console setup is still a time sink. This is a thinner report than usual because the evidence is single-platform.",
+  "ideas": [
+    {
+      "id": "click-to-play-media-guard",
+      "title": "Click-to-Play: per-site audio & video opt-in",
+      "category": "Browser extension",
+      "oneLiner": "A browser extension that blocks all audio and video by default on every site, with one-click per-site allow and a bandwidth readout before play.",
+      "problem": "Several HN commenters say built-in autoplay controls are not enough: sites like NYT slip past a 'never autoplay' setting, YouTube autoplay can't be reliably blocked, and scrolling is treated as an 'interaction' that unlocks media. Users want a deny-by-default, opt-in-per-site model.",
+      "targetUsers": "Privacy- and bandwidth-conscious desktop browser users, people on metered or slow connections (common in India), and anyone who browses at work or in public.",
+      "painScore": 7,
+      "effort": "Weekend",
+      "monetization": "Free core extension; one-time ₹399 / $5 Pro unlock for sync of allow-lists, scheduled rules and per-site bandwidth stats. Alternatively a small paid tier on the Chrome Web Store and Firefox Add-ons.",
+      "mvp": [
+        "Default-deny for <video>, <audio> and autoplaying GIF/WebM on all sites",
+        "Per-site allow toggle in the toolbar popup, remembered between visits",
+        "Click-to-play placeholder that shows the file's size before it loads",
+        "Treat scrolling and clicks outside the player as non-consent",
+        "Special handling for YouTube so autoplay and the next-video countdown stay off",
+        "Import/export of the allow-list"
+      ],
+      "competitors": [
+        {
+          "name": "Firefox autoplay settings",
+          "url": "https://support.mozilla.org/en-US/kb/block-autoplay",
+          "gap": "Built-in controls exist, but commenters report sites that still get past a 'never autoplay' setting, and there is no bandwidth readout."
+        },
+        {
+          "name": "Chrome per-site sound controls",
+          "url": "https://support.google.com/chrome/answer/114662",
+          "gap": "Mutes audio per site but does not stop video from downloading or give a click-to-play model."
+        },
+        {
+          "name": "Autoplay-blocker extensions",
+          "gap": "Single-purpose and mostly blocklist-based; the HN request is for opt-in per site, which inverts that model."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (account42)",
+          "url": "https://news.ycombinator.com/item?id=50353164",
+          "quote": "I wish there was a setting to make audio and video opt in per site. Most random sites have no business using anything but text and the occasional image plus whatever fancy stylesheets keep their designers busy.",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (butz)",
+          "url": "https://news.ycombinator.com/item?id=50353287",
+          "quote": "Every decent web browser must implement controls to disable download and autoplay of any media, be it video, audio or even gif images. And very neat feature would be to inform user how much bandwidth this media file will consume before clicking play button. And using scrollbar should not be considered as an interaction with website that enables autoplay.",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (giglamesh)",
+          "url": "https://news.ycombinator.com/item?id=50356884",
+          "quote": "And let's not forget the NYT's supremely annoying autoplay video, which somehow gets around browsers set to NEVER (swearing) AUTOPLAY ANYTHING!",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (baal80spam)",
+          "url": "https://news.ycombinator.com/item?id=50351191",
+          "quote": "Is there a script or filter to block autoplay on YT? I think I've tried everything, and there is nothing that does it reliably. It's quite infuriating.",
+          "date": "2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "never-play-again-music-layer",
+      "title": "Never-Play-Again: a skip-memory layer for music streaming",
+      "category": "Mobile app",
+      "oneLiner": "A companion app that watches your Spotify/SoundCloud-style playback, remembers every skip and thumbs-down, and auto-skips banned tracks and artists forever.",
+      "problem": "Listeners say that skipping or disliking a track changes nothing: the same songs return in autoplay, the algorithm pushes the same 20 songs, and one commenter thumbs-downs 99 of every 100 tracks with no effect. They want a durable ban list and, ideally, an LLM to pick recommendations instead.",
+      "targetUsers": "Heavy streaming-music listeners who skip a lot, especially people who hit autoplay stations and daily mixes.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free for a small ban list; ₹99/month or ₹799/year for unlimited bans, rule-based bans (e.g. 'no tracks under 2 min', 'no remixes') and an AI 'describe what I want' queue builder.",
+      "mvp": [
+        "Connect to Spotify via its Web API and detect skips in the first seconds of a track",
+        "One-tap 'never play this track / artist / album' button in a notification and lock-screen widget",
+        "Auto-skip anything on the ban list while the app runs in the background",
+        "Review screen for undoing bans and seeing why a track was banned",
+        "Text prompt to build a queue with an LLM, filtered through the ban list"
+      ],
+      "competitors": [
+        {
+          "name": "Spotify (Hide this song / Don't play this artist)",
+          "url": "https://support.spotify.com/",
+          "gap": "Hide controls exist, but commenters across services still describe skipped tracks returning and thumbs-down being ignored."
+        },
+        {
+          "name": "SoundCloud AutoPlay Station",
+          "gap": "One commenter says there is no way to dislike or ban tracks or artists, so skipped tracks come back."
+        },
+        {
+          "name": "Last.fm / ListenBrainz",
+          "url": "https://listenbrainz.org/",
+          "gap": "Track history and recommendations, but no enforcement layer that blocks tracks during playback."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (gogusrl)",
+          "url": "https://news.ycombinator.com/item?id=50392261",
+          "quote": "big soundcloud fan as well but I do wish I had an option to dislike / ban / remove certain artists or tracks. Enabling their \"AutoPlay Station\" keeps going to certain tracks that I ALWAYS skip and yet they come back again and again.",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (AlexITC)",
+          "url": "https://news.ycombinator.com/item?id=50383913",
+          "quote": "It happens to me that I keep skipping certain song but no matter what, it gets again into autoplay.",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (socalgal2)",
+          "url": "https://news.ycombinator.com/item?id=50386235",
+          "quote": "I actively thumbs down the 99 of every 100 tracks I don’t like, the services still don’t get it. I really wish I could use an LLM to select the recommendations",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (toofy)",
+          "url": "https://news.ycombinator.com/item?id=50318164",
+          "quote": "the Spotify algorithm is either bad in finding new stuff I like or always pushing the same 20 songs that I've listened too much. yeah, it’s terrible. just plain none of the streaming services algorithms are any good, at all.",
+          "date": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "mac-mini-ci-runner-kit",
+      "title": "Mac Mini CI Runner Kit for iOS and Flutter builds",
+      "category": "Developer tool",
+      "oneLiner": "A one-command setup and small dashboard that turns a spare Mac mini into a secure self-hosted GitHub Actions / Codemagic-style runner for iOS builds and UI tests.",
+      "problem": "Commenters call cloud Mac CI 'ludicrous': an hour-long UI test run costs about $3.60, a nightly run exceeds $100/month, and buying a $900 Mac mini breaks even in under a year. Self-hosting has its own pain: FileVault, wiping between jobs, and flaky provisioning on AWS Mac hosts.",
+      "targetUsers": "Solo iOS, Flutter and React Native developers and small teams paying per-minute for macOS runners.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Open-source installer; paid hosted dashboard at $9–19/month per runner for job history, cost-savings report, alerts and auto-updates. Optional paid pre-configured runner image.",
+      "mvp": [
+        "Bootstrap script that installs Xcode CLT, Flutter, the GitHub Actions runner and a launchd service",
+        "Clean-workspace or VM-per-job isolation so builds do not leak into each other",
+        "Handling for FileVault and auto-login after a reboot",
+        "Web dashboard showing runner health, queue and monthly savings compared with hosted per-minute pricing",
+        "Slack/email alert when a runner goes offline"
+      ],
+      "competitors": [
+        {
+          "name": "GitHub Actions macOS runners",
+          "url": "https://docs.github.com/en/actions/using-github-hosted-runners",
+          "gap": "One commenter cites about $0.062/minute for M1 hardware, which adds up quickly for UI test suites."
+        },
+        {
+          "name": "Namespace / Semaphore cloud Macs",
+          "gap": "Cited at about $0.06 and $0.09 per minute respectively; costs scale with every run."
+        },
+        {
+          "name": "AWS EC2 Mac",
+          "url": "https://aws.amazon.com/ec2/instance-types/mac/",
+          "gap": "Dedicated hosts only, slow wipe cycles, and commenters report 'none available' for hours."
+        },
+        {
+          "name": "Cirrus Labs Tart / Orchard",
+          "url": "https://tart.run/",
+          "gap": "Powerful, but aimed at people who already run Mac fleets; a consumer-grade 'one mini' setup is still DIY."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (solatic)",
+          "url": "https://news.ycombinator.com/item?id=50354020",
+          "quote": "The cost of cloud Mac hardware is quite frankly ludicrous across the board. [...] If I run just a UI test suite for an hour, that's $3.60/run, which is now higher than what I'm paying for AI inference that made the change that triggered the run. That's crazy! If I ran even just one run per night that would run me more than $100/month. A Mac Mini is $900 - I break even in nine months by buying the hardware outright.",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (wereHamster)",
+          "url": "https://news.ycombinator.com/item?id=50355278",
+          "quote": "I looked at our GitHub Actions monthly expenses, then at the price of a M4 Mac mini (just when they were released, and still cheap), and decided to buy one as it would pay for itself in less than a year.",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (js2)",
+          "url": "https://news.ycombinator.com/item?id=50355158",
+          "quote": "Another source of pain: FileVault disk encryption. Or rather decryption. Amazon solves this by disabling FileVault and warns against enabling it. [...] for the last year, even grabbing a Mac dedicated hosts often runs into \"None available\" for hours at a time.",
+          "date": "2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "oauth-console-setup-copilot",
+      "title": "Console Setup Copilot for OAuth and API keys",
+      "category": "Developer tool",
+      "oneLiner": "Interactive, always-current checklists that walk a developer through enabling Sign in with Apple/Google and getting non-personal API keys, with a verifier that tests the result.",
+      "problem": "Developers describe enabling Sign in with Apple and Google as an exercise in frustration, citing outdated official docs and inconsistent permission errors on GCP, while another wants a Jira API key not tied to a person. A third says even enterprises are told to hire partners just to set up basic auth.",
+      "targetUsers": "Solo developers and small teams shipping Flutter and Next.js apps that need social login, plus anyone wiring automations to SaaS APIs.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 3 guides per month; $8/month for all provider guides, a live 'does my config work' verifier and email alerts when a console flow changes.",
+      "mvp": [
+        "Step-by-step guides for Google OAuth, Sign in with Apple, GitHub OAuth and Jira/Atlassian service credentials",
+        "Per-step screenshots with a 'this screen looks different' report button",
+        "Redirect-URI and scope generator for Next.js, Flutter and common auth libraries",
+        "Config verifier that tests client ID, secret and callback URL",
+        "Changelog alerts when a provider UI or requirement changes"
+      ],
+      "competitors": [
+        {
+          "name": "Official provider docs",
+          "gap": "Commenters call the GCP docs outdated, with permission errors that were 'beyond inconsistent'."
+        },
+        {
+          "name": "Auth0, WorkOS AuthKit, BetterAuth",
+          "url": "https://workos.com/",
+          "gap": "They abstract the SDK side, but the commenter still had to configure the Apple and Google consoles by hand."
+        },
+        {
+          "name": "Firebase Auth",
+          "url": "https://firebase.google.com/products/auth",
+          "gap": "Simplifies provider setup but locks you to Firebase and does not cover non-personal API keys for other SaaS."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (Topfi)",
+          "url": "https://news.ycombinator.com/item?id=50395720",
+          "quote": "I recently had to once again enable both Sign in with Apple and Google, yet despite having done so at least three times throughout my life (Auth0 back in the day, BetterAuth last year, now WorkOS AuthKit) and having access to modern models, it was an exercise in frustration, outdated official documentation and permissions errors that were beyond inconsistent, at least on the GCP side.",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (xp84)",
+          "url": "https://news.ycombinator.com/item?id=50386670",
+          "quote": "I just want an API key for my own tenant, that isn't specifically tied to me, so every automation I build won't break when I quit someday.",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (shooker435)",
+          "url": "https://news.ycombinator.com/item?id=50392703",
+          "quote": "It's confusing for enterprises, too. Believe it or not, the cloud sales team recommends hiring partners to set up basic auth and \"landing zones\" for the APIs.",
+          "date": "2026-11-06"
+        }
+      ]
+    },
+    {
+      "id": "search-then-queue-ytdlp-ui",
+      "title": "Search-and-Queue: a web UI that finds videos and feeds yt-dlp",
+      "category": "Web app",
+      "oneLiner": "A self-hostable web app where you search for videos, add them to a queue with a download profile, and have them land in Jellyfin, Plex or a folder.",
+      "problem": "A commenter says every way of searching and showing results to pipe into yt-dlp is a 'hack' that often breaks. Others describe building their own queue frontends or cookie-based downloaders, showing demand but a scattering of private one-off tools.",
+      "targetUsers": "Self-hosters and media-library hobbyists who already run yt-dlp and Jellyfin or Plex.",
+      "painScore": 4,
+      "effort": "Weekend",
+      "monetization": "Free and open source; paid hosted/Docker-appliance version or GitHub sponsorship. Low willingness to pay, so keep scope small and treat it as a portfolio or distribution play.",
+      "mvp": [
+        "Search box that returns results with thumbnails and durations",
+        "Queue with per-item download profiles (quality, subtitles, destination folder)",
+        "Docker image with one-command install",
+        "Jellyfin and Plex library refresh on completion",
+        "Auto-update of the yt-dlp binary when downloads start failing"
+      ],
+      "competitors": [
+        {
+          "name": "MeTube",
+          "url": "https://github.com/alexta69/metube",
+          "gap": "Queue-oriented web UI, but you must already have a URL; there is no search-and-browse step."
+        },
+        {
+          "name": "Pinchflat",
+          "url": "https://github.com/kieraneglin/pinchflat",
+          "gap": "Subscription-based media manager rather than a search-and-pick tool."
+        },
+        {
+          "name": "Tube Archivist",
+          "url": "https://github.com/tubearchivist/tubearchivist",
+          "gap": "Heavyweight archive stack with its own database, overkill for one-off picks."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (prologic)",
+          "url": "https://news.ycombinator.com/item?id=50379740",
+          "quote": "One of the things I wish I could solve better, was a way to search for and show decent search results that you could then pipe into `yt-dlp`. Every method of doing this I've seen is basically a \"hack\" and often breaks or doesn't work at all.",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (mulemisterX)",
+          "url": "https://news.ycombinator.com/item?id=50382596",
+          "quote": "The other year I came to the same conclusion so I built a web frontend for yt-dlp with queue support. I have 'profiles' that I can pick from at the time of download that allow custom yt-dlp configs to be active at any given time, which routes videos to different locations and jellyfin being one of those locations.",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News comment (sergiotapia)",
+          "url": "https://news.ycombinator.com/item?id=50388104",
+          "quote": "I built this for myself. It uses your browser's cookies/sessions to find stuff you liked and favorited, and downloads it locally using yt-dlp and a sqlite database.",
+          "date": "2026-11-06"
+        }
+      ]
+    }
+  ]
+}
