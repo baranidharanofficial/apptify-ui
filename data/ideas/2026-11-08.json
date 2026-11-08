@@ -1,0 +1,244 @@
+{
+  "date": "2026-11-08",
+  "summary": "A thin day for access: only Hacker News could be verified (Reddit, X and Bluesky were blocked). The strongest themes were smart-TV privacy fatigue, no way to warn owners of compromised websites, unwanted forced feeds inside single-purpose apps, and a junk-filled App Store.",
+  "ideas": [
+    {
+      "id": "dumb-display-finder",
+      "title": "Dumb Display Finder: TVs and displays with no smart OS",
+      "category": "Web app",
+      "oneLiner": "A searchable, India-aware directory of TVs, commercial displays and monitors that work well without any smart platform, account or internet, with a setup checklist for each.",
+      "problem": "In a 730-point Ask HN thread, buyers say every mainstream TV brand is bad on privacy, that some sets refuse to work without an account and internet, and that the workable answer (a large commercial display, or a TV never connected, plus a streaming box) is scattered knowledge. Nobody maintains a buyer's list of models that really behave.",
+      "targetUsers": "Privacy-minded TV buyers, and families and parents who want to avoid ads and tracking on the living-room screen; also relevant to Indian buyers choosing between Android-TV-based budget sets.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free directory funded by affiliate links (Amazon India, Flipkart, retailers) plus an optional ₹199 one-time 'setup pack' PDF per model family. Keep recommendations independent of payouts.",
+      "mvp": [
+        "Database of 40–80 models tagged: forced account at setup, works offline, HDMI-CEC support, ads on home screen, panel type",
+        "Filters for 'no smart OS', 'offline setup works', price in ₹ and screen size",
+        "Per-model offline setup guide (skip network step, disable ACR/telemetry options where they exist)",
+        "Community report form: 'this model forced me online' with a verified-reports counter",
+        "Companion guide: pairing with an Apple TV / Fire / Android box or a mini PC and using CEC"
+      ],
+      "competitors": [
+        {
+          "name": "RTINGS",
+          "url": "https://www.rtings.com",
+          "gap": "Strong on picture quality testing, but not organised around 'can I use this without ever connecting it', and it is US-focused."
+        },
+        {
+          "name": "Commercial/signage display retailers",
+          "gap": "Sell the right hardware but give home buyers no guidance on picking, setup, or lacking tuner/CEC features."
+        },
+        {
+          "name": "Forum threads",
+          "gap": "Advice is anecdotal and gets repeated and argued in every thread, with no maintained list."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Which TV do you recommend for privacy? (comment by rvz)",
+          "url": "https://news.ycombinator.com/item?id=50329152",
+          "quote": "My honest answer at this point is none.",
+          "engagement": "730 points (thread)",
+          "date": "2026-11-01"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Which TV do you recommend for privacy? (comment by epwr)",
+          "url": "https://news.ycombinator.com/item?id=50329201",
+          "quote": "I went and researched this, and found that basically none of the TV brands were anything but creepy on privacy. What I’ve ended up doing was I got an LG and never hooked it up to Wifi/internet, and then use an Apple TV to watch things on. It’s a bit annoying if I want to switch to a game console as Apple TV can’t control the TV’s input channel, but otherwise works very well.",
+          "date": "2026-11-01"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Which TV do you recommend for privacy? (comment by autoexec)",
+          "url": "https://news.ycombinator.com/item?id=50332036",
+          "quote": "Some TVs will refuse to work if you don't create an account and connect them to internet. They won't usually advertise this. You may have to repeatedly return those TVs as defective as you find them.",
+          "date": "2026-11-02"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Which TV do you recommend for privacy? (comment by PorciiVorbesc)",
+          "url": "https://news.ycombinator.com/item?id=50329673",
+          "quote": "Both sell large displays meant for 100% user ownership with no spyware or mandatory internet connection, you just have to buy those and not their TVs.",
+          "date": "2026-11-01"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Which TV do you recommend for privacy? (comment by lrvick)",
+          "url": "https://news.ycombinator.com/item?id=50360222",
+          "quote": "Documenting optimal copper tape positions for the back of the display for different models is the move.",
+          "date": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "id": "site-owner-infection-alert",
+      "title": "Heads-Up: free 'have I been infected' alerts for small site owners",
+      "category": "SaaS",
+      "oneLiner": "A service where site owners register a domain and get alerted, by email and WhatsApp, when it serves known-malicious or injected JavaScript, with a plain-language fix guide.",
+      "problem": "HN commenters discussing 15,579 infected websites say there is no reliable way to tell owners: abuse contacts go unanswered, and owners often learn only when a browser warning or a customer calls. Commenters asked for a haveibeenpwned-style lookup so owners can check for themselves.",
+      "targetUsers": "Owners of small WordPress / brochure sites (clinics, restaurants, local clubs, small shops), freelancers and agencies that maintain many client sites.",
+      "painScore": 7,
+      "effort": "1 month+",
+      "monetization": "Free for one domain; ₹299–499/month for 10+ domains, agency dashboard with white-label alerts, and weekly scans of third-party scripts.",
+      "mvp": [
+        "Domain lookup page showing whether the domain appears in a feed of known-infected sites",
+        "Daily fetch of the homepage and its script tags, diffed against previous hashes and known-bad lists",
+        "Email and WhatsApp alert with a plain-English 'what this means / what to do' note",
+        "Agency view for 10–50 client domains with one-click report sharing",
+        "Public API plus a bulk-notify tool for researchers who find infected lists"
+      ],
+      "competitors": [
+        {
+          "name": "Sucuri SiteCheck",
+          "url": "https://sitecheck.sucuri.net/",
+          "gap": "Scans only when you remember to run it; the owner has to know to look."
+        },
+        {
+          "name": "Google Safe Browsing / Search Console",
+          "url": "https://safebrowsing.google.com/",
+          "gap": "Warns visitors, which is how many owners discover problems after traffic has dropped; no proactive owner outreach."
+        },
+        {
+          "name": "Have I Been Pwned",
+          "url": "https://haveibeenpwned.com",
+          "gap": "Covers breached accounts, not infected websites; commenters cite it as the model."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "We know 15k websites are infected. how do we tell them? (comment by henearkr)",
+          "url": "https://news.ycombinator.com/item?id=50396850",
+          "quote": "this is a database, useful to check for website owners to see if their site is listed inside. This would be an idea very similar to haveibeenpwned.com, which is immensely helpful.",
+          "engagement": "196 points (thread)",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Hacker News thread on notifying infected websites (comment by basscomm)",
+          "url": "https://news.ycombinator.com/item?id=50408728",
+          "quote": "I've tried contacting various domains via their abuse and technical contact WHOIS info over the the years. Mostly small-to-midsize domains, including colleges. I've never gotten a reply, and I don't know if the emails ever went to a real person.",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "We know 15k websites are infected. how do we tell them? (comment by mnahkies)",
+          "url": "https://news.ycombinator.com/item?id=50398277",
+          "quote": "Worst one I had was about 12 years ago when I got a phone call from the local golf club I'd set-up a site/CMS for, not kept patched as well as I should've, and a club member reported they were served porn ads instead of the Saturday draw... That was a lesson learnt",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "We know 15k websites are infected. how do we tell them? (comment by bragr)",
+          "url": "https://news.ycombinator.com/item?id=50397268",
+          "quote": "Unfortunately, this is how I found out 10 years ago when someone hacked a 3rd party dependency I was using on my site.",
+          "date": "2026-11-06"
+        }
+      ]
+    },
+    {
+      "id": "curated-non-slop-app-finder",
+      "title": "Plain Apps: a human-curated app finder with no ads or AI filter",
+      "category": "Web app",
+      "oneLiner": "A curated directory of useful Android and iOS apps with an 'AI-free' toggle and no paid placement, organised by job to be done.",
+      "problem": "HN users say the App Store is dominated by ad-boosted results and big-publisher games, and one wishes for a filter showing only apps that have nothing to do with AI. Finding a decent single-purpose app is getting harder.",
+      "targetUsers": "People who want simple utility apps, and the Indian Play Store audience tired of ad-heavy clones.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free; optional sponsored newsletter slots clearly labelled outside rankings, or a ₹99/month supporter tier. Revenue risk is high, so keep costs near zero.",
+      "mvp": [
+        "Directory of 200 hand-picked utility apps by category with Android and iOS links",
+        "'No AI features' and 'no ads' and 'one-time purchase' tags set by the editor and checked from store listings",
+        "Submissions plus community flagging when an app adds AI or ads",
+        "Weekly 'removed from list' log when a listed app goes bad",
+        "Static Next.js site, easy to host"
+      ],
+      "competitors": [
+        {
+          "name": "AlternativeTo",
+          "url": "https://alternativeto.net",
+          "gap": "Broad and not filterable by 'no AI'; many listings are promotional."
+        },
+        {
+          "name": "F-Droid",
+          "url": "https://f-droid.org",
+          "gap": "Open-source Android only; no iOS and a narrow catalogue."
+        },
+        {
+          "name": "Store search itself",
+          "gap": "Ad-boosted results and no way to exclude AI apps."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "App Store 2026 in numbers: AI, pricing, abandoned apps (comment by bemtevi)",
+          "url": "https://news.ycombinator.com/item?id=50391275",
+          "quote": "I wish there was a filter in the app store to filter and only show apps that having nothing to do with AI. It's become increasingly hard to find a decent, non-AI app these days.",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "App Store 2026 in numbers: AI, pricing, abandoned apps (comment by kotaKat)",
+          "url": "https://news.ycombinator.com/item?id=50390173",
+          "quote": "Do you even need the top chart when you open the app and every other day it's either a Scopely property or Monopoly Go?",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "App Store 2026 in numbers: AI, pricing, abandoned apps (comment by ben_w)",
+          "url": "https://news.ycombinator.com/item?id=50407582",
+          "quote": "right now this is due to all the mainstream apps that run on (e.g.) my phone being bloated by ads and tracking from a thousand random analytics firms, plus all the ad-boosted results in the App Store.",
+          "date": "2026-11-07"
+        }
+      ]
+    },
+    {
+      "id": "feed-off-for-single-purpose-apps",
+      "title": "Feed-Off: hide forced social feeds inside non-social apps",
+      "category": "Mobile app",
+      "oneLiner": "An Android accessibility-based app that hides or skips social-feed tabs inside single-purpose apps (gyms, fitness, shopping) so you only see the function you opened them for.",
+      "problem": "Commenters on the 'gym forced social media' story say they resent feeds they cannot turn off, designed to pull them in, inside apps meant for a plain task. Their only options today are to avoid the app or reverse-engineer it.",
+      "targetUsers": "People with gym, fitness-club and utility apps that bolt on social feeds; anyone limiting doomscrolling.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "Free for 2 apps; ₹149/month or ₹999/year for unlimited apps and community-maintained rules for popular apps.",
+      "mvp": [
+        "Accessibility service that hides chosen tabs or screens by their view IDs",
+        "Community rule packs for popular Indian and global gym apps",
+        "One-tap 'open straight to check-in / QR' shortcut for apps",
+        "Per-app on/off schedule",
+        "Rule editor that records a tap on the unwanted tab"
+      ],
+      "competitors": [
+        {
+          "name": "Digital-wellbeing app timers",
+          "gap": "Limit total time but cannot hide one tab inside an app you still need."
+        },
+        {
+          "name": "Feed blockers for big social apps",
+          "gap": "Target a few named social platforms, not arbitrary single-purpose apps."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "My gym forced a social media down my throat. So I reverse-engineered its app (comment by itake)",
+          "url": "https://news.ycombinator.com/item?id=50382467",
+          "quote": "Why do I even have to see it? It is designed to get me sucked in. Imagine if an sober alcoholic must see beer ads every time they open up amazon.com to go shopping.",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "My gym forced a social media down my throat. So I reverse-engineered its app (comment by alistairSH)",
+          "url": "https://news.ycombinator.com/item?id=50382603",
+          "quote": "I hate the \"ubiquity\" of social media. For me, it's not social media conceptually that's the issue, it's that Meta and others are not good companies. They exist by doing their best to get me addicted to their feeds.",
+          "date": "2026-11-05"
+        }
+      ]
+    }
+  ]
+}
