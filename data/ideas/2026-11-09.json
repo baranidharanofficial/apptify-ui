@@ -1,0 +1,489 @@
+{
+  "date": "2026-11-09",
+  "summary": "Reddit, X and Bluesky were unreachable, so today's themes come from Hacker News threads only. The strongest: scam checkouts and unreadable card statements after a delivery-site skimming campaign, small firms fleeing QuickBooks price hikes, and frustration with Apple's keyboard and with chat apps families won't adopt.",
+  "ideas": [
+    {
+      "id": "statement-merchant-decoder",
+      "title": "Statement Decoder: what did I actually buy?",
+      "category": "Mobile app",
+      "oneLiner": "Turns cryptic card/UPI statement lines into the real merchant and order by matching them against your email and SMS receipts.",
+      "problem": "Small restaurants and shops charge through processors whose names look nothing like the business, so people can't tell a legitimate charge from fraud on their statement. Users want processors to expose more detail, but that won't happen soon.",
+      "targetUsers": "Anyone who reviews card or UPI statements: families, freelancers and small-business owners reconciling spending, and people who've been hit by a scam charge.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 30 days of history; ₹99/month or ₹799/year for unlimited history, export to CSV, and shared household view.",
+      "mvp": [
+        "On-device parsing of bank/UPI SMS and notification text (Android) to pull amount, date and descriptor",
+        "Match each charge to receipts in Gmail (read-only) by amount and date",
+        "Crowd-sourced descriptor dictionary ('RZP*ACME FOODS' → 'Acme Biryani, Koramangala')",
+        "'Unrecognised charge' inbox with one-tap 'ask my family' share",
+        "Monthly CSV export"
+      ],
+      "competitors": [
+        {
+          "name": "Walnut / Money Manager style SMS expense trackers",
+          "gap": "Categorise spend but show the raw descriptor; no matching to the receipt that explains it."
+        },
+        {
+          "name": "Bank apps",
+          "gap": "Show one line per transaction and offer no processor or order detail."
+        },
+        {
+          "name": "Rocket Money / Mint-style apps",
+          "gap": "US-centric, no Indian UPI or SMS coverage, and descriptor cleaning is shallow."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Restaurant Delivery Payment-Skimming Campaign (comment)",
+          "url": "https://news.ycombinator.com/item?id=50398905",
+          "quote": "Very often I end up scratching my head trying to figure out what did I buy.",
+          "engagement": "97 comments on thread",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Restaurant Delivery Payment-Skimming Campaign (comment)",
+          "url": "https://news.ycombinator.com/item?id=50398927",
+          "quote": "Payment processors should have the ability to report more information about each transaction, and customers should have the ability to see it.",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Restaurant Delivery Payment-Skimming Campaign (comment)",
+          "url": "https://news.ycombinator.com/item?id=50398319",
+          "quote": "There are lots of restaurants (legitimate ones!) that use some payment processor on the backend whose name shows up in the transaction.",
+          "date": "2026-11-06"
+        }
+      ]
+    },
+    {
+      "id": "is-this-the-real-checkout",
+      "title": "Real Checkout: verify the site before you pay",
+      "category": "Browser extension",
+      "oneLiner": "A checkout guard that tells you whether the page asking for your card is actually run by the business you meant to order from.",
+      "problem": "Scam sites buy search ads that outrank the real business, and legitimate businesses hand payments to generic, unfamiliar-looking domains, so users can't tell the two apart. Reporting scams to Google or Meta rarely gets results.",
+      "targetUsers": "Everyday shoppers and food-delivery users, especially less technical family members; local restaurants who get complaint calls from scam victims.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free for individuals; ₹199/month per business for a verified-domain listing and takedown alerts; family plan ₹49/month.",
+      "mvp": [
+        "Detect payment-form pages and show a green/amber/red banner before card entry",
+        "Check domain age, lookalike TLDs (.delivery, .shop) and ad-click referrals against known brand domains",
+        "Business-claimed domain registry plus known payment-processor allowlist (so legitimate id.me-style hops aren't flagged)",
+        "One-tap 'report this site' that files abuse reports with the registrar, host and Google Safe Browsing",
+        "Warning shown when you reach a checkout from a search ad"
+      ],
+      "competitors": [
+        {
+          "name": "Google Safe Browsing",
+          "gap": "Reactive blocklist; scam domains rotate faster than they are listed, and scam ads still run."
+        },
+        {
+          "name": "ScamAdviser / Norton Genie",
+          "gap": "Generic trust scores, nothing that says whether this is the restaurant you meant to order from."
+        },
+        {
+          "name": "Bank card-on-file alerts",
+          "gap": "Fire after the money has moved."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Restaurant Delivery Payment-Skimming Campaign (comment)",
+          "url": "https://news.ycombinator.com/item?id=50404530",
+          "quote": "nearly everything is now outsourced to SaaS that use ridiculously generic or often sketchy sounding domain names for secure transactions.",
+          "engagement": "97 comments on thread",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Restaurant Delivery Payment-Skimming Campaign (comment)",
+          "url": "https://news.ycombinator.com/item?id=50398075",
+          "quote": "Pay them money and your literal scam site can sit above the real site in the search results.",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Restaurant Delivery Payment-Skimming Campaign (comment)",
+          "url": "https://news.ycombinator.com/item?id=50408112",
+          "quote": "the first link was some scam website pretending to be Blender, trying to make me install their malware.",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Restaurant Delivery Payment-Skimming Campaign (comment)",
+          "url": "https://news.ycombinator.com/item?id=50406548",
+          "quote": "It seems fun to load a local business directory into the browser.",
+          "date": "2026-11-07"
+        }
+      ]
+    },
+    {
+      "id": "quickbooks-escape-for-small-firms",
+      "title": "Plain Books: a QuickBooks escape for tiny firms",
+      "category": "SaaS",
+      "oneLiner": "Simple bookkeeping for 1–10 person firms: import bank transactions, auto-categorise, and hand your accountant a clean export.",
+      "problem": "Small firm owners are unhappy with repeated QuickBooks price rises and a desktop-versus-online split with different features, but want something their accountant can still work with.",
+      "targetUsers": "Solo professionals and small firms (law, consulting, clinics, agencies) and their part-time bookkeepers or CAs.",
+      "painScore": 7,
+      "effort": "1 month+",
+      "monetization": "₹499–₹1,499/month per firm with unlimited users; accountant seats free to drive referrals.",
+      "mvp": [
+        "Bank/credit-card CSV and statement import with rule-based plus LLM-assisted categorisation",
+        "Review queue that flags low-confidence categories instead of silently guessing",
+        "Invoices, receipts attachment and simple P&L / balance sheet",
+        "Accountant export in formats QuickBooks, Tally and Zoho Books can import",
+        "Read-only accountant share link"
+      ],
+      "competitors": [
+        {
+          "name": "QuickBooks",
+          "url": "https://quickbooks.intuit.com",
+          "gap": "Frequent price increases; online and desktop editions lack feature parity."
+        },
+        {
+          "name": "Wave",
+          "url": "https://www.waveapps.com",
+          "gap": "Light on categorisation help and accountant workflow for firms with several users."
+        },
+        {
+          "name": "Zoho Books / Xero",
+          "gap": "Capable but priced and structured for growing companies, with heavy setup for a three-person firm."
+        },
+        {
+          "name": "GnuCash",
+          "gap": "Free and solid but desktop-only with a steep learning curve and no collaboration."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Running a law firm on Free software (comment)",
+          "url": "https://news.ycombinator.com/item?id=50405103",
+          "quote": "Intuit is killing me. I am genuinely looking for another solution that won’t break my CPAs brain. Also the desktop vs online stuff is so annoying since they don’t have 1:1 feature parity.",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Running a law firm on Free software (comment)",
+          "url": "https://news.ycombinator.com/item?id=50405030",
+          "quote": "Like Intuit raising quickbook prices by 20% every few months.",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Dayjob: Tax – evaluating AI agents (comment)",
+          "url": "https://news.ycombinator.com/item?id=50276749",
+          "quote": "It used to take me whole day because of the Quickbooks.",
+          "date": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "family-chat-that-just-works",
+      "title": "Hearth: a family chat app on your own server",
+      "category": "Mobile app",
+      "oneLiner": "A dead-simple private family messenger: you run a tiny server in one click, relatives join from an invite link, and it feels like WhatsApp.",
+      "problem": "Technical people want to move their families off SMS and WhatsApp, but Matrix and XMPP clients are widely described as clunky or unreliable, and the iOS experience is a known weak spot.",
+      "targetUsers": "Privacy-minded parents and the relatives they'd have to convince; homelab hobbyists who gave up on Matrix.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "Hosted family server ₹299/month (up to 10 members); self-host build free; one-time ₹499 to unlock extra storage and backups.",
+      "mvp": [
+        "Flutter client for Android and iOS with only 1:1, family group, photos and voice notes",
+        "One-click server deploy (managed hosting, or a script for a small VPS)",
+        "Invite by link/QR with no email or phone number needed",
+        "Reliable push notifications on both platforms",
+        "Encrypted backup and restore to a new phone"
+      ],
+      "competitors": [
+        {
+          "name": "Snikket",
+          "url": "https://snikket.org",
+          "gap": "Closest in spirit, but its maintainer says the iOS app is a known weak point and there's no full web client yet."
+        },
+        {
+          "name": "Element / Matrix",
+          "url": "https://element.io",
+          "gap": "Commenters call the clients some of the worst they've used."
+        },
+        {
+          "name": "Delta Chat",
+          "url": "https://delta.chat",
+          "gap": "Praised for UX and reliability, but built on email so it needs a chatmail server and isn't instant-feeling for some."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: How did you convince family and friends to join your XMPP/Matrix server?",
+          "url": "https://news.ycombinator.com/item?id=50405878",
+          "quote": "Matrix/element is one of the worst chat clients i have ever used. Nothing works.",
+          "engagement": "90 comments on thread",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: How did you convince family and friends to join your XMPP/Matrix server? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50406472",
+          "quote": "I keep wondering how people are getting it working and are happy with it. My homelab runs like 60 services, but I gave up on matrix",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: How did you convince family and friends to join your XMPP/Matrix server? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50406050",
+          "quote": "I'm convinced the clients have somehow gotten worse.",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: How did you convince family and friends to join your XMPP/Matrix server? (comment by Snikket's author)",
+          "url": "https://news.ycombinator.com/item?id=50405349",
+          "quote": "a known weak point is the iOS app, but we're actively working on solving that...",
+          "date": "2026-11-07"
+        }
+      ]
+    },
+    {
+      "id": "honest-iphone-keyboard",
+      "title": "Plain Keys: a predictable iPhone keyboard",
+      "category": "Mobile app",
+      "oneLiner": "An iOS keyboard with fixed key sizes, no hidden word blocklist, and a dictionary that only learns what you tell it to.",
+      "problem": "iPhone users say Apple's keyboard got worse, from autocorrect misfires to invisibly resized touch targets, and many just switch autocorrect off. Technical typists are especially annoyed.",
+      "targetUsers": "iPhone users who type a lot, including developers, writers and people typing in two or more languages.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "Free basic keyboard; ₹149/month or ₹999 lifetime for custom dictionaries, snippets, multilingual packs and iCloud sync.",
+      "mvp": [
+        "Fixed-size key hit areas with a visible touch-target overlay for debugging",
+        "Autocorrect off by default, with an opt-in 'fix only obvious typos' mode",
+        "User-owned dictionary and phrase list, exportable",
+        "Swipe typing with on-device-only models",
+        "Technical mode that doesn't mangle code, URLs, and mixed-language text"
+      ],
+      "competitors": [
+        {
+          "name": "Gboard for iOS",
+          "url": "https://apps.apple.com/app/gboard-the-google-keyboard/id1091700242",
+          "gap": "Sends typed data through Google services and has limited deep customisation."
+        },
+        {
+          "name": "SwiftKey",
+          "gap": "Microsoft account sync and cloud prediction, which privacy-minded users avoid."
+        },
+        {
+          "name": "Typewise",
+          "gap": "Different layout that takes relearning rather than fixing predictability."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Apple's grey list: Words and phrases your iPhone... (comment)",
+          "url": "https://news.ycombinator.com/item?id=50408654",
+          "quote": "The keyboard is so much worse than GBoard it’s incredible.",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Apple's grey list: Words and phrases your iPhone... (comment)",
+          "url": "https://news.ycombinator.com/item?id=50417569",
+          "quote": "the keyboard itself got broken around the iPhone 6 release.",
+          "date": "2026-11-08"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Apple's grey list: Words and phrases your iPhone... (comment)",
+          "url": "https://news.ycombinator.com/item?id=50407774",
+          "quote": "The iPhone will physically work against you by invisibly changing the size of keys on the keyboard.",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Intelligent Autocorrect (comment)",
+          "url": "https://news.ycombinator.com/item?id=50362772",
+          "quote": "I type technical stuff into my phone all day and apple autocorrect sucks.",
+          "date": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "id": "youtube-subscription-lifeboat",
+      "title": "Tube Lifeboat: playlists and feeds that don't rot",
+      "category": "Web app",
+      "oneLiner": "Backs up your YouTube subscriptions and playlist metadata, tells you when videos vanish, and keeps your feed working when YouTube RSS breaks.",
+      "problem": "Long-time YouTube users watch their saved playlists fill with 'unavailable' entries they can't identify, and RSS-based subscribers just had channel feeds return 404 for days.",
+      "targetUsers": "Heavy YouTube curators and RSS/feed-reader users who follow channels outside the algorithm.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 3 playlists; ₹149/month for unlimited playlists, daily snapshots, feed fallback and OPML export.",
+      "mvp": [
+        "Google sign-in with read-only playlist and subscription import",
+        "Nightly snapshot of titles, channels and thumbnails so removed videos can still be identified",
+        "'What disappeared' diff view with Wayback/other-source search links",
+        "Fallback feed built from channel pages when official RSS 404s",
+        "OPML and JSON export"
+      ],
+      "competitors": [
+        {
+          "name": "RSS-Bridge / FreshRSS",
+          "gap": "Self-hosted and technical; they depend on the same endpoints that just broke."
+        },
+        {
+          "name": "Invidious / Piped",
+          "gap": "Instances are often rate-limited or blocked, and they don't track your playlist history."
+        },
+        {
+          "name": "Playlist backup extensions",
+          "gap": "One-off exports that don't monitor for changes or fix feeds."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Download your favourite YouTube videos (comment)",
+          "url": "https://news.ycombinator.com/item?id=50380526",
+          "quote": "Most of my YouTube playlists say something like \"15 unavailable videos are hidden\"",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Download your favourite YouTube videos (comment)",
+          "url": "https://news.ycombinator.com/item?id=50384364",
+          "quote": "Many of my \"Watch Later\" playlist items have been removed",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Is YouTube starting to protect channel RSS feeds?",
+          "url": "https://news.ycombinator.com/item?id=50409244",
+          "quote": "I haven't been able to get RSS feeds for the last 4 days now.",
+          "date": "2026-11-08"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Is YouTube starting to protect channel RSS feeds? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50409502",
+          "quote": "I have one feed updated about an hour ago but now they are all status 404.",
+          "date": "2026-11-08"
+        }
+      ]
+    },
+    {
+      "id": "already-own-it-recs-filter",
+      "title": "Already Own It: recommendations that respect your history",
+      "category": "Browser extension",
+      "oneLiner": "Hides shop and store recommendations for things you've already bought, finished, rated badly or dismissed.",
+      "problem": "People are tired of being shown items they already bought, sequels to books they never finished or 1-starred, and feeds that herd them into a few genres, despite the platforms holding that data.",
+      "targetUsers": "Frequent Amazon/Kindle shoppers and heavy music or book consumers who want recommendations without the repeats.",
+      "painScore": 4,
+      "effort": "Weekend",
+      "monetization": "Free for one store; ₹99/month or ₹699 lifetime for all supported stores and cross-device sync.",
+      "mvp": [
+        "Import order history from Amazon (CSV/page scrape) once",
+        "Hide already-purchased items and listed series entries in carousels and search",
+        "Hide items from authors/series you've rated 1–2 stars or marked dismissed",
+        "Local-only storage, no server",
+        "Toggle to show hidden items"
+      ],
+      "competitors": [
+        {
+          "name": "Amazon 'Not interested' / manage recommendations",
+          "url": "https://www.amazon.com",
+          "gap": "Manual item-by-item, and repeats still appear."
+        },
+        {
+          "name": "uBlock Origin cosmetic filters",
+          "gap": "Needs hand-written rules and knows nothing about your purchase history."
+        },
+        {
+          "name": "Goodreads",
+          "gap": "Tracks reading but doesn't affect what Amazon shows you."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: I wish tech companies knew more about me (comment)",
+          "url": "https://news.ycombinator.com/item?id=50380075",
+          "quote": "show me stuff I have already bought.... show me things I already decided against... show me stuff that is not in my price range. That's annoying.",
+          "engagement": "414 comments on thread",
+          "date": "2026-11-05"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: I wish tech companies knew more about me (comment)",
+          "url": "https://news.ycombinator.com/item?id=50390602",
+          "quote": "Amazon keeps recommending me sequel to books I never finished",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: I wish tech companies knew more about me (comment)",
+          "url": "https://news.ycombinator.com/item?id=50387338",
+          "quote": "Spotify fucking sucks - it seems to try to herd everyone into one of a few genres.",
+          "date": "2026-11-06"
+        }
+      ]
+    },
+    {
+      "id": "screenshot-graveyard-cleaner",
+      "title": "Shotwise: turn screenshot graveyards into notes",
+      "category": "Mobile app",
+      "oneLiner": "Reads your screenshots on-device, pulls out the useful bit (link, recipe, address, receipt) and files it somewhere you can search.",
+      "problem": "People save screenshots and bookmarks 'for later', then can't find them. Galleries fill with thousands of images of which only a few percent are ever used.",
+      "targetUsers": "Heavy phone screenshotters, researchers and students who save things for later and rarely revisit them.",
+      "painScore": 4,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 100 screenshots; ₹99/month or ₹799/year for unlimited, reminders and export to Notion/Obsidian.",
+      "mvp": [
+        "Auto-detect new screenshots and run on-device OCR",
+        "Classify into link, recipe, address, receipt, quote or other, and extract the key fields",
+        "Searchable inbox with 'resurface in a week' reminders",
+        "Auto-archive screenshots with no extracted value",
+        "Export to Notion, Obsidian or plain Markdown"
+      ],
+      "competitors": [
+        {
+          "name": "Google Photos / Apple Photos search",
+          "gap": "OCR search exists but nothing is extracted or resurfaced, so screenshots stay a graveyard."
+        },
+        {
+          "name": "Karakeep / Linkding / Zotero",
+          "gap": "Commenters call the UIs dated or rough, and they don't ingest screenshots."
+        },
+        {
+          "name": "Pocket-style read-later apps",
+          "gap": "Handle links only, not screenshots of apps, chats and recipes."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: How do you keep track of the articles, papers and videos you save? (comment by the poster)",
+          "url": "https://news.ycombinator.com/item?id=50413032",
+          "quote": "My gallery has thousands and I used maybe 5% of them for something useful.",
+          "date": "2026-11-08"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: How do you keep track of the articles, papers and videos you save? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50409788",
+          "quote": "sometimes capturing some screen shot or save the text with a good title hoping to use it again and never do in reality",
+          "date": "2026-11-08"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: How do you keep track of the articles, papers and videos you save? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50408616",
+          "quote": "I've tried Zotero, but I found its UI to be very outdated.",
+          "date": "2026-11-07"
+        }
+      ]
+    }
+  ]
+}
