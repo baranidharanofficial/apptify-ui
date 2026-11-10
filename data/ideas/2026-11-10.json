@@ -1,0 +1,353 @@
+{
+  "date": "2026-11-10",
+  "summary": "Only Hacker News was reachable today (Reddit, X, Bluesky and others were blocked), so every source below is a verified HN thread or comment from the last 7 days. The strongest themes: Microsoft silently bouncing mail from domains without DMARC, pay-by-app parking fees and flaky apps, inbox spam aimed at people who publish an email address, and SaaS price hikes (Harvest) pushing freelancers away.",
+  "ideas": [
+    {
+      "id": "dmarc-bounce-watch-for-small-domains",
+      "title": "MailGuard Watch: email-auth monitor for small domains and agencies",
+      "category": "SaaS",
+      "oneLiner": "Watches SPF/DKIM/DMARC and big-provider bounce rules for every client domain, and tells you the one DNS record to add before customers' mail starts bouncing.",
+      "problem": "Since 5 Nov 2026 Outlook.com/Hotmail have been rejecting some mail from domains with no DMARC record, with no announcement. Small businesses and the IT people who look after them found out when customers stopped replying. Existing DMARC tools are built for enterprises and are overkill for a 5-person business.",
+      "targetUsers": "Freelance web developers, MSPs and small agencies managing 10–200 client domains; small businesses that email customers from their own domain.",
+      "painScore": 8,
+      "effort": "1–2 weeks",
+      "monetization": "Per-domain pricing, e.g. ₹99 / $2 per domain per month, with agency bundles of 25 domains for ₹1,499 / $19. Free single-domain checker as a lead magnet.",
+      "mvp": [
+        "Paste a domain and get SPF, DKIM selector and DMARC status with plain-language fixes",
+        "Copy-paste DNS records for Cloudflare, GoDaddy, Namecheap and Google Domains-style hosts",
+        "Weekly re-check of all domains with email and WhatsApp alerts when a record breaks or changes",
+        "Test send to an Outlook/Gmail/Yahoo seed inbox and report whether it landed or bounced",
+        "Client-ready PDF report agencies can forward to customers"
+      ],
+      "competitors": [
+        { "name": "dmarcian", "url": "https://dmarcian.com", "gap": "Aimed at security teams; report parsing is powerful but heavy for a business that just needs to know whether its mail is being delivered." },
+        { "name": "EasyDMARC", "url": "https://easydmarc.com", "gap": "Pricing and dashboards are built around enterprise DMARC enforcement, not quick fixes for dozens of tiny domains." },
+        { "name": "MXToolbox", "url": "https://mxtoolbox.com", "gap": "Good one-off lookups, but no cross-client monitoring that explains provider policy changes in plain language." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Outlook.com is rejecting email from domains without DMARC",
+          "url": "https://news.ycombinator.com/item?id=50416159",
+          "quote": "Since November 5, 2026, Microsoft's consumer mail service has been turning away some of the email from domains that don't publish a DMARC record.",
+          "engagement": "531 points · 358 comments (thread)",
+          "date": "2026-11-08"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Outlook.com is rejecting email from domains without DMARC",
+          "url": "https://news.ycombinator.com/item?id=50416502",
+          "quote": "Yeah thanks Microsoft. Really appreciate having to mitigate this for hundreds of customers on a weekend. Nice one!",
+          "date": "2026-11-08"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Outlook.com is rejecting email from domains without DMARC",
+          "url": "https://news.ycombinator.com/item?id=50418405",
+          "quote": "I think this disenfranchises a lot of independent operators, and the blow of that could at least be softened by making a highly-visible public announcement about it a few months ahead of time.",
+          "date": "2026-11-08"
+        }
+      ]
+    },
+    {
+      "id": "parking-without-the-app-fees",
+      "title": "MeterMate: find the cheapest way to pay for parking",
+      "category": "Mobile app",
+      "oneLiner": "A crowd-sourced map that tells you which meters accept tap-to-pay, which parking app to use, what fee each charges, and reminds you before your session ends.",
+      "problem": "Cities are pushing pay-by-app parking. Users report convenience fees on every session (and again when extending), large app downloads on poor mobile data, apps that don't work in underground garages, and forced sign-ups with phone number and email. A new study found a median $0.35 fee per session across 312 US cities.",
+      "targetUsers": "Daily city drivers and visitors; initially US/UK/EU cities with ParkMobile, PayByPhone, RingGo and similar apps. Indian city drivers using FASTag/municipal apps are a second market.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free core map and timer; $2.99/mo Pro for multi-vehicle session reminders and monthly fee-savings report. Optional city/operator data licensing later.",
+      "mvp": [
+        "Map pins for zones: pay-at-meter tap-to-pay available, which app operator, and the per-session fee, submitted by users",
+        "Zone number lookup by GPS so you know which app/zone code applies before downloading anything",
+        "Local session timer with push reminder before expiry and a one-tap link to extend in the right app",
+        "Saved plates and zones, offline-first so it works in underground garages",
+        "Monthly 'fees you could have avoided' summary"
+      ],
+      "competitors": [
+        { "name": "ParkMobile", "url": "https://parkmobile.io", "gap": "Charges per-session convenience fees and is one app among several per region; users cite fees and forced accounts." },
+        { "name": "PayByPhone", "url": "https://www.paybyphone.com", "gap": "Same per-transaction fee model; each city runs a different operator so people end up with several apps." },
+        { "name": "Parkopedia", "url": "https://www.parkopedia.com", "gap": "Focuses on finding garages and prices, not on avoiding payment-app fees or tracking meter alternatives." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Parking-app convenience fees in 312 U.S. cities (median $0.35 per session)",
+          "url": "https://news.ycombinator.com/item?id=50433591",
+          "quote": "if you use their app, you have to pay the fee, and extending the time hits you with the fee again. The app is a piece of garbage that hasn't been meaningfully updated in years",
+          "engagement": "60 points (thread)",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Parking-app convenience fees in 312 U.S. cities (median $0.35 per session)",
+          "url": "https://news.ycombinator.com/item?id=50432982",
+          "quote": "they expect you to sit there and download a 600mb shitware app on your terrible mobile data connection when you are trying to make a dinner reservation.",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Parking-app convenience fees in 312 U.S. cities (median $0.35 per session)",
+          "url": "https://news.ycombinator.com/item?id=50433111",
+          "quote": "the parking space is underground, so the app doesn't work until you get to the surface.",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Parking-app convenience fees in 312 U.S. cities (median $0.35 per session)",
+          "url": "https://news.ycombinator.com/item?id=50433166",
+          "quote": "i recently encountered a town where the only option to pay was via some app that forced me to hand over my phone number and email address",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "human-only-contact-gate",
+      "title": "KnockKnock: a contact link that filters AI cold outreach",
+      "category": "Web app",
+      "oneLiner": "Replace the email in your bio with a link that asks senders for a quick proof-of-effort or reputation check, then forwards only real humans to your inbox.",
+      "problem": "People who publish an email on HN, GitHub, blogs and bios now get LLM-written 'I saw your comment' outreach, fake consulting offers and promo scams. Some give up and delete their email or shut down office-hours links; others route everything to spam and miss the real messages.",
+      "targetUsers": "Developers, writers, open-source maintainers, indie founders and creators with a public email address.",
+      "painScore": 7,
+      "effort": "Weekend",
+      "monetization": "Free for 1 link and 20 forwards/month; $4/month for custom domain, unlimited forwards, allow-lists and weekly digest of blocked messages.",
+      "mvp": [
+        "Hosted contact page at yourname.knock.link with rate limiting and a short effort challenge instead of a plain captcha",
+        "Optional reputation check: sender links HN, GitHub or LinkedIn profile and you set minimum thresholds",
+        "Forward passing messages to your real email with a reply-through proxy address so your address is never exposed",
+        "Weekly digest of blocked messages so nothing important is lost",
+        "Embeddable snippet and plain-text-safe link for profiles"
+      ],
+      "competitors": [
+        { "name": "SimpleLogin", "url": "https://simplelogin.io", "gap": "Hides your address with aliases but does not judge whether the sender is a human with a genuine reason to write." },
+        { "name": "Formspree", "url": "https://formspree.io", "gap": "A form backend with basic spam filtering; LLM-written personalised outreach passes through." },
+        { "name": "Cal.com", "url": "https://cal.com", "gap": "Scheduling links get abused for the same 'please do a free 30 minute call' requests." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "I saw your HN comment",
+          "url": "https://news.ycombinator.com/item?id=50427292",
+          "quote": "I used to get the occasional email about a comment and I would get kind of excited.",
+          "engagement": "409 points (thread)",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "I saw your HN comment",
+          "url": "https://news.ycombinator.com/item?id=50427721",
+          "quote": "I have everything that mentions HN set to go to spam at this point and check it once a month for kernels amongst the bullshit.",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "I saw your HN comment",
+          "url": "https://news.ycombinator.com/item?id=50428501",
+          "quote": "I previously considered auto-replying from my HN email with a captcha / challenge of some kind that would reveal a contact form for me to read, but it feels like too much of a barrier to entry for writing to me.",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "I saw your HN comment",
+          "url": "https://news.ycombinator.com/item?id=50427350",
+          "quote": "I had an “Office Hours” link on my blog to do Google Meets with HN users. It was fun to catch up with strangers. I had to take it down this month.",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "flat-fee-freelancer-time-and-invoicing",
+      "title": "FlatTime: time tracking and invoicing with no percentage cut",
+      "category": "SaaS",
+      "oneLiner": "Simple hours-to-invoice tool with one flat price, no per-invoice usage fees and no skimming of your payments.",
+      "problem": "After Harvest's acquisition, users report being pushed from $40/month to plans quoted at several hundred dollars, and a flex plan that takes about 2% extra on top of card fees. Free accounts lost the ability to send invoices outside the payment portal. Some freelancers are already vibe-coding their own replacements.",
+      "targetUsers": "Solo consultants, small agencies and freelancers who bill by the hour, including Indian freelancers invoicing foreign clients.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Flat $6/month or ₹399/month per account with unlimited invoices and clients; a one-time $49 lifetime option. No payment-processing markup; users bring their own Stripe or Razorpay.",
+      "mvp": [
+        "Timer and manual hour entry by project and client",
+        "Invoice builder with PDF export and invoice numbering, GST/VAT fields",
+        "Import from Harvest and Toggl CSV exports",
+        "Bring-your-own Stripe/Razorpay payment link, no percentage cut",
+        "Recurring retainers and overdue reminders"
+      ],
+      "competitors": [
+        { "name": "Harvest", "url": "https://www.getharvest.com", "gap": "Recent pricing changes with usage fees and a processing surcharge; users describe sudden renewal jumps." },
+        { "name": "Toggl Track", "url": "https://toggl.com", "gap": "Strong timer but invoicing is limited and priced by seat for teams." },
+        { "name": "Clockify", "url": "https://clockify.me", "gap": "Free tier is generous but invoicing and reports feel bolted on and paywalled for basics." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "RIP, Harvest",
+          "url": "https://news.ycombinator.com/item?id=50421043",
+          "quote": "from $40 to $586.50 for “unlimited” use. Same product.",
+          "engagement": "431 points (thread)",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "RIP, Harvest",
+          "url": "https://news.ycombinator.com/item?id=50422857",
+          "quote": "Funny how nobody gets that the joke here is losing 3% of every invoice even on ACH",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "RIP, Harvest",
+          "url": "https://news.ycombinator.com/item?id=50422722",
+          "quote": "Shortly after the acquisition I logged in to Harvest to send the month's invoices, and found that doing so [without using their payment portal] was no longer possible with a free account.",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "RIP, Harvest",
+          "url": "https://news.ycombinator.com/item?id=50420639",
+          "quote": "I vibe coded my own harvest or toggl app in one weekend.",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "github-release-asset-fallback-mirror",
+      "title": "ReleaseSafe: automatic fallback mirror for GitHub release downloads",
+      "category": "Developer tool",
+      "oneLiner": "A tiny proxy and CLI that caches the release binaries your CI downloads, verifies checksums, and transparently serves them when GitHub returns 504.",
+      "problem": "During the 8 Nov GitHub outage, release downloads timed out while the status page stayed green. CI pipelines that fetch tools such as gitleaks or Terraform failed, and individuals could not download installers like Rufus or distro ISOs.",
+      "targetUsers": "Small dev teams and solo developers with CI that pulls binaries from GitHub Releases; DevOps engineers; Linux users bootstrapping machines.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free self-hosted CLI; hosted mirror at $9/month per team with 20 GB cache and usage dashboard; $29/month with private-repo asset support and audit logs.",
+      "mvp": [
+        "Drop-in URL rewrite or GitHub Action that fetches via the mirror first, falling back to GitHub",
+        "Pin by version plus SHA256 so the mirror can never serve a tampered file",
+        "Cache on S3-compatible or R2 storage, bring your own bucket",
+        "Config file generated by scanning your workflows for github.com/*/releases/download URLs",
+        "Slack or email alert when a download came from the fallback"
+      ],
+      "competitors": [
+        { "name": "mise / aqua", "url": "https://mise.jdx.dev", "gap": "Tool version managers that still download from GitHub at install time; they don't ship a managed fallback." },
+        { "name": "actions/cache", "url": "https://github.com/actions/cache", "gap": "Cache lives on GitHub's own infrastructure and misses on cold runners, so it fails exactly when GitHub is down." },
+        { "name": "JFrog Artifactory", "url": "https://jfrog.com/artifactory/", "gap": "Does the job but is heavy and priced for large organisations." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "GitHub Down Again?",
+          "url": "https://news.ycombinator.com/item?id=50411835",
+          "quote": "They seem to be having an issue with release downloads. Our CI is broken at the moment, unable to download tools used in various checks (gitleaks, etc).",
+          "engagement": "121 points (thread)",
+          "date": "2026-11-08"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "GitHub Down Again?",
+          "url": "https://news.ycombinator.com/item?id=50411929",
+          "quote": "It's been down for >30 minutes. Status page of course says everything is fine. 504 when downloading releases, so CI and Terraform don't work.",
+          "date": "2026-11-08"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "GitHub Down Again?",
+          "url": "https://news.ycombinator.com/item?id=50412010",
+          "quote": "I wanted to install Bazzite (a Linux distro!) and I cannot download their ISO, I cannot download their recommended partition tool, I cannot even download Rufus to start formatting some drives.",
+          "date": "2026-11-08"
+        }
+      ]
+    },
+    {
+      "id": "renewal-price-jump-tripwire",
+      "title": "RenewalRadar: catch SaaS price jumps before the invoice hits",
+      "category": "Web app",
+      "oneLiner": "Forward renewal and billing emails; get a flag when the next charge is much higher than the last one, with the plan change explained.",
+      "problem": "Small teams are hit by renewal notices that jump from tens to hundreds of dollars through seat bundles, 'unlimited' re-tiering and usage fees buried behind 'starting from' pricing. They discover it at renewal, when switching is costly.",
+      "targetUsers": "Freelancers, agencies and 2–50 person companies that run on a stack of per-seat SaaS tools; bookkeepers and ops managers.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 5 tracked subscriptions; $5/month for unlimited tracking, price-history charts and Slack/WhatsApp alerts; $19/month for team inbox forwarding and CSV export for accountants.",
+      "mvp": [
+        "Dedicated forwarding email address that parses vendor renewal and invoice emails",
+        "LLM extraction of vendor, plan, seats and amount, stored against previous charges",
+        "Alert when the upcoming amount is more than a set percentage above the last one",
+        "Calendar of renewal and notice deadlines with cancel-by reminders",
+        "Per-vendor price history and yearly total"
+      ],
+      "competitors": [
+        { "name": "Subscription trackers (Rocket Money, Bobby)", "url": "https://www.rocketmoney.com", "gap": "Built for consumer subscriptions via bank connection; they track charges after the fact rather than parsing B2B renewal notices in advance." },
+        { "name": "Vendr / Zylo", "url": "https://www.vendr.com", "gap": "Enterprise SaaS-management contracts, far beyond what a 5-person team will pay." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "RIP, Harvest",
+          "url": "https://news.ycombinator.com/item?id=50421043",
+          "quote": "Those are seat fees, which do not include the new usage fees.",
+          "engagement": "431 points (thread)",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "RIP, Harvest",
+          "url": "https://news.ycombinator.com/item?id=50420749",
+          "quote": "We recently went through a version of this with Asana when we discovered their \"per seat\" pricing is sold in groups of 5 seats. Going from 5->6 users adjusts your bill to 5->10 seats, doubling your price.",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "RIP, Harvest",
+          "url": "https://news.ycombinator.com/item?id=50420690",
+          "quote": "You need to read the “Starting from” text on their pricing page right before those prices you see.",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "degoogled-phone-banking-compat-tracker",
+      "title": "BankCheck: which banking apps work on de-Googled phones",
+      "category": "Web app",
+      "oneLiner": "A live, crowd-verified compatibility database of banking and payment apps on GrapheneOS and other non-Google Android builds, with alternatives per country.",
+      "problem": "Banks are adopting Play Integrity checks and rejecting privacy-focused Android builds, often only at sign-up, so users find out after installing. Some resort to a spare phone just for banking, and tap-to-pay options (Google Pay, Wero) are narrowing further.",
+      "targetUsers": "Privacy-minded Android users on GrapheneOS, CalyxOS or similar; people choosing a bank or a phone; Europe first, then India (UPI app compatibility).",
+      "painScore": 5,
+      "effort": "Weekend",
+      "monetization": "Free for readers; $3/month for alerts when an app you use changes status; sponsorship from privacy-friendly banks and phone resellers.",
+      "mvp": [
+        "Searchable table of apps by country with status: works, works for existing accounts only, blocked at signup, blocked",
+        "One-tap user reports with OS version and date, and a freshness indicator per entry",
+        "Per-country 'banks that work' shortlist and tap-to-pay workaround notes",
+        "Email or RSS alerts when an app you follow changes status",
+        "Public API/JSON export so others can embed it"
+      ],
+      "competitors": [
+        { "name": "PrivSec banking app compatibility list", "url": "https://privsec.dev/posts/android/banking-applications-compatibility-with-grapheneos/", "gap": "A static article maintained by hand; no per-user reports, freshness indicators or alerts." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Dutch 'idealist' bank ASN blocks non-Google Android, including GrapheneOS",
+          "url": "https://news.ycombinator.com/item?id=50390584",
+          "quote": "Other European banks do it, too - N26 also rejects GrapheneOS.",
+          "engagement": "656 points · 436 comments (thread)",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Dutch 'idealist' bank ASN blocks non-Google Android, including GrapheneOS",
+          "url": "https://news.ycombinator.com/item?id=50390616",
+          "quote": "I have an refurbished iphone sleeping most of the time in my desk drawer, used only for banking apps.",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Dutch 'idealist' bank ASN blocks non-Google Android, including GrapheneOS",
+          "url": "https://news.ycombinator.com/item?id=50390657",
+          "quote": "for now I use bunq + CurvePay for tap to pay (since Google Pay also doesn't work on Graphene). Let's see how long they let me keep it.",
+          "date": "2026-11-06"
+        }
+      ]
+    }
+  ]
+}
