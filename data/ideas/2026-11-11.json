@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-11",
+  "summary": "Reddit, Bluesky and X were unreachable today, so this report rests on Hacker News threads from the past week, which are heavily developer-skewed. Two themes held up with several independent commenters each: AI coding agents that forget context across projects and tools, and people being blocked from reading pages by bot-challenge walls. Other leads (small-company security questionnaires, city ticketing apps) had only one verifiable source and were dropped.",
+  "ideas": [
+    {
+      "id": "cross-agent-project-memory-vault",
+      "title": "Cross-Agent Project Memory Vault",
+      "category": "Developer tool",
+      "oneLiner": "A local app that indexes every Claude Code, Codex and Cursor session transcript and recalls past decisions per client or project, across tools.",
+      "problem": "Developers who juggle several projects or clients with more than one AI coding agent keep re-explaining past decisions. Each tool has its own memory, memory is scoped to a single project, and transcripts get deleted after a retention window. People hand-roll skills, gitignored notes and wikis to compensate.",
+      "targetUsers": "Freelancers, agencies and indie developers who use two or more AI coding agents across several repos or clients.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free local core; one-time licence or about $8/month for cross-device sync, team-shared client vaults and retention of old transcripts.",
+      "mvp": [
+        "Import session transcripts from Claude Code, Codex and Cursor into one local index",
+        "Per-client or per-project workspaces so contexts never mix",
+        "Natural-language recall such as 'what did we decide about auth last week?'",
+        "Pin and export key decisions as a markdown file or MCP resource the agent can read",
+        "Keep transcripts beyond the tools' own deletion window"
+      ],
+      "competitors": [
+        {
+          "name": "Built-in agent memory (Claude Code, Codex, Cursor)",
+          "gap": "Each tool keeps its own memory, so nothing carries across agents. Commenters say it is scoped to the current project and that old transcripts get deleted."
+        },
+        {
+          "name": "DIY markdown/ADR notes, wikis and skills",
+          "gap": "Needs manual upkeep. Commenters describe building custom skills or wikis, and one reported a 23% token increase from an LLM-wiki approach."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How do you manage your AI agents' context across clients and projects?",
+          "url": "https://news.ycombinator.com/item?id=50403153",
+          "quote": "The major time cost for me is to re-explaining context and past decisions, client rules, that we already do. To finish every tools as its own memory.",
+          "engagement": "97 points",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "The Components of Agent Memory (comment)",
+          "url": "https://news.ycombinator.com/item?id=50409569",
+          "quote": "My biggest problem is that memory is limited to the current project and I jump between projects a lot",
+          "date": "2026-11-08"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How do you manage your AI agents' context across clients and projects? (comment)",
+          "url": "https://news.ycombinator.com/item?id=50420719",
+          "quote": "I use both Codex and Claude Code. The main friction right now is keeping an overview of the sessions.",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "challenge-wall-readable-copy-extension",
+      "title": "Challenge-Wall Escape Hatch",
+      "category": "Browser extension",
+      "oneLiner": "A browser extension that spots Cloudflare, Anubis or CAPTCHA walls and offers a one-click readable copy of the page, while tracking the time the walls cost you.",
+      "problem": "Readers say bot-challenge screens appear on a large share of the pages they open, sometimes several times in one research session. Some give up and close the tab, and others have switched to chatbots for search. The checks also break developer workflows, for example source downloads that come back as a challenge page.",
+      "targetUsers": "Heavy web readers and researchers, plus developers who fetch source tarballs or docs.",
+      "painScore": 6,
+      "effort": "Weekend",
+      "monetization": "Free with a local-only mode; about $3/month for hosted reader and archive lookups and for a shared per-site fix list.",
+      "mvp": [
+        "Detect challenge or interstitial pages in the tab",
+        "One-click open of a readable copy from user-chosen sources such as web archives or a reader view",
+        "Per-domain memory of which sites use walls and which fallback worked",
+        "Counter of challenges hit and an estimate of seconds lost",
+        "Detect when a non-HTML challenge page was saved in place of a requested file and warn the user"
+      ],
+      "competitors": [
+        {
+          "name": "Web archive and reader-mode services",
+          "gap": "Manual copy-and-paste of each URL. They don't detect the wall or remember which fallback works per site."
+        },
+        {
+          "name": "Ad and annoyance blockers (uBlock-style filters)",
+          "gap": "Aimed at ads and banners, not bot challenges, and a hard wall can't be hidden because the content never loads."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Getting hit with \"Prove you are a human\" at every other website",
+          "url": "https://news.ycombinator.com/item?id=50355959",
+          "quote": "every other one of them requires me to solve some fking puzzle or click on a checkbox or some other bullshit.",
+          "engagement": "85 points",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Getting hit with \"Prove you are a human\" at every other website (comment)",
+          "url": "https://news.ycombinator.com/item?id=50356942",
+          "quote": "At this point I just use chatbot as search engine out of vengeance.",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Getting hit with \"Prove you are a human\" at every other website (comment)",
+          "url": "https://news.ycombinator.com/item?id=50359445",
+          "quote": "Do it 20 times in the search for one article, and encounter at least a 30% misconfiguration rate (inappropriately high challenge value), and it does begin to bear out.",
+          "date": "2026-11-03"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Getting hit with \"Prove you are a human\" at every other website (comment)",
+          "url": "https://news.ycombinator.com/item?id=50358838",
+          "quote": "the build will fail because what was supposed to be thesourcecode.tar ended up being the html for the anime girl page, leading to a hash mismatch.",
+          "date": "2026-11-03"
+        }
+      ]
+    }
+  ]
+}
