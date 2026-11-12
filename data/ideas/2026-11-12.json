@@ -1,0 +1,286 @@
+{
+  "date": "2026-11-12",
+  "summary": "Reddit, X and Bluesky were blocked today, so every source is Hacker News. The strongest themes: people want meeting-notes apps that stay on the phone and aren't limited to Macs, they're fed up with devices that die when a vendor's cloud goes away, and they feel locked in or overcharged by airlines and domain registrars.",
+  "ideas": [
+    {
+      "id": "private-phone-meeting-notes",
+      "title": "Private Meeting Notes for Android (Hindi/English)",
+      "category": "Mobile app",
+      "oneLiner": "An on-device recorder that transcribes and summarises in-person meetings and calls on a phone, with no cloud upload.",
+      "problem": "Granola-style note apps are Mac-first and send audio or text to the cloud. People want something private that works on a phone and not only on Apple Silicon. Two-party-consent users hesitate to use cloud transcription at all.",
+      "targetUsers": "Freelancers, consultants, founders and managers in India who hold client calls or in-person meetings on a phone and care about confidentiality.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "Free tier with a monthly cap on transcription minutes. Pro at about ₹199/month, or a one-time ₹1,499. Optional cloud summaries as an add-on.",
+      "mvp": [
+        "One-tap recording with a consent notice you can read aloud",
+        "On-device Whisper-class transcription, with Hindi and English",
+        "Local summary and action items using a small on-device model",
+        "Speaker labels (basic diarisation)",
+        "Searchable notes list and export to Markdown/PDF",
+        "Airplane-mode-safe: no network calls by default"
+      ],
+      "competitors": [
+        {
+          "name": "Granola",
+          "url": "https://www.granola.ai",
+          "gap": "Mac-first, and audio is captured locally but notes are enhanced by cloud models."
+        },
+        {
+          "name": "Viska",
+          "gap": "Offline and on both iOS and Android, but Android transcription is reported to be noticeably slower, and it doesn't focus on Indian languages."
+        },
+        {
+          "name": "Yogurt (open source)",
+          "gap": "Desktop app; no phone version, which commenters pointed out."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Yogurt – Free, private, open-source alternative to Granola",
+          "url": "https://news.ycombinator.com/item?id=50462214",
+          "quote": "to find a good way to record audio for small meetings on a phone (there are foss options for Android - but I need one tool to recommend",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Yogurt – Free, private, open-source alternative to Granola",
+          "url": "https://news.ycombinator.com/item?id=50457425",
+          "quote": "It's refreshing to see something not limited to Macs/Apple Silicon.",
+          "engagement": "176 points on the thread",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Yogurt – Free, private, open-source alternative to Granola",
+          "url": "https://news.ycombinator.com/item?id=50457825",
+          "quote": "I live in a two party consent state and have yet to pull the trigger on an AI transcription service.",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Yogurt – Free, private, open-source alternative to Granola",
+          "url": "https://news.ycombinator.com/item?id=50460300",
+          "quote": "I got frustrated with call note apps too, and also built my own as a native Mac app",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "works-offline-device-checker",
+      "title": "Works-Offline Checker for Smart Devices",
+      "category": "Browser extension",
+      "oneLiner": "A product-page overlay that tells you whether a smart device or appliance keeps working without the vendor's cloud or app.",
+      "problem": "Internet radios, appliances and smart devices stop working when the vendor's server goes away, and buyers can't tell this before purchase. Commenters say most appliances don't need a cloud at all, but there is no simple way to filter for the ones that don't.",
+      "targetUsers": "Smart-home buyers, Home Assistant hobbyists and anyone buying a connected appliance who wants it to survive the vendor.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for browsing. Affiliate links to local-first alternatives. Paid API for retailers and reviewers.",
+      "mvp": [
+        "Chrome/Firefox extension that matches the current product page to a device entry",
+        "Rating: fully local, local with cloud setup, cloud-required",
+        "Plain-language 'what breaks if the company shuts down' note",
+        "Community submissions with proof (a test with the internet unplugged)",
+        "Links to the matching Home Assistant or Zigbee/Matter integration",
+        "Alternatives list for each category"
+      ],
+      "competitors": [
+        {
+          "name": "Home Assistant integration docs (IoT class)",
+          "url": "https://www.home-assistant.io/integrations/",
+          "gap": "Accurate but written for people already running Home Assistant. Nothing a shopper sees on a product page."
+        },
+        {
+          "name": "Zigbee2MQTT supported devices",
+          "url": "https://www.zigbee2mqtt.io/supported-devices/",
+          "gap": "Only covers Zigbee, and it isn't built for buying decisions."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Smart home devices should work without the internet",
+          "url": "https://news.ycombinator.com/item?id=50443017",
+          "quote": "The demise of them is always its dependency on a remote server which enables setting which stations you want to listen to.",
+          "engagement": "1,143 points on the thread",
+          "date": "2026-11-10"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Smart home devices should work without the internet",
+          "url": "https://news.ycombinator.com/item?id=50442408",
+          "quote": "Basically any appliance is completely ridiculous to require an internet connection imo.",
+          "date": "2026-11-10"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Smart home devices should work without the internet",
+          "url": "https://news.ycombinator.com/item?id=50447649",
+          "quote": "99% of home appliacnes or whatever, dont need a server or any concept of cloud",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    {
+      "id": "fare-cross-check-extension",
+      "title": "Fare Cross-Check for Airline Checkout",
+      "category": "Browser extension",
+      "oneLiner": "An extension that compares the airline's own price with the aggregator price and shows the all-in cost including seat and bag fees, then autofills traveller details.",
+      "problem": "Booking directly can cost more than clicking through an aggregator, airline sites are tedious to fill in, and the real price is buried under seat and bag fees.",
+      "targetUsers": "Frequent flyers and families booking domestic and international flights, including on Indian carriers.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free core. Premium (about $3/month) for price alerts and saved traveller profiles. Affiliate commission on aggregator click-throughs.",
+      "mvp": [
+        "Detect the airline checkout page and parse the fare",
+        "Open a Google Flights/Skyscanner deep link for the same itinerary and compare",
+        "All-in cost panel: bags, seat, payment fees",
+        "Local-only traveller profile autofill",
+        "Alert when the same flight is cheaper elsewhere",
+        "Support for 3–4 airlines to start"
+      ],
+      "competitors": [
+        {
+          "name": "Google Flights",
+          "url": "https://www.google.com/travel/flights",
+          "gap": "Shows the fare, but not the airline's own checkout price or ancillary fees."
+        },
+        {
+          "name": "Kayak / Skyscanner",
+          "gap": "Aggregators with their own markups and upsells; not a check against the direct price."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "United Airlines bans AI agents from booking flights on behalf of travelers",
+          "url": "https://news.ycombinator.com/item?id=50459257",
+          "quote": "I was pretty frustrated recently when I got a flight for 20% less by clicking through from a Google Flights link than I did from searching directly on aircanada.com while logged in with my Aeroplan account .",
+          "engagement": "409 points on the thread",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "United Airlines bans AI agents from booking flights on behalf of travelers",
+          "url": "https://news.ycombinator.com/item?id=50462234",
+          "quote": "I would like to be able to have an AI agent book my flight. Airline websites are often horrible to use and it's annoying having to fill out all the details.",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "United Airlines Is Banning AI Bots from Booking Flights",
+          "url": "https://news.ycombinator.com/item?id=50457980",
+          "quote": "Digging through the stated price, seat price, etc fee junk to present me with the best option, that'd be great.",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "domain-transfer-lockout-guard",
+      "title": "Domain Transfer and Lockout Guard",
+      "category": "Web app",
+      "oneLiner": "A dashboard that checks that your domains can actually be moved: lock status, auth-code access, registrar account health and expiry, with a transfer-readiness checklist.",
+      "problem": "People discover too late that a registrar account was frozen, a transfer was blocked, or a TLD scare made them let a domain lapse. Hosting companies push domain transfers without explaining the exit path.",
+      "targetUsers": "Indie developers, small businesses and freelancers who hold a handful of domains with registrars or website builders.",
+      "painScore": 5,
+      "effort": "Weekend",
+      "monetization": "Free for 3 domains. ₹149/month for unlimited domains with alerts. One-off 'transfer rescue' checklist PDFs.",
+      "mvp": [
+        "Add domains and read WHOIS/RDAP for registrar, lock status and expiry",
+        "Checklist: registrar lock, auth code, admin email still valid",
+        "Alert if status flags change, such as hold or pendingTransfer",
+        "Email and WhatsApp reminders before expiry",
+        "Escape plan page for each registrar: how to get the auth code, who to contact, ICANN complaint form"
+      ],
+      "competitors": [
+        {
+          "name": "Registrar dashboards",
+          "gap": "Show only their own domains and give no warning before a block."
+        },
+        {
+          "name": "Uptime/domain monitors",
+          "gap": "Alert on expiry, but not on transfer-readiness or registrar lockout risk."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Seeking advice: Wix stolen my .com domain",
+          "url": "https://news.ycombinator.com/item?id=50391313",
+          "quote": "I transferred .com domain to wix from another domain registrar, paid for transfer and additional year of domain from my bank card, they blocked account",
+          "engagement": "14 points · 13 comments",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Seeking advice: Wix stolen my .com domain",
+          "url": "https://news.ycombinator.com/item?id=50393904",
+          "quote": "It really sucks that every web hosting company is greedily trying to trick people into transferring their domains, usually by implying that you can't use your domain with them unless you transfer it.",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": ".name Grandfathered",
+          "url": "https://news.ycombinator.com/item?id=50443986",
+          "quote": "I let my \"first.last.name\" registration expire because of the impending shutdown!",
+          "engagement": "919 points on the thread",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    {
+      "id": "public-rent-price-registry",
+      "title": "Crowdsourced Rent Price Registry",
+      "category": "Web app",
+      "oneLiner": "A map where renters anonymously post what they actually pay, so anyone can check whether a listing is above the local rate.",
+      "problem": "After the RealPage settlement, renters still can't see what neighbours pay while landlords use pricing software. Commenters ask for public rental data to remove the information gap.",
+      "targetUsers": "Renters negotiating a new lease or renewal, starting with large cities.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "Free for renters. Paid data and API for journalists, tenant unions and city planners.",
+      "mvp": [
+        "Anonymous submission: address area, unit size, rent, date, lease length",
+        "Proof via a photo of the lease with the personal parts blanked out",
+        "Map and per-building median rent",
+        "'Is my rent fair?' checker for a listing URL",
+        "Rent-change history for each building",
+        "Moderation and spam guard"
+      ],
+      "competitors": [
+        {
+          "name": "Zillow / Apartments.com",
+          "gap": "Show asking rents set by landlords, not what tenants actually pay."
+        },
+        {
+          "name": "RentCafe",
+          "gap": "Averages of listings, with no tenant-reported data."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "RealPage rent-pricing case wraps with nearly $360M to renters",
+          "url": "https://news.ycombinator.com/item?id=50401093",
+          "quote": "We need a public rental registry of rental prices that anybody can browse, analyze, etc. The information disparity is a problem.",
+          "engagement": "194 points on the thread",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "RealPage rent-pricing case wraps with nearly $360M to renters",
+          "url": "https://news.ycombinator.com/item?id=50406669",
+          "quote": "They absolutely won't stop. They will continue to do this manually",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "RealPage rent-pricing case wraps with nearly $360M to renters",
+          "url": "https://news.ycombinator.com/item?id=50401125",
+          "quote": "I don’t see why rental agreements can’t be registered with the county like house sales are.",
+          "date": "2026-11-07"
+        }
+      ]
+    }
+  ]
+}
