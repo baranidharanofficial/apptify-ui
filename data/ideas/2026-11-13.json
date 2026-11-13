@@ -1,0 +1,386 @@
+{
+  "date": "2026-11-13",
+  "summary": "Thin day for evidence: Reddit, X and Bluesky were blocked or unsearchable here, so every source below is a Hacker News thread from the last 5 days. The strongest theme is people refusing subscription-locked or bloated vendor software for hardware they already own (an embroidery-machine Show HN drew 357 points and a pile of Cricut/Hatch complaints). Smaller themes: GPU rental price-vs-reliability confusion, sites nagging desktop users to install the app, startups shutting down APIs with little warning, and Mac-only tools people want elsewhere.",
+  "ideas": [
+    {
+      "id": "free-companion-app-for-locked-craft-machines",
+      "title": "Subscription-Free Companion App for Cricut and Embroidery Machines",
+      "category": "Web app",
+      "oneLiner": "A browser app (Web Bluetooth/USB export) that designs and sends jobs to cheap craft machines so owners never pay the maker's subscription.",
+      "problem": "Hobby cutting and embroidery machines are sold cheap, then the bundled software is crippled behind a subscription or the good third-party tools cost over $1,000. HN readers cheered a dev who reverse-engineered a $300 Brother machine, and others immediately asked for the same for Cricut.",
+      "targetUsers": "Hobbyists and small Etsy sellers who own a Cricut, Brother or similar craft machine and make patches, stickers or merch.",
+      "painScore": 7,
+      "effort": "1 month+",
+      "monetization": "Free tier with basic design and export; one-time ~$29-49 Pro unlock (auto-digitizing, fonts, templates) rather than a subscription, which is the selling point.",
+      "mvp": [
+        "SVG/PNG import with simple fill and outline stitch generation",
+        "Export to common embroidery formats (DST, PES) and cut formats (SVG)",
+        "Web Bluetooth send for one popular machine (Brother PP1 first)",
+        "Built-in text and shape tools with a few free fonts",
+        "Compatibility list page showing exactly which machines work"
+      ],
+      "competitors": [
+        {
+          "name": "Cricut Design Space",
+          "url": "https://design.cricut.com",
+          "gap": "Commenters call the software bloated and dysfunctional even though the machine itself is well built."
+        },
+        {
+          "name": "Hatch Embroidery",
+          "url": "https://www.hatchembroidery.com",
+          "gap": "Gives good results but was reported at over $1,000, too much for a hobbyist."
+        },
+        {
+          "name": "Ink/Stitch (Inkscape plugin)",
+          "url": "https://inkstitch.org",
+          "gap": "Free but needs Inkscape and manual care for every design; not beginner friendly."
+        },
+        {
+          "name": "ZigZag (open source)",
+          "url": "https://github.com/simpsoka/zigzag",
+          "gap": "Single-machine hobby project; readers asked which machines it supports and for Cricut versions."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: My $300 embroidery machine needed a subscription, so I built my own app",
+          "url": "https://news.ycombinator.com/item?id=50472714",
+          "quote": "We should kill subscription models with LLMs app by app (and possibly server by server) until hardware is sold as standalone hardware with no strings attached.",
+          "engagement": "357 points · 143 comments (thread)",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: My $300 embroidery machine needed a subscription, so I built my own app",
+          "url": "https://news.ycombinator.com/item?id=50472840",
+          "quote": "Hatch was the only software that would consistently give me good results. The only problem was that Hatch (at the time) was over $1,000 USD.",
+          "engagement": "357 points · 143 comments (thread)",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: My $300 embroidery machine needed a subscription, so I built my own app",
+          "url": "https://news.ycombinator.com/item?id=50473860",
+          "quote": "Cricut's software is such a bloated and dysfunctional steaming pile of garbage but the machine itself seems well built.",
+          "engagement": "357 points · 143 comments (thread)",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: My $300 embroidery machine needed a subscription, so I built my own app",
+          "url": "https://news.ycombinator.com/item?id=50472451",
+          "quote": "The supplied software is truly terrible.",
+          "engagement": "357 points · 143 comments (thread)",
+          "date": "2026-11-12"
+        }
+      ]
+    },
+    {
+      "id": "gpu-rental-price-and-reliability-tracker",
+      "title": "GPU Rental Tracker: Price Plus Real Availability and Provision Success",
+      "category": "Developer tool",
+      "oneLiner": "A comparison site that shows hourly GPU prices across clouds and also whether instances actually start and perform.",
+      "problem": "The same H100 ranged from $2.69 to $12.29 an hour, but cheap marketplace hosts often hang, have stuck processes, slow disks or no capacity. Price tables exist, but users say price is meaningless without knowing if you can get a working box.",
+      "targetUsers": "Indie ML developers, researchers and startups renting GPUs for fine-tuning, inference and training.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free price table; paid alerts and API ($9-19/month) for price-drop and availability notifications; affiliate links to providers.",
+      "mvp": [
+        "Daily price scrape from the public APIs of 8-10 GPU providers",
+        "Filter by GPU model, VRAM, on-demand versus spot and region",
+        "Crowd-sourced 'did it start / disk speed / dropped' report button per provider",
+        "Email alert when a chosen GPU drops below a target price",
+        "Cost-per-job calculator using throughput reports"
+      ],
+      "competitors": [
+        {
+          "name": "SkyPilot GPU price page",
+          "url": "https://gpus.skypilot.co",
+          "gap": "Shows price spread but not whether hosts deliver working instances."
+        },
+        {
+          "name": "cloud-gpus.com",
+          "url": "https://cloud-gpus.com",
+          "gap": "Price listing only, with no reliability or availability signal."
+        },
+        {
+          "name": "ClusterMax (SemiAnalysis)",
+          "url": "https://newsletter.semianalysis.com",
+          "gap": "Report aimed at large clusters, not a live tool for small renters."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "The same H100 costs $2.69 or $12.29 an hour depending where you rent it",
+          "url": "https://news.ycombinator.com/item?id=50427769",
+          "quote": "I wish there was some kind of GPU marketplace so one could just arb this opportunity.",
+          "engagement": "173 points · 86 comments (thread)",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "The same H100 costs $2.69 or $12.29 an hour depending where you rent it",
+          "url": "https://news.ycombinator.com/item?id=50428046",
+          "quote": "the prices a lot of times don't even make sense I've run into many hosted GPUs with processes stuck, with outdated drivers/libraries, or poor Internet connections",
+          "engagement": "173 points · 86 comments (thread)",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "The same H100 costs $2.69 or $12.29 an hour depending where you rent it",
+          "url": "https://news.ycombinator.com/item?id=50427592",
+          "quote": "good luck with availability on any specific GPU above 20gb of vram when you actually want to use it.",
+          "engagement": "173 points · 86 comments (thread)",
+          "date": "2026-11-09"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "The same H100 costs $2.69 or $12.29 an hour depending where you rent it",
+          "url": "https://news.ycombinator.com/item?id=50429859",
+          "quote": "I funded my account with a little bit of money ($25) and tried repeatedly to reserve an instance, but it would just hang",
+          "engagement": "173 points · 86 comments (thread)",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "open-in-app-nag-remover",
+      "title": "Open-in-App Nag Remover for Desktop Browsers",
+      "category": "Browser extension",
+      "oneLiner": "An extension that removes 'get the app' overlays and scroll locks on Reddit, Substack and similar sites, kept current by a shared rules list.",
+      "problem": "Sites now throw a full-page popup pushing the mobile app at desktop users, even on Linux, and disable scrolling. Users respond by leaving the site instead of fighting it.",
+      "targetUsers": "Desktop browser users who read Reddit, Substack, Quora, Medium and similar sites.",
+      "painScore": 6,
+      "effort": "Weekend",
+      "monetization": "Free core; $12/year for auto-updating rules, sync across browsers, and per-site custom picker.",
+      "mvp": [
+        "Detect and remove app-install overlays and restore page scrolling",
+        "Starter rules for Reddit, Substack, Quora, Medium and Pinterest",
+        "One-click 'hide this nag' element picker that saves a rule",
+        "Community rule updates fetched daily",
+        "Chrome and Firefox builds"
+      ],
+      "competitors": [
+        {
+          "name": "uBlock Origin custom filters",
+          "url": "https://ublockorigin.com",
+          "gap": "Works but each site needs hand-written filters that break whenever the site changes its markup."
+        },
+        {
+          "name": "Old Reddit / Redlib front ends",
+          "gap": "Reddit-only workarounds that sites are progressively shutting off."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Why does Reddit want me to use the iOS app on my desktop?",
+          "url": "https://news.ycombinator.com/item?id=50451569",
+          "quote": "I can no longer browse reddit, even logged in, from my Linux PC (x64,chromium browser) without getting a pop-up that fades out half the page, disables my scrollbar and links me to the Apple app store",
+          "engagement": "10 points · 5 comments",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Why does Reddit want me to use the iOS app on my desktop?",
+          "url": "https://news.ycombinator.com/item?id=50452119",
+          "quote": "They started trying to force me to use their mobile app today.",
+          "engagement": "10 points · 5 comments",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Why does Reddit want me to use the iOS app on my desktop?",
+          "url": "https://news.ycombinator.com/item?id=50451892",
+          "quote": "Substack does the same thing on the web -- tries to push desktop users toward a non-existent app.",
+          "engagement": "10 points · 5 comments",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Why does Reddit want me to use the iOS app on my desktop?",
+          "url": "https://news.ycombinator.com/item?id=50453028",
+          "quote": "I exited substack for that very reason.",
+          "engagement": "10 points · 5 comments",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "cross-platform-local-meeting-notes",
+      "title": "Local Meeting Notes with Speaker Labels for Windows and Linux",
+      "category": "Desktop app",
+      "oneLiner": "A bot-free, on-device meeting transcriber and summarizer that labels who said what and runs on Windows and Linux, not just Mac.",
+      "problem": "Users are leaving subscription meeting-note tools for local alternatives, but the new open-source options lean Mac-only, and bot-free recording loses speaker names. Windows and Linux users are left out.",
+      "targetUsers": "Consultants, founders and engineers on Windows or Linux who want private, subscription-free meeting notes.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "One-time $39 license or free with a paid sync/team-summary add-on; avoid a recurring fee as positioning.",
+      "mvp": [
+        "System-audio plus mic capture on Windows",
+        "On-device transcription with automatic model choice by hardware",
+        "Speaker names pulled from Zoom/Meet/Teams window titles with manual rename",
+        "Summary and action-item template",
+        "Export to Markdown and Notion"
+      ],
+      "competitors": [
+        {
+          "name": "Granola",
+          "url": "https://www.granola.ai",
+          "gap": "Subscription and cloud-based; users say they got frustrated and stopped paying."
+        },
+        {
+          "name": "Yogurt (open source)",
+          "gap": "Speaker-name capture is implemented for macOS; commenters ask about other platforms."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Yogurt – Free, private, open-source alternative to Granola",
+          "url": "https://news.ycombinator.com/item?id=50456344",
+          "quote": "I have what's been said, but not who said it.",
+          "engagement": "285 points · 111 comments (thread)",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Yogurt – Free, private, open-source alternative to Granola",
+          "url": "https://news.ycombinator.com/item?id=50457780",
+          "quote": "Does that work outside of Mac? I'm only seeing references to that functionality for macOS in the source.",
+          "engagement": "285 points · 111 comments (thread)",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Yogurt – Free, private, open-source alternative to Granola",
+          "url": "https://news.ycombinator.com/item?id=50456628",
+          "quote": "I too stopped all the other subscriptions and have been looking for something that works well.",
+          "engagement": "285 points · 111 comments (thread)",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Yogurt – Free, private, open-source alternative to Granola",
+          "url": "https://news.ycombinator.com/item?id=50456473",
+          "quote": "I also got frustrated with Granola earlier this year and have been building my replacement",
+          "engagement": "285 points · 111 comments (thread)",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "dev-vendor-wind-down-radar",
+      "title": "Vendor Wind-Down Radar for Developer APIs and Hosting",
+      "category": "SaaS",
+      "oneLiner": "Watches the APIs and platforms you depend on for shutdown signs and tells you early, with migration alternatives.",
+      "problem": "Two developer services (Val Town and an LLM API) announced shutdowns in the same week, one by a bare email with no blog post that readers first took for phishing. Developers who built on them had little warning and no ready alternative list.",
+      "targetUsers": "Indie developers and small teams who depend on third-party APIs, hosting and AI model providers.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 3 tracked vendors; $8/month for unlimited vendors, email/Slack alerts and migration checklists.",
+      "mvp": [
+        "Paste your package.json or env keys to detect vendors you use",
+        "Watch vendor blogs, status pages and changelogs for wind-down wording",
+        "Alert via email or Slack with the shutdown date",
+        "Curated alternatives list for each vendor",
+        "Verified-source check so shutdown emails can be told apart from phishing"
+      ],
+      "competitors": [
+        {
+          "name": "AlternativeTo",
+          "url": "https://alternativeto.net",
+          "gap": "Lists alternatives but does not monitor the vendors you rely on or warn you."
+        },
+        {
+          "name": "Vendor status pages",
+          "gap": "Report outages, not business shutdowns."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Inception's Diffusion LLM API Is Shutting Down",
+          "url": "https://news.ycombinator.com/item?id=50476787",
+          "quote": "Not having a blog post, nor anything on their other media channels is a choice to put it mildly.",
+          "engagement": "13 points · 7 comments",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Inception's Diffusion LLM API Is Shutting Down",
+          "url": "https://news.ycombinator.com/item?id=50471133",
+          "quote": "so I was going to use it pretty heavily in a few of my apps.",
+          "engagement": "13 points · 7 comments",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Val Town is winding down",
+          "url": "https://news.ycombinator.com/item?id=50444009",
+          "quote": "Aw, I liked Val Town. Any self-hosted alternatives people like?",
+          "engagement": "420 points · 100 comments (thread)",
+          "date": "2026-11-10"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Val Town is winding down",
+          "url": "https://news.ycombinator.com/item?id=50444353",
+          "quote": "Seeing a lot of wind down posts recently, guessing that will only accelerate",
+          "engagement": "420 points · 100 comments (thread)",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    {
+      "id": "who-used-my-pc-intruder-alert",
+      "title": "Who Used My PC? Intruder and Kid-Use Alerts for Windows and iPhone",
+      "category": "Desktop app",
+      "oneLiner": "A Windows (and later phone) app that photographs whoever uses the device while you're away and sends the photo to your phone.",
+      "problem": "A Mac-only app that photos unknown users drew immediate requests for versions on other platforms, including from a parent who does not want kids using the PC when out of the room but dislikes PIN prompts.",
+      "targetUsers": "Windows users, parents and people sharing a home or office computer.",
+      "painScore": 4,
+      "effort": "1–2 weeks",
+      "monetization": "Free local logging; one-time $4.99-9.99 for remote alerts, matching what the Mac app charges.",
+      "mvp": [
+        "Detect lock-screen activity, unlock and activity after idle",
+        "Take a webcam photo and compare with owner's face locally",
+        "Local timeline of access events",
+        "Push alert via Telegram, ntfy or email",
+        "Kid mode: alert when device is used during set hours"
+      ],
+      "competitors": [
+        {
+          "name": "Someone Was Here",
+          "url": "https://someonewashere.app",
+          "gap": "Mac only; commenters on other platforms ask for their own version."
+        },
+        {
+          "name": "Objective-See DoNotDisturb",
+          "url": "https://objective-see.org/products/donotdisturb.html",
+          "gap": "Mac only and keyed to opening the laptop lid."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Someone Was Here – Find out who used your Mac while you were away",
+          "url": "https://news.ycombinator.com/item?id=50435977",
+          "quote": "I’d pay for this for my iPhone.",
+          "engagement": "115 points · 46 comments (thread)",
+          "date": "2026-11-10"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Someone Was Here – Find out who used your Mac while you were away",
+          "url": "https://news.ycombinator.com/item?id=50436082",
+          "quote": "I'm a PC/Android guy but I'd love an app like this! I have kids but i don't want to always have to input a pin whenever i step away from the computer in my own home.",
+          "engagement": "115 points · 46 comments (thread)",
+          "date": "2026-11-10"
+        }
+      ]
+    }
+  ]
+}
