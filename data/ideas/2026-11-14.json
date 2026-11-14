@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-14",
+  "summary": "A thin day for verifiable evidence: Reddit, X and Bluesky were blocked from this environment and web search returned mostly aggregator pages, so only two ideas cleared the bar of two independent, verified sources. Both come from Hacker News developer threads: Touch ID prompts on every Secure Enclave SSH signature, and GitHub Actions outages pushing teams to run CI elsewhere.",
+  "ideas": [
+    {
+      "id": "github-actions-outage-fallback-runner",
+      "title": "Actions Fallback: CI that takes over when GitHub is down",
+      "category": "Developer tool",
+      "oneLiner": "Keeps a GitHub Actions workflow runnable on a cheap self-hosted runner so a GitHub outage does not freeze your merges.",
+      "problem": "Developers in the thread on the 11 Nov GitHub incident describe repeated Actions and webhook outages. Some have moved CI or the whole forge to self-hosted GitLab, Gitea or Forgejo, but that is a big migration. Forgejo's own docs say its Actions are familiar to GitHub users but not designed to be compatible, so existing workflows need manual edits.",
+      "targetUsers": "Small dev teams and solo maintainers who depend on GitHub Actions for merges and releases but cannot afford a full forge migration.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "Free CLI. Paid hosted fallback runner and status-aware auto-failover at about $9-19 per repo per month.",
+      "mvp": [
+        "CLI that reads .github/workflows and reports which steps and actions run unchanged on a Forgejo or act-based runner",
+        "One-command setup of a Docker runner on a cheap VPS using an image close to ubuntu-latest",
+        "Auto-rewrite of uses: references to mirrored action repositories",
+        "Manual trigger that runs the same workflow against a pushed mirror when GitHub is degraded",
+        "Status check that reports the fallback result back to your own dashboard or chat"
+      ],
+      "competitors": [
+        {
+          "name": "Forgejo Actions",
+          "url": "https://forgejo.org/docs/latest/user/actions/github-actions/",
+          "gap": "Docs state it is familiar but not designed to be compatible. Differences include the default runner image, ignored permissions and continue-on-error keys, and a different OIDC setup. Teams must port workflows by hand."
+        },
+        {
+          "name": "act (nektos/act)",
+          "url": "https://github.com/nektos/act",
+          "gap": "Runs workflows locally but is not a managed fallback and does not post results back as a merge gate."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "GitHub Incident with Webhooks, Actions, etc.",
+          "url": "https://news.ycombinator.com/item?id=50458594",
+          "quote": "So frustrating. You can only experience so many of these outages before you seriously have to start questioning whether",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "GitHub Incident with Webhooks, Actions, etc.",
+          "url": "https://news.ycombinator.com/item?id=50459186",
+          "quote": "I'm now running the actions elsewhere, but yeah, I'm almost ready to self-host a full alternative.",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "GitHub Incident with Webhooks, Actions, etc.",
+          "url": "https://news.ycombinator.com/item?id=50458633",
+          "quote": "We switched to self-hosted GitLab several outages ago",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "secure-enclave-ssh-touch-cache",
+      "title": "Touch-Cache: Secure Enclave SSH agent with a short unlock window",
+      "category": "Desktop app",
+      "oneLiner": "A macOS SSH agent that keeps keys hardware-protected but lets one Touch ID cover a short window of signatures, so rebases and commit signing stop nagging.",
+      "problem": "Hardware-backed SSH and signing keys prompt for a touch on every signature. People doing rebase-heavy work find that unworkable. Others want to bring an existing key into the Secure Enclave setup.",
+      "targetUsers": "Mac-using developers who sign commits or use SSH keys and want hardware protection without constant prompts.",
+      "painScore": 4,
+      "effort": "1–2 weeks",
+      "monetization": "Free for personal use. Paid team licence with policy controls (window length per host, audit log) at about $3 per seat per month.",
+      "mvp": [
+        "SSH agent socket backed by a Secure Enclave key",
+        "Configurable unlock window (for example 5 minutes) after one Touch ID or Watch approval",
+        "Per-host or per-repo window rules, with always-prompt for sensitive hosts",
+        "Menu-bar indicator and one-click lock",
+        "Git commit signing support through the same agent"
+      ],
+      "competitors": [
+        {
+          "name": "Secretive",
+          "url": "https://github.com/maxgoedjen/secretive",
+          "gap": "Stores keys in the Secure Enclave and can require Touch ID or Apple Watch, with access notifications. I could not verify whether it offers an unlock window, and commenters in the thread still wished for one."
+        },
+        {
+          "name": "SeKey",
+          "url": "https://github.com/sekey/sekey",
+          "gap": "Older Touch ID SSH agent that Secretive says inspired it. I could not verify any caching behaviour from its docs."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "macOS Secure Enclave SSH keys",
+          "url": "https://news.ycombinator.com/item?id=50450786",
+          "quote": "I wish there was a way to cache the touch.",
+          "date": "2026-11-11"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Protecting SSH Keys with macOS Secure Enclave",
+          "url": "https://news.ycombinator.com/item?id=50454527",
+          "quote": "I wish I could import an existing key.",
+          "date": "2026-11-11"
+        }
+      ]
+    }
+  ]
+}
