@@ -1,0 +1,178 @@
+{
+  "date": "2026-11-15",
+  "summary": "Reddit, X, Bluesky and app-store search were blocked from the research sandbox today, so this is a thin, Hacker News-only report with 3 ideas that cleared the 2-source bar. Themes: people feel trapped by Facebook as the default for local communities, non-technical founders are shipping Supabase-backed apps with wide-open data, and Mac power users still can't find a Total Commander equivalent.",
+  "ideas": [
+    {
+      "id": "facebook-free-community-notice-hub",
+      "title": "Facebook-Free Community Notice Hub",
+      "category": "Web app",
+      "oneLiner": "A simple notice board for PTAs, neighbourhoods and local groups that anyone can read without a Facebook account.",
+      "problem": "Schools, neighbourhoods and small local businesses coordinate almost entirely through Facebook groups and pages. People who quit, or can't create an account, lose access to schedules, announcements and local events, and no lightweight alternative has taken its place.",
+      "targetUsers": "PTA and school parent-group admins, resident welfare associations, hobby clubs, food trucks and small local businesses, and the members who don't want a Facebook account.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for small groups; ₹199–499/month per group for custom domain, email/WhatsApp digest and member import; free tier shows a small badge.",
+      "mvp": [
+        "Group page with posts, events and pinned notices, readable with no login",
+        "Admin posts once; members get a weekly email digest or WhatsApp share link",
+        "Event RSVP via a single link, no account required",
+        "Import a Facebook group's posts through the admin's own data export",
+        "Simple moderation with 2–3 co-admins",
+        "Calendar feed (ICS) that members can subscribe to"
+      ],
+      "competitors": [
+        {
+          "name": "Facebook Groups",
+          "url": "https://www.facebook.com/groups",
+          "gap": "It is the default, but it needs an account, and users say they can't leave without losing local community participation."
+        },
+        {
+          "name": "Nextdoor",
+          "url": "https://nextdoor.com",
+          "gap": "Neighbourhood-only, needs sign-up and address verification, and is not a fit for school or club groups."
+        },
+        {
+          "name": "Band",
+          "url": "https://band.us",
+          "gap": "Still an account-gated app, and adoption in many local groups is low, so groups don't move."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Comment on: Italy fines Meta $887M over Android users' data access",
+          "url": "https://news.ycombinator.com/item?id=50502651",
+          "quote": "My neighborhood exclusively uses Facebook for neighborhood communication. My kid's school PTA exclusively uses Facebook. Most of the local food trucks and some businesses only post their schedules on Facebook or Instagram.",
+          "engagement": "Story: 340 points",
+          "date": "2026-11-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on: Italy fines Meta $887M over Android users' data access",
+          "url": "https://news.ycombinator.com/item?id=50499631",
+          "quote": "commenters here constantly underestimate how much small and local businesses around the world operate on Meta services: It’s how they find and connect with customers, communicate with them, and engage with the communities.",
+          "engagement": "Story: 340 points",
+          "date": "2026-11-14"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on a thread about signed-out internet access",
+          "url": "https://news.ycombinator.com/item?id=50503109",
+          "quote": "I was just trying to watch fucking educational videos and finally relent to being looped in with community groups who unfortunately use facebook to coordinate everything.",
+          "date": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "supabase-open-table-guard",
+      "title": "Supabase Open-Table Guard for Vibe-Coded Apps",
+      "category": "Developer tool",
+      "oneLiner": "A plain-English external scanner that tells non-technical founders whether their Supabase-backed app is leaking data, and fixes the policies.",
+      "problem": "After a report that apps built on Lovable exposed passport details and 200K+ private messages, commenters pointed out that tables created outside the dashboard are easy to leave wide open, and that non-technical founders are left holding the risk. Platform-provided scanning exists, but the incident shows it isn't catching real exposures.",
+      "targetUsers": "Solo and non-technical founders shipping AI-built apps on Supabase, and freelancers who hand such apps to clients.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free one-off scan; $9–19/month for continuous monitoring with alerts; $49 agency plan covering many client projects.",
+      "mvp": [
+        "Paste the project URL and anon key to run read-only probes against the public API",
+        "Report which tables are readable or writable by an anonymous visitor, in plain English",
+        "Generate suggested RLS policies as copy-paste SQL",
+        "Weekly re-scan with an email alert when something becomes exposed",
+        "Check for sensitive columns such as email, phone and ID-like fields",
+        "Shareable PDF report for clients"
+      ],
+      "competitors": [
+        {
+          "name": "Supabase Security Advisor",
+          "url": "https://supabase.com/docs/guides/database/database-linter",
+          "gap": "Lives inside the dashboard and is written for developers; it doesn't test what an outside visitor can actually read."
+        },
+        {
+          "name": "Lovable built-in security scan",
+          "url": "https://lovable.dev",
+          "gap": "Tied to one platform; the Lovable thread shows exposures still reached production, and users distrust a vendor grading its own homework."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Comment on: Lovable apps expose passport details and more than 200K private messages",
+          "url": "https://news.ycombinator.com/item?id=50501957",
+          "quote": "If you create tables without using their dashboard, like with an ORM or with SQL directly, it’s incredibly easy to have them not use RLS and be wide open to the public.",
+          "engagement": "Story: 671 points",
+          "date": "2026-11-14"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on: Lovable apps expose passport details and more than 200K private messages",
+          "url": "https://news.ycombinator.com/item?id=50502921",
+          "quote": "I’d hope those “non-technical founders” wouldn’t be left out in the cold and that Lovable would be held liable as well.",
+          "engagement": "Story: 671 points",
+          "date": "2026-11-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on: Lovable apps expose passport details and more than 200K private messages",
+          "url": "https://news.ycombinator.com/item?id=50503024",
+          "quote": "Only with Loveable is this constant problem of row level security a thing, you ever think it’s the wrong approach?",
+          "engagement": "Story: 671 points",
+          "date": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "total-commander-for-mac",
+      "title": "Total Commander-Style File Manager for Mac",
+      "category": "Desktop app",
+      "oneLiner": "A keyboard-first dual-pane file manager for macOS with full command shortcuts, multi-rename, SMB and archive browsing.",
+      "problem": "Mac users who miss Total Commander say none of the existing clones match its feature set, and at least one says they would pay for a proper one. Another commenter vibe-coded their own because nothing fit.",
+      "targetUsers": "Mac power users, developers and sysadmins who came from Windows and live in two-pane file managers.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "One-time licence of $29–39 with a free trial; paid upgrades every 2–3 years.",
+      "mvp": [
+        "Dual-pane view with every command bound to a customizable shortcut",
+        "Multi-rename tool with regex and an external-editor option",
+        "SMB and SFTP browsing in the panes",
+        "Browse zip and tar archives like folders without extracting",
+        "Folder compare and sync",
+        "Basic plugin hook for custom commands"
+      ],
+      "competitors": [
+        {
+          "name": "Commander One",
+          "url": "https://ftp-mac.com",
+          "gap": "A commenter says none of the existing clones match Total Commander's shortcuts, multi-rename, SMB and plugin system."
+        },
+        {
+          "name": "ForkLift",
+          "url": "https://binarynights.com",
+          "gap": "Polished but not a Total Commander replacement, with less keyboard-command coverage and a smaller plugin story."
+        },
+        {
+          "name": "Double Commander",
+          "url": "https://doublecmd.sourceforge.io",
+          "gap": "Closest in features but cross-platform UI feels non-native on macOS."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Comment on: How Not to Build a Music Player",
+          "url": "https://news.ycombinator.com/item?id=50500509",
+          "quote": "I tried all the \"clones\", but none of them match the TC's features (shortcuts for all commands, proper multi-rename + external editor, SMB access, exploring compressed files without extraction, plugin system etc.). I'd gladly pay for a proper clone",
+          "engagement": "Story: 172 points",
+          "date": "2026-11-14"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on: How Not to Build a Music Player",
+          "url": "https://news.ycombinator.com/item?id=50498188",
+          "quote": "I vibecoded music player for my needs (play music from my storage/nas) and total commander for mac.",
+          "engagement": "Story: 172 points",
+          "date": "2026-11-14"
+        }
+      ]
+    }
+  ]
+}
