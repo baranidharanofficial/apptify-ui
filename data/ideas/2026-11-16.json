@@ -1,0 +1,437 @@
+{
+  "date": "2026-11-16",
+  "summary": "Today's strongest themes: developers hitting AI-subscription limits and outages and juggling several paid plans, small businesses losing payment-processor accounts with no warning, and people locked out of Google Search by CAPTCHAs and login walls. Only Hacker News was readable today (Reddit, Bluesky and most forums were blocked), so every source below is an HN post or comment from the last week.",
+  "ideas": [
+    {
+      "id": "ai-plan-quota-hopper",
+      "title": "Quota Hopper: one meter and auto-failover across your AI coding plans",
+      "category": "Developer tool",
+      "oneLiner": "A local proxy and menu-bar meter that tracks 5-hour windows across Claude, Codex and Gemini plans, and switches your coding agent to whichever plan still has headroom or is still up.",
+      "problem": "Developers now pay for two or three $20-$100 AI plans because one never lasts. Usage windows are opaque and seem to shrink without warning, a single heavy request can burn the whole window, and when one provider goes down people just stop working. Nothing shows remaining headroom across all plans or reroutes work when one is exhausted or down.",
+      "targetUsers": "Solo developers and small teams that code with agents (Claude Code, Codex, opencode) on consumer subscriptions rather than raw API keys.",
+      "painScore": 8,
+      "effort": "1–2 weeks",
+      "monetization": "Free local proxy with a basic meter. Pro at $6-9/month for cross-device history, burn-rate alerts, and policy rules such as 'use the cheap model for tests'. Team plan with shared spend dashboards.",
+      "mvp": [
+        "Local proxy that sits in front of provider endpoints or CLIs and logs tokens and requests per plan window",
+        "Menu-bar/tray meter showing time to reset and estimated remaining headroom per plan",
+        "Automatic failover to a second provider when one returns rate-limit or outage errors",
+        "Alert when the current task is on track to exhaust the window in under 10 minutes",
+        "Per-task model routing rules (cheap model for boilerplate, expensive one for architecture)"
+      ],
+      "competitors": [
+        {
+          "name": "OpenLLM (mentioned in the HN thread as a way to use Claude and ChatGPT together in Claude Code)",
+          "gap": "A commenter says they use it to combine plans, but nothing in the thread suggests it shows remaining window or predicts exhaustion."
+        },
+        {
+          "name": "opencode",
+          "url": "https://opencode.ai",
+          "gap": "A commenter is considering switching to it because of limits, which means switching tools rather than getting a meter over the plans they already pay for."
+        },
+        {
+          "name": "OpenRouter / LiteLLM-style gateways",
+          "gap": "They route API-key traffic. The complaints here are about flat-rate subscription windows, which these do not meter."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Does codex, Claude $20 subscription just seem unworkable now?",
+          "url": "https://news.ycombinator.com/item?id=50466837",
+          "quote": "just recently I'm run into the 5 hour window quiet alot. I feel like the window got a lot shorter recently for codex.",
+          "engagement": "comment by sharemywin on a 4-point, 11-comment thread",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Does codex, Claude $20 subscription just seem unworkable now?",
+          "url": "https://news.ycombinator.com/item?id=50475339",
+          "quote": "I pay for Claude, Grok and Gemini, because one subscription alone can't keep up with my usage.",
+          "engagement": "comment by caionicfilho89",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Anthropic, can you please make up your mind with your models?",
+          "url": "https://news.ycombinator.com/item?id=50504564",
+          "quote": "Fable 5.2 is basically useless on a 20$ pro subscription. Anything even slightly interesting worth trying gets 5h limit hit in 10 minutes.",
+          "engagement": "comment by idiocrat on a 5-point, 7-comment thread",
+          "date": "2026-11-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Anthropic upgrades Claude Code Projects to run parallel AI workers",
+          "url": "https://news.ycombinator.com/item?id=50506902",
+          "quote": "Subscriptions from providers (Google for carbon, Openai for Sol 6.1 mainly, and Claude) are about 1k$ usd a month combined",
+          "engagement": "comment by nickalaso",
+          "date": "2026-11-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What are you doing now that Claude is down?",
+          "url": "https://news.ycombinator.com/item?id=50481347",
+          "quote": "what does this say about our dependence on a single company and toolchain?",
+          "engagement": "7 points · 7 comments",
+          "date": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "id": "billing-pattern-preflight",
+      "title": "Billing Preflight: catch charge patterns that get you banned by your payment processor",
+      "category": "SaaS",
+      "oneLiner": "Paste in how you take payments (save-card then charge later, per-appointment billing, marketplace payouts) and get a risk check, the safe API pattern to use instead, and a warm backup processor.",
+      "problem": "Small businesses are losing their processor accounts, sometimes with funds held, because an ordinary billing flow looks like card testing or marketplace fraud (a small saved-card charge followed by a large one, or fast payouts to new sellers). The rules are not published, appeals are rejected as final, and the safe pattern is only discovered after the ban.",
+      "targetUsers": "Solo founders, agencies, lead-gen and service businesses and small marketplaces that bill customers through Stripe or similar, including Indian founders billing overseas clients.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free one-off flow checker. $12-29/month to monitor your live account's charge patterns, with alerts when you are about to do something risky, such as a first large charge on a card that has only ever paid $1.",
+      "mvp": [
+        "Questionnaire that maps your billing model to known risky patterns and the recommended API pattern (for example off-session setup intents, or emailed invoices with a pay link)",
+        "Pre-charge warning when a saved card's first real charge is far larger than its validation charge",
+        "Authorization evidence pack: recorded consent, invoice, delivery proof, auto-attached to each charge",
+        "Checklist for onboarding a second processor and a bank-transfer fallback before you need it",
+        "Read-only Stripe connection to flag velocity or payout patterns that look like fraud"
+      ],
+      "competitors": [
+        {
+          "name": "LockoutCase (Show HN)",
+          "url": "https://news.ycombinator.com/item?id=50425429",
+          "gap": "A case-file kit for after a Meta/PayPal/Stripe lockout. It helps you appeal, not avoid the ban in the first place."
+        },
+        {
+          "name": "Stripe Radar / Stripe docs",
+          "url": "https://docs.stripe.com/payments/setup-intents",
+          "gap": "The safe pattern exists in the docs, but the affected founder only learned about it from commenters after being closed. There is no preflight check against your actual flow."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Stripe closed us after one $1,500 invoice and never asked for evidence",
+          "url": "https://news.ycombinator.com/item?id=50510042",
+          "quote": "Support told us our \"business model presents a level of risk we're unable to support\" and that the decision is final.",
+          "engagement": "164 points · 71 comments",
+          "date": "2026-11-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Be Careful with Stripe Connect",
+          "url": "https://news.ycombinator.com/item?id=50398646",
+          "quote": "stripe made it easy for fraudsters to syphon $4,500 through our stripe account and withdraw all of it - and they expect us to cover everything and have offered absolutely zero help.",
+          "engagement": "Tell HN post by breue",
+          "date": "2026-11-06"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Stripe closed us after one $1,500 invoice and never asked for evidence",
+          "url": "https://news.ycombinator.com/item?id=50511298",
+          "quote": "The right approach would have been to use https://docs.stripe.com/payments/setup-intents and set it for off-session usage.",
+          "engagement": "comment by didgeoridoo, showing the safe pattern was learned only after the ban",
+          "date": "2026-11-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Stripe closed us after one $1,500 invoice and never asked for evidence",
+          "url": "https://news.ycombinator.com/item?id=50511161",
+          "quote": "a small 1 dollar payment followed by a large payment - is the exact pattern that criminals use to test stolen credit cards numbers.",
+          "engagement": "comment by codingdave",
+          "date": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "search-wall-fallback-extension",
+      "title": "SearchSwitch: browser extension that skips Google CAPTCHAs and login walls",
+      "category": "Browser extension",
+      "oneLiner": "When Google (or DuckDuckGo) shows a CAPTCHA or a sign-in wall, the extension silently reruns the same query on another engine and shows the results in the same tab.",
+      "problem": "People on shared or carrier-grade NAT addresses, which is the default on many mobile and home ISPs, now hit repeated CAPTCHAs and even login walls on search. Some have given up on Google, and some have moved from DuckDuckGo to Google to get fewer CAPTCHAs. There is no one-click way to route around the block.",
+      "targetUsers": "Anyone on CGNAT, mobile hotspots, shared Wi-Fi, VPNs or public computers, which describes a large share of users in India.",
+      "painScore": 7,
+      "effort": "Weekend",
+      "monetization": "Free with a default fallback list. $2/month or $15/year for Kagi/Brave API keys managed for you, result merging, and sync across devices.",
+      "mvp": [
+        "Detect CAPTCHA and login-wall pages on Google and DuckDuckGo",
+        "Automatic reroute of the query to a user-ordered list of engines",
+        "Remember which engine works on the current network and try it first next time",
+        "Omnibox keyword that searches several engines at once",
+        "Privacy mode that never sends the query to more than one engine unless blocked"
+      ],
+      "competitors": [
+        {
+          "name": "Kagi",
+          "url": "https://kagi.com",
+          "gap": "Paid and requires an account. A commenter in the thread asked how that differs from logging in to Google, and another asked for alternatives."
+        },
+        {
+          "name": "SearXNG / DuckDuckGo / Brave Search",
+          "gap": "They are alternatives rather than fallbacks. DuckDuckGo shows CAPTCHAs too, according to a commenter, and you must change defaults manually and switch back by hand."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Google Search to start locking down search behind a login wall",
+          "url": "https://news.ycombinator.com/item?id=50491617",
+          "quote": "they started to just lock the entire search results page behind a login prompt on some of those bad IP addresses",
+          "engagement": "44 points · 29 comments",
+          "date": "2026-11-13"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Tell HN: Google Search to start locking down search behind a login wall",
+          "url": "https://news.ycombinator.com/item?id=50492260",
+          "quote": "I've been given the 'there is sus activity from your IP' so often now I gave up using google months ago.",
+          "engagement": "comment by hackermailman",
+          "date": "2026-11-14"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Open research, stronger privacy: Making Firefox users harder to fingerprint",
+          "url": "https://news.ycombinator.com/item?id=50476110",
+          "quote": "I get them all the time in DDD, in fact, so much that I changed to Google, who makes me point motorcycles or bridges much less.",
+          "engagement": "comment by ASalazarMX",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Open research, stronger privacy: Making Firefox users harder to fingerprint",
+          "url": "https://news.ycombinator.com/item?id=50454916",
+          "quote": "I'm tired of identifying buses or stoplights or motorcycles up to five times a day just for Google searches. I'm slowly moving myself over to LLM queries instead.",
+          "engagement": "comment by orbisvicis",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "id": "agent-diff-behavior-walkthrough",
+      "title": "Behavior Review: PR walkthroughs that check AI-written changes against your product spec",
+      "category": "Developer tool",
+      "oneLiner": "A GitHub app that explains each AI-heavy PR as user-visible behavior changes and flags where it contradicts the specs and decisions stored in the repo.",
+      "problem": "Teams using coding agents ship features fast but lose any central definition of how the product should behave. Bug fixing turns into whack-a-mole, reviewers are drowning in PR volume, and the only review tool is still a raw text diff.",
+      "targetUsers": "Small teams and solo founders whose code is mostly agent-written and who review it themselves.",
+      "painScore": 7,
+      "effort": "1 month+",
+      "monetization": "Free for public repos. $15/seat/month for private repos, with a spec-drift dashboard on the team tier.",
+      "mvp": [
+        "Read a behavior spec folder (markdown) from the repo and keep it as the source of truth",
+        "On each PR, produce a plain-English list of behavior changes grouped by user flow",
+        "Flag changes that contradict a documented decision or spec line",
+        "Suggest the edge cases and tests that are missing for each changed flow",
+        "Block-merge option when behavior changes have no matching spec update"
+      ],
+      "competitors": [
+        {
+          "name": "archme.io",
+          "url": "https://www.archme.io",
+          "gap": "Turns the codebase into architecture diagrams kept up to date on each commit. It shows structure, not whether a change breaks documented product behavior."
+        },
+        {
+          "name": "OpenSpec",
+          "gap": "A commenter says it helps by splitting work into planning, implementation and archiving, but it governs the agent's workflow and does not review the resulting PR against the spec."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "How do you keep up quality when you vibe-code?",
+          "url": "https://news.ycombinator.com/item?id=50444380",
+          "quote": "I feel like things are getting too complex with no central notion of behaviour definitions, which causes every bug-fixing session to feel like a game of whack-a-mole",
+          "engagement": "39 points · 39 comments",
+          "date": "2026-11-10"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Big tech is here to let us down",
+          "url": "https://news.ycombinator.com/item?id=50489913",
+          "quote": "Programmers are \"program reviewers\" now, more and more. But the tools we have to do this suck.",
+          "engagement": "comment by Buttons840",
+          "date": "2026-11-13"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Jonathan Blow – If AI solved coding, why is my software still the same? [video]",
+          "url": "https://news.ycombinator.com/item?id=50497179",
+          "quote": "I've found several of my colleagues experience a growing fatigue with increased PR volume sent to review",
+          "engagement": "comment by bellgrove",
+          "date": "2026-11-14"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "How do you keep up quality when you vibe-code?",
+          "url": "https://news.ycombinator.com/item?id=50444410",
+          "quote": "now I have built complete app but always worried about it is really protected and production ready",
+          "engagement": "comment by toufiqqureshi",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    {
+      "id": "first-hundred-users-finder",
+      "title": "First 100: a launch-channel finder for indie apps",
+      "category": "SaaS",
+      "oneLiner": "Describe your app and get a ranked list of the communities, threads and people discussing the exact problem it solves, with a draft helpful reply for each, so you can find your first users without ads.",
+      "problem": "Building is now cheap and everyone can ship, so distribution is the bottleneck. Founders say Product Hunt and Show HN no longer work, and first-time app makers do not know where to find users at all.",
+      "targetUsers": "Solo and indie developers (including Flutter and Next.js app makers) launching consumer apps with no audience and no marketing experience.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 3 searches. $15-19/month for continuous monitoring and daily digests of fresh threads where someone is asking for what your app does.",
+      "mvp": [
+        "Input: app description and target user",
+        "Search public posts for people asking for or complaining about that problem",
+        "Rank threads by freshness, intent and community rules about self-promotion",
+        "Draft a non-spammy reply that answers the question first",
+        "Daily email digest of new matching threads"
+      ],
+      "competitors": [
+        {
+          "name": "F5Bot",
+          "url": "https://f5bot.com",
+          "gap": "Keyword alerts only. You supply the keywords and get no ranking by buying intent or advice on which communities allow self-promotion."
+        },
+        {
+          "name": "Syften",
+          "url": "https://syften.com",
+          "gap": "Another mention-alert service. It still assumes you already know what to track, which is what first-time founders lack."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How do you market your consumer product",
+          "url": "https://news.ycombinator.com/item?id=50470809",
+          "quote": "Product Hunt is dead. Everybody is selling something, and you get spammed instantly.",
+          "engagement": "9 points · 10 comments",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: I did build a app whichlook clos to polish but Struggle is getting user",
+          "url": "https://news.ycombinator.com/item?id=50503557",
+          "quote": "i am struggling understanding the source to get user.",
+          "engagement": "1 point · 10 comments",
+          "date": "2026-11-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: I did build a app whichlook clos to polish but Struggle is getting user",
+          "url": "https://news.ycombinator.com/item?id=50503696",
+          "quote": "Even when code was written 100% by humans, the hard part was marketing and sales. Now that anyone and their brother can create an app, it's even harder.",
+          "engagement": "comment by WheelsAtLarge",
+          "date": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "self-hosted-mail-pager",
+      "title": "Mail Pager: uptime, blocklist and 'am I landing in spam' alerts for self-hosted email",
+      "category": "SaaS",
+      "oneLiner": "Sends test mail to Gmail, Outlook and others on a schedule, watches your server and IP blocklists, and pages you when delivery breaks, with the exact escalation steps for each provider.",
+      "problem": "People who self-host email can set up SPF, DKIM and DMARC correctly and still get blocked by Microsoft, Google or a recipient's spam filter. They often discover this only when someone complains, and the server itself can be down for days without notice. Some give up and phone people to confirm a message arrived.",
+      "targetUsers": "Self-hosters, small agencies and small businesses running their own mail server or a cheap VPS relay.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "$5/month per domain for hourly checks and alerts, and $15/month for several domains plus a status page. Free tier with a daily check.",
+      "mvp": [
+        "Scheduled test emails to seed mailboxes at major providers, reporting inbox vs spam vs rejected",
+        "SMTP, IMAP and certificate uptime checks with push and SMS alerts",
+        "IP and domain blocklist monitoring",
+        "Provider-specific delisting and escalation guides shown when a block is detected",
+        "Google Postmaster Tools reputation summary pulled into the same dashboard"
+      ],
+      "competitors": [
+        {
+          "name": "Google Postmaster Tools",
+          "url": "https://postmaster.google.com",
+          "gap": "Free and useful, as a commenter notes, but it covers only Google and is mostly built for bulk senders."
+        },
+        {
+          "name": "MXToolbox-style blocklist monitors",
+          "url": "https://mxtoolbox.com",
+          "gap": "Checks lists and DNS but does not tell you whether a real message to Outlook or a government filter landed in spam."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What is the state of self-hosting email in 2026?",
+          "url": "https://news.ycombinator.com/item?id=50490474",
+          "quote": "my server went down many, many times for hours without me noticing, sometimes for days.",
+          "engagement": "thread: 45 points · 33 comments; comment by altern8",
+          "date": "2026-11-13"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What is the state of self-hosting email in 2026?",
+          "url": "https://news.ycombinator.com/item?id=50494710",
+          "quote": "Spf, DMARC, DKIM all in place and my wife still has her own-domain outbound mail blocked by a government org",
+          "engagement": "comment by raffraffraff",
+          "date": "2026-11-14"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What is the state of self-hosting email in 2026?",
+          "url": "https://news.ycombinator.com/item?id=50492665",
+          "quote": "I would send an email to someone, and then follow up with a phone call because I was not confident mail would be delivered as expected.",
+          "engagement": "comment by malbs",
+          "date": "2026-11-14"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: What is the state of self-hosting email in 2026?",
+          "url": "https://news.ycombinator.com/item?id=50490927",
+          "quote": "how you guys appeal to the Big Two (Google and Microsoft) if you end up in either their publicly known or secret spam lists?",
+          "engagement": "comment by 0o777",
+          "date": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "id": "mac-search-that-finds-things",
+      "title": "Findit: a Mac search that reliably finds your mail and files",
+      "category": "Desktop app",
+      "oneLiner": "A menu-bar app with its own index of Apple Mail, Gmail and local files that never silently drops results, and tells you when its index is behind.",
+      "problem": "Mac users report that Spotlight randomly fails to find files it found the day before, and Apple Mail cannot find messages that Gmail's own search finds immediately. The built-in fixes (rebuild the index) are manual and temporary, and there is no sign that the index is stale.",
+      "targetUsers": "Mac users with large mailboxes and many files who rely on search to retrieve receipts, invoices and old threads.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "$25-35 one-time or $2/month for sync and mail connectors. Free tier for files only.",
+      "mvp": [
+        "Own index of local files with background updates and an index-health indicator",
+        "Read-only Apple Mail and Gmail IMAP indexing",
+        "Global hotkey with fast results and previews",
+        "'Why isn't this found?' diagnostics that show what is missing from the index",
+        "Export or repair the index with one click"
+      ],
+      "competitors": [
+        {
+          "name": "Spotlight / Apple Mail search",
+          "gap": "The thing people are complaining about: results vanish at random and Mail search can miss messages."
+        },
+        {
+          "name": "Raycast / Alfred / HoudahSpot",
+          "gap": "They front-end Spotlight or run on top of it for files, so a broken Spotlight index still produces missing results, and they do not index mail contents themselves."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Smart home devices should work without the internet",
+          "url": "https://news.ycombinator.com/item?id=50445621",
+          "quote": "Oh my favorite is how Spotlight seems to randomly fail to find local files it was easily able to find yesterday",
+          "engagement": "comment by EGreg",
+          "date": "2026-11-10"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Has Applemail UX/reliability been declining?",
+          "url": "https://news.ycombinator.com/item?id=50506734",
+          "quote": "I will get an email in mail and read it, then 1 week later try to search for the same email yet it can't be found?",
+          "engagement": "1 point · 1 comment",
+          "date": "2026-11-15"
+        }
+      ]
+    }
+  ]
+}
