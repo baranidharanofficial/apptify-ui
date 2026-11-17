@@ -1,0 +1,346 @@
+{
+  "date": "2026-11-17",
+  "summary": "Hacker News was the only platform reachable today (Reddit, Bluesky and Stack Exchange were blocked), so every idea is backed by verified HN comments. Strongest themes: fake Black Friday discounts, school-portal sprawl for parents, hijackable abandoned domains and short links, the end of BugMeNot, and invisible OLED flicker discomfort.",
+  "ideas": [
+    {
+      "id": "honest-sale-price-checker",
+      "title": "Honest Sale Price Checker",
+      "category": "Browser extension",
+      "oneLiner": "Overlay on Amazon.in/Flipkart product pages showing the true lowest price of the last 30–90 days and whether the 'deal' is real.",
+      "problem": "Retailers raise list prices weeks before Black Friday/Big Billion Days and then show a big percentage off. Shoppers rely on third-party trackers that are sometimes out of sync with the live price.",
+      "targetUsers": "Online shoppers in India and elsewhere during sale seasons; deal-hunter communities.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free with a Pro tier (₹99/month) for price-drop alerts and wishlist tracking; affiliate links disclosed on the 'buy' button.",
+      "mvp": [
+        "Detect product page and read current price + claimed MRP/discount",
+        "Show a 30/90-day price sparkline from crowd-sourced observations plus public history sources",
+        "Badge: 'Real deal', 'Meh' or 'Fake discount' versus 30-day low",
+        "Wishlist with alert when price hits the true low",
+        "Support Amazon.in and Flipkart first"
+      ],
+      "competitors": [
+        {
+          "name": "CamelCamelCamel",
+          "url": "https://camelcamelcamel.com",
+          "gap": "Users report its prices don't always match what Amazon shows; Amazon only."
+        },
+        {
+          "name": "Keepa",
+          "url": "https://keepa.com",
+          "gap": "Amazon-centric and data-heavy; recommended in the thread but not a simple deal verdict, and little coverage of Indian stores."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Many of Amazon's Black Friday and Cyber Monday deals offered no savings",
+          "url": "https://news.ycombinator.com/item?id=50518179",
+          "quote": "This is clearly false advertising. Presenting a \"deal\" that costs consumers more should not be allowed.",
+          "engagement": "Thread: 847 points · 511 comments",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Many of Amazon's Black Friday and Cyber Monday deals offered no savings",
+          "url": "https://news.ycombinator.com/item?id=50517978",
+          "quote": "I've always used camel camel camel, but recently the price they have and what I see on Amazon rarely match, so it's hard to really know.",
+          "engagement": "Thread: 847 points · 511 comments",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Many of Amazon's Black Friday and Cyber Monday deals offered no savings",
+          "url": "https://news.ycombinator.com/item?id=50518122",
+          "quote": "The stores are required to show what was the lowest price in the last 30 days whenever a product is on sale. It's sometimes hilarious, especially on AliExpress, to see a \"promotion\" when the \"last 30 days price\" indicates otherwise.",
+          "engagement": "Thread: 847 points · 511 comments",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Many of Amazon's Black Friday and Cyber Monday deals offered no savings",
+          "url": "https://news.ycombinator.com/item?id=50517996",
+          "quote": "We have this in France already, prices just go up early-mid October so starting mid November the deals look still \"amazing\".",
+          "engagement": "Thread: 847 points · 511 comments",
+          "date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "school-work-one-inbox-for-parents",
+      "title": "One Inbox for School Work",
+      "category": "Mobile app",
+      "oneLiner": "A parent/student app that pulls assignments and materials from Google Classroom, Canvas and similar portals into one 'what's due' list.",
+      "problem": "Kids and parents click through SSO portals, Google login screens and nested modules just to find one file, and assignments are scattered or only placeholders across tools.",
+      "targetUsers": "Parents of school-age kids, especially kids with attention issues or IEPs; students on shared iPads/Chromebooks.",
+      "painScore": 7,
+      "effort": "1 month+",
+      "monetization": "Free for one child; ₹149/month or $3/month family plan for multiple kids, reminders and weekly digest.",
+      "mvp": [
+        "Connect Google Classroom (official API) with a read-only scope",
+        "Unified due-today / this-week list across classes",
+        "Direct 'open the file' links that skip the module hunt",
+        "Reminders and weekly parent digest",
+        "Add Canvas via its API as the second connector"
+      ],
+      "competitors": [
+        {
+          "name": "Canvas Parent",
+          "url": "https://www.instructure.com/canvas/apps/parent",
+          "gap": "Canvas only, one student at a time, no submit or integrations with other portals."
+        },
+        {
+          "name": "Study Central (Classroom add-on)",
+          "gap": "Student-facing planner for Classroom; parents get only email alerts."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "It Takes 16 Clicks for a Student to Open a PowerPoint on an iPad",
+          "url": "https://news.ycombinator.com/item?id=50488349",
+          "quote": "My kid has some mild attention issues, keeping track of assignments is only made more difficult by Google classrooms. Some assignments are in Google Classrooms, some are there but only placeholders as there was a handout, some aren't in there at all.",
+          "engagement": "Thread: 408 points · 244 comments",
+          "date": "2026-11-13"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "It Takes 16 Clicks for a Student to Open a PowerPoint on an iPad",
+          "url": "https://news.ycombinator.com/item?id=50488111",
+          "quote": "The amount of times work can't be done because something is broken or corrupted or doesn't display properly or there are auth or consistency problems is unreal. That is if you can find the work in the first place.",
+          "engagement": "Thread: 408 points · 244 comments",
+          "date": "2026-11-13"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "It Takes 16 Clicks for a Student to Open a PowerPoint on an iPad",
+          "url": "https://news.ycombinator.com/item?id=50488951",
+          "quote": "click canvas > click log in via google again (because????) > Click google profile that he already logged into > click class name > click modules > scroll about 40 links until he spots the powerpoint in the sea of other links with similar names",
+          "engagement": "Thread: 408 points · 244 comments",
+          "date": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "id": "dangling-dns-watch",
+      "title": "Dangling DNS Watch",
+      "category": "SaaS",
+      "oneLiner": "Monitors your domains' CNAMEs and short-link destinations and alerts when one points at something that has lapsed and could be bought by an attacker.",
+      "problem": "Old CNAMEs pointing at lapsed domains are bought by spammers and malware distributors, who then serve content under the victim's trusted name. Owners only notice after the damage; certificate logs and zone transfers don't reveal everything.",
+      "targetUsers": "Small businesses, universities, agencies and freelancers who manage many client domains.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 1 domain; $9/month for 10 domains with daily checks; agency plan $29/month.",
+      "mvp": [
+        "Add a domain; enumerate subdomains from CT logs plus passive DNS and manual entry",
+        "Resolve CNAME chains and flag NXDOMAIN or registrable targets",
+        "Check common SaaS takeover fingerprints (unclaimed buckets, pages)",
+        "Email/Telegram alert with the exact DNS record to delete",
+        "Weekly digest and monthly re-scan"
+      ],
+      "competitors": [
+        {
+          "name": "BadDNS / Subdominator (open source)",
+          "gap": "CLI tools someone must run on a schedule; not friendly to non-security owners."
+        },
+        {
+          "name": "findmytakeover",
+          "gap": "Report generator, not a simple always-on monitor for small domains."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Old Bitly links are being hijacked",
+          "url": "https://news.ycombinator.com/item?id=50511688",
+          "quote": "I've been getting a lot of spam with links to urls of big, reputable, organizations, such as universities. You'd think that the organization was hacked, but in all these case instead these were old domains that used CNAMEs.",
+          "engagement": "Thread: 375 points · 196 comments",
+          "date": "2026-11-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Old Bitly links are being hijacked",
+          "url": "https://news.ycombinator.com/item?id=50514062",
+          "quote": "I had a CNAME pointing into a domain I let lapse, and some criminal bought up the domain name and used it for malware with my CNAME.",
+          "engagement": "Thread: 375 points · 196 comments",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Old Bitly links are being hijacked",
+          "url": "https://news.ycombinator.com/item?id=50512359",
+          "quote": "CT Logs is pretty useful to find things. https://subdomainfinder.c99.nl is a useful source. The attack is often called 'Dangling DNS'.",
+          "engagement": "Thread: 375 points · 196 comments",
+          "date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "signup-wall-alias-button",
+      "title": "Signup-Wall Alias Button",
+      "category": "Browser extension",
+      "oneLiner": "One click on any registration wall creates a fresh alias on a rotating pool of domains and auto-confirms the verification email.",
+      "problem": "With BugMeNot closed, people still refuse to hand real emails to sites that force an account for a manual or an article, but many sites now block known throwaway domains.",
+      "targetUsers": "Privacy-minded users, researchers, anyone downloading manuals or reading gated pages.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free 5 aliases/month; $3/month unlimited aliases, custom domains, forwarding to a real inbox when you choose.",
+      "mvp": [
+        "Detect signup/email fields and offer one-click fill",
+        "Rotating pool of lesser-known domains to dodge blocklists",
+        "In-extension inbox that auto-clicks verification links and shows OTPs",
+        "Per-site alias memory and one-click kill/forward",
+        "Report 'domain blocked' to rotate the pool"
+      ],
+      "competitors": [
+        {
+          "name": "ScrapMail / TempMail Pro / Throwaway (Firefox add-ons)",
+          "gap": "Many have few reviews; shared domains are easily blocklisted."
+        },
+        {
+          "name": "addy.io / SimpleLogin / Firefox Relay",
+          "gap": "Built for permanent aliases and need account setup; not tuned for throwaway signup walls."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "BugMeNot has closed",
+          "url": "https://news.ycombinator.com/item?id=50523904",
+          "quote": "I refuse to create an account on a shitty website that does not accept disposable emails, just so I can download a manual for a device I own that was uploaded by some random dude.",
+          "engagement": "Thread: 337 points · 169 comments",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "BugMeNot has closed",
+          "url": "https://news.ycombinator.com/item?id=50525087",
+          "quote": "I mostly moved to making a fresh one with a temp-mail.org email, since bugmenot accounts tended to be burned 90% of the time for the past 15 years or so.",
+          "engagement": "Thread: 337 points · 169 comments",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "BugMeNot has closed",
+          "url": "https://news.ycombinator.com/item?id=50524318",
+          "quote": "The vast majority (and my exclusive use of it) was to opt out of having to sign up for an endless stream of useless spam just to access something small.",
+          "engagement": "Thread: 337 points · 169 comments",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "BugMeNot has closed",
+          "url": "https://news.ycombinator.com/item?id=50524120",
+          "quote": "many sites maintain a blacklist of known throwaday email domains",
+          "engagement": "Thread: 337 points · 169 comments",
+          "date": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "id": "screen-flicker-comfort-check",
+      "title": "Screen Flicker Comfort Check",
+      "category": "Mobile app",
+      "oneLiner": "Point your phone's slow-mo camera at any laptop, phone or monitor to detect PWM dimming and log whether it gives you eye strain.",
+      "problem": "A noticeable share of people get headaches or eye strain from OLED PWM dimming but can't tell which devices cause it before buying, and the headline Hz numbers in reviews are disputed.",
+      "targetUsers": "Flicker-sensitive buyers, people with migraines, reviewers and store shoppers comparing displays.",
+      "painScore": 6,
+      "effort": "Weekend",
+      "monetization": "Free to test; $3 one-time to unlock a sensitivity journal and a shareable crowd-sourced device database.",
+      "mvp": [
+        "Camera rolling-shutter/slow-mo capture with banding analysis",
+        "Score at several brightness levels (low brightness is worst)",
+        "Save device + brightness + how you felt",
+        "Shareable result card",
+        "Community database of tested devices"
+      ],
+      "competitors": [
+        {
+          "name": "Flicker Meter+ Light / FlickerSpec / FlickerGauge",
+          "gap": "Aimed at lighting measurement and not lab-grade; no symptom journal or in-store comparison flow."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "The MacBook Pro's OLED PWM problem",
+          "url": "https://news.ycombinator.com/item?id=50511965",
+          "quote": "It's not even about perception at all. For some (like me) it seems to be related to muscles in the eyes reacting all the time and fatiguing, it seems such muscles can react much faster than our \"perception\" of flicker",
+          "engagement": "Thread: 504 points · 283 comments",
+          "date": "2026-11-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "The MacBook Pro's OLED PWM problem",
+          "url": "https://news.ycombinator.com/item?id=50515099",
+          "quote": "I haven't been able to upgrade to oled displays since the first few generations practically tore out my eyes and gave me headaches.",
+          "engagement": "Thread: 504 points · 283 comments",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "The MacBook Pro's OLED PWM problem",
+          "url": "https://news.ycombinator.com/item?id=50507223",
+          "quote": "Even if I'm not sensitive I am wary of this, what if it causes subtle eye strain that has long-term consequences?",
+          "engagement": "Thread: 504 points · 283 comments",
+          "date": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "own-domain-qr-short-links",
+      "title": "Own-Domain QR & Short Links",
+      "category": "Web app",
+      "oneLiner": "Hosted short links and QR codes that live on the customer's own domain, so printed codes never depend on a vendor's domain.",
+      "problem": "QR codes and short links get printed on posters, menus and tables, then break or get hijacked when the shortener's domain changes hands or a campaign domain lapses.",
+      "targetUsers": "Cafes, event organizers and small marketers who print QR codes.",
+      "painScore": 4,
+      "effort": "Weekend",
+      "monetization": "$5/month per domain with analytics; one-time $15 'permanent link pack' that exports a static redirect file.",
+      "mvp": [
+        "Connect a CNAME subdomain like go.yourbrand.com",
+        "Create links with editable destinations and QR download (SVG/PNG)",
+        "Basic click counts",
+        "Export all redirects as a static file for hosting anywhere",
+        "Dead-destination checker"
+      ],
+      "competitors": [
+        {
+          "name": "Bitly",
+          "url": "https://bitly.com",
+          "gap": "Links live on the vendor's domain; thread participants say that creates permanence risk."
+        },
+        {
+          "name": "YOURLS (self-hosted)",
+          "gap": "Needs a server and upkeep, which non-technical owners avoid."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Old Bitly links are being hijacked",
+          "url": "https://news.ycombinator.com/item?id=50512612",
+          "quote": "I'm also against QR code services which don't just generate a direct URL to something you own. Unlike link shorteners, the URL length barely matters, and the codes often get permanently printed onto posters, tables, art, etc.",
+          "engagement": "Thread: 375 points · 196 comments",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Old Bitly links are being hijacked",
+          "url": "https://news.ycombinator.com/item?id=50513012",
+          "quote": "Maintaining it forever is for sure a consideration, it's why running one from your own domain lets you own the 301 redirect permanently.",
+          "engagement": "Thread: 375 points · 196 comments",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Old Bitly links are being hijacked",
+          "url": "https://news.ycombinator.com/item?id=50511801",
+          "quote": "Short urls are nicer if someone's got to write them down, remember the url, and make for a less dense QR code too. That's what I use them for. I host my own now, for free and for fun.",
+          "engagement": "Thread: 375 points · 196 comments",
+          "date": "2026-11-15"
+        }
+      ]
+    }
+  ]
+}
