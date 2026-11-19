@@ -1,0 +1,304 @@
+{
+  "date": "2026-11-19",
+  "summary": "Reddit, X and Bluesky were blocked today, so this report rests on Hacker News threads only. Strongest themes: services rejecting VoIP numbers and forcing SMS 2FA, forgotten third-party scripts after the Optimizely compromise, and people who would pay for DRM-free media or just want to plug in a keyboard and play piano.",
+  "ideas": [
+    {
+      "id": "voip-number-acceptance-checker",
+      "title": "Will This Site Take My Number?",
+      "category": "Browser extension",
+      "oneLiner": "A crowd-sourced checker and extension that tells you, before you type, whether a site's signup or 2FA will reject your VoIP or Google Voice number, and what to do instead.",
+      "problem": "Banks, retailers and big platforms increasingly reject VoIP numbers as 'invalid', insist on SMS 2FA, or silently overwrite the number you gave them. People who keep a VoIP line for spam control are pushed into handing out their real cell number, and nobody publishes which services accept what.",
+      "targetUsers": "Privacy-minded consumers, people with a landline or VoIP-only home number, expats and travellers without a local SIM, and anyone who uses a secondary number to dodge spam calls.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free lookup and extension; Rs 99/month or $2/month for alerts when a service you use changes its phone policy and for private notes synced across devices.",
+      "mvp": [
+        "Community database of services with accepted / rejected / flaky status per number type (mobile, VoIP, Google Voice, landline)",
+        "Browser extension that shows a badge on signup and phone-entry fields",
+        "One-tap report button: 'accepted' or 'rejected' with the date",
+        "Fallback guide per service: non-SMS 2FA options, authenticator support, support-desk workaround",
+        "Watchlist that alerts you when a service you use starts rejecting your number type"
+      ],
+      "competitors": [
+        {
+          "name": "Google Voice",
+          "url": "https://voice.google.com",
+          "gap": "Free and popular, but many services reject its numbers for verification and nothing tells you which ones before you try."
+        },
+        {
+          "name": "MySudo / Hushed / Cloaked",
+          "url": "https://help.cloaked.app",
+          "gap": "Sell secondary numbers but do not publish a reliable per-service acceptance list, so users still discover rejections by failing."
+        },
+        {
+          "name": "Generic 'is this number VoIP' lookup sites",
+          "gap": "Check the number, not the destination service, so they cannot say whether a given bank or retailer will accept it."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'ID.me terms required for IRS sign-in'",
+          "url": "https://news.ycombinator.com/item?id=50543144",
+          "quote": "I've had a bank account for about a decade which forced me to add a phone number. A year or two ago, they insisted on \"re-verifying\" and then said the current number was invalid for whatever reason, which I assume means I don't have it registered as a postpaid number or have opted out of some data brokers. They still insist on sending 2fa codes to it though. I'm tired of getting stuck with paid, invasive, less convenient, less secure 2fa",
+          "engagement": "493 points · 250 comments on the thread",
+          "date": "2026-11-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'ID.me terms required for IRS sign-in'",
+          "url": "https://news.ycombinator.com/item?id=50550932",
+          "quote": "What's frustrating is that my VoIP number gives me powerful anti-spam tools - that's why I'm reluctant to get rid of it and start giving out my actual cell#!",
+          "engagement": "493 points · 250 comments on the thread",
+          "date": "2026-11-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'ID.me terms required for IRS sign-in'",
+          "url": "https://news.ycombinator.com/item?id=50546275",
+          "quote": "Walmart deleted the house phone number I had and told me it was invalid. In actuality it is a home VoIP number that my wife also uses for her separate account and Walmart has decided that although multiple Walmart accounts are allowed per addresses a phone number can only be associated with one of them.",
+          "engagement": "493 points · 250 comments on the thread",
+          "date": "2026-11-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'BugMeNot has closed'",
+          "url": "https://news.ycombinator.com/item?id=50529620",
+          "quote": "Nice, now I wish there'll be a service line that for phone/sms, then I could unblock my MSFT account. Although I don't really need it, I only tried OneNote for 20 minutes, that's all.",
+          "engagement": "722 points · 345 comments on the thread",
+          "date": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "plug-in-and-play-midi-piano",
+      "title": "Plug-In Piano",
+      "category": "Desktop app",
+      "oneLiner": "A tiny cross-platform app that detects your MIDI keyboard and gives you a good-sounding piano in one click, with optional practice plans for MIDI pieces you import.",
+      "problem": "Someone who just wants to plug in a MIDI keyboard and play ends up fighting DAWs, VST hosts and drivers for days, while the polished practice apps sit behind expensive subscriptions.",
+      "targetUsers": "Hobby pianists, choir members and music students with a USB or Bluetooth MIDI keyboard who are not producers.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free basic piano; one-time Rs 1,499 / $19 for extra sound packs, practice plans and iPad sync. No subscription.",
+      "mvp": [
+        "Auto-detect MIDI keyboard and play with no setup",
+        "One bundled quality piano sample set with a latency check",
+        "Import a MIDI file and show a falling-notes practice view",
+        "Simple practice plan: slow-down, loop a section, hands separate",
+        "Audio device picker with a one-click 'fix my sound' reset"
+      ],
+      "competitors": [
+        {
+          "name": "GarageBand / Logic",
+          "url": "https://www.apple.com/mac/garageband/",
+          "gap": "Apple-only and still a DAW; no Windows or Linux path."
+        },
+        {
+          "name": "Synthesia",
+          "url": "https://synthesiagame.com",
+          "gap": "Practice-focused but needs separate sound setup for good tone."
+        },
+        {
+          "name": "Virtual MIDI Piano Keyboard (VMPK)",
+          "gap": "Free and open source, but only a MIDI controller; it does not produce a good piano sound by itself."
+        },
+        {
+          "name": "Piano Marvel and similar subscription apps",
+          "gap": "Good learning content, but the subscription pricing is exactly what users in these threads avoid."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'We don't need more apps, we need better open source'",
+          "url": "https://news.ycombinator.com/item?id=50533258",
+          "quote": "I wanted to plug in my midi controller keyboard and just play a piano, so I can practice my choral music. Very basic. This turned into many hours over several days trying multiple DAWs, trying to get tehm to install, get them to run at all, get them to recognize my controller, get them to play a VST plugin...changing system settings, completely jacking up my sound, restoring it all again. It was a nightmare.",
+          "engagement": "353 points · 253 comments on the thread",
+          "date": "2026-11-17"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'We don't need more apps, we need better open source'",
+          "url": "https://news.ycombinator.com/item?id=50533909",
+          "quote": "I have a similar experience where I’ve been learning the keyboard but didn’t like the available free options and the good paid apps had really expensive subscription plans so I had Claude build me something that runs natively on my iPad, with midi and microphone support and generates custom learning plans for midi pieces that I import.",
+          "engagement": "353 points · 253 comments on the thread",
+          "date": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "drm-free-buy-finder",
+      "title": "DRM-Free Finder",
+      "category": "Web app",
+      "oneLiner": "A search site that shows where you can legally buy a given ebook, film or album as DRM-free files, with price and format.",
+      "problem": "People say they would happily pay for DRM-free ebooks and films, but there is no single place to find which store sells which title without locks, so they fall back on Amazon or on piracy.",
+      "targetUsers": "Readers, film fans and music listeners who want to own files, plus Indian users frustrated by regional pricing and platform lock-in.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "Affiliate links to DRM-free stores (Kobo, Bandcamp, GOG, Smashwords, Humble and others); optional Rs 149/month supporter tier with wishlist alerts when a title goes DRM-free.",
+      "mvp": [
+        "Search by title or ISBN that returns stores selling a DRM-free edition",
+        "Store directory with each store's DRM policy and formats",
+        "Wishlist alert when a title appears DRM-free or drops in price",
+        "Community flag when a listing is wrongly marked DRM-free",
+        "Filter by format (EPUB, FLAC, MP4) and price"
+      ],
+      "competitors": [
+        {
+          "name": "GOG",
+          "url": "https://www.gog.com",
+          "gap": "Excellent for games but has only a thin film and no ebook catalogue."
+        },
+        {
+          "name": "Bandcamp",
+          "url": "https://bandcamp.com",
+          "gap": "Strong for music only."
+        },
+        {
+          "name": "Kobo / Smashwords / Baen",
+          "gap": "Mixed DRM per title, so buyers cannot tell in advance without checking each page."
+        },
+        {
+          "name": "AlternativeTo DRM-free list",
+          "url": "https://alternativeto.net/list/41619/oppose-to-drm--buy-drm-free-digital-medias/",
+          "gap": "A static list of stores, not a per-title lookup."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'Many of Amazon’s Black Friday and Cyber Monday “deals” offered no savings'",
+          "url": "https://news.ycombinator.com/item?id=50522715",
+          "quote": "Whats crazy is I'd happily pay a premium for a DRM free ebook, too.",
+          "engagement": "968 points · 555 comments on the thread",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'DNS resolvers are the wrong place to fight piracy'",
+          "url": "https://news.ycombinator.com/item?id=50552818",
+          "quote": "For instance, if there were a site that offered movie downloads for $2-5 per movie, I'd happily pay for it. No DRM of course.",
+          "engagement": "611 points · 227 comments on the thread",
+          "date": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "id": "third-party-script-graveyard-audit",
+      "title": "Script Graveyard",
+      "category": "Developer tool",
+      "oneLiner": "Scans a site for every third-party script and tag, shows who added it and whether it still fires, and generates a tighter Content-Security-Policy plus a one-click removal list.",
+      "problem": "Marketing tags pile up and are forgotten, third-party URLs can break production, and a vendor compromise like the Optimizely incident reaches every site that pasted its tag. Teams cannot see what is loaded, who owns it, or whether anyone still uses it, and CSP rules for multi-country script domains are painful to maintain.",
+      "targetUsers": "Agencies, freelancers and small-company devs who maintain marketing sites and shops they did not fully build.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free single-site scan; $9/month per site for weekly rescans, new-script alerts and generated CSP; agency plan for 20 sites.",
+      "mvp": [
+        "Crawl a URL and list all third-party scripts, domains and what they load next",
+        "Flag scripts that appear unused or unowned and let you record an owner",
+        "Generate a report-only CSP header with per-vendor domains, including country TLDs",
+        "Weekly rescan with an email when a new third-party script appears",
+        "Plain-language removal checklist for tag managers"
+      ],
+      "competitors": [
+        {
+          "name": "Report URI",
+          "url": "https://report-uri.com/features/csp-integrity",
+          "gap": "Strong at monitoring script integrity, but aimed at teams already comfortable with CSP reporting."
+        },
+        {
+          "name": "Reflectiz",
+          "gap": "Scanner-style data-flow mapping aimed at larger security and compliance teams."
+        },
+        {
+          "name": "Tag Inspector",
+          "gap": "Enterprise privacy and marketing focus; heavy for a small site."
+        },
+        {
+          "name": "site-owner-infection-alert (earlier idea in this series)",
+          "gap": "Alerts on known-malicious JavaScript; this idea is the inventory and cleanup side."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'Optimizely compromised, served malware on Zoom, GitLab'",
+          "url": "https://news.ycombinator.com/item?id=50527210",
+          "quote": "I've had third party URLs block production apps in Chrome before because some marketing url was hosting malicious code. The most infuriating thing, when you do remove these tags, marketing forgets they exist and are like \"Oh we don't use that anymore\".",
+          "engagement": "699 points · 276 comments on the thread",
+          "date": "2026-11-17"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'Optimizely compromised, served malware on Zoom, GitLab'",
+          "url": "https://news.ycombinator.com/item?id=50529247",
+          "quote": "And then there’s different countries for end clients with different TLDs for connect-src. Oh how I hate that one. I wish Facebook, Instagram, Google and others would figure out serving the public scripts from .com only.",
+          "engagement": "699 points · 276 comments on the thread",
+          "date": "2026-11-17"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'We know 15k websites are infected. how do we tell them?'",
+          "url": "https://news.ycombinator.com/item?id=50400681",
+          "quote": "If we're really being serious about getting it fixed and not just waving a magic wand and laying blame, the scripts should not be distributed via a platform that tells web maintainers to blindly paste a script tag and leave their web servers wide open for the whitelisted 3rd party domain(s) to send whatever they want to visitors.",
+          "engagement": "230 points · 195 comments on the thread",
+          "date": "2026-11-07"
+        }
+      ]
+    },
+    {
+      "id": "registrar-policy-scorecard",
+      "title": "Registrar Scorecard",
+      "category": "Web app",
+      "oneLiner": "A comparison site that scores domain registrars on random ID checks, suspension history and support access, so you can pick one before you are locked out.",
+      "problem": "Some registrars reportedly demand passports and selfies at random, with answers like 'we cannot specify the criteria', and a clientHold can take a whole site offline. People want to move but cannot tell which registrars will not do the same.",
+      "targetUsers": "Developers, open-source projects, small businesses and agencies who own several domains.",
+      "painScore": 5,
+      "effort": "Weekend",
+      "monetization": "Affiliate fees from registrars that score well; paid $4/month alert when your registrar's policy or reputation changes.",
+      "mvp": [
+        "Standard questionnaire sent to registrars with published answers and dates",
+        "Score on ID-verification policy, hold and suspension process, and reachable support",
+        "Community reports of surprise verification or holds, with dates",
+        "Side-by-side comparison with renewal pricing",
+        "Move checklist linking to transfer steps"
+      ],
+      "competitors": [
+        {
+          "name": "Generic registrar comparison blogs",
+          "gap": "Compare price and features; they do not cover verification surprises or suspension handling."
+        },
+        {
+          "name": "domain-transfer-lockout-guard (earlier idea in this series)",
+          "gap": "Checks that your own domains can be moved; it does not help you choose a trustworthy registrar."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'Codeberg seems to have vanished from DNS'",
+          "url": "https://news.ycombinator.com/item?id=50543244",
+          "quote": "Apparently more and more registrars are \"randomly\" requiring clients to send copies of their passports and face selfies and other nonsense.",
+          "engagement": "55 points · 20 comments on the thread",
+          "date": "2026-11-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'Codeberg seems to have vanished from DNS'",
+          "url": "https://news.ycombinator.com/item?id=50546744",
+          "quote": "Where are you moving to? Are there any registrars that have promised not to do this? Can we trust any of them? I'd rather not move once and then have to move again.",
+          "engagement": "55 points · 20 comments on the thread",
+          "date": "2026-11-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'Codeberg seems to have vanished from DNS'",
+          "url": "https://news.ycombinator.com/item?id=50550176",
+          "quote": "I've been sending a questionnaire to a bunch of registrars with these questions. Namecheap failed spectacularly, others answered okay. It's a red flag if they don't list a sales or support email on their website, so that's another hint too.",
+          "engagement": "55 points · 20 comments on the thread",
+          "date": "2026-11-18"
+        }
+      ]
+    }
+  ]
+}
