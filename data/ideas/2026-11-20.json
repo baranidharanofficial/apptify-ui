@@ -1,0 +1,183 @@
+{
+  "date": "2026-11-20",
+  "summary": "Reddit, X and Bluesky were unreachable today, so this report draws only on Hacker News and has fewer ideas than usual. The strongest theme is people locked out or stonewalled by big platforms (Stripe, Apple, OpenAI, Google, Uber) with no human to appeal to. Smaller themes are saved-but-never-revisited links, and non-technical staff publishing AI-built internal apps without access control.",
+  "ideas": [
+    {
+      "id": "platform-lockout-appeal-kit",
+      "title": "Lockout Appeal Kit",
+      "category": "Web app",
+      "oneLiner": "Guided case-file builder that turns a Stripe, Apple, Google or OpenAI account lockout into a well-structured appeal with evidence, timeline and escalation steps.",
+      "problem": "Small businesses and indie developers get banned, closed or stonewalled by automated systems that give vague reasons, reject appeals within a day and offer no human contact. People improvise appeals from forum advice, and the replies they get are often bot-closed.",
+      "targetUsers": "Indie developers, small online businesses, freelancers and app publishers who depend on one platform account (payments, app stores, AI APIs, marketplaces).",
+      "painScore": 8,
+      "effort": "1–2 weeks",
+      "monetization": "Free checklist and templates; ₹499–₹999 per case for the full builder and escalation playbook, or $9/month for ongoing monitoring across several platforms.",
+      "mvp": [
+        "Pick a platform and lockout type, then a short wizard collects the facts",
+        "Generated appeal letter with timeline, evidence list and the platform's own policy wording",
+        "Per-platform escalation ladder (dashboard appeal, support callback, regulator or data-request route)",
+        "Evidence checklist with upload-and-index for invoices, call recordings and logs",
+        "Follow-up tracker with reminders and a log of every reply"
+      ],
+      "competitors": [
+        {
+          "name": "Chargeback.io Stripe guide",
+          "url": "https://www.chargeback.io/blog/stripe-closed-suspended-my-account",
+          "gap": "A single generic blog post and email template; no guided case file, no other platforms."
+        },
+        {
+          "name": "terms.law payment processor FAQ",
+          "url": "https://terms.law/FAQ/payment-processors/stripe-holds-faq.html",
+          "gap": "Legal reference material, not a workflow, and nothing for app stores or AI API bans."
+        },
+        {
+          "name": "Platform-native dashboard appeals",
+          "gap": "Free-text boxes with no guidance; users in these threads report next-day rejections with no explanation."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Stripe closed us after one $1,500 invoice and never asked for evidence",
+          "url": "https://news.ycombinator.com/item?id=50510042",
+          "quote": "Stripe blocked the payment. Two days after that the account was closed with this wording: payments \"don't appear to have been authorized by the customer.\"",
+          "engagement": "181 points",
+          "date": "2026-11-15"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Is it not possible to enroll for Apple Developer anymore?",
+          "url": "https://news.ycombinator.com/item?id=50237680",
+          "quote": "I've been trying to enroll for Apple Developer for over a month and nothing works.",
+          "engagement": "32 comments",
+          "date": "2026-10-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on 'Strengthening the fight against online child sexual abuse' (OpenAI account ban)",
+          "url": "https://news.ycombinator.com/item?id=50521236",
+          "quote": "They refused to give us any information about this incident, denied our appeal, and have so far, illegally refused our privacy requests for data about our account.",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Is Uber Support Dead?",
+          "url": "https://news.ycombinator.com/item?id=50555440",
+          "quote": "My issues are rapidly closed without the customer support agent even attempting to understanding the problem or read my messages carefully.",
+          "date": "2026-11-19"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on Gemini 4 Hydrogen thread (Google account ban)",
+          "url": "https://news.ycombinator.com/item?id=50478868",
+          "quote": "no communication or anything, just \"you've been banned\" and then a few days later it started working again, so i guess my appeal was successful.",
+          "date": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "id": "saved-links-resurfacer",
+      "title": "Saved-Links Resurfacer",
+      "category": "Browser extension",
+      "oneLiner": "Bookmark and read-later layer that resurfaces what you saved at the moment you start researching the same topic, so you stop redoing work.",
+      "problem": "People save articles, papers and videos into bookmarks and tabs, rarely return, and end up repeating research because the earlier find is buried. Existing self-hosted managers store things well but are described as rough, and none resurface items on their own.",
+      "targetUsers": "Researchers, developers, students and knowledge workers who accumulate many saved links.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for local-only use; $3–5/month for sync, AI topic matching and a weekly digest.",
+      "mvp": [
+        "One-click save with page text and screenshot stored locally",
+        "Sidebar that surfaces saved items matching the page or search you are on now",
+        "Weekly digest of saves you never opened, with a keep or drop swipe",
+        "Import from browser bookmarks, Raindrop and Karakeep exports",
+        "Full-text search across everything saved"
+      ],
+      "competitors": [
+        {
+          "name": "Karakeep",
+          "url": "https://karakeep.app",
+          "gap": "Open source and self-hosted with good saving, but users call the UI rough and it has no built-in resurfacing."
+        },
+        {
+          "name": "Raindrop.io",
+          "url": "https://raindrop.io",
+          "gap": "Strong bookmark manager but treated as storage; it does not solve the unread-pile problem."
+        },
+        {
+          "name": "Readwise Reader",
+          "url": "https://readwise.io/read",
+          "gap": "Feature-rich but dense and bundled at roughly $10 a month."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How do you keep track of the articles, papers and videos you save?",
+          "url": "https://news.ycombinator.com/item?id=50408438",
+          "quote": "More than once I ended up redoing research that I had already done because the resource I saved was burried somewhere in my bookmarks or tabs.",
+          "date": "2026-11-07"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Reply in the same Ask HN thread (Karakeep and Archivebox user)",
+          "url": "https://news.ycombinator.com/item?id=50411232",
+          "quote": "you should look at those two programs and make one with a better UI/UX, because they can be a bit rough. In an ideal world this would be a feature built into web browsers.",
+          "date": "2026-11-08"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Comment on Show HN: EtherPK",
+          "url": "https://news.ycombinator.com/item?id=50483079",
+          "quote": "I found that many people, including myself, tend to save a lot of stuff but rarely come back to those saved resources. My bookmarks are a prime example of that.",
+          "date": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "id": "private-by-default-vibecode-publisher",
+      "title": "Private-by-Default Publisher for AI-Built Internal Apps",
+      "category": "SaaS",
+      "oneLiner": "Publishing target for non-technical staff that puts every AI-built internal app behind company login by default and flags data that should never be public.",
+      "problem": "Lawyers, paralegals and other non-developers are building dashboards with AI coding tools and deploying them to public hosts. One client exposed aggregated client data on a public URL, and practitioners say these apps are becoming dangerous.",
+      "targetUsers": "Small law firms, accountancies and agencies whose staff vibe-code internal tools, plus the consultants who clean up after them.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "$29–99 per month per team based on number of apps and seats, with a consultant white-label tier.",
+      "mvp": [
+        "Paste a repo or ZIP and get a hosted URL behind Google or Microsoft sign-in",
+        "Allow-list by email domain with no public option unless an admin approves",
+        "Pre-publish scan for API keys and obviously personal data columns",
+        "Inventory page listing every internal app, owner and last deploy",
+        "One-click takedown"
+      ],
+      "competitors": [
+        {
+          "name": "Vercel and Netlify password or SSO protection",
+          "url": "https://vercel.com",
+          "gap": "Protection is opt-in and paid on higher tiers, so the default for a non-technical user is a public URL."
+        },
+        {
+          "name": "Cloudflare Access",
+          "url": "https://www.cloudflare.com/zero-trust/products/access/",
+          "gap": "Powerful but requires DNS and policy setup that non-developers will not do."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Are your non-technical colleagues vibecoding? How are the apps hosted?",
+          "url": "https://news.ycombinator.com/item?id=50549762",
+          "quote": "We had one customer create a dashboard of aggregated client data and expose it publically via Vercel.",
+          "date": "2026-11-18"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Reply in the same thread (security consultant)",
+          "url": "https://news.ycombinator.com/item?id=50558307",
+          "quote": "These vibe-coded apps built by non-tech people are getting dangerous.",
+          "date": "2026-11-19"
+        }
+      ]
+    }
+  ]
+}
