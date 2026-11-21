@@ -1,0 +1,151 @@
+{
+  "date": "2026-11-21",
+  "summary": "Thin day: Reddit, X and Bluesky were blocked and web search surfaced no primary posts, so only Hacker News threads could be verified. The strongest signals were Microsoft's To Do shutdown stranding simple-list users, macOS Full Disk Access prompts that nobody can interpret, and self-hosted services that non-technical friends and family cannot be asked to run.",
+  "ideas": [
+    {
+      "id": "wunderlist-style-list-app-with-todo-import",
+      "title": "Simple Shared Lists with One-Tap Microsoft To Do Import",
+      "category": "Mobile app",
+      "oneLiner": "A calm, Wunderlist-style list app (shopping, chores, simple tasks) that imports your Microsoft To Do data in one tap before it shuts down.",
+      "problem": "Microsoft is retiring To Do and telling users to choose another app. People who used it as a plain shopping or chore list now need a replacement, and previous Microsoft migrations (Wunderlist to To Do) lost data or locked users out. Existing alternatives are either heavy project managers or paywalled.",
+      "targetUsers": "Casual users of Microsoft To Do for shopping lists, household chores and personal reminders; couples and families sharing lists.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for personal lists with unlimited items; ₹99/month or ₹799/year for shared households, reminders and attachments.",
+      "mvp": [
+        "Microsoft account sign-in and import of lists, tasks, due dates and notes",
+        "Plain lists with check-off, drag reorder and offline support",
+        "Share a list with one other person via a link",
+        "Location or time reminders for shopping lists",
+        "Export to CSV/JSON so users never get locked in"
+      ],
+      "competitors": [
+        { "name": "Todoist", "url": "https://todoist.com", "gap": "Capable but paid features and a project-manager feel; one commenter is a happy paying user, but others want something simpler." },
+        { "name": "Vikunja", "url": "https://vikunja.io", "gap": "Needs self-hosting on a VPS, which most To Do users will not do." },
+        { "name": "Google Tasks", "url": "https://tasks.google.com", "gap": "Minimal sharing and no import from Microsoft To Do." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Microsoft is killing To Do and telling you to \"choose another\" app",
+          "url": "https://news.ycombinator.com/item?id=50564238",
+          "quote": "I've been using it in my phone for shopping lists. Guess I'll have to find something else.",
+          "engagement": "26 points on the thread",
+          "date": "2026-11-19"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Microsoft is killing To Do and telling you to \"choose another\" app",
+          "url": "https://news.ycombinator.com/item?id=50564985",
+          "quote": "the lack of migration from To Do to Planner is very frustratingly Microsoft.",
+          "date": "2026-11-19"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Microsoft is killing To Do and telling you to \"choose another\" app",
+          "url": "https://news.ycombinator.com/item?id=50566503",
+          "quote": "MS killed Wunderlist for this. It is still by far the best todo app design I've ever used. They tried to migrate people over to Microsoft ToDo, but their arcane auth system failed to transfer over anything",
+          "date": "2026-11-19"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Microsoft kills To Do. It paid up 200M for Wunderlist, later killed it",
+          "url": "https://news.ycombinator.com/item?id=50556056",
+          "quote": "Wunderlist was one of my favourite apps in terms of \"taste\". The UI and UX were super nice. Was very sad to see it become \"To Do\".",
+          "date": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "id": "mac-permission-translator",
+      "title": "Mac Permission Translator",
+      "category": "Desktop app",
+      "oneLiner": "A menu-bar app that shows which apps hold Full Disk Access and other privacy permissions, in plain language, with one-click revoke and a risk note per app.",
+      "problem": "macOS permission prompts are vague, and Apple is tightening Full Disk Access just as AI agents and chat apps ask for it. Users cannot tell what a permission really grants or whether an app has any business asking.",
+      "targetUsers": "Mac users who are not security experts, and developers who install many AI tools and CLIs.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free scan; ₹1,500 one-time (or about $19) for continuous monitoring, change alerts and per-app history.",
+      "mvp": [
+        "List every app with Full Disk Access, Accessibility, Screen Recording and similar grants, read from the TCC database where permitted",
+        "Plain-language explanation of what each permission lets an app do",
+        "Flag apps whose category does not usually need a permission (for example a chat client with Full Disk Access)",
+        "Deep link to the exact System Settings pane to revoke",
+        "Alert when a new app gains a sensitive permission"
+      ],
+      "competitors": [
+        { "name": "macOS System Settings > Privacy & Security", "gap": "Lists grants but explains nothing and gives no context on risk." },
+        { "name": "Objective-See tools (LuLu, KnockKnock)", "url": "https://objective-see.org", "gap": "Powerful but aimed at security-minded users, with no plain-language permission explainer." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "If an App Asks for Full Disk Access or System and App Protection Override",
+          "url": "https://news.ycombinator.com/item?id=50527662",
+          "quote": "I find these permission prompts confusing and maddening, even.",
+          "engagement": "251 points on the thread",
+          "date": "2026-11-17"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "If an App Asks for Full Disk Access or System and App Protection Override",
+          "url": "https://news.ycombinator.com/item?id=50529669",
+          "quote": "A messaging app has no business having full-disk access.",
+          "date": "2026-11-17"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "If an App Asks for Full Disk Access or System and App Protection Override",
+          "url": "https://news.ycombinator.com/item?id=50531062",
+          "quote": "They find it really annoying that apps ask them for overbroad permissions",
+          "date": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "self-host-for-friends-health-and-backup-watcher",
+      "title": "Self-Host Keeper: Backups and Health Checks for Services You Run for Others",
+      "category": "SaaS",
+      "oneLiner": "A tiny agent plus dashboard that verifies backups restore, certificates and domains stay valid, and pings you in plain language when a service you host for family or friends breaks.",
+      "problem": "Self-hosting works for hobbyists, but reliability, networking and backups are where it falls down, and recommending it to non-technical people is hard. The person running the server becomes unpaid support, and a silent failure loses data.",
+      "targetUsers": "Hobbyists who self-host Vaultwarden, Immich, Matrix or similar for family and friends, and small teams on a rented VPS.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "Free for one server; $5/month for unlimited servers, restore tests and WhatsApp/Telegram alerts.",
+      "mvp": [
+        "One-line agent install that detects common self-hosted apps via Docker labels",
+        "Nightly backup check that actually test-restores a sample and reports failure",
+        "Certificate, domain and disk-space expiry warnings",
+        "Weekly plain-language status message for a non-technical family member",
+        "Alerts to Telegram or WhatsApp"
+      ],
+      "competitors": [
+        { "name": "Uptime Kuma", "url": "https://uptime.kuma.pet", "gap": "Checks that things are up, but does not verify that backups can be restored." },
+        { "name": "Healthchecks.io", "url": "https://healthchecks.io", "gap": "Cron monitoring only; no app discovery or restore verification." }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Pete Warden on local AI, open models, voice interfaces, the future of hardware",
+          "url": "https://news.ycombinator.com/item?id=50563178",
+          "quote": "The part where self hosting falls down isnt the apps it's config, networking, reliability and backups.",
+          "date": "2026-11-19"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "I'll never buy Framework hardware again",
+          "url": "https://news.ycombinator.com/item?id=50581122",
+          "quote": "recommending a framework laptop is like recommending self-hosting bitwarden to non-technical people. They just probably shouldn't.",
+          "date": "2026-11-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "How the European Commission rolled out Matrix to more than 40k staff",
+          "url": "https://news.ycombinator.com/item?id=50561993",
+          "quote": "there was a slow burn of people encountering random issues with no clear solution.",
+          "date": "2026-11-19"
+        }
+      ]
+    }
+  ]
+}
