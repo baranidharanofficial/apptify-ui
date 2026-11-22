@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-22",
+  "summary": "Thin day: Reddit, X, Bluesky and most other platforms were unreachable, so only Hacker News comments could be verified. Two themes had two independent sources each: people wanting a use-case-based way to choose between confusingly named AI models, and shoppers wanting a bot that watches products against their own criteria instead of re-checking by hand.",
+  "ideas": [
+    {
+      "id": "pick-my-ai-model-by-use-case",
+      "title": "Pick My AI Model",
+      "category": "Web app",
+      "oneLiner": "Type what you want to do and get a plain-English recommendation of which AI model and tier to use, with community votes.",
+      "problem": "AI labs ship models with codenames and overlapping tiers, and non-experts cannot tell which one fits their task, speed or budget. Commenters ask for a curated, use-case-driven picker with voting, and say the naming scheme itself is opaque.",
+      "targetUsers": "Non-technical professionals, students and small-team leads who use AI tools but do not follow model releases.",
+      "painScore": 4,
+      "effort": "1–2 weeks",
+      "monetization": "Free with affiliate or referral links to model providers; optional paid tier for team model-policy sheets and alerts when a recommended model is retired or renamed.",
+      "mvp": [
+        "Use-case text box that maps to a short ranked list of models with a one-line reason each",
+        "Plain-English glossary of each lab's families, tiers and versions",
+        "Up/down voting and short user notes per model per use case",
+        "Cost and speed comparison for the same task",
+        "Weekly changelog of new, renamed or retired models"
+      ],
+      "competitors": [
+        {
+          "name": "LMArena",
+          "url": "https://lmarena.ai",
+          "gap": "Ranks by head-to-head preference, not by plain-language use case, and assumes familiarity with the model names."
+        },
+        {
+          "name": "Artificial Analysis",
+          "url": "https://artificialanalysis.ai",
+          "gap": "Benchmark and price tables aimed at developers, not a recommendation flow for non-experts."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Gemini 4 Neon (comment)",
+          "url": "https://news.ycombinator.com/item?id=50556288",
+          "quote": "i really cant believe there isn't a curated type of \"app store\" for popular models, built for people who don't live and breath this stuff. Why cant i type in a use case and get a model recommendation? Why is there no up/down voting for models?",
+          "date": "2026-11-19"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Gemini 4 Neon (comment)",
+          "url": "https://news.ycombinator.com/item?id=50552391",
+          "quote": "I don’t really get the naming at all. This mentions migrating from Argon to Neon, so these code names aren’t (just) model families? What dimensions are involved here anyway? Speed, capability, model version?",
+          "date": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "id": "criteria-based-product-watcher",
+      "title": "Spec Watch",
+      "category": "Mobile app",
+      "oneLiner": "Save your own buying criteria (price ceiling, warranty, specs) and get pinged when a matching product appears or comes back in stock.",
+      "problem": "Shoppers repeat the same search by hand every few hours or days. Existing price trackers follow one listing, and reviews of them complain that alerts are unreliable, so criteria-based watching across listings is still manual.",
+      "targetUsers": "Buyers of niche or hard-to-find hardware (mini PCs, components, appliances) and Black Friday deal hunters.",
+      "painScore": 4,
+      "effort": "1–2 weeks",
+      "monetization": "Free for 3 watches; about ₹149/month or $2/month for unlimited watches and faster check intervals; optional affiliate links.",
+      "mvp": [
+        "Create a watch from keywords plus price, warranty and spec filters",
+        "Check a few retailers on a schedule and de-duplicate results",
+        "Push notification when a new match appears or a listing is back in stock",
+        "Price-history snapshot to show whether the discount is real",
+        "Share a watch list link"
+      ],
+      "competitors": [
+        {
+          "name": "Restockify",
+          "url": "https://apps.apple.com/us/app/restockify/id1588032568",
+          "gap": "Focused on restocks of specific products; reviews are mixed on accuracy and it does not match on your own criteria."
+        },
+        {
+          "name": "ShopSavvy",
+          "url": "https://shopsavvy.com/features/price-tracking.md",
+          "gap": "Tracks specific products for price drops and restocks rather than saved multi-criteria searches."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "ChatGPT Wallet (comment)",
+          "url": "https://news.ycombinator.com/item?id=50519039",
+          "quote": "When I’m looking to buy something, I usually have a few criteria in mind, like price, warranty, and quality. It’d be nice to have a bot check for options that meet those criteria so I don’t have to check manually every few hours.",
+          "date": "2026-11-16"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Many of Amazon’s Black Friday and Cyber Monday “deals” offered no savings (comment)",
+          "url": "https://news.ycombinator.com/item?id=50525636",
+          "quote": "I've been searching for a mini-pc for a niche CV application for a while and this was basically the search I was running manually every few days condensed and in one place.",
+          "date": "2026-11-17"
+        }
+      ]
+    }
+  ]
+}
