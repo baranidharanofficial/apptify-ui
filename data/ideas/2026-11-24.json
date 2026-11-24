@@ -1,0 +1,318 @@
+{
+  "date": "2026-11-24",
+  "summary": "Reddit, X and Bluesky were unreachable today, so every source is Hacker News. The loudest themes were indie developers getting caught by EU App Store trader-verification rules, people wanting a notes app that feels like Apple Notes but keeps plain files, and hobbyists priced or locked out of CAD. Five ideas are published instead of the usual 8–12, because only these had two or more verifiable sources.",
+  "ideas": [
+    {
+      "id": "eu-dsa-trader-status-copilot",
+      "title": "EU Trader-Status Copilot for Indie App Devs",
+      "category": "SaaS",
+      "oneLiner": "A guided checklist that gets a solo developer through Apple's and Google's EU trader verification without publishing a home address, and warns before the status lapses.",
+      "problem": "Under the EU Digital Services Act, an app developer classed as a trader must show a postal address, phone number and email on the EU store listing. Solo developers are confused about whether they count as traders, don't want to publish personal details, and get stuck in slow verification. In one case an app was pulled from every EU storefront with no communication from Apple, and commenters note that verified status can lapse.",
+      "targetUsers": "Solo and small-team iOS and Android developers who distribute in the EU, including open-source maintainers and anyone with a tip jar or a paid tier.",
+      "painScore": 8,
+      "effort": "1–2 weeks",
+      "monetization": "Free trader-or-not quiz as lead magnet. $19 one-time for the full guide with document templates, or $4/month for renewal and lapse monitoring across several apps.",
+      "mvp": [
+        "Trader-or-not questionnaire based on monetisation (IAP, tips, payouts) with a plain-language verdict",
+        "Step-by-step walkthrough for App Store Connect and Play Console trader forms, with copy-paste field values",
+        "Directory of virtual-address and mail-forwarding options and what each platform accepts as a contact address",
+        "Reminder emails before verification documents expire, plus a status-page link checklist",
+        "Template messages for appealing a stuck or 'In Review' verification with Apple or Google"
+      ],
+      "competitors": [
+        {
+          "name": "Apple App Store Connect Help: EU DSA trader requirements",
+          "url": "https://developer.apple.com/help/app-store-connect/manage-compliance-information/manage-eu-digital-services-act-compliance-information",
+          "gap": "Explains the form but not whether a free or open-source app counts as a trader. It doesn't help with where to get a contact address or with lapsing status."
+        },
+        {
+          "name": "Apple Developer Forums threads on trader status",
+          "url": "https://developer.apple.com/forums/thread/762147",
+          "gap": "Scattered individual anecdotes with no consolidated, current guidance, and some threads describe verification stuck for days or weeks."
+        },
+        {
+          "name": "General law-firm DSA explainers",
+          "gap": "Written for companies, not for an individual shipping a side project, and not tied to the actual store consoles."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Apple removed my open-source app from EU App Stores after 9 years",
+          "url": "https://news.ycombinator.com/item?id=50618708",
+          "quote": "I find the DSA a bit poor for individual developers. If you're classed as a trader, you have to publish a postal address, phone number and email address on your EU app listing.",
+          "engagement": "534 points · 117 comments (thread)",
+          "date": "2026-11-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Apple removed my open-source app from EU App Stores after 9 years",
+          "url": "https://news.ycombinator.com/item?id=50622315",
+          "quote": "For some bizarre reason, the EU is obsessed with stripping people of their anonymity in the name of \"transparency\". What is this supposed to achieve? Especially for small open-source app developers like OP.",
+          "engagement": "534 points · 117 comments (thread)",
+          "date": "2026-11-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Apple removed my open-source app from EU App Stores after 9 years",
+          "url": "https://news.ycombinator.com/item?id=50618727",
+          "quote": "I sent the documents right away, and this has been dragging on for a very long time without any updates.",
+          "engagement": "534 points · 117 comments (thread)",
+          "date": "2026-11-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Apple removed my open-source app from EU App Stores after 9 years",
+          "url": "https://news.ycombinator.com/item?id=50618419",
+          "quote": "Verified trader status is not a one-and-done thing.",
+          "engagement": "534 points · 117 comments (thread)",
+          "date": "2026-11-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Apple removed my open-source app from EU App Stores after 9 years",
+          "url": "https://news.ycombinator.com/item?id=50618601",
+          "quote": "It took our app a month to get EU DSA approval on App store after the recent EU rule change in October",
+          "engagement": "534 points · 117 comments (thread)",
+          "date": "2026-11-23"
+        }
+      ]
+    },
+    {
+      "id": "apple-notes-feel-plain-files-app",
+      "title": "Apple-Notes Feel, Plain Files Underneath",
+      "category": "Mobile app",
+      "oneLiner": "A cross-platform notes app with a clean Apple Notes style interface that stores everything as ordinary files in folders you own.",
+      "problem": "People leaving Mem, Notion and similar tools want something private, with no account and no subscription. They also want a pleasant interface, and the open-source options tend to feel clunky. Power users refuse any notes tool that hides documents in its own database instead of files in folders.",
+      "targetUsers": "Privacy-minded note takers on a mix of Android, iOS, Windows and Mac, including ex-Mem and ex-Notion users and developers who keep notes next to their code.",
+      "painScore": 7,
+      "effort": "1 month+",
+      "monetization": "Free local app. One-time purchase of about $15 or a $2/month plan for encrypted sync across devices. No ads and no telemetry as a headline promise.",
+      "mvp": [
+        "Folder and file based storage using Markdown and plain attachments in a user-chosen directory",
+        "Apple Notes style list and editor UI with checklists, pinned notes and quick search",
+        "Flutter app for Android and iOS first, then desktop builds from the same codebase",
+        "Import from Apple Notes exports, Obsidian vaults and Notion Markdown exports",
+        "Optional end-to-end encrypted sync, with plain folder sync via the user's own cloud as the default"
+      ],
+      "competitors": [
+        {
+          "name": "Obsidian",
+          "url": "https://obsidian.md",
+          "gap": "Plain files, but the interface is built for linked-knowledge power users, and encrypted sync is a paid add-on."
+        },
+        {
+          "name": "Joplin",
+          "url": "https://joplinapp.org",
+          "gap": "Open source and cross platform, but widely seen as dated in look and feel, and it keeps notes in its own database rather than as plain files."
+        },
+        {
+          "name": "FUTO Notes / HelixNotes / Plainva (young open-source apps)",
+          "gap": "Plain-file approach but new; platform coverage varies and I could not confirm that any matches an Apple Notes style polish."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Mem Is Shutting Down",
+          "url": "https://news.ycombinator.com/item?id=50526700",
+          "quote": "Is there any cross platform open source notes app with as good UI as Apple Notes?",
+          "engagement": "79 points · 127 comments (thread)",
+          "date": "2026-11-17"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Mem Is Shutting Down",
+          "url": "https://news.ycombinator.com/item?id=50527681",
+          "quote": "If the tool can't/won't use a filesystem to organize documents as files in folders, I assume the author was a moron.",
+          "engagement": "79 points · 127 comments (thread)",
+          "date": "2026-11-17"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Mem Is Shutting Down",
+          "url": "https://news.ycombinator.com/item?id=50538642",
+          "quote": "I got tired of it and built my own app: very basic at first, but it met my requirements: private, no account, no subscription, no telemetry.",
+          "engagement": "79 points · 127 comments (thread)",
+          "date": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "build-gun-cad-for-3d-printing-hobbyists",
+      "title": "Build-Gun CAD for 3D-Printing Hobbyists",
+      "category": "Web app",
+      "oneLiner": "A browser CAD tool for hobby 3D printing that you model in like a building game and that keeps your files local.",
+      "problem": "Hobbyists find the affordable CAD options either public-only, capped, tied to a cloud service or too complex. Even people who learned the basics produce parts that look bad and fail under load, and some want a game-like way to make shapes instead of adapting to Blender or Fusion.",
+      "targetUsers": "Home 3D-printer owners and makers who design brackets, enclosures and gadgets a few times a month and won't pay professional CAD prices.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "Free for local-file use. $6/month for cloud backup, a parts library and printability checks, or a one-time desktop-grade licence for about $39.",
+      "mvp": [
+        "Voxel and snap-based build and remove tool that exports STL and 3MF",
+        "Local file saving with no account, using the browser file system API",
+        "Printability checker that flags thin walls, overhangs and weak load directions",
+        "A library of common printed parts such as brackets, hinges, mounts and enclosures with adjustable dimensions",
+        "Dimension-driven editing so parts can be resized after the fact"
+      ],
+      "competitors": [
+        {
+          "name": "Onshape free plan",
+          "url": "https://www.onshape.com",
+          "gap": "Free documents are public, which blocks users working with models they can't republish, and the cheapest paid tier is too much for occasional use."
+        },
+        {
+          "name": "Fusion 360 personal use",
+          "url": "https://www.autodesk.com/products/fusion-360",
+          "gap": "Hobbyist licence is limited in projects and tied to Autodesk's cloud."
+        },
+        {
+          "name": "FreeCAD / SolveSpace / OpenSCAD",
+          "gap": "Free, but described by commenters as a maze of workbenches or script-driven and hard to get complex shapes out of."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "How to CAD Almost Anything",
+          "url": "https://news.ycombinator.com/item?id=50569388",
+          "quote": "Their cheapest paid plan is way more than I could justify for occasional non-commercial hobbyist modelling.",
+          "engagement": "390 points · 147 comments (thread)",
+          "date": "2026-11-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Show HN: Aircad – Professional drafting and 3D modeling in the browser",
+          "url": "https://news.ycombinator.com/item?id=50466891",
+          "quote": "Lots of people hate the existing CAD offerings and especially the fact that the affordable offerings tie you to a cloud service.",
+          "date": "2026-11-12"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "How to CAD Almost Anything",
+          "url": "https://news.ycombinator.com/item?id=50568429",
+          "quote": "Is there any modeling software that works this way (like an fps with build/delete gun) or must I just bite the bullet and adapt to blender or fusion or something?",
+          "engagement": "390 points · 147 comments (thread)",
+          "date": "2026-11-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "How to CAD Almost Anything",
+          "url": "https://news.ycombinator.com/item?id=50568999",
+          "quote": "I can make whatever shapes but it all looks like crap and wilts quickly under load.",
+          "engagement": "390 points · 147 comments (thread)",
+          "date": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "id": "keyless-dev-setup-for-windows-and-wsl",
+      "title": "One-Command Keyless Dev Setup for Windows + WSL",
+      "category": "Developer tool",
+      "oneLiner": "A setup and diagnostics tool that wires a hardware key or OS keystore into SSH, Git signing and cloud credentials across Windows and WSL, so no long-lived secrets sit on disk.",
+      "problem": "Developers who want to stop keeping SSH keys and API tokens on disk say the setup is painful. Using a YubiKey from Windows inside WSL, and keeping tokens out of files and environment variables, takes a pile of agents, sockets and relays that each person assembles by hand.",
+      "targetUsers": "Developers on Windows with WSL who care about supply-chain and credential theft, including freelancers and small teams without a security group.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free CLI for personal use. $5/month or $49/year for team policy profiles, an audit report and support for extra credential types.",
+      "mvp": [
+        "Detect the current setup and show which keys and tokens are still on disk or in environment variables",
+        "Automated bridge from the Windows SSH and GPG agents into WSL, set up as a service",
+        "Hardware-key walkthrough for SSH and Git commit signing with verified test commands",
+        "Doctor command that explains failures in plain language, such as an agent not reachable from WSL",
+        "Export of a per-machine report of which secrets remain on disk"
+      ],
+      "competitors": [
+        {
+          "name": "wsl-ssh-agent and usbipd-win",
+          "url": "https://github.com/rupor-github/wsl-ssh-agent",
+          "gap": "Capable building blocks, but the user still has to wire sockets and services together and debug them alone."
+        },
+        {
+          "name": "1Password and Bitwarden SSH agents",
+          "gap": "Good agents, but WSL use still needs relay workarounds, and they only cover SSH keys rather than the wider set of credentials."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Don't keep your SSH keys on disk",
+          "url": "https://news.ycombinator.com/item?id=50618512",
+          "quote": "I wish there was a fool-proof way to do this with WSL. If I put in a YubiKey in Windows, I should be able to use it in WSL, and when I SSH into another machine.",
+          "engagement": "158 points · 101 comments (thread)",
+          "date": "2026-11-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Don't keep your SSH keys on disk",
+          "url": "https://news.ycombinator.com/item?id=50613839",
+          "quote": "a massive pain to get right at the moment.",
+          "engagement": "158 points · 101 comments (thread)",
+          "date": "2026-11-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Don't keep your SSH keys on disk",
+          "url": "https://news.ycombinator.com/item?id=50622278",
+          "quote": "We need to smooth out the dev experience.",
+          "engagement": "158 points · 101 comments (thread)",
+          "date": "2026-11-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Don't keep your SSH keys on disk",
+          "url": "https://news.ycombinator.com/item?id=50613902",
+          "quote": "Typing a reasonably strong SSH key passphrase many times a day is deeply annoying",
+          "engagement": "158 points · 101 comments (thread)",
+          "date": "2026-11-23"
+        }
+      ]
+    },
+    {
+      "id": "codebase-tour-and-review-baseline",
+      "title": "Codebase Tour and Review-Skill Baseline",
+      "category": "AI tool",
+      "oneLiner": "Point it at a repo and get a guided tour of the system, plus prompts that make you predict how you would have written a change before you see the agent's diff.",
+      "problem": "Engineers joining a large monorepo feel overwhelmed and don't know which prompts or deliverables help them learn it. Others find that when agents write most of the code, they lose their own baseline and spot fewer problems in diffs.",
+      "targetUsers": "Developers who just joined a team with a large codebase, and developers who review a lot of AI-written code.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for one public repo. $12/month individual plan for private repos, with a team plan per seat for shared tours.",
+      "mvp": [
+        "Generate an entry-points and data-flow map for a repo, with the five files to read first",
+        "Ask-me-first mode that asks the reviewer to sketch their own approach before showing an agent diff, then compares the two",
+        "Weekly learning prompts based on recent merged changes in the repo",
+        "Export tour as Markdown for the team wiki",
+        "Local-only mode so code is not sent to a third party"
+      ],
+      "competitors": [
+        {
+          "name": "DeepWiki",
+          "url": "https://deepwiki.com",
+          "gap": "Generates wiki-style docs and answers questions about a repo, but has no learning loop and no review-skill support, and it is aimed at public repos."
+        },
+        {
+          "name": "Sourcegraph Deep Search",
+          "url": "https://sourcegraph.com",
+          "gap": "Targeted at larger organisations and priced accordingly, as reported by a comparison blog that I did not verify against a primary source."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How do you use AI for exploring new codebases",
+          "url": "https://news.ycombinator.com/item?id=50580331",
+          "quote": "Looking for a good way to tame the chaos and the overwhelming amount of information as I still build and ship tasks on the various projects.",
+          "date": "2026-11-20"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: How do you keep code review skills when agents write most of the code?",
+          "url": "https://news.ycombinator.com/item?id=50583987",
+          "quote": "Agent diffs mostly look fine. But once you stop writing that kind of code yourself, you lose the \"how would I have done this\" baseline, so it gets harder to spot what's wrong.",
+          "date": "2026-11-20"
+        }
+      ]
+    }
+  ]
+}
