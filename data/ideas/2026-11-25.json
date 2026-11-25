@@ -1,0 +1,356 @@
+{
+  "date": "2026-11-25",
+  "summary": "Reddit, X and Bluesky were unreachable today, so this report draws only on Hacker News threads from the past week, and each idea has at least three sources. The strongest theme is listeners wanting a real filter for AI-generated music after Tidal's ban. Next come two quiet infrastructure gripes: being locked out when email-based login fails, and having no ledger of which vendors hold your personal data. Fewer ideas than usual passed the verification bar.",
+  "ideas": [
+    {
+      "id": "ai-slop-music-filter",
+      "title": "Slop Filter for Music Streaming",
+      "category": "Mobile app",
+      "oneLiner": "A companion app that flags likely AI-generated artists in Spotify and YouTube Music queues and auto-skips them, using a shared blocklist plus a credits check.",
+      "problem": "After Tidal banned AI music, listeners on other services said they have no real filter. They block AI artists one at a time, check song credits by hand, and still get slop in algorithmic playlists. Spotify's only control, as one user describes it, is 'don't play this artist'.",
+      "targetUsers": "Heavy streaming listeners who dislike AI-generated music, especially people who use Release Radar or Discover Weekly and music-while-working listeners.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free with a small community blocklist; ₹99/month or ₹799/year for auto-skip, credits-based scoring and sync across devices.",
+      "mvp": [
+        "Android notification-listener that reads the current track and artist from Spotify and YouTube Music",
+        "Community blocklist of flagged AI artists, with one-tap report and 'not AI' appeal",
+        "Auto-skip or mute for flagged artists, with a toggle for people who want AI music (opt-in mode)",
+        "Credits check that warns when a track has no vocal or songwriter credits",
+        "Weekly summary of how much AI music was skipped"
+      ],
+      "competitors": [
+        {
+          "name": "Tidal",
+          "url": "https://tidal.com",
+          "gap": "Bans AI music outright, which several commenters said should have been a toggle, and it only helps people who switch services."
+        },
+        {
+          "name": "Spotify",
+          "url": "https://www.spotify.com",
+          "gap": "One commenter says the only control is right-click 'don't play this artist' and the report options are irrelevant; no AI filter."
+        },
+        {
+          "name": "Manual artist blocking",
+          "gap": "Commenters describe checking credits and blocking artists one by one; it does not scale and does not carry between services."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Tidal bans AI-generated music (@mapontosevenths)",
+          "url": "https://news.ycombinator.com/item?id=50630524",
+          "quote": "Every day Youtube tries to shove some slop in my earholes and it distracts me from my work badly enough that I have to stop what I'm doing and go block the artist.",
+          "engagement": "Thread: 319 points",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Tidal bans AI-generated music (@yepiagree)",
+          "url": "https://news.ycombinator.com/item?id=50630934",
+          "quote": "If anything is newer than 2025 I immediately look for AI markers. If found, I block that artist.",
+          "engagement": "Thread: 319 points",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Tidal bans AI-generated music (@stronglikedan)",
+          "url": "https://news.ycombinator.com/item?id=50632742",
+          "quote": "I've started looking for singing credits on songs with vocals, and if they don't have them, I'm blocking the whole damn artist.",
+          "engagement": "Thread: 319 points",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Tidal removes all AI songs (@sprayk)",
+          "url": "https://news.ycombinator.com/item?id=50629606",
+          "quote": "All I can do is right click the \"artist\", select \"dont play this artist\", and hope the algorithm will take the hint.",
+          "engagement": "Thread on Tidal AI ban",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Tidal bans AI-generated music (@y-c-o-m-b)",
+          "url": "https://news.ycombinator.com/item?id=50633042",
+          "quote": "I agree, it should absolutely be a toggle or filter.",
+          "engagement": "Thread: 319 points",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN comment on an App Store thread (@bemtevi)",
+          "url": "https://news.ycombinator.com/item?id=50391275",
+          "quote": "I wish there was a filter in the app store to filter and only show apps that having nothing to do with AI.",
+          "engagement": "Earlier comment, 2026-11-06",
+          "date": "2026-11-06"
+        }
+      ]
+    },
+    {
+      "id": "vendor-data-exposure-ledger",
+      "title": "Vendor Data Ledger",
+      "category": "Mobile app",
+      "oneLiner": "A private ledger of which company holds which of your personal details (passport, phone, address), with per-vendor alias identities and fake security answers.",
+      "problem": "People assume every service will eventually leak. Reducing exposure means remembering what each vendor was given, and password managers do not track that. One commenter keeps a paper-only record of fabricated security answers per vendor, and others say the real problem is aliases scattered across providers.",
+      "targetUsers": "Privacy-minded individuals and families who have received breach emails, expats and frequent travellers who hand out passport details, and anyone managing many online accounts.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free for up to 15 vendors; ₹149/month or ₹1,199/year for unlimited vendors, breach-notice import and encrypted family sharing.",
+      "mvp": [
+        "Add a vendor with the data categories you gave it (passport number, phone, address, ID)",
+        "Per-vendor generated fake security answers and a stored alias, encrypted on device",
+        "Forward a breach-notice email to log it and see what that vendor held",
+        "Exposure dashboard sorted by sensitivity, with a 'ask them to delete' reminder",
+        "Encrypted local export or sync"
+      ],
+      "competitors": [
+        {
+          "name": "Bitwarden / 1Password",
+          "url": "https://bitwarden.com",
+          "gap": "Store credentials and notes, but as far as I could tell they do not give a per-vendor view of what personal data each company holds."
+        },
+        {
+          "name": "Have I Been Pwned",
+          "url": "https://haveibeenpwned.com",
+          "gap": "Tells you which breaches included your email, not what each vendor knows about you or how to respond."
+        },
+        {
+          "name": "Apple Hide My Email",
+          "url": "https://support.apple.com/en-us/105078",
+          "gap": "Hides your email only; it does not cover passport numbers, phone numbers or security answers."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: Everything will get breached. How do you limit the blast radius? (@humbleferret)",
+          "url": "https://news.ycombinator.com/item?id=50626772",
+          "quote": "Assuming every vendor database is basically public eventually, how are you actually limiting the blast radius without turning everyday life into a massive faff?",
+          "engagement": "Thread: 12 points",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: Everything will get breached... (@bell-cot)",
+          "url": "https://news.ycombinator.com/item?id=50627377",
+          "quote": "For hard-to-avoid vendors who need security questions, keep a paper-only record of per-vendor fabricated answers.",
+          "engagement": "Thread: 12 points",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: Everything will get breached... (@motownphilly)",
+          "url": "https://news.ycombinator.com/item?id=50627118",
+          "quote": "I don't give my real name/info to a website unless it's absolutely required.",
+          "engagement": "Thread: 12 points",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Kagi Mail (public beta) (@brynx97)",
+          "url": "https://news.ycombinator.com/item?id=50617356",
+          "quote": "The problem is aliases and how many my wife has created that are tied to fastmail that I see as being the main barrier to switching",
+          "engagement": "Different thread, 2026-11-23",
+          "date": "2026-11-23"
+        }
+      ]
+    },
+    {
+      "id": "magic-link-outage-fallback",
+      "title": "Magic-Link Login with a Fallback Channel",
+      "category": "Developer tool",
+      "oneLiner": "A drop-in Next.js and Flutter auth component that keeps email magic links but adds WhatsApp, SMS or passkey fallback, so an email outage does not lock users out.",
+      "problem": "More services default to emailed login links. When the user's email provider goes down, they cannot log in to anything, and developers have no simple, standard fallback.",
+      "targetUsers": "Indie developers and small teams who ship Next.js or Flutter apps with passwordless login, particularly in India where WhatsApp and SMS codes are common.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Open-source core; hosted version with per-message fallback billing (about ₹0.5 per WhatsApp or SMS code) plus a ₹999/month plan with analytics.",
+      "mvp": [
+        "Magic-link and 6-digit-code login component for Next.js with a Flutter client",
+        "One-click 'email not arriving?' switch to WhatsApp, SMS or Telegram code",
+        "Prompt to enroll a passkey after the first successful login",
+        "Email-provider status check that offers the fallback before the user is stuck",
+        "Rate-limit and abuse protection"
+      ],
+      "competitors": [
+        {
+          "name": "Clerk",
+          "url": "https://clerk.com",
+          "gap": "Full auth platform with many options, but a heavy dependency and not tuned for a 'email is down' fallback flow."
+        },
+        {
+          "name": "Supabase Auth",
+          "url": "https://supabase.com/auth",
+          "gap": "Supports magic links and phone OTP, but the fallback logic and UX are left to the developer."
+        },
+        {
+          "name": "Better Auth",
+          "url": "https://better-auth.com",
+          "gap": "Flexible open-source library; it provides the pieces but no ready-made outage fallback flow."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Why are so many services using email magic links for login? (@bfbf)",
+          "url": "https://news.ycombinator.com/item?id=50625996",
+          "quote": "Notably Claude does this (which during the Outlook outage last week completely blocked me from accessing it).",
+          "engagement": "Thread: 17 points · 15 comments",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Why are so many services using email magic links for login? (@dahrkael)",
+          "url": "https://news.ycombinator.com/item?id=50626096",
+          "quote": "its all cool and easy until your email provider (Outlook the othe day) goes down and you can't login anywhere",
+          "engagement": "Thread: 17 points · 15 comments",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Why are so many services using email magic links for login? (@webarchitect)",
+          "url": "https://news.ycombinator.com/item?id=50630071",
+          "quote": "I'm curious what would be appropriate choice to send magic links if mail is unavailable? That seems like an issue worth solving.",
+          "engagement": "Thread: 17 points · 15 comments",
+          "date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": "llm-api-usage-evidence-log",
+      "title": "LLM API Usage Evidence Log",
+      "category": "Developer tool",
+      "oneLiner": "A local proxy that labels and signs your LLM API traffic (benchmarks, evals, production) so you can answer a provider's abuse inquiry within hours.",
+      "problem": "A developer said an AI provider accused their company of distilling and gave them 24 hours to prove otherwise. Advice in the thread was to show a test harness and git history, but git history is easy to rewrite, and the developer wanted to avoid exposing user data. Others said providers act as judge and jury with no warning.",
+      "targetUsers": "Small AI product teams that run automated regression benchmarks against hosted models and have no evidence trail if a provider flags the account.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "Free local logger; ₹2,500/month per team for tamper-evident hosted storage, redaction rules and one-click evidence reports.",
+      "mvp": [
+        "Drop-in proxy for OpenAI-compatible and Anthropic endpoints",
+        "Tag each call with a purpose (eval, regression, production) from headers or config",
+        "Hash-chained, timestamped log with optional external anchoring",
+        "Redaction of user content so evidence can be shared safely",
+        "Exportable 'usage explanation' PDF for a provider inquiry"
+      ],
+      "competitors": [
+        {
+          "name": "Helicone",
+          "url": "https://www.helicone.ai",
+          "gap": "Observability and cost tracking, but not designed to produce tamper-evident evidence for a provider dispute."
+        },
+        {
+          "name": "Langfuse",
+          "url": "https://langfuse.com",
+          "gap": "Tracing and evals; stores content and does not aim at signed, shareable proof of purpose."
+        },
+        {
+          "name": "Git history of the test harness",
+          "gap": "What the thread suggests today; a commenter points out it is trivial to rewrite."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: Anthropic is accusing my company of distilling. How can I prove I'm not? (@weli)",
+          "url": "https://news.ycombinator.com/item?id=50630809",
+          "quote": "How can you prove that you are not distilling Anthropic models without breaking your user's privacy?",
+          "engagement": "Thread: 227 points · 166 comments",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: Anthropic is accusing my company of distilling... (@davydm)",
+          "url": "https://news.ycombinator.com/item?id=50630855",
+          "quote": "show them your testing harness, especially if it's in git, then you have receipts for how long it's been alive.",
+          "engagement": "Thread: 227 points · 166 comments",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: Anthropic is accusing my company of distilling... (@rosslh)",
+          "url": "https://news.ycombinator.com/item?id=50633027",
+          "quote": "Git history is trivial to rewrite",
+          "engagement": "Thread: 227 points · 166 comments",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Ask HN: Anthropic is accusing my company of distilling... (@unyttigfjelltol)",
+          "url": "https://news.ycombinator.com/item?id=50633128",
+          "quote": "randomly, arbitrarily and without advance warning, locks you out.",
+          "engagement": "Thread: 227 points · 166 comments",
+          "date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": "unknown-sender-gate-for-existing-inbox",
+      "title": "Unknown-Sender Gate for Your Existing Inbox",
+      "category": "Mobile app",
+      "oneLiner": "A mail overlay that holds first-time senders behind a 'do you know this person?' approval, working on top of Gmail or IMAP without changing your address.",
+      "problem": "Inboxes are full of low-signal mail, and people cope with burner addresses, aggressive filters or AI summaries. One commenter asked for a WhatsApp-style authorization for each unknown mailer.",
+      "targetUsers": "People who use one long-lived email address for banks, work and family and are tired of cold outreach and promotions, as well as freelancers who must keep a public address.",
+      "painScore": 4,
+      "effort": "1 month+",
+      "monetization": "Free for one mailbox; ₹199/month for multiple accounts, auto-rules and a daily digest of held senders.",
+      "mvp": [
+        "Connect Gmail or IMAP read-only plus a label or move permission",
+        "Hold mail from first-time senders in a Screener folder and notify once a day",
+        "Approve, block or 'only receipts' per sender in one tap",
+        "Always allow senders you have replied to and known domains such as banks",
+        "Weekly report of blocked senders"
+      ],
+      "competitors": [
+        {
+          "name": "HEY",
+          "url": "https://hey.com",
+          "gap": "Has a Screener, but it requires moving to a new hey.com address and a paid plan."
+        },
+        {
+          "name": "SaneBox",
+          "url": "https://www.sanebox.com",
+          "gap": "Sorts mail by learned importance rather than asking you to approve each new sender."
+        },
+        {
+          "name": "Gmail filters",
+          "gap": "Manual, rule-by-rule, and reactive instead of gating new senders."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "HN: Does anybody read their emails anymore? (@huubhermsen)",
+          "url": "https://news.ycombinator.com/item?id=50593779",
+          "quote": "I wouldn't mind a \"do you know this person\" kinda authorization for each unknown mailer like whatsapp has.",
+          "engagement": "Thread: 8 points · 29 comments",
+          "date": "2026-11-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Does anybody read their emails anymore? (@al_borland)",
+          "url": "https://news.ycombinator.com/item?id=50599513",
+          "quote": "The signal-to-noise ratio is too low.",
+          "engagement": "Thread: 8 points · 29 comments",
+          "date": "2026-11-22"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Does anybody read their emails anymore? (@dgunay)",
+          "url": "https://news.ycombinator.com/item?id=50597055",
+          "quote": "The key is to be aggressive or the spam will overwhelm everything.",
+          "engagement": "Thread: 8 points · 29 comments",
+          "date": "2026-11-22"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "HN: Does anybody read their emails anymore? (@Rotundo)",
+          "url": "https://news.ycombinator.com/item?id=50591446",
+          "quote": "Key is not giving out your primary email to any random site, use a few rotating burners for that.",
+          "engagement": "Thread: 8 points · 29 comments",
+          "date": "2026-11-21"
+        }
+      ]
+    }
+  ]
+}
