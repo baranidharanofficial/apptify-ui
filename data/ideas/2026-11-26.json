@@ -1,0 +1,311 @@
+{
+  "date": "2026-11-26",
+  "summary": "Reddit, X and Bluesky were blocked today, so this report rests on verified Hacker News comment threads. Strongest themes: people leaving 1Password over the dropped offline vault, newsrooms warning photographers off Photoshop's AI features, GitHub outages pushing people toward paid managed Forgejo, job seekers filtered out by software before a human sees them, and Windows 11's Settings app replacing the Control Panel.",
+  "ideas": [
+    {
+      "id": "offline-first-vault-with-byo-sync",
+      "title": "Offline-first password vault with bring-your-own sync",
+      "category": "Desktop app",
+      "oneLiner": "A 1Password-7-style local vault that syncs through storage you pick (iCloud, Dropbox, Syncthing) and imports old vaults without losing dates or choking on bad fields.",
+      "problem": "After the 1Password incident disclosure, long-time users say they want a local-only vault but can't get one with good UX. 1Password dropped offline vaults, KeePass-style tools lack polished sync/sharing, and Vaultwarden imports lose creation dates and fail entirely if one item has a bad field.",
+      "targetUsers": "Security-conscious individuals, families and small teams who distrust cloud-hosted vaults but won't give up multi-device sync and passkeys.",
+      "painScore": 8,
+      "effort": "1 month+",
+      "monetization": "One-time licence per platform (around $29–49) or a $20–30/year sync-and-updates tier. Commenters say they'd still pay a subscription for a local-only option.",
+      "mvp": [
+        "Encrypted local vault file with a modern native UI",
+        "Optional sync through the user's own folder (iCloud, Dropbox, Syncthing)",
+        "Tolerant importer for 1Password .1pux and Bitwarden exports that keeps original created/modified dates and skips or flags oversized fields instead of failing",
+        "TOTP and passkey storage",
+        "Browser autofill extension that talks to the local app",
+        "Family sharing via exported shared vaults"
+      ],
+      "competitors": [
+        {
+          "name": "KeePassXC",
+          "url": "https://keepassxc.org",
+          "gap": "Trusted and local, but commenters note sync and sharing across Linux, Mac, iPhone and a partner is manual, and the UX is not 1Password-grade."
+        },
+        {
+          "name": "Vaultwarden / Bitwarden",
+          "url": "https://bitwarden.com",
+          "gap": "Self-hostable, but one user reports import resets creation dates and fails the whole import on a single bad field, and dislikes JavaScript-based clients."
+        },
+        {
+          "name": "1Password",
+          "url": "https://1password.com",
+          "gap": "Dropped offline vaults and moved to a cloud-first client; users cite this as the reason they're leaving."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "1Password Security Incident",
+          "url": "https://news.ycombinator.com/item?id=50644952",
+          "quote": "Longtime 1Password user here who maintains a local-only vault (and is therefore stuck on older versions of their apps/extensions) out of concern for incidents like this.",
+          "engagement": "Thread: 1188 comments",
+          "date": "2026-11-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "1Password Security Incident",
+          "url": "https://news.ycombinator.com/item?id=50644981",
+          "quote": "100% agree about supporting local-only vaults! I'd still be happy to pay the subscription price, even if it makes less sense.",
+          "engagement": "Thread: 1188 comments",
+          "date": "2026-11-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "1Password Security Incident",
+          "url": "https://news.ycombinator.com/item?id=50650237",
+          "quote": "What I cannot understand about 1Password is why they gave up on offline vaults.",
+          "engagement": "Thread: 1188 comments",
+          "date": "2026-11-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "1Password Security Incident",
+          "url": "https://news.ycombinator.com/item?id=50646939",
+          "quote": "they've stopped updating anything but the online cloud version unfortunately and are withdrawing support. So I'd have to look for other alternatives.",
+          "engagement": "Thread: 1188 comments",
+          "date": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "photoshop-ai-use-auditor-for-newsrooms",
+      "title": "AI-use auditor for photos and PSDs",
+      "category": "Desktop app",
+      "oneLiner": "Drop in a photo or layered file and get a plain report of whether generative AI touched it, before it goes to an editor or social platform.",
+      "problem": "The New York Times told photographers not to update Photoshop because generative features can be used by accident. Commenters point out that provenance standards only identify the problem after the fact, and that even minor AI edits can earn a platform's AI-generated tag.",
+      "targetUsers": "Freelance and staff photojournalists, photo editors, and brand teams that publish on Instagram or Facebook.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free single-file check; $9–19/month for batch scanning and PDF audit reports, plus a team plan for newsrooms.",
+      "mvp": [
+        "Read C2PA/Content Credentials and XMP history to flag generative-fill or AI-generated assets",
+        "Scan PSD layers for generative layers",
+        "Batch-check a folder before submission",
+        "Exportable pass/fail report for the editor",
+        "Offline processing so unpublished photos stay on the machine"
+      ],
+      "competitors": [
+        {
+          "name": "Content Credentials Verify",
+          "url": "https://contentcredentials.org/verify",
+          "gap": "Shows credentials after the fact for one image at a time; commenters note it does not stop accidental AI use or give a batch pre-submission check."
+        },
+        {
+          "name": "Adobe AI-off settings",
+          "gap": "Some tools have toggles, but a commenter says photographers still hit AI features inadvertently because they are not clearly distinguished from traditional tools."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "The New York Times warns photographers not to update Photoshop over AI features",
+          "url": "https://news.ycombinator.com/item?id=50648456",
+          "quote": "The core problem which the Times has identified here is that photographers are using GenAI tools in Photoshop inadvertently because they are not clearly distinguished from traditional editing tools.",
+          "engagement": "Thread: 215 points",
+          "date": "2026-11-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "The New York Times warns photographers not to update Photoshop over AI features",
+          "url": "https://news.ycombinator.com/item?id=50649021",
+          "quote": "Adobe and others can plausibly distribute AI-free builds or just have a big AI-off switch that can disable AI-tainting features for a work session to prevent inadvertent use.",
+          "engagement": "Thread: 215 points",
+          "date": "2026-11-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "The New York Times warns photographers not to update Photoshop over AI features",
+          "url": "https://news.ycombinator.com/item?id=50648319",
+          "quote": "I work in the creative tools space. This is one of the biggest issues right now.",
+          "engagement": "Thread: 215 points",
+          "date": "2026-11-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "The New York Times warns photographers not to update Photoshop over AI features",
+          "url": "https://news.ycombinator.com/item?id=50649865",
+          "quote": "it's using newer Photoshop versions that potentially uses generative AI without you knowing (which is a risk for journalists publishing photos).",
+          "engagement": "Thread: 215 points",
+          "date": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "id": "managed-forgejo-hosting-with-github-mirror",
+      "title": "Managed Forgejo hosting with GitHub mirroring",
+      "category": "SaaS",
+      "oneLiner": "Hosted, patched Forgejo with CI runners and common integrations preconfigured, plus a one-click two-way mirror to GitHub.",
+      "problem": "During another GitHub degradation, developers said it is frustrating and interferes with work, and one asked outright for a company that hosts Forgejo for them. Self-hosting worries them (CVEs), and users of Gitea/Forgejo say missing integrations make it painful at work.",
+      "targetUsers": "Small dev teams and indie developers who want a GitHub fallback or exit without running their own server.",
+      "painScore": 7,
+      "effort": "1 month+",
+      "monetization": "Per-seat or per-repo-bundle subscription ($4–8/user/month) with a free tier for small public projects.",
+      "mvp": [
+        "One-click provisioned, auto-patched Forgejo instance",
+        "Push mirror to and from GitHub",
+        "Hosted CI runners compatible with Actions workflows",
+        "Preconfigured webhooks for common security, review and agent tools",
+        "Daily backups and export",
+        "Per-agent accounts included at no extra seat cost"
+      ],
+      "competitors": [
+        {
+          "name": "Codeberg",
+          "url": "https://codeberg.org",
+          "gap": "Free and non-commercial; a commenter says it has a weekly maintenance window of up to 8 hours and would not host every project."
+        },
+        {
+          "name": "Self-hosted Forgejo",
+          "url": "https://forgejo.org",
+          "gap": "Fast per commenters, but they must patch it and wire up integrations themselves."
+        },
+        {
+          "name": "GitLab",
+          "url": "https://gitlab.com",
+          "gap": "Hosted alternative, but heavier and not the lightweight GitHub-like workflow these commenters want."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Investigating degraded experiences across GitHub products",
+          "url": "https://news.ycombinator.com/item?id=50644080",
+          "quote": "Host Forgejo for me or build your own thing (Cloudflare Artifacts looks pretty promising). For my own things I self host Forgejo, but considering the fun CVE's floating around lately I'd rather pay someone to host this for me.",
+          "engagement": "Thread: 179 points",
+          "date": "2026-11-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Investigating degraded experiences across GitHub products",
+          "url": "https://news.ycombinator.com/item?id=50644137",
+          "quote": "this is quite frustrating that it keeps happening, and it increasingly interferes with my work (many reviews to tend to today).",
+          "engagement": "Thread: 179 points",
+          "date": "2026-11-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Investigating degraded experiences across GitHub products",
+          "url": "https://news.ycombinator.com/item?id=50643821",
+          "quote": "I had to try over and over just to add a new SSH key, and of course I wanted to add it right when the degradation started.",
+          "engagement": "Thread: 179 points",
+          "date": "2026-11-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Investigating degraded experiences across GitHub products",
+          "url": "https://news.ycombinator.com/item?id=50644557",
+          "quote": "i’d rather use GitHub with a weekly outage than having to use forgejo (or gitea) for work. If you want anything that extends beyond the basics, its just a bad experience.",
+          "engagement": "Thread: 179 points",
+          "date": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "recruiter-search-and-ats-visibility-checker",
+      "title": "Recruiter-search and ATS visibility checker",
+      "category": "Web app",
+      "oneLiner": "Paste your resume or LinkedIn profile and see which recruiter Boolean searches and ATS rankings you would appear in, with fixes.",
+      "problem": "Job seekers say software screens them out before a human looks: recruiters run LinkedIn Boolean searches that bucket a profile as backend instead of full-stack, and ATS ranking penalises resume gaps.",
+      "targetUsers": "Laid-off and long-term-searching engineers and other professionals, especially with gaps or hybrid profiles.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free scan; $9–15/month for unlimited scans, role-targeted rewrite suggestions, and gap-explanation templates.",
+      "mvp": [
+        "Paste resume or profile text",
+        "Generate typical recruiter Boolean queries for a target role and show hit/miss",
+        "Flag gap and keyword issues an ATS may rank down",
+        "Suggest wording to move the profile into the right bucket",
+        "Side-by-side before/after score"
+      ],
+      "competitors": [
+        {
+          "name": "Jobscan",
+          "url": "https://www.jobscan.co",
+          "gap": "Compares a resume to one job description; does not simulate the recruiter-side Boolean searches commenters describe."
+        },
+        {
+          "name": "Teal",
+          "url": "https://www.tealhq.com",
+          "gap": "Resume and tracking suite; not focused on whether you surface in recruiter searches."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: I have been unemployed for 2y. 15 years of experience, US. What to do?",
+          "url": "https://news.ycombinator.com/item?id=50588229",
+          "quote": "one recruiter even said that I didn't got a screening before, because my profile is drawed against backend profile and not fullstack, because they do linkedin boolean searches.",
+          "engagement": "Thread: 754 points · 864 comments",
+          "date": "2026-11-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: I have been unemployed for 2y. 15 years of experience, US. What to do?",
+          "url": "https://news.ycombinator.com/item?id=50584497",
+          "quote": "Resume gaps matter to an ATS if you are looking for a job now, because your competition (either real - people laid off recently - or fake - there’s boatloads of resume fraud in the last few years) doesn’t have those gaps and the software will rank them higher.",
+          "engagement": "Thread: 754 points · 864 comments",
+          "date": "2026-11-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: I have been unemployed for 2y. 15 years of experience, US. What to do?",
+          "url": "https://news.ycombinator.com/item?id=50585352",
+          "quote": "my traditional job sources have decayed in quality, and that it's possible to spend all day every day applying for positions I'm qualified for but wouldn't enjoy at companies that will never call me back.",
+          "engagement": "Thread: 754 points · 864 comments",
+          "date": "2026-11-21"
+        }
+      ]
+    },
+    {
+      "id": "classic-control-panel-for-windows-11",
+      "title": "Classic Control Panel finder for Windows 11",
+      "category": "Desktop app",
+      "oneLiner": "A searchable launcher that maps every Windows 11 setting, including buried legacy Control Panel and policy settings, to one-click shortcuts with plain explanations.",
+      "problem": "Users say the Windows 11 Settings app hides options, has confusing labels, and leaves many settings only in the old Control Panel, forcing them into PowerShell, Group Policy or the registry.",
+      "targetUsers": "Power users, IT admins and helpers of non-technical relatives on Windows 10/11.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for personal use; $10 one-time Pro licence for exporting presets and admin features.",
+      "mvp": [
+        "Index of Settings pages plus legacy Control Panel applets",
+        "Fuzzy search by task wording",
+        "Plain-language descriptions and the registry/policy key each toggle changes",
+        "Pin favourite settings to the Start menu",
+        "Export a settings checklist for family or IT"
+      ],
+      "competitors": [
+        {
+          "name": "Winaero Tweaker",
+          "url": "https://winaero.com",
+          "gap": "Powerful but organised by technical category, not task search with explanations."
+        },
+        {
+          "name": "ExplorerPatcher",
+          "url": "https://github.com/valinet/ExplorerPatcher",
+          "gap": "Restores old shell pieces but does not make buried settings discoverable or explain them."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Win4wine – Run Windows Shell as the Linux Desktop on Wine",
+          "url": "https://news.ycombinator.com/item?id=50620243",
+          "quote": "I wish they would fix their schizo settings apps though. How are so many settings still only in the Windows NT era Control Panel?",
+          "date": "2026-11-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Win4wine – Run Windows Shell as the Linux Desktop on Wine",
+          "url": "https://news.ycombinator.com/item?id=50621247",
+          "quote": "On the Settings app, you find nothing so you need to use the search function, hope that you can think of the right search term.",
+          "date": "2026-11-23"
+        }
+      ]
+    }
+  ]
+}
