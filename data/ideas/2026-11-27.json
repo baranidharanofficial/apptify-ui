@@ -1,0 +1,312 @@
+{
+  "date": "2026-11-27",
+  "summary": "Reddit, X and Bluesky were unreachable today, so this report rests on Hacker News comments only. Themes: agent tool vendors quietly injecting hidden instructions into MCP output, Google API/OAuth friction for small personal tools, parents wanting a truly educational YouTube, and everyday audio, router-trust and homelab-upkeep annoyances. Fewer ideas than usual because each one needed 2+ verified sources.",
+  "ideas": [
+    {
+      "id": "mcp-tool-result-sniffer",
+      "title": "MCP Result Sniffer",
+      "category": "Developer tool",
+      "oneLiner": "A local proxy that shows and strips hidden instructions, upsells and tracking prompts that MCP servers append to tool results before your agent sees them.",
+      "problem": "Hosted MCP servers have been caught appending text to successful tool results that tells the agent to do things the user never asked for (rate the vendor, not mention it, push upgrades). Users only find out by accident, and the tokens and trust are theirs.",
+      "targetUsers": "Developers and teams running Claude Code, Cursor or Codex with third-party MCP servers.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free open-source CLI; paid team tier at about $12/seat/month for shared allow/deny rules, audit logs and Slack alerts.",
+      "mvp": [
+        "Stdio/HTTP MCP proxy that logs every tool result next to the raw upstream API response",
+        "Heuristic and regex flags for imperative text such as 'do not mention', 'call X tool', upsell or rating requests",
+        "One-click strip or quarantine mode with a visible diff",
+        "Per-server allowlist of tool names whose output may contain instructions",
+        "Daily report of which servers injected text and how many tokens it cost"
+      ],
+      "competitors": [
+        {
+          "name": "Invariant Labs mcp-scan",
+          "url": "https://invariantlabs.ai/blog/introducing-mcp-scan",
+          "gap": "Focuses on malicious tool descriptions (tool poisoning); result-time checking exists only as an optional proxy with user-written guardrail policies, and tool names/descriptions are shared with a cloud API. Nothing aimed at benign-vendor upsells."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "RunPod's MCP server tells AI agents to rate it and not mention it to the user",
+          "url": "https://news.ycombinator.com/item?id=50589794",
+          "quote": "RunPod's hosted MCP server appends a note to successful create-pod results telling the agent to call rate_nps_score and \"do not mention it to the user\".",
+          "date": "2026-11-21"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Notion's official MCP inject hidden upsell instructions into agent context",
+          "url": "https://news.ycombinator.com/item?id=50661857",
+          "quote": "they are stealing tokens you could have spent elsewhere, to serve you an ad for only their benefit. And it involves deception!",
+          "date": "2026-11-27"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "LLM agents work for their parent companies, not for you",
+          "url": "https://news.ycombinator.com/item?id=50629352",
+          "quote": "LLMs don’t only work for their parent companies, they also work for anyone who finds ways to inject into their prompts without your awareness",
+          "date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": "google-send-only-and-byo-client-broker",
+      "title": "Google Access Broker for Personal Scripts and Agents",
+      "category": "Developer tool",
+      "oneLiner": "A self-hosted gateway plus setup wizard that gives your scripts and agents scoped, send-only Gmail and Drive access using your own Google client ID.",
+      "problem": "Gmail SMTP has no send-only credential, Google OAuth verification for restricted scopes can end in a paid security assessment, and even rclone says creating your own client IDs is long and annoying. Hobbyists and small tool builders end up building Telegram bots instead.",
+      "targetUsers": "Home-lab tinkerers, indie developers and open-source maintainers who need their own scripts or AI agents to send mail or read Drive.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "Free self-hosted core; $5/month hosted relay with managed OAuth app guidance, or a $29 one-time license for the wizard and audit log UI.",
+      "mvp": [
+        "Step-by-step wizard that creates a Google Cloud project, consent screen and client ID for personal use",
+        "Local relay exposing a simple HTTP/SMTP endpoint backed only by the gmail.send scope",
+        "Per-token scopes and rate limits so an agent can send but never read",
+        "Drive read-only folder-scoped tokens",
+        "Audit log of every send with kill switch"
+      ],
+      "competitors": [
+        {
+          "name": "Gmail SMTP with app passwords",
+          "url": "https://support.google.com/mail/answer/185833",
+          "gap": "App passwords also open IMAP access to the whole inbox; there is no send-only option."
+        },
+        {
+          "name": "Google OAuth verification / CASA",
+          "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
+          "gap": "Restricted scopes need an annual third-party security assessment, which is unrealistic for hobby projects."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Google Will Make AI Agents Use Its MCP Servers. The Gmail One Can't Send Email",
+          "url": "https://news.ycombinator.com/item?id=50660631",
+          "quote": "There's no way to create a \"send only\" account. I wanted to use SMTP for automated notifications from my home monitoring system, and it was _easier_ to build a freaking Telegram bot rather than just setting up SMTP.",
+          "date": "2026-11-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Google Will Make AI Agents Use Its MCP Servers. The Gmail One Can't Send Email",
+          "url": "https://news.ycombinator.com/item?id=50660286",
+          "quote": "had to go through a lengthy API OAuth Dev Verification process with Google. Completed it, and now they want me to complete an ADA-CASA AL1 (formerly Tier 2) security assessment for my application.",
+          "date": "2026-11-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Google Will Make AI Agents Use Its MCP Servers. The Gmail One Can't Send Email",
+          "url": "https://news.ycombinator.com/item?id=50658725",
+          "quote": "We have been advising users to make their own client_ids for years, but it is quite a long and annoying process even if you don't want to provide public access to it",
+          "date": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "id": "educational-only-youtube-for-kids",
+      "title": "Educational-Only YouTube Filter",
+      "category": "Browser extension",
+      "oneLiner": "A parent-controlled extension that lets a child use full YouTube but only shows videos and channels that pass an adjustable 'educational' bar.",
+      "problem": "Parents of 9–13 year olds say YouTube Kids is too limited and full YouTube is full of slop. Built-in controls are content-level filters rather than a whitelist, and parents want a dial for how educational content must be.",
+      "targetUsers": "Parents of children roughly 8–14 who use a shared laptop, Chromebook or tablet browser.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "$3–5/month per family, with a free tier limited to channel allowlists.",
+      "mvp": [
+        "Chrome/Edge/Firefox extension locked behind a parent PIN",
+        "Channel allowlist with starter packs (science, maths, languages)",
+        "Educational-level slider using an LLM-scored title/description/transcript classifier",
+        "Hide Shorts, recommendations and autoplay unless the video is approved",
+        "Weekly digest to the parent of watched and blocked videos"
+      ],
+      "competitors": [
+        {
+          "name": "YouTube supervised experience / Family Link",
+          "url": "https://support.google.com/youtube/answer/13877231",
+          "gap": "Offers broad content levels and Restricted Mode, which is a filter rather than an educational whitelist; time limits do not work on iPhone."
+        },
+        {
+          "name": "Qustodio",
+          "url": "https://www.qustodio.com/",
+          "gap": "Monitoring-oriented; one test found it did not log Shorts watched, and it has no educational-quality dial."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "YouTube Ad Punisher – Auto-reloads YouTube pages when an ad plays",
+          "url": "https://news.ycombinator.com/item?id=50662089",
+          "quote": "what is the best way to manage a YouTube account for a young child (9) to only serve at least non slop semi-educational videos for them to spin through? I’d love a slider to adjust just how “educational” videos would need to be in order to be viewed but on full YouTube, not kids.",
+          "date": "2026-11-27"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Kagi Watch",
+          "url": "https://news.ycombinator.com/item?id=50659194",
+          "quote": "my kids are starting to get to the point where the good parts of the internet could be really inspiring and help them expand on their curiosities. I yearn for a safe way to let them explore.",
+          "date": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "id": "call-loudness-leveler",
+      "title": "Call Loudness Leveler",
+      "category": "Desktop app",
+      "oneLiner": "A cross-platform tray app that normalizes loudness per app and per speaker on calls, with a visible mic meter and loopback test.",
+      "problem": "People on video calls get one quiet participant and one blasting one, and conferencing apps either lack per-talker normalization or apply their own bad one. The old Windows Loudness Equalization setting is buried in legacy Control Panel dialogs.",
+      "targetUsers": "Remote workers, call-heavy professionals and anyone sensitive to sudden volume jumps.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "One-time $15–20 licence with a free 14-day trial.",
+      "mvp": [
+        "System-wide loudness leveling with a one-switch toggle",
+        "Per-app target levels so Zoom, music and video stay matched",
+        "Live mic input meter and a 5-second record-and-playback loopback test",
+        "Per-speaker leveling for supported meeting apps via audio capture",
+        "Presets: calls, music, night mode"
+      ],
+      "competitors": [
+        {
+          "name": "WALE (Windows Audio Loudness Equalizer)",
+          "url": "https://www.thewindowsclub.com/wale-windows-audio-loudness-equalizer",
+          "gap": "Per-app leveling but dated; no clear Windows 11 support and no meeting-specific features."
+        },
+        {
+          "name": "EarTrumpet",
+          "gap": "Per-app volume sliders only, no automatic loudness matching."
+        },
+        {
+          "name": "Equalizer APO / Voicemeeter",
+          "gap": "Powerful routing and EQ but not a simple per-app loudness normalizer; hard for non-technical users."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Windows Loudness Equalization, reverse-engineered and ported to PipeWire",
+          "url": "https://news.ycombinator.com/item?id=50642212",
+          "quote": "Now Zoom takes over the audio and does their own, worse, volume normalization so I'm getting permanent hearing loss.",
+          "date": "2026-11-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Windows Loudness Equalization, reverse-engineered and ported to PipeWire",
+          "url": "https://news.ycombinator.com/item?id=50643497",
+          "quote": "It's honestly amazing that none of the popular video conferencing apps have * user's own volume meter",
+          "date": "2026-11-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Windows Loudness Equalization, reverse-engineered and ported to PipeWire",
+          "url": "https://news.ycombinator.com/item?id=50643062",
+          "quote": "You may be listening to music, then watching a youtube video, then playing a movie in vlc, then opening a audio message on whatsapp web.",
+          "date": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "llm-router-provider-transparency",
+      "title": "Transparent LLM Router",
+      "category": "SaaS",
+      "oneLiner": "An OpenRouter-style API that shows, for every provider, country, quantization, data-retention proof and measured uptime, and lets you hard-filter on them.",
+      "problem": "Users of LLM routers want to restrict providers by country and trust level but only get 'trust me' zero-data-retention claims, and some say they no longer trust the router's own pricing UI nudges.",
+      "targetUsers": "Indie developers and small teams building on open-weight models who care about privacy and consistent quality.",
+      "painScore": 6,
+      "effort": "1 month+",
+      "monetization": "Small pass-through fee (about 3%) plus $20/month Pro for policy rules, audit exports and alerts.",
+      "mvp": [
+        "Unified OpenAI-compatible endpoint over 5–8 providers",
+        "Provider cards showing country, quantization and retention terms",
+        "Policy filters such as 'EU/US only' and 'no quantization below fp8'",
+        "Continuous canary prompts to detect silent quality or quantization drift",
+        "Per-key spend caps with no upsell UI"
+      ],
+      "competitors": [
+        {
+          "name": "OpenRouter",
+          "url": "https://openrouter.ai",
+          "gap": "Users in the thread want per-provider country flags and distrust its limit UI; model slugs can map to providers with differing quantization."
+        },
+        {
+          "name": "LiteLLM",
+          "url": "https://www.litellm.ai",
+          "gap": "Self-hosted proxy requires running and securing it yourself."
+        },
+        {
+          "name": "Portkey",
+          "url": "https://portkey.ai",
+          "gap": "Governance-heavy and geared to enterprises, with SSO and VPC hosting behind Enterprise."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Novita, StreamLake, etc. are ByteDance Ark wrappers",
+          "url": "https://news.ycombinator.com/item?id=50661121",
+          "quote": "I wish that openrouter would require a country flag for every provider as to allow the user to make better choices.",
+          "date": "2026-11-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Moat: OpenRouter replacement",
+          "url": "https://news.ycombinator.com/item?id=50661307",
+          "quote": "I don't trust Openrouter anymore. They changed their API key credit limit UI from a simple number input to a multi choice with 50/1000/5000/custom (or something similar) just to push higher limits.",
+          "date": "2026-11-27"
+        }
+      ]
+    },
+    {
+      "id": "homelab-living-inventory",
+      "title": "Homelab Living Inventory",
+      "category": "Developer tool",
+      "oneLiner": "A self-hosted agent that inventories your hosts and containers, keeps a versioned wiki of how they fit together, and flags drift.",
+      "problem": "Self-hosters accumulate years of undocumented configuration drift and fiddly glue, and the ones fixing it are hand-rolling git repos of AI-maintained notes.",
+      "targetUsers": "Home-lab and small-team self-hosters running Docker on NAS boxes, Pis and VPSs.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "Free for up to 5 hosts, $6/month for unlimited hosts and drift alerts.",
+      "mvp": [
+        "SSH/agentless scan of hosts, Docker Compose stacks and Tailscale nodes",
+        "Auto-generated markdown wiki committed to a git repo",
+        "Drift detection comparing documented vs running state",
+        "Agent-readable context bundle (one file per service)",
+        "Weekly digest of changes and outdated images"
+      ],
+      "competitors": [
+        {
+          "name": "Homepage / Dashy dashboards",
+          "gap": "Show links and status but do not document how things are wired or detect drift."
+        },
+        {
+          "name": "NetBox",
+          "url": "https://netboxlabs.com/",
+          "gap": "Heavy network source-of-truth tool built for data centres, not a simple home-lab wiki."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "AI made self-hosting fun again",
+          "url": "https://news.ycombinator.com/item?id=50662073",
+          "quote": "over so many upgrades and migrations I'm sure things drifted and a lot of technical debt has collected.",
+          "date": "2026-11-27"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "AI made self-hosting fun again",
+          "url": "https://news.ycombinator.com/item?id=50661102",
+          "quote": "It was super annoying figuring out how all of these things glue together and their documentation is pretty terrible.",
+          "date": "2026-11-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "AI made self-hosting fun again",
+          "url": "https://news.ycombinator.com/item?id=50662055",
+          "quote": "I have to baby sit the arr stack(cloudflare stuff, torrent stuff, tracker stuff). It's just not ideal.",
+          "date": "2026-11-27"
+        }
+      ]
+    }
+  ]
+}
