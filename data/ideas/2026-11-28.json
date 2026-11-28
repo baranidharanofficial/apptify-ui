@@ -1,0 +1,358 @@
+{
+  "date": "2026-11-28",
+  "summary": "Reddit, X and Bluesky were unreachable today, so every source is a Hacker News thread, which skews toward technical users. Strongest themes: people leaving Backblaze after its privacy-policy change, YouTube viewers who would pay for a calmer, viewer-first experience, and account-security friction (forced SMS, passkey-only lock-in, no safe recovery).",
+  "ideas": [
+    {
+      "id": "backblaze-leaver-encrypted-backup",
+      "title": "Backblaze Leaver: Encrypted Backup With Bring-Your-Own Storage",
+      "category": "Desktop app",
+      "oneLiner": "A set-and-forget desktop backup app that encrypts files and filenames on your machine and writes to any S3-compatible bucket, with a guided exit from Backblaze.",
+      "problem": "After Backblaze's policy update, customers worry their data could be sold or shared, and some are already looking for a new home. The privacy-conscious ones fall back on restic or rclone with manual scripts, while everyone else has no easy encrypted option.",
+      "targetUsers": "Backblaze Personal Backup and B2 users, privacy-minded home users, freelancers with 1–5 TB, and small teams who do not want to self-host.",
+      "painScore": 7,
+      "effort": "1–2 weeks",
+      "monetization": "One-time licence of about $29–49 for the app, or $2–3/month if the app also bundles storage resold from R2 or B2.",
+      "mvp": [
+        "Client-side encryption of file contents and filenames, with a recovery key you export",
+        "Connect any S3-compatible bucket (Cloudflare R2, Wasabi, Hetzner, Bunny, B2)",
+        "Scheduled incremental backups with a menu-bar status indicator",
+        "Restore browser with a one-click test-restore check",
+        "Import wizard that lists what is in your current Backblaze backup and walks you through the move"
+      ],
+      "competitors": [
+        {
+          "name": "restic / rclone",
+          "url": "https://restic.net",
+          "gap": "Powerful, but command-line only. People on the thread rely on it for privacy yet it has no GUI, scheduler or restore checks for non-technical users."
+        },
+        {
+          "name": "Arq Backup",
+          "url": "https://www.arqbackup.com",
+          "gap": "Does encrypted backup to your own storage, but is priced and positioned as a paid app, and has no guided migration from Backblaze."
+        },
+        {
+          "name": "Duplicati",
+          "url": "https://duplicati.com",
+          "gap": "Free and encrypted, but has a reputation for a clunky interface and fragile restores."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Backblaze customers worried of personal data sale/sharing after policy update",
+          "url": "https://news.ycombinator.com/item?id=50601286",
+          "quote": "use restic and they can't get any info from your files. However, on principal i might start looking elsewhere. I have almost a couple TB I think with them.",
+          "engagement": "180 points · 66 comments (thread)",
+          "date": "2026-11-22"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Backblaze customers worried of personal data sale/sharing after policy update",
+          "url": "https://news.ycombinator.com/item?id=50602256",
+          "quote": "Been using rclone on B2 for ever, only ever push encrypted files there, with encrypted filenames so good luck using them for marketing or whatever.",
+          "engagement": "180 points · 66 comments (thread)",
+          "date": "2026-11-22"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Backblaze customers worried of personal data sale/sharing after policy update",
+          "url": "https://news.ycombinator.com/item?id=50601704",
+          "quote": "I'm looking at S3 or Bunny - I need something I don't self-host, as I use it for Terraform (OpenTofu) state, among other things.",
+          "engagement": "180 points · 66 comments (thread)",
+          "date": "2026-11-22"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Backblaze customers worried of personal data sale/sharing after policy update",
+          "url": "https://news.ycombinator.com/item?id=50601450",
+          "quote": "I’m currently an unhappy customer of Backblaze B2, working to switch to another company.",
+          "engagement": "180 points · 66 comments (thread)",
+          "date": "2026-11-22"
+        }
+      ]
+    },
+    {
+      "id": "calm-youtube-viewer-first-extension",
+      "title": "Calm YouTube: Pay-for Viewer Controls and Playback Fixer",
+      "category": "Browser extension",
+      "oneLiner": "A paid browser extension that bundles per-channel skip rules, a recommendation reset, and automatic recovery from stalled playback on YouTube.",
+      "problem": "Viewers say YouTube Premium does not give them the experience they would pay for. Recommendations loop on the same creators, there is no per-channel control over intros and tangents, and adblock users hit videos that stall within the first minute.",
+      "targetUsers": "Heavy YouTube viewers on desktop browsers, including adblock users, people with ADHD who fight recommendation loops, and music-video listeners.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free core; $12/year Pro for per-channel rules, recommendation reset and the playback fixer. One-time lifetime option around $29.",
+      "mvp": [
+        "Per-channel rules for skipping intros, outros and like-button reminders",
+        "Recommendation reset that clears or rotates the home feed topics on demand",
+        "Detect stalled playback and the 'Experiencing Interruptions' state, then auto-retry or switch stream",
+        "Shorts hidden by default, with a toggle",
+        "Settings export and import across browsers"
+      ],
+      "competitors": [
+        {
+          "name": "SponsorBlock",
+          "url": "https://sponsor.ajay.app",
+          "gap": "Crowd-tagged segments are sometimes wrong, and it does nothing about recommendations or stalls."
+        },
+        {
+          "name": "uBlock Origin / uBlock Origin Lite",
+          "url": "https://ublockorigin.com",
+          "gap": "Blocks ads but leaves users fighting anti-adblock stalls with custom filter lists."
+        },
+        {
+          "name": "SmartTube",
+          "url": "https://github.com/yuliskov/SmartTube",
+          "gap": "Android TV only, and a commenter reports it also now stops with errors within the first minute."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "YouTube Ad Punisher – Auto-reloads YouTube pages when an ad plays",
+          "url": "https://news.ycombinator.com/item?id=50660997",
+          "quote": "The thing for me is the recommendation algorithm doesn't provide an experience I would pay for. It consistently pigeon holes every account I have into the same handful of consistently recommended creators and topics and the same videos over and over.",
+          "engagement": "537 points · 655 comments (thread)",
+          "date": "2026-11-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "YouTube Ad Punisher – Auto-reloads YouTube pages when an ad plays",
+          "url": "https://news.ycombinator.com/item?id=50661062",
+          "quote": "YouTube does not offer this kind of exprience at any price point.",
+          "engagement": "537 points · 655 comments (thread)",
+          "date": "2026-11-26"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "YouTube Ad Punisher – Auto-reloads YouTube pages when an ad plays",
+          "url": "https://news.ycombinator.com/item?id=50664704",
+          "quote": "since 6 months ago Youtube videos all stopped playing within the first minute with an error. In order to watch them, I have to yt-dlp.",
+          "engagement": "537 points · 655 comments (thread)",
+          "date": "2026-11-27"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "YouTube Ad Punisher – Auto-reloads YouTube pages when an ad plays",
+          "url": "https://news.ycombinator.com/item?id=50659590",
+          "quote": "I am seeing these Experiencing Interruptions pop-ups as the video load stalls in Brave, before it starts playing after some seconds.",
+          "engagement": "537 points · 655 comments (thread)",
+          "date": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "id": "account-recovery-and-sms-lock-auditor",
+      "title": "Account Lockdown Auditor: Find Forced SMS and Single-Point-of-Failure Logins",
+      "category": "Web app",
+      "oneLiner": "A web app that checks your important accounts for forced SMS enrolment, passkey-only lock-in and weak recovery paths, then gives you a fix-it checklist.",
+      "problem": "Users say many services will not let them enrol FIDO or TOTP without first handing over an SMS number, push passkeys as the only option, and fall back to ID-photo recovery. There is no single place to see which of your accounts are exposed in these ways.",
+      "targetUsers": "Security-conscious individuals, journalists, small-business owners and family tech-support people who manage many accounts.",
+      "painScore": 6,
+      "effort": "1–2 weeks",
+      "monetization": "Free checker for the top 200 services; $4/month for personal account inventory, re-check alerts and family sharing.",
+      "mvp": [
+        "Searchable directory of services with: SMS required, TOTP allowed, passkey-only risk, recovery method",
+        "Account inventory where you tick the services you use, to produce a personal risk score",
+        "Per-service fix steps, such as removing SMS or setting up a backup TOTP",
+        "Reminder to store recovery codes, with a printable recovery sheet",
+        "Community submissions with verified-date stamps"
+      ],
+      "competitors": [
+        {
+          "name": "2FA Directory",
+          "url": "https://2fa.directory",
+          "gap": "Lists which sites support 2FA, but does not flag forced SMS enrolment or recovery weaknesses and has no personal inventory."
+        },
+        {
+          "name": "Passkeys.directory",
+          "url": "https://passkeys.directory",
+          "gap": "Tracks passkey support only, not the danger of passkey-only setups or recovery paths."
+        },
+        {
+          "name": "Password manager security dashboards (1Password Watchtower, Bitwarden reports)",
+          "gap": "Show weak or reused passwords and missing 2FA, but not how recovery works if you lose a factor."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Would you care for more than 2FA for any of your accounts?",
+          "url": "https://news.ycombinator.com/item?id=50663898",
+          "quote": "I would like to be able to use 2FA without texting my phone. Way too many places won't let you use fido, TOTP, passkeys or whatever without first enrolling your SMS provider as part of your auth.",
+          "engagement": "2 points (thread)",
+          "date": "2026-11-27"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Would you care for more than 2FA for any of your accounts?",
+          "url": "https://news.ycombinator.com/item?id=50665567",
+          "quote": "The weak link is how the service handles account recovery (when you don't have your password, 2FA device, or recovery codes). It's usually a very manual process where a human checks photos of your ID or passport, which are trivially forgeable. For some services, I'd like the option to say \"never recover this account.\"",
+          "engagement": "2 points (thread)",
+          "date": "2026-11-27"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Passkey blues",
+          "url": "https://news.ycombinator.com/item?id=50673815",
+          "quote": "But you absolutely must have a TOTP token configured as well, to use when and if your passkey is not available. It's incredibly dangerous and inappropriate to use them beyond that use case.",
+          "date": "2026-11-28"
+        }
+      ]
+    },
+    {
+      "id": "mac-mail-client-local-index-server-rules",
+      "title": "Mac Mail Client With a Real Local Index and Server-Side Rules",
+      "category": "Desktop app",
+      "oneLiner": "A native-feeling macOS IMAP client that treats your mailbox as an indexed database and pushes filtering rules to the server instead of running them on the client.",
+      "problem": "Power users say Mail.app chokes on folders with thousands of messages, and the alternatives are either Google-only, command-line, or not scriptable enough. The Ask HN thread shows people still searching for a good multi-account Mac client in 2026.",
+      "targetUsers": "Mac users with large, long-lived mailboxes, multiple accounts, and a taste for keyboard shortcuts and rules, including consultants and academics.",
+      "painScore": 5,
+      "effort": "1 month+",
+      "monetization": "One-time $49 licence with a year of updates, or $4/month; free trial limited to two accounts.",
+      "mvp": [
+        "IMAP and JMAP multi-account support with fast full-text search over a local index",
+        "Handles folders with 100k+ messages without lag",
+        "Rule editor that compiles to Sieve and uploads it to the server",
+        "Scripting hooks via AppleScript and Shortcuts",
+        "Keyboard-first navigation and a unified inbox"
+      ],
+      "competitors": [
+        {
+          "name": "Mimestream",
+          "url": "https://mimestream.com",
+          "gap": "A commenter says it only supports Google mail, with other providers still on the roadmap."
+        },
+        {
+          "name": "MailMate",
+          "url": "https://freron.com",
+          "gap": "Loved by power users, but dated look and a single-developer pace."
+        },
+        {
+          "name": "Apple Mail",
+          "gap": "Does not deal well with thousands of messages in a folder, per a commenter, and offers little scripting."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Its 2026 and there is still not good Email client for macOS. Why?",
+          "url": "https://news.ycombinator.com/item?id=50638654",
+          "quote": "mail.app does not deal well with thousands of e-mail messages in a folder, and hundreds, if not thousands of folders this size. You need something that treats the local message store as a database, with full indexes across all messages.",
+          "engagement": "13 points · 23 comments (thread)",
+          "date": "2026-11-25"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Its 2026 and there is still not good Email client for macOS. Why?",
+          "url": "https://news.ycombinator.com/item?id=50631862",
+          "quote": "I'd personally love a good, native email client with rich scripting abilities. Apple Mail could be this, if Apple cared about it.",
+          "engagement": "13 points · 23 comments (thread)",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Ask HN: Its 2026 and there is still not good Email client for macOS. Why?",
+          "url": "https://news.ycombinator.com/item?id=50649904",
+          "quote": "Mimestream is great, but only supports Google mail.",
+          "engagement": "13 points · 23 comments (thread)",
+          "date": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "id": "linkedin-contacts-only-feed-and-comment-digest",
+      "title": "LinkedIn Contacts-Only Feed and Daily Comment Digest",
+      "category": "Browser extension",
+      "oneLiner": "An extension that hides LinkedIn posts from people outside your chosen contact list and emails or shows a short list of posts worth commenting on.",
+      "problem": "People who need LinkedIn to stay visible still find the feed unusable, and some are building their own filters with a browser plugin idea or by asking an AI to read the feed in their browser.",
+      "targetUsers": "Founders, consultants, recruiters and job seekers who must keep a LinkedIn presence but dislike the algorithmic feed.",
+      "painScore": 5,
+      "effort": "Weekend",
+      "monetization": "Free filter by contact list; $5/month for the AI comment digest and multiple lists.",
+      "mvp": [
+        "Hide posts whose author or reposter is not on a list of contacts or lists you maintain",
+        "One-click import of your connections' names from the page you are viewing",
+        "Daily digest of 0–5 posts where you might add value, generated locally from what you have open",
+        "Pause switch and a count of how many posts were hidden",
+        "No data sent to a server by default"
+      ],
+      "competitors": [
+        {
+          "name": "uBlock Origin cosmetic filters",
+          "url": "https://ublockorigin.com",
+          "gap": "Can hide elements, but cannot match authors against a contact list without hand-written rules."
+        },
+        {
+          "name": "LinkedIn's built-in Following feed and feed preferences",
+          "gap": "Still shows promoted and suggested posts, and users in the thread are routing around it."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "I Fixed My LinkedIn Feed",
+          "url": "https://news.ycombinator.com/item?id=50614122",
+          "quote": "Can't a simple chrome plugin hide dom elements (posts) that don't contain the names of a list of contacts ?",
+          "engagement": "5 points (thread)",
+          "date": "2026-11-23"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "I Fixed My LinkedIn Feed",
+          "url": "https://news.ycombinator.com/item?id=50634741",
+          "quote": "You need a feed to leave comments and stay public in your community. I asked Claude to read my feed twice a day in my own browser and show me a short list of posts where I might have something to add.",
+          "engagement": "5 points (thread)",
+          "date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": "mail-calendar-mcp-gateway-bring-your-own-ai",
+      "title": "Mail and Calendar MCP Gateway for Bring-Your-Own-AI",
+      "category": "AI tool",
+      "oneLiner": "A hosted MCP server that gives Claude or any assistant safe read, send and calendar access to Fastmail, Kagi, Outlook and plain IMAP/CalDAV accounts, so you keep your mail provider and bring your own AI.",
+      "problem": "Some users do not want the mail provider's built-in AI, they want an outside AI to run their mail and calendar through MCP. Right now they wire it up one provider at a time, and the commenters want the vendor to simply be a tool.",
+      "targetUsers": "Power users and small teams who use Claude or other assistants for scheduling and inbox triage and do not want to pay for a provider's AI add-on.",
+      "painScore": 5,
+      "effort": "1–2 weeks",
+      "monetization": "$6/month per user with a free tier of 100 tool calls a day; $5 per extra mailbox for teams.",
+      "mvp": [
+        "OAuth and app-password connection for Fastmail, Outlook, generic IMAP/SMTP and CalDAV",
+        "MCP tools: search mail, read thread, draft, send with confirmation, list and create events",
+        "Per-tool permission levels (read-only by default) and an audit log",
+        "Confirm-before-send rule for any outbound email",
+        "One-page setup guide for Claude and other MCP clients"
+      ],
+      "competitors": [
+        {
+          "name": "Zapier MCP",
+          "url": "https://zapier.com/mcp",
+          "gap": "General automation hub; not focused on mail and calendar safety, drafting rules or audit trails."
+        },
+        {
+          "name": "Provider-built AI (Kagi Mail, Gmail AI features)",
+          "url": "https://blog.kagi.com/kagi-mail-public-beta",
+          "gap": "Commenters say they want the mail vendor to be a tool for their own AI, not to bundle first-party AI they pay for."
+        }
+      ],
+      "sources": [
+        {
+          "platform": "Hacker News",
+          "title": "Kagi Mail (public beta)",
+          "url": "https://news.ycombinator.com/item?id=50625842",
+          "quote": "the \"do want AI, but external to the service\". AI runs my family's calendar now - but it's an outside AI (Claude, specifically), accessing it through an MCP. I very much want AI to do this and more, but I want my mail/calendar vendor to be a tool in this relationship",
+          "engagement": "469 points · 386 comments (thread)",
+          "date": "2026-11-24"
+        },
+        {
+          "platform": "Hacker News",
+          "title": "Kagi Mail (public beta)",
+          "url": "https://news.ycombinator.com/item?id=50618034",
+          "quote": "I have connected Claude (free account) to outlook for $0 which does everything I need, and I cannot see why I want to pay $99/yr for a service with 50GB of storage \"and AI\"",
+          "engagement": "469 points · 386 comments (thread)",
+          "date": "2026-11-23"
+        }
+      ]
+    }
+  ]
+}
